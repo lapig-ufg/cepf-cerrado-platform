@@ -1,0 +1,408 @@
+html, body { margin:0; height: 100%;}
+
+.bckgdisabled {
+	background-color: #e9ecef !important;
+}
+
+.container-fluid {
+	padding-right: 0px;
+	padding-left: 0px;
+	margin-top: 55px;
+}
+
+hr {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.card {
+	border-radius: 0px;
+}
+
+.custom-select, .form-control-sm, .input-group-sm > .form-control, .input-group-sm > .input-group-prepend > .input-group-text, .input-group-sm > .input-group-append > .input-group-text, .input-group-sm > .input-group-prepend > .btn, .input-group-sm > .input-group-append > .btn {
+	border-radius: 0px;
+}
+
+.dpat-ol-div {
+	padding: 0px;
+}
+
+.dpat-ol-map {
+	height: calc(82vh); /* 100% of the viewport height - navbar height */
+}
+
+.ol-zoom-in, .ol-zoom-out {
+	background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.card-header {
+	padding: 10px;
+}
+
+#positionheaders {
+  padding: 10px;
+}
+
+#positionLayers {
+  position: relative; 
+  margin-top: 10px;
+  max-width: 280px;
+  background-color: #FFF;
+  color: #666;
+  text-align: left;
+  z-index: 1000;
+  /*border: 1px solid #808080;*/
+  opacity: .93;
+}
+
+#menuMobile {
+	top: 1%;
+}
+
+.layersConteudo {
+	height: 100%;
+  overflow: auto;
+}
+
+.collapseLayer {
+	height: 94%
+}
+
+.row-box-name {
+	padding: 10px 0px 0px 5px;
+}
+
+.layer-name {
+	font-weight: bold;
+	font-size: 20px;
+}
+
+.layers-options {
+	/*padding-left: 40px;*/
+
+}
+
+.layers-indicator {
+	font-size: 0.8rem;
+	/*padding-left: 50px;*/
+	padding-bottom: 5px;
+	margin-right: 0px !important;
+	flex-wrap: nowrap;
+}
+
+.value-indicators {
+	padding-left: 5px;
+	display: inline;
+}
+
+.button-row button,
+.button-row a {
+  margin-right: 8px;
+}
+
+.icon-info {
+	font-weight: bold;
+	font-size: 15px;
+	color: black;
+	background-color: #d1d1d1;
+	border-radius: 15px;
+}
+
+.options-radio-button {
+	padding-left: 10%;
+	padding-top: 5%;
+}
+
+.regions-row {
+	padding: 10px 0px 5px 0px;
+}
+
+.mat-form-field{
+	width: 65px;
+}
+
+.mat-icon-button {
+	width: 20px;
+	height: 20px;
+	line-height: 0px;
+}
+
+..mat-form-field-infix{
+	padding: 0px  !important;
+	border-top: 0px !important;
+}
+
+#positionCharts {
+	max-height: 530px;
+	padding-left: 14px;
+	padding-right: 14px;
+	overflow: auto;
+  position: absolute; 
+  bottom: 0%;
+  width: 100%;
+  background-color: #FFF;
+  color: #666;
+  text-align: left;
+  z-index: 1000;
+  border-top: 1px solid #808080;
+  opacity: .93;
+}
+
+#positionLegend {
+	position: absolute; 
+  right: 1%;
+  top: 4%;
+  width: 220px;
+  background-color: #FFF;
+  color: #666;
+  text-align: left;
+  z-index: 1000;
+  border: 1px solid #808080;
+  opacity: .93;
+}
+
+#layers_produtividade {
+	margin-bottom: 0px;
+}
+
+#layers_degradacao {
+	/*margin-bottom: 20px;*/
+}
+
+.font-size-geral {
+	padding-left: 0px;
+	font-size: 0.78rem;
+}
+
+.legendasConteudo {
+	max-height: 150px;
+  overflow: auto;
+}
+
+h6 {
+	font-size: 0.8rem;
+	margin-left: 15px; 
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.table-municipios {
+	margin: 15px;
+	width: 95%;
+	max-width: 95%;
+	font-size: 0.7rem;
+}
+
+.collapse-btn {
+	padding: 0px;
+	font-weight: bold;
+	width: 30px;
+  border-color: #d1d1d1;
+}
+
+.titleWindows {
+	color: #565353;
+	padding: 10px;
+  font-weight: bold;
+  border-bottom: 1px solid #717171;
+  font-size: 0.9rem;
+}
+
+.layerLegend {
+	padding: 0px 10px 5px 35px;
+}
+
+.title-atlas {
+	color: #373435;
+	font-weight: bold;
+	font-size: 1rem; 
+}
+
+.title-atlas-div {
+	text-align: left;
+	padding-left: 0px;
+}
+
+.paddingLayerLegend {
+	padding-top: 0px;
+	padding-left: 0px;
+}
+
+.baseMap {
+	padding: 20px 10px 5px 30px
+}
+
+.logos-atlas {
+	text-align: right;
+}
+
+.logo-ufg {
+	height: 20px;
+	margin-right: 8px;
+	margin-top: 5px;
+}
+
+.logo-lapig {
+	height: 20px;
+	margin-left: 0px;
+}
+
+.clear-region-btn {
+	height: 18px;
+	position: absolute;
+	left: 85%;
+	top: 8px;
+	cursor: pointer;
+	opacity: 0.8;
+}
+
+.button-csv {
+	text-align: right;
+	color: #707070 !important;
+	padding-left: 30%
+} button {
+	color: #707070 !important;
+}
+
+.button-shp{
+	text-align: left;
+} button {
+	color: #707070 !important;
+}
+
+.buttons-download {
+	padding-bottom: 25px;
+	margin-right: 0px;
+}
+
+.nameLayers {
+	font-size: 0.85rem;
+	padding-left: 5px;
+	padding-bottom: 5%;
+	/*padding-top: 7px;*/
+}
+
+.collapse-btn {
+	padding: 0px;
+	padding-left: 5px;
+	padding-right: 5px;
+	background-color: #727272;
+	border-color: #727272;
+	margin-left: 15px;
+	color: white !important;
+}
+
+.separacaoLayers {
+	border-top: 1px solid #d1d1d1;
+}
+
+.optionPontosTVI {
+	margin-left: 5%;
+}
+
+.fotosCampo {
+	text-align: center;
+	max-width: 260px;
+	max-height: 160px;
+	padding: 4px;
+}
+
+.containerFotosCampo {
+  text-align: center;
+}
+
+.instrucoesPontosCampo {
+  height: auto;
+  width: auto;
+  text-align: center;
+  padding-top: 20px;
+}
+
+#dropdowYearRebanho {
+	font-size: 0.8rem;
+	padding-left: 30%;
+}
+
+.barra-titulo {
+	border-bottom: 1px solid #808080;
+	padding-top: 10px;
+	padding-bottom: 0px;
+	padding-right: 0px;
+	padding-left: 0px;
+}
+
+.buttons-download,
+.buttonsDisplay {
+	display: none
+}
+
+.fixed-top {
+	padding-bottom: 5px;
+	z-index: 900 !important;
+}
+
+#dropdownPoints {
+	font-size: 0.8rem;
+}
+
+.button-menu {
+	padding-top: 1%;
+}
+
+.iconInfo {
+	font-size: 20px;
+}
+
+.form-control {
+	font-size: 0.8rem;
+}
+
+.stylePercentual {
+	/*padding-left: 5px;*/
+	font-size: 0.7rem;
+	margin-bottom: 8px;
+	/*display: inline;*/
+}
+
+.legend_Graphic {
+	position: absolute;
+	right: 2%
+}
+
+#seriesTooltipTemplate {
+	display: none !important;
+}
+
+.slider-layer {
+	text-align: center;
+    padding-right: 0px;
+    padding-top: 3%;
+}
+
+.expansion-layer {
+	padding-left: 0px;
+}
+
+.expansion-header-layer {
+	padding-left: 0px;
+}
+
+.expansion-header-layer-legend {
+	margin-left: 0px;
+    margin-top: 0px;
+}
+
+#dropdownPoints {
+	padding-left: 18%;
+}
+
+.info_clique_mapa {
+	margin: 0px;
+    font-size: 0.7rem;
+    text-align: right;
+    padding-right: 14px;
+}
+
+.nameLayerLegend {
+	margin-bottom: 4%;
+}
