@@ -32,36 +32,6 @@ import localePt from '@angular/common/locales/pt';
 
 registerLocaleData(localePt);
 
-const appRoutes: Routes = [
-  {
-    path: 'map',
-    component: MapComponent
-  },
-  {
-    path: 'map-mobile',
-    component: MapMobileComponent,
-  }
-  /*{ path: '',
-    redirectTo: '/map',
-    pathMatch: 'full'
-  }*/
-];
-
-const appMobileRoutes: Routes = [
-  {
-    path: 'map',
-    component: MapComponent
-  },
-  {
-    path: 'map-mobile',
-    component: MapMobileComponent,
-  }
-  /*{ path: '',
-    redirectTo: '/map-mobile',
-    pathMatch: 'full'
-  }*/
-];
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -87,10 +57,6 @@ const appMobileRoutes: Routes = [
     AppRoutingModule,
     FormsModule,
     PaginasModule,
-    RouterModule.forRoot(
-      appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
-    ),
     NgbModule.forRoot()
   ],
   entryComponents:[],
@@ -100,12 +66,4 @@ const appMobileRoutes: Routes = [
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  public constructor(private router: Router) {
-
-    console.log(window.innerWidth)
-    if (window.innerWidth < 768) {
-      router.resetConfig(appMobileRoutes);
-    }
-
-  }
 }

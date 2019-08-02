@@ -21,6 +21,10 @@
 	font-size: 20px;
 }
 
+.dropdown-item.active, .dropdown-item:active {
+	background: #595959 !important;
+}
+
 .chart-legend {
 	padding: 10px !important;
 }
@@ -242,4 +246,8 @@
 
 #hero-area .contents .head-title {
 	color: #88313c;
+}
+
+.mat-expansion-indicator::after, .mat-expansion-panel-header-description {
+	color: rgb(209, 209, 209);
 }

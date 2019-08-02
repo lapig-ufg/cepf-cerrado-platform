@@ -1,8 +1,10 @@
-<nav class="navbar navbar-expand-md fixed-top barra-titulo" style="border-bottom: 5px solid #66bb6a; background-color: #FFF;">
+<nav class="navbar navbar-expand-md fixed-top barra-titulo navbar-title">
   <div class="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 title-atlas-div">
   	<div class="title-atlas">Plataforma de Conhecimento do Cerrado - Uso do Solo</div>
   </div>
   <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 logos-atlas">
+    <a href="http://cepfcerrado.iieb.org.br/" target="_blank"><img  class="logo-cepf" src="assets/logo/cepf_ieb.png" /></a>
+    <a href="https://www.lapig.iesa.ufg.br/lapig/" target="_blank"><img  class="logo-lapig" src="assets/logo/lapig.png" /></a>
   </div>
 </nav>
 <div class="container-fluid">
@@ -18,26 +20,26 @@
 	      	<mat-tab-group class="layersConteudo">
 						<mat-tab label="Pastagem">
 							<mat-accordion>
-				      	<div id="layers_pastagens" *ngFor="let groups of descriptor.groups">
+				      	<div id="layers_pastagens">
 				      		<div class="regions-row">
 										<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 										  <ng-template #rt let-r="result" let-t="term">
 											  <ngb-highlight [result]="r.text" [term]="t"></ngb-highlight>
 											</ng-template>
-										  <input id="typeahead-http" type="text" class="form-control" [class.is-invalid]="searchFailed" [(ngModel)]="model" [ngbTypeahead]="search" placeholder="Escolha um bioma / estado / município..." (selectItem)="updateRegion($event)" [resultTemplate]="rt" [inputFormatter]="formatter"/>
+										  <input id="typeahead-http" type="text" class="form-control searchRegion" [class.is-invalid]="searchFailed" [(ngModel)]="model" [ngbTypeahead]="search" placeholder="Escolha um bioma / estado / município..." (selectItem)="updateRegion($event)" [resultTemplate]="rt" [inputFormatter]="formatter"/>
 										  <img [hidden]="model == ''" class="clear-region-btn" (click)="getMatchRegion()" src="assets/clear_button.png" />
 										  <span *ngIf="searching">localizando...</span>
 										  <div class="invalid-feedback" *ngIf="searchFailed">Desculpe, Região não encontrada.</div>
 										</div>
 								  </div>
-								  <div class="row" >
+								  <div class="row" *ngFor="let groups of descriptor.groups">
 								  	<!-- <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 slider-layer">
 								  		<mat-slide-toggle name="onofflayer" (change)="groupLayerschecked(groups.layerDefault, $event)" checked=true>
 											</mat-slide-toggle>
 								  	</div> -->
 									  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 											<div >
-												<mat-expansion-panel [expanded] = true>
+												<mat-expansion-panel [expanded] = groups.group_expanded>
 													<mat-expansion-panel-header [collapsedHeight]="'50px'" [expandedHeight]="'50px'" class="expansion-header-layer">
 														<h5 class="expansion-layer"><b>{{groups.label}}</b></h5>
 													</mat-expansion-panel-header>
@@ -46,22 +48,24 @@
 															{{layer.label}}
 														</mat-checkbox>
 														<div style="padding-left: 8%">
-															<mat-form-field style="margin-right: 20%; width: 100px">
+															<mat-form-field style="margin-right: 15%; width: 130px">
 															  <mat-label>Tipo</mat-label>
 															  <mat-select (selectionChange)="updateType(layer.types)" [(value)]="layer.selectedType">
-															  	<mat-option *ngFor="let tipo of layer.types" [value]="tipo.value">
-														        {{tipo.Viewvalue}}
+															  	<mat-option *ngFor="let type of layer.types" [value]="type.value">
+														        {{type.Viewvalue}}
 														      </mat-option>
 															  </mat-select>
-															</mat-form-field>
-															<mat-form-field *ngIf="!descriptor.disableYears[layer.selectedType]">
-															  <mat-label>Ano</mat-label>
-															  <mat-select (selectionChange)="updateyear(layer.types[0].value, layer.yearSelected)" [(value)]="layer.yearSelected">
-																	<mat-option *ngFor="let year of layer.years" [value]="year.value">
-																    {{year.Viewvalue}}
-																  </mat-option>
-																</mat-select>
-															</mat-form-field>
+                              </mat-form-field>
+                              <span *ngFor="let type of layer.types" [hidden]="type.value != layer.selectedType">
+                                <mat-form-field *ngIf="type.times">
+                                  <mat-label>{{type.timeLabel}}</mat-label>
+                                    <mat-select (selectionChange)="updateSourceLayer(type)" [(value)]="type.timeSelected">
+                                      <mat-option *ngFor="let times of type.times" [value]="times.value">
+                                        {{times.Viewvalue}}
+                                      </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                              </span>
 														</div>
 													</div>
 												</mat-expansion-panel>
@@ -72,22 +76,10 @@
 							</mat-accordion>
 						</mat-tab>
 						<mat-tab label="Mapa Base">
-							<div class="form-group baseMap">
-								<mat-slide-toggle (change)="baseLayerChecked('mapbox', $event)" [(ngModel)]="mapbox.visible" [checked]="mapbox.visible" >
-									Geopolítico
-								</mat-slide-toggle><br/><br/>
-								<mat-slide-toggle (change)="baseLayerChecked('satelite', $event)" [(ngModel)]="satelite.visible">
-									Satélite
-								</mat-slide-toggle><br/><br/>
-								<mat-slide-toggle (change)="baseLayerChecked('estradas', $event)" [(ngModel)]="estradas.visible" >
-									Estrada
-								</mat-slide-toggle><br/><br/>
-								<mat-slide-toggle (change)="baseLayerChecked('relevo', $event)" [(ngModel)]="relevo.visible">
-									Relevo
-								</mat-slide-toggle><br/><br/>
-								<mat-slide-toggle (change)="baseLayerChecked('landsat', $event)" [(ngModel)]="landsat.visible">
-									Landsat - 2017
-								</mat-slide-toggle><br/>
+							<div class="form-group baseMap" *ngFor="let basemap of basemapsNames">
+								<mat-slide-toggle (change)="baseLayerChecked(basemap, $event)" [(ngModel)]="basemap.visible">
+									{{basemap.viewValue}}
+								</mat-slide-toggle>
 							</div>
 						</mat-tab>
 						<mat-tab label="Limites">

@@ -103,6 +103,10 @@ hr {
 	height: 86%
 }*/
 
+.searchRegion {
+	border: 1px solid #d1d1d1;
+}
+
 .row-box-name {
 	padding-top: 10px;
 	padding-left: 20px;
@@ -113,9 +117,10 @@ hr {
 	font-size: 20px;
 }
 
-.layers-options {
-	/*padding-left: 35px;*/
-
+.navbar-title {
+	border-bottom: 5px solid #66bb6a; 
+	background-color: #FFF;
+	padding: 13px 0;
 }
 
 .layers-indicator {
@@ -163,17 +168,9 @@ hr {
 	line-height: 0px;
 }
 
-..mat-form-field-infix{
+.mat-form-field-infix{
 	padding: 0px  !important;
 	border-top: 0px !important;
-}
-
-#layers_produtividade {
-	/*margin-bottom: 20px;*/
-}
-
-#layers_degradacao {
-	/*margin-bottom: 20px;*/
 }
 
 .font-size-geral {
@@ -228,7 +225,7 @@ h6 {
 
 .title-atlas-div {
 	text-align: left;
-	padding-left: 0px;
+	/* padding-left: 0px; */
 }
 
 .paddingLayerLegend {
@@ -244,8 +241,8 @@ h6 {
 	text-align: right;
 }
 
-.logo-ufg {
-	height: 40px;
+.logo-cepf {
+	height: 39px;
 	margin-right: 8px;
 	margin-top: 5px;
 }
@@ -346,7 +343,7 @@ h6 {
 		margin-left: 0px;
 	}
 
-	.logo-ufg {
+	.logo-cepf {
 		height: 20px;
 	}
 
@@ -427,7 +424,7 @@ h6 {
 		font-size: 0.6em;
 	}
 
-	.logo-ufg {
+	.logo-cepf {
 		height: 20px;
 	}
 

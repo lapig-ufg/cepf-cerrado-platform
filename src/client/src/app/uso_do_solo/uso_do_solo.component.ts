@@ -20,9 +20,6 @@ import GeoJSON from 'ol/format/GeoJSON';
 import VectorLayer from 'ol/layer/Vector';
 import Style from 'ol/style/Style';
 import Stroke from 'ol/style/Stroke';
-import Circle from 'ol/style/Circle.js';
-import {Circle as CircleStyle} from 'ol/style.js';
-import Fill from 'ol/style/Fill';
 import VectorSource from 'ol/source/Vector';
 
 const SEARCH_URL = 'service/map/search';
@@ -71,8 +68,8 @@ export class MapComponent implements OnInit {
 	estradas: any;
   relevo: any;
   landsat: any;
-  basemaps = ['mapbox', 'satelite', 'estradas', 'relevo', 'landsat']
   descriptor:any;
+  regionFilterDefault: any;
   urls: any;
   searching = false;
   searchFailed = false;
@@ -87,6 +84,7 @@ export class MapComponent implements OnInit {
   regionTypeFilter: any;
 
   layersNames= [];
+  basemapsNames = [];
   limitsNames = [];
   year: any;
   LayersTMS = {};
@@ -98,21 +96,7 @@ export class MapComponent implements OnInit {
 		this.currentZoom = 5.8;
     this.layers = [];
     this.model = '';
-    this.mapbox = {
-    	'visible': true
-    }
-    this.satelite = {
-    	'visible': false
-    }
-    this.estradas = {
-    	'visible': false
-    }
-    this.relevo = {
-    	'visible': false
-    }
-    this.landsat = {
-    	'visible': false
-    }
+    
     this.regionTypeFilter = '';
     this.regionTypeBr = 'bioma';
 
@@ -192,7 +176,7 @@ export class MapComponent implements OnInit {
 
   	this.zoomExtent();
 
-  	this.updateSourceLayer();
+  	this.updateSourceAllLayer();
 	}
 
 	private getResolutions(projection) {
@@ -288,13 +272,12 @@ export class MapComponent implements OnInit {
         }),
 				visible: false,
 	    })
-	  }
-
-    this.layers.push(this.mapbox.layer)
-    this.layers.push(this.satelite.layer)
-    this.layers.push(this.estradas.layer)
-    this.layers.push(this.relevo.layer)
-    this.layers.push(this.landsat.layer)
+    }
+    
+    for(let baseName of this.basemapsNames){
+      this.layers.push(this[baseName.value].layer)
+    }
+    
 	}
 
 	private createLayers() {
@@ -302,13 +285,13 @@ export class MapComponent implements OnInit {
 
 		//layers
 		for (let layer of this.layersNames) {
-    	this.LayersTMS[layer.value] = this.createTMSLayer(layer.value, layer.visible, layer.opacity, layer.layerfilter);
+    	this.LayersTMS[layer.value] = this.createTMSLayer(layer);
 			this.layers.push(this.LayersTMS[layer.value])
 		}
 
 		//limits
 		for (let limits of this.limitsNames) {
-			this.limitsTMS[limits.value] = this.createTMSLayer(limits.value, limits.visible, limits.opacity, limits.layerfilter)
+			this.limitsTMS[limits.value] = this.createTMSLayer(limits)
 			this.layers.push(this.limitsTMS[limits.value])
 		}
 
@@ -320,14 +303,14 @@ export class MapComponent implements OnInit {
 
 	}
 
-	private createTMSLayer(layername, visible, opacity, filter) {
+	private createTMSLayer(layer) {
 		return new OlTileLayer({
 			source: new OlXYZ({
-				urls: this.getUrls(layername, filter)
+				urls: this.getUrls(layer)
 			}),
 			tileGrid: this.tileGrid,
-			visible: visible,
-			opacity: opacity
+			visible: layer.visible,
+			opacity: layer.opacity
 		});
 	}
 
@@ -347,27 +330,21 @@ export class MapComponent implements OnInit {
     });
 	}
 
-	private getUrls(layername, filter) {
-		var result = []
+	private getUrls(layer) {
+    var result = []
 
-		var msfilter = ""
-
-		console.log('teste: ',!isNaN(filter), layername, filter)
-
-		if(filter == 'yearsAndRegions'){
-			msfilter = "&MSFILTER=year="+this.year+" AND bioma='CERRADO' "+this.msFilterRegionAnd
-		} else if (filter == 'pasture_degraded') {
-			msfilter = "&MSFILTER=category='1' AND bioma='CERRADO' "+this.msFilterRegionAnd
-		} else if (filter == 'biomaCerrado') {
-			msfilter = "&MSFILTER=bioma='Cerrado'"
-		} else if (!isNaN(filter)) {
-			console.log('é número"')
-			msfilter = "&MSFILTER=year="+filter+" AND bioma='CERRADO' "+this.msFilterRegionAnd
+    var msfilter = this.regionFilterDefault
+    
+    if(layer.times) {
+      msfilter = msfilter+" AND "+layer.timeSelected+" "+this.msFilterRegionAnd
+    }
+    if (layer.layerfilter) {
+      msfilter = msfilter+" "+ layer.layerfilter+" "+this.msFilterRegionAnd
 		}
-		
+
 		for (let url of this.urls) {
 			result.push(url
-				+ "?layers=" + layername
+				+ "?layers=" + layer.value
 				+ msfilter
 				+ "&mode=tile&tile={x}+{y}+{z}"
 				+ "&tilemode=gmap" 
@@ -378,33 +355,32 @@ export class MapComponent implements OnInit {
 		return result;
 	}
 
-	private updateSourceLayer(){
-
-		for (let layer of this.layersNames) {
-	  	var source_layers = this.LayersTMS[layer.value].getSource();
-
-			source_layers.setUrls(this.getUrls(layer.value, layer.layerfilter))
-
-			source_layers.refresh();
+  private updateSourceAllLayer() {
+    for (let layer of this.layersNames) {
+	  	this.updateSourceLayer(layer)
 		}
-
+  }
+  
+	private updateSourceLayer(layer){
+	  	var source_layers = this.LayersTMS[layer.value].getSource();
+			source_layers.setUrls(this.getUrls(layer))
+			source_layers.refresh();
   }
 
   baseLayerChecked(base, e) {
 
-  	for(let basemap of this.basemaps) {
-  		if(base == basemap && e.checked){
-  			this[base].layer.setVisible(true);
-				this[base].visible = true;
-  		} else if (basemap != base) {
-  			this[basemap].layer.setVisible(false);
-				this[basemap].visible = false;
+  	for(let basemap of this.basemapsNames) {
+      if(base.value == basemap.value && e.checked){
+        this[base.value].layer.setVisible(true);
+				basemap.visible = true;
+  		} else if (basemap.value != base.value) {
+        this[basemap.value].layer.setVisible(false);
+				basemap.visible = false;
   		} else {
-  			this.mapbox.layer.setVisible(true);
-				this.mapbox.visible = true;
-  			if(basemap !='mapbox') {
-  				this[basemap].layer.setVisible(false);
-					this[basemap].visible = false;
+        this[this.descriptor.basemaps[0].defaultBaseMap].layer.setVisible(true);
+  			if(basemap.value != this.descriptor.basemaps[0].defaultBaseMap) {
+          this[basemap.value].layer.setVisible(false);
+					this[basemap.value].visible = false;
   			}
   		}
   	}
@@ -419,7 +395,7 @@ export class MapComponent implements OnInit {
 			this.regionTypeFilter = '';
       this.regionTypeBr = 'bioma';
 			this.regionSelected = 'Brasil';
-      this.updateSourceLayer();
+      this.updateSourceAllLayer();
   }
 
   groupLayerschecked(layers, e) {
@@ -435,10 +411,6 @@ export class MapComponent implements OnInit {
 
 		//layers
 		if (e.checked) {
-			console.log('layers: ', layers[0].value, e)
-			/*for(let layer of layers) {
-			}*/
-			//console.log('selected: ', this.LayersTMS[this.descriptor.groups[0].layers[0].selectedType])
 			this.LayersTMS[layers[0].value].setVisible(e.checked);
 		} else {
 			for (let layer of layers) {
@@ -451,29 +423,15 @@ export class MapComponent implements OnInit {
 	limitsLayersChecked(layers, e) {
 		//limits
 		for(let limits of this.limitsNames) {
-			console.log(limits.visible)
 			if(layers.value == limits.value && e.checked){
 				this.limitsTMS[limits.value].setVisible(true);
   			limits.visible = true;
-			} else if (limits.value != layers.value) {
+			} else {
 				this.limitsTMS[limits.value].setVisible(false);
 				limits.visible = false;
-			} else {
-					this.limitsTMS[limits.value].setVisible(false);
-					limits.visible = false;
 			}
 		}
 
-	}
-
-	updateyear(layer, year) {
-		console.log('updateyear: ', layer, year)
-		var source_layers = this.LayersTMS[layer].getSource();
-
-		source_layers.setUrls(this.getUrls(layer, year))
-
-		source_layers.refresh();
-		/*this.updateSourceLayer();*/
 	}
 
 	updateType(layers) {
@@ -492,16 +450,20 @@ export class MapComponent implements OnInit {
 	ngOnInit() {
 
 		this.http.get('service/app-descriptor').subscribe(result => {
-			this.descriptor = result
+      this.descriptor = result
+      this.regionFilterDefault = this.descriptor.regionFilterDefault;
 
 			for (let groups of this.descriptor.groups) {
 				for(let layers of groups.layers) {
-					var ultimo = layers.years[layers.years.length-1]
-					this.year = ultimo.value
-					console.log(ultimo.value)
 					for(let types of layers.types) {
 						this.layersNames.push(types)
 					}
+				}
+      }
+      
+      for(let basemap of this.descriptor.basemaps) {
+				for(let types of basemap.types){
+					this.basemapsNames.push(types)
 				}
 			}
 
@@ -509,7 +471,7 @@ export class MapComponent implements OnInit {
 				for(let types of limits.types){
 					this.limitsNames.push(types)
 				}
-			}
+      }
 
 			this.createMap();
 		});
