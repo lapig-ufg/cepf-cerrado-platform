@@ -73,7 +73,6 @@ export class MapComponent implements OnInit {
   urls: any;
   searching = false;
   searchFailed = false;
-  msFilterRegionAnd = '';
   msFilterRegion = '';
   model: any;
 
@@ -83,13 +82,12 @@ export class MapComponent implements OnInit {
   regionSource: any;
   regionTypeFilter: any;
 
-  layersNames= [];
+  layersTypes= [];
   basemapsNames = [];
   limitsNames = [];
   year: any;
   LayersTMS = {};
   limitsTMS = {};
-  selectedTypeLayer: any;
 
 	constructor(private http: HttpClient, private _service: SearchService) { 
 		this.projection = OlProj.get('EPSG:900913');
@@ -163,15 +161,12 @@ export class MapComponent implements OnInit {
   	var region = region.item.value;
   	this.region_geom = region;
 
-
   	if(regionType == 'estado') {
   		regionType = 'uf'
   	}else if (regionType == 'municipio') {
   		regionType = 'cd_geocmu'
   	}
 
-
-  	this.msFilterRegionAnd = " AND "+regionType+"='"+region+"'";
   	this.msFilterRegion = regionType+"='"+region+"'";
 
   	this.zoomExtent();
@@ -284,7 +279,7 @@ export class MapComponent implements OnInit {
 		var olLayers: OlTileLayer[] = new Array();
 
 		//layers
-		for (let layer of this.layersNames) {
+		for (let layer of this.layersTypes) {
     	this.LayersTMS[layer.value] = this.createTMSLayer(layer);
 			this.layers.push(this.LayersTMS[layer.value])
 		}
@@ -306,7 +301,7 @@ export class MapComponent implements OnInit {
 	private createTMSLayer(layer) {
 		return new OlTileLayer({
 			source: new OlXYZ({
-				urls: this.getUrls(layer)
+				urls: this.parseUrls(layer)
 			}),
 			tileGrid: this.tileGrid,
 			visible: layer.visible,
@@ -330,21 +325,29 @@ export class MapComponent implements OnInit {
     });
 	}
 
-	private getUrls(layer) {
+	private parseUrls(layer) {
     var result = []
 
-    var msfilter = this.regionFilterDefault
+    var filters = []
     
-    if(layer.times) {
-      msfilter = msfilter+" AND "+layer.timeSelected+" "+this.msFilterRegionAnd
-    }
-    if (layer.layerfilter) {
-      msfilter = msfilter+" "+ layer.layerfilter+" "+this.msFilterRegionAnd
-		}
+    if (layer.timeHandler == 'msfilter' && layer.times)
+    	filters.push(layer.timeSelected)
+    if (layer.layerfilter)
+    	filters.push(layer.layerfilter)
+    if (this.regionFilterDefault)
+    	filters.push(this.regionFilterDefault)
+    if (this.msFilterRegion)
+    	filters.push(this.msFilterRegion)
+
+    var msfilter = '&MSFILTER=' + filters.join(' AND ')
+
+    var layername = layer.value
+    if (layer.timeHandler == 'layername')
+    	layername = layer.timeSelected
 
 		for (let url of this.urls) {
 			result.push(url
-				+ "?layers=" + layer.value
+				+ "?layers=" + layername
 				+ msfilter
 				+ "&mode=tile&tile={x}+{y}+{z}"
 				+ "&tilemode=gmap" 
@@ -356,14 +359,14 @@ export class MapComponent implements OnInit {
 	}
 
   private updateSourceAllLayer() {
-    for (let layer of this.layersNames) {
+    for (let layer of this.layersTypes) {
 	  	this.updateSourceLayer(layer)
 		}
   }
   
 	private updateSourceLayer(layer){
 	  	var source_layers = this.LayersTMS[layer.value].getSource();
-			source_layers.setUrls(this.getUrls(layer))
+			source_layers.setUrls(this.parseUrls(layer))
 			source_layers.refresh();
   }
 
@@ -391,7 +394,6 @@ export class MapComponent implements OnInit {
 			this.zoomExtent();
   	  this.model = '';
 			this.msFilterRegion = '';
-			this.msFilterRegionAnd = '';
 			this.regionTypeFilter = '';
       this.regionTypeBr = 'bioma';
 			this.regionSelected = 'Brasil';
@@ -405,19 +407,6 @@ export class MapComponent implements OnInit {
 		} else {
 	    	this.LayersTMS[layers].setVisible(e.checked);
 		}
-	}
-
-	layerchecked(layers, e) {
-
-		//layers
-		if (e.checked) {
-			this.LayersTMS[layers[0].value].setVisible(e.checked);
-		} else {
-			for (let layer of layers) {
-	    	this.LayersTMS[layer.value].setVisible(e.checked);
-			}
-		}
-
 	}
 
 	limitsLayersChecked(layers, e) {
@@ -434,17 +423,16 @@ export class MapComponent implements OnInit {
 
 	}
 
-	updateType(layers) {
+	changeVisibility(layer, e) {
 
-		this.selectedTypeLayer = this.descriptor.groups[0].layers[0].selectedType
-
-		for(let layer of layers) {
-			if(layer.value == this.selectedTypeLayer){
-				this.LayersTMS[this.selectedTypeLayer].setVisible(true);
-			} else {
-				this.LayersTMS[layer.value].setVisible(false);
-			}
+		for(let layerType of layer.types) {
+			this.LayersTMS[layerType.value].setVisible(false)
 		}
+		
+		if (e != undefined)
+			layer.visible = e.checked
+
+		this.LayersTMS[layer.selectedType].setVisible(layer.visible)
 	}
 
 	ngOnInit() {
@@ -453,10 +441,19 @@ export class MapComponent implements OnInit {
       this.descriptor = result
       this.regionFilterDefault = this.descriptor.regionFilterDefault;
 
-			for (let groups of this.descriptor.groups) {
-				for(let layers of groups.layers) {
-					for(let types of layers.types) {
-						this.layersNames.push(types)
+			for (let group of this.descriptor.groups) {
+				for(let layer of group.layers) {
+					for(let layerType of layer.types) {
+						
+						layerType.visible = false
+						if (layer.selectedType == layerType.value)
+							layerType.visible = layer.visible
+
+
+						this.layersTypes.push(layerType)
+						this.layersTypes.sort(function(e1, e2) {
+							return (e2.order - e1.order)
+						});
 					}
 				}
       }

@@ -44,13 +44,13 @@
 														<h5 class="expansion-layer"><b>{{groups.label}}</b></h5>
 													</mat-expansion-panel-header>
 													<div class="layersContent" *ngFor="let layer of groups.layers">
-														<mat-checkbox class="example-margin" (change)="layerchecked(layer.types, $event)" [checked]=layer.visible>
+														<mat-checkbox class="example-margin" (change)="changeVisibility(layer, $event)" [checked]=layer.visible>
 															{{layer.label}}
 														</mat-checkbox>
 														<div style="padding-left: 8%">
 															<mat-form-field style="margin-right: 15%; width: 130px">
 															  <mat-label>Tipo</mat-label>
-															  <mat-select (selectionChange)="updateType(layer.types)" [(value)]="layer.selectedType">
+															  <mat-select (selectionChange)="changeVisibility(layer)" [(value)]="layer.selectedType">
 															  	<mat-option *ngFor="let type of layer.types" [value]="type.value">
 														        {{type.Viewvalue}}
 														      </mat-option>
