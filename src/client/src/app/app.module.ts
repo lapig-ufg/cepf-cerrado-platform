@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 import { MapComponent } from './uso_do_solo/uso_do_solo.component';
 import { MapMobileComponent } from './uso_do_solo/uso_do_solo-mobile.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AppNavbarComponent } from './app-navbar/app-navbar.component';
 import { LayoutComponent } from './layout/layout.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { PaginasModule } from './paginas/paginas.module';
@@ -30,6 +29,8 @@ import { LOCALE_ID } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 
+import {ChartModule} from 'primeng/chart';
+
 registerLocaleData(localePt);
 
 @NgModule({
@@ -37,7 +38,6 @@ registerLocaleData(localePt);
     AppComponent,
     MapComponent,
     MapMobileComponent,
-    AppNavbarComponent,
     LayoutComponent,
     HeaderComponent
   ],
@@ -57,6 +57,7 @@ registerLocaleData(localePt);
     AppRoutingModule,
     FormsModule,
     PaginasModule,
+    ChartModule,
     NgbModule.forRoot()
   ],
   entryComponents:[],

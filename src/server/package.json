@@ -1,7 +1,7 @@
 {
-  "name": "dpat",
+  "name": "cepf-cerrado-plataform",
   "version": "0.1.0",
-  "description": "Deforestation Polygon Assessment Tool",
+  "description": "Plafaforma de Conhecimento do Cerrado",
   "main": "app.js",
   "dependencies": {
     "always": "^2.2.0",
@@ -26,6 +26,7 @@
     "hawk": "^7.0.10",
     "hoek": "^5.0.4",
     "json2csv": "^4.5.1",
+    "merge": "^1.2.1",
     "mime": "^2.4.2",
     "mongodb": "~2.2.19",
     "mu2": "~0.5.20",

@@ -251,3 +251,20 @@
 .mat-expansion-indicator::after, .mat-expansion-panel-header-description {
 	color: rgb(209, 209, 209);
 }
+
+#mapa_pastagem.mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+	background-color: #e7bb02 !important;
+}
+
+#mapa_agricultura_agrosatelite.mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+	background-color: #d87e1f !important;
+}
+
+#mapa_pecuaria_censitaria.mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+	background-color: #fd8d3c !important;
+}
+
+#mapa_agricultura_censitaria.mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+	background-color: #006d2c !important;
+}
+

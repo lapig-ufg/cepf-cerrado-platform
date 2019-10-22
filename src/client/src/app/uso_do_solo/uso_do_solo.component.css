@@ -54,7 +54,7 @@ hr {
 
 #positionLayers {
   position: absolute; 
-  left: 2%;
+  left: 1%;
   /*bottom: 2%;*/
   /*height: 90%;*/
   min-width: 320px;
@@ -71,13 +71,13 @@ hr {
 #positionCharts {
   position: absolute; 
   right: 1%; 
-  bottom: 2%;
-  width: 600px;
+  bottom: 1%;
+  width: 72%;
   background-color: #FFF;
   color: #666;
   text-align: left;
   z-index: 1000;
-  border: 1px solid #808080;
+  /* border: 1px solid #808080; */
   opacity: .93;
 }
 
@@ -103,6 +103,16 @@ hr {
 	height: 86%
 }*/
 
+.graphicsBlocks {
+	display:inline-flex;
+	width: 400px;
+  text-align: justify;
+}
+
+.graphicTexts {
+	padding:10px;
+}
+
 .searchRegion {
 	border: 1px solid #d1d1d1;
 }
@@ -118,9 +128,9 @@ hr {
 }
 
 .navbar-title {
-	border-bottom: 5px solid #66bb6a; 
+	border-bottom: 3px solid #5959596e; 
 	background-color: #FFF;
-	padding: 13px 0;
+	padding: 10px 0;
 }
 
 .layers-indicator {
@@ -208,7 +218,12 @@ h6 {
   border-color: #d1d1d1;
 }
 
+#positionLayers .btn, #positionCharts .btn, #position .btn {
+	border-radius: 2px;
+}
+
 .titleWindows {
+	font-family: 'Roboto', sans-serif;
 	color: #424242;
 	background-color: #ffd54f;
 	padding: 10px;
@@ -220,7 +235,8 @@ h6 {
 .title-atlas {
 	color: #585858;
 	font-weight: bold;
-	font-size: 25px; 
+	font-family: 'Roboto', sans-serif;
+	font-size: 28px; 
 }
 
 .title-atlas-div {
@@ -242,7 +258,7 @@ h6 {
 }
 
 .logo-cepf {
-	height: 39px;
+	height: 45px;
 	margin-right: 8px;
 	margin-top: 5px;
 }
@@ -387,11 +403,6 @@ h6 {
 		height: 40px !important;
 	}
 
-	.graficoEstados {
-		max-width: 78%;
-		max-height: 177px;
-	}
-
 	#positionLegend {
 		width: 220px;
 	}
@@ -511,7 +522,9 @@ h6 {
 }
 
 .expansion-layer {
-	padding-left: 4.5%;
+	padding: 5px 10px;
+	font-size: 1.0rem;
+	margin-bottom: 0px;
 }
 
 .layersContent {

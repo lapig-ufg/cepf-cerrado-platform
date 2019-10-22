@@ -10,7 +10,17 @@ module.exports = function(app) {
 		"postgres": {
 			"host": "postgres@localhost",
 			"port": "5433",
-			"dbname": "atlas_pastagem"
+			"dbname": "lapig"
+		},
+		"pg": {
+			"user": 'postgres',
+		  "host": '10.0.0.14',
+		// "host": 'localhost',
+		  "database": 'lapig',
+		  "password": 'postgres',
+		  "port": 5432,
+		//   "port": 5433,
+		  "debug": true
 		},
 		"port": 3000,
 	};
@@ -20,7 +30,15 @@ module.exports = function(app) {
 		config["postgres"] = {
 			"host": "postgres@200.137.217.158",
 			"port": "5432",
-			"dbname": "atlas_pastagem"
+			"dbname": "lapig"
+		},
+		config["pg"] = {
+			"user": 'postgres',
+		  "host": '200.137.217.158',
+		  "database": 'lapig',
+		  "password": 'postgres',
+		  "port": 5432,
+		  "debug": true
 		}
 	}
 

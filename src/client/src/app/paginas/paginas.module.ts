@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PaginaLayoutComponent } from './layout/pagina-layout.component';
 import { HomePageComponent } from './home/home.page.component';
-import { Pagina1PageComponent } from './pagina1/pagina1.page.component';
-import { Pagina2PageComponent } from './pagina2/pagina2.page.component';
-
+import { HeaderPageComponent } from './header/header.page.component';
+import { FooterPageComponent } from './footer/footer.page.component';
+import { ProjectPageComponent } from './project/project.page.component';
 
 
 @NgModule({
-  declarations: [PaginaLayoutComponent, HomePageComponent, Pagina1PageComponent, Pagina2PageComponent],
+  declarations: [ HomePageComponent, HeaderPageComponent, ProjectPageComponent, FooterPageComponent],
   imports: [
     CommonModule
   ]

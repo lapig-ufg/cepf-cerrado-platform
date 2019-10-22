@@ -26,8 +26,8 @@
 										  <ng-template #rt let-r="result" let-t="term">
 											  <ngb-highlight [result]="r.text" [term]="t"></ngb-highlight>
 											</ng-template>
-										  <input id="typeahead-http" type="text" class="form-control searchRegion" [class.is-invalid]="searchFailed" [(ngModel)]="model" [ngbTypeahead]="search" placeholder="Escolha um bioma / estado / município..." (selectItem)="updateRegion($event)" [resultTemplate]="rt" [inputFormatter]="formatter"/>
-										  <img [hidden]="model == ''" class="clear-region-btn" (click)="getMatchRegion()" src="assets/clear_button.png" />
+										  <input id="typeahead-http" type="text" class="form-control searchRegion" [class.is-invalid]="searchFailed" [(ngModel)]="valueRegion" [ngbTypeahead]="search" placeholder="Escolha um bioma / estado / município..." (selectItem)="updateRegion($event.item)" [resultTemplate]="rt" [inputFormatter]="formatter"/>
+										  <img [hidden]="selectRegion == defaultRegion" class="clear-region-btn" (click)="updateRegion(defaultRegion)" src="assets/clear_button.png" />
 										  <span *ngIf="searching">localizando...</span>
 										  <div class="invalid-feedback" *ngIf="searchFailed">Desculpe, Região não encontrada.</div>
 										</div>
@@ -40,16 +40,26 @@
 									  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 											<div >
 												<mat-expansion-panel [expanded] = groups.group_expanded>
-													<mat-expansion-panel-header [collapsedHeight]="'50px'" [expandedHeight]="'50px'" class="expansion-header-layer">
+													<mat-expansion-panel-header [collapsedHeight]="'40px'" [expandedHeight]="'40px'" class="expansion-header-layer">
 														<h5 class="expansion-layer"><b>{{groups.label}}</b></h5>
 													</mat-expansion-panel-header>
 													<div class="layersContent" *ngFor="let layer of groups.layers">
-														<mat-checkbox class="example-margin" (change)="changeVisibility(layer, $event)" [checked]=layer.visible>
+														<mat-checkbox [id]=layer.id class="example-margin" (change)="changeVisibility(layer, $event)" [checked]=layer.visible>
 															{{layer.label}}
-														</mat-checkbox>
-														<div style="padding-left: 8%">
+                            </mat-checkbox>
+                            <div style="padding-left: 8%" *ngIf="layer.times">
+                              <mat-form-field>
+                                <mat-label>{{layer.timeLabel}}</mat-label>
+                                  <mat-select (selectionChange)="updateSourceLayer(layer)" [(value)]="layer.timeSelected">
+                                    <mat-option *ngFor="let times of layer.times" [value]="times.value">
+                                      {{times.Viewvalue}}
+                                    </mat-option>
+                                  </mat-select>
+                              </mat-form-field>
+                            </div>
+														<div style="padding-left: 8%" *ngIf="layer.types">
 															<mat-form-field style="margin-right: 15%; width: 130px">
-															  <mat-label>Tipo</mat-label>
+															  <mat-label *ngFor="let type of layer.types" [hidden]="type.value != layer.selectedType">{{type.typeLabel}}</mat-label>
 															  <mat-select (selectionChange)="changeVisibility(layer)" [(value)]="layer.selectedType">
 															  	<mat-option *ngFor="let type of layer.types" [value]="type.value">
 														        {{type.Viewvalue}}
@@ -91,6 +101,29 @@
 								</div>
 							</div>
 						</mat-tab>
+					</mat-tab-group>
+				</div>
+			</div>
+			<div id="positionCharts">
+				<div class= "titleWindows">
+	      	Análises
+	        <button type="button" class="collapse-btn btn btn-light btn-sm float-right" (click)="collapseCharts = !collapseCharts" [attr.aria-expanded]="!collapseCharts" aria-controls="camadageografica">-</button>
+	      </div>
+				<div [ngbCollapse]="collapseCharts" id= "matgroup">
+					<mat-tab-group class="charts" #matgroup>
+						<div *ngFor="let groups of descriptor.groups">
+							<mat-tab label={{groups.label}}>
+								<div *ngFor="let graphic of groups.chartConfig" class="graphicsBlocks">
+									<div class="graphicTexts">
+										<p style="font-weight: bold">{{graphic.title}}</p>
+										{{graphic.text}}
+										<p-chart [type]="graphic.type" [data]="graphic.data" [options]="graphic.options"></p-chart>
+									</div>
+									<div>
+									</div>
+								</div>
+							</mat-tab>
+						</div>
 					</mat-tab-group>
 				</div>
 			</div>

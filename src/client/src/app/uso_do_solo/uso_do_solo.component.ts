@@ -21,6 +21,7 @@ import VectorLayer from 'ol/layer/Vector';
 import Style from 'ol/style/Style';
 import Stroke from 'ol/style/Stroke';
 import VectorSource from 'ol/source/Vector';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 const SEARCH_URL = 'service/map/search';
 const PARAMS = new HttpParams({
@@ -74,35 +75,38 @@ export class MapComponent implements OnInit {
   searching = false;
   searchFailed = false;
   msFilterRegion = '';
-  model: any;
+  valueRegion: any;
 
-  regionSelected: 'Brasil';
-  regionTypeBr: any;
-  region_geom: any;
-  regionSource: any;
-  regionTypeFilter: any;
+	selectRegion: any;
+	defaultRegion: any;
+	regionSource: any;
 
-  layersTypes= [];
+	layersTypes= [];
   basemapsNames = [];
   limitsNames = [];
   year: any;
   LayersTMS = {};
   limitsTMS = {};
+	selectedTypeLayer: any;
 
 	constructor(private http: HttpClient, private _service: SearchService) { 
 		this.projection = OlProj.get('EPSG:900913');
 		this.currentZoom = 5.8;
-    this.layers = [];
-    this.model = '';
-    
-    this.regionTypeFilter = '';
-    this.regionTypeBr = 'bioma';
+		this.layers = [];
+		
+		this.defaultRegion = {
+			type: 'biome',
+			text: 'CERRADO',
+			value: 'CERRADO'
+		}
+		this.selectRegion = this.defaultRegion;
 
     this.urls = [
-    	'http://o1.lapig.iesa.ufg.br/ows',
+			'http://localhost:5501/ows'
+    	/* 'http://o1.lapig.iesa.ufg.br/ows',
     	'http://o2.lapig.iesa.ufg.br/ows',
     	'http://o3.lapig.iesa.ufg.br/ows',
-    	'http://o4.lapig.iesa.ufg.br/ows'
+    	'http://o4.lapig.iesa.ufg.br/ows' */
     ];
 
 		this.tileGrid = new TileGrid({
@@ -113,7 +117,9 @@ export class MapComponent implements OnInit {
 
     this.descriptor = {
     	"groups": []
-    }
+		}
+		
+		this.updateCharts();
 	}
 
 	search = (text$: Observable<string>) =>
@@ -132,12 +138,12 @@ export class MapComponent implements OnInit {
       tap(() => this.searching = false)
     )
 
-  formatter = (x: {text: string}) => x.text;
+	formatter = (x: {text: string}) => x.text;
 
 	private zoomExtent() {
-  	var map = this.map;
-  	if (this.regionTypeFilter != '') {
-			this.http.get('service/map/extent?region=text='+"'"+this.region_geom+"'").subscribe(extentResult => {
+		var map = this.map;
+  	if (this.selectRegion.type != '') {
+			this.http.get('service/map/extent?region='+this.selectRegion.value).subscribe(extentResult => {
 				var features = (new GeoJSON()).readFeatures(extentResult, {
 				  dataProjection : 'EPSG:4326',
 				  featureProjection: 'EPSG:3857'
@@ -154,24 +160,52 @@ export class MapComponent implements OnInit {
 
 
 	updateRegion(region) {
-		this.regionSelected = region.item.name;
-		this.regionTypeFilter = region.item.type;
-    this.regionTypeBr = region.item.type;
-  	var regionType = region.item.type;
-  	var region = region.item.value;
-  	this.region_geom = region;
 
-  	if(regionType == 'estado') {
-  		regionType = 'uf'
-  	}else if (regionType == 'municipio') {
-  		regionType = 'cd_geocmu'
-  	}
+		if (region == this.defaultRegion)
+			this.valueRegion = ''
 
-  	this.msFilterRegion = regionType+"='"+region+"'";
+		this.selectRegion = region;
+
+		if (this.selectRegion.type == 'municipio')
+			this.msFilterRegion = "cd_geocmu = '" + this.selectRegion.value + "'"
+		else if (this.selectRegion.type == 'estado')
+			this.msFilterRegion = "uf = '" + this.selectRegion.value + "'"
+		else
+			this.msFilterRegion = ""
 
   	this.zoomExtent();
+		this.updateSourceAllLayer();
+		this.updateCharts();
+	}
 
-  	this.updateSourceAllLayer();
+	private updateCharts() {
+		console.log('filter:  ', this.msFilterRegion, this.selectRegion.type, this.selectRegion.text)
+		for (let group of this.descriptor.groups) {
+			if (group.dataService != undefined) {
+				this.http.get(group.dataService+"?typeRegion="+this.selectRegion.type+"&textRegion="+this.selectRegion.text+"&filterRegion="+this.msFilterRegion).subscribe(result => {
+					
+					group.chartConfig = result
+
+					for(let graphic of group.chartConfig) {
+						console.log(graphic)
+						if(graphic.type != 'line') {
+
+							graphic.data = {
+								labels: graphic.indicators.map(element => element.label),
+								datasets: [
+									{
+											data: graphic.indicators.map(element => element.value),
+											backgroundColor: graphic.indicators.map(element => element.color)
+									}
+								]
+							}
+						}
+					}
+			
+				})
+			}
+		}
+
 	}
 
 	private getResolutions(projection) {
@@ -328,22 +362,22 @@ export class MapComponent implements OnInit {
 	private parseUrls(layer) {
     var result = []
 
-    var filters = []
-    
-    if (layer.timeHandler == 'msfilter' && layer.times)
-    	filters.push(layer.timeSelected)
-    if (layer.layerfilter)
-    	filters.push(layer.layerfilter)
-    if (this.regionFilterDefault)
-    	filters.push(this.regionFilterDefault)
-    if (this.msFilterRegion)
-    	filters.push(this.msFilterRegion)
+		var filters = []
 
-    var msfilter = '&MSFILTER=' + filters.join(' AND ')
+		if (layer.timeHandler == 'msfilter' && layer.times)
+			filters.push(layer.timeSelected)
+		if (layer.layerfilter)
+			filters.push(layer.layerfilter)
+		if (this.regionFilterDefault)
+			filters.push(this.regionFilterDefault)
+		if (layer.regionFilter && this.msFilterRegion)
+			filters.push(this.msFilterRegion)
 
-    var layername = layer.value
-    if (layer.timeHandler == 'layername')
-    	layername = layer.timeSelected
+		var msfilter = '&MSFILTER=' + filters.join(' AND ')
+
+		var layername = layer.value
+		if (layer.timeHandler == 'layername')
+			layername = layer.timeSelected
 
 		for (let url of this.urls) {
 			result.push(url
@@ -389,17 +423,6 @@ export class MapComponent implements OnInit {
   	}
 	}
 
-  getMatchRegion(){
-  		this.region_geom = 'CERRADO'
-			this.zoomExtent();
-  	  this.model = '';
-			this.msFilterRegion = '';
-			this.regionTypeFilter = '';
-      this.regionTypeBr = 'bioma';
-			this.regionSelected = 'Brasil';
-      this.updateSourceAllLayer();
-  }
-
   groupLayerschecked(layers, e) {
 
 		if (e.checked) {
@@ -422,12 +445,16 @@ export class MapComponent implements OnInit {
 		}
 
 	}
+  
+  changeVisibility(layer, e) {
 
-	changeVisibility(layer, e) {
-
-		for(let layerType of layer.types) {
-			this.LayersTMS[layerType.value].setVisible(false)
-		}
+    if(layer.types) {
+      for(let layerType of layer.types) {
+        this.LayersTMS[layerType.value].setVisible(false)
+      }
+    } else {
+      this.LayersTMS[layer.value].setVisible(false)
+    }
 		
 		if (e != undefined)
 			layer.visible = e.checked
@@ -437,25 +464,25 @@ export class MapComponent implements OnInit {
 
 	ngOnInit() {
 
-		this.http.get('service/app-descriptor').subscribe(result => {
+		this.http.get('service/map/descriptor').subscribe(result => {
       this.descriptor = result
       this.regionFilterDefault = this.descriptor.regionFilterDefault;
 
-			for (let group of this.descriptor.groups) {
-				for(let layer of group.layers) {
-					for(let layerType of layer.types) {
-						
-						layerType.visible = false
-						if (layer.selectedType == layerType.value)
-							layerType.visible = layer.visible
-
-
-						this.layersTypes.push(layerType)
-						this.layersTypes.sort(function(e1, e2) {
-							return (e2.order - e1.order)
-						});
+			for (let groups of this.descriptor.groups) {
+				
+				for(let layers of groups.layers) {
+          if(layers.types) {
+            for(let types of layers.types) {
+              this.layersTypes.push(types)
+            }
+          } else {
+            this.layersTypes.push(layers);
 					}
+					this.layersTypes.sort(function (e1, e2) {
+						return (e2.order - e1.order)
+					});
 				}
+
       }
       
       for(let basemap of this.descriptor.basemaps) {
@@ -471,7 +498,9 @@ export class MapComponent implements OnInit {
       }
 
 			this.createMap();
+			this.updateCharts();
 		});
+		
 	}
 
 }

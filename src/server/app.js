@@ -13,8 +13,11 @@ var http = require('http').Server(app);
 var cookie = parseCookie('LAPIG')
 
 load('config.js', {'verbose': false})
+.then('database')
+.then('middleware')
 .into(app);
 
+app.database.client.init(function() {
 	app.use(cookie);
 	
 	app.use(compression());
@@ -45,6 +48,8 @@ load('config.js', {'verbose': false})
 		}
 	});
 
-process.on('uncaughtException', function (err) {
-	console.error(err.stack);
-});
+	process.on('uncaughtException', function (err) {
+		console.error(err.stack);
+	});
+
+})
