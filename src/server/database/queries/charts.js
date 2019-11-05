@@ -38,10 +38,7 @@ module.exports = function(app) {
 
     if(regionsFilter != '' && regionsFilter != undefined) {
       tableRegionsFilter = tableRegionsFilter + " AND "+regionsFilter;
-      //regionsFilter = 'WHERE '+ regionsFilter;
-    } /* else {
-      regionsFilter = '';
-    } */
+    }
     
     
     return [

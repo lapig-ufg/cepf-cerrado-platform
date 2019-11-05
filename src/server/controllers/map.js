@@ -274,7 +274,7 @@ module.exports = function(app) {
                 },
                 {
                   "value": "producao_leite", 
-                  "Viewvalue": "Produção de Leite Testando", 
+                  "Viewvalue": "Produção de Leite", 
                   "visible": false, 
                   "opacity": 1,
                   "regionFilter": true,
@@ -811,7 +811,8 @@ module.exports = function(app) {
                  }
 							]
             }
-          ]
+          ],
+          "dataService": "/service/charts/deforestation"
         },
         {
           "id": "pontos_validacao",
@@ -906,7 +907,8 @@ module.exports = function(app) {
                 }
 							]
             }
-          ]
+          ],
+          "dataService": "/service/charts/deforestation"
         }
       ],
       "basemaps": [

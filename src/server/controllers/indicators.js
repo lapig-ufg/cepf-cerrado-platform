@@ -39,7 +39,7 @@ module.exports = function(app) {
 						var percentual_area_ha = ((value * 100) / areaMun);
 
 						var text =	region+" possui uma área total de "+ areaMun +" de hectares. "
-						+ "A cobertura do solo que mais predomina nesta região no ano de 2017 "
+						+ "A cobertura do solo que mais predomina nesta região no ano de 2013 "
 						+ "é a " + label + " cobrindo cerca de " + value + " de hectares ("+ Math.round(percentual_area_ha) +"% da área total), "
 
 						return text
@@ -62,7 +62,7 @@ module.exports = function(app) {
 						var percentual_area_ha = ((value * 100) / areaMun);
 
 						var text =	region+" possui uma área total de "+ areaMun +" de hectares. "
-						+ "A cobertura do solo que mais predomina nesta região no ano de 2017 "
+						+ "A cobertura do solo que mais predomina nesta região no ano de 2002 "
 						+ "é a " + label + " cobrindo cerca de " + value + " de hectares ("+ Math.round(percentual_area_ha) +"% da área total), "
 
 						return text
@@ -100,9 +100,6 @@ module.exports = function(app) {
 		} else if (typeRegion == 'região de fronteira')  {
 			region = "da região de fronteira do "+ textRegion
 		}
-
-		
-		//for(let teste of request.queryResult) {}
 		
 		getDataSets =  function(indicator) {
 			var arrayLabels = []
@@ -130,7 +127,7 @@ module.exports = function(app) {
 			getValues = function(classe, indicatorValue) {
 				arrayValues = []
 				for(let result of request.queryResult[indicatorValue]) {
-					//console.log('result: ', result.classe)
+
 					if(result.classe == classe){
 
 						if(result.label != null) {
@@ -142,11 +139,6 @@ module.exports = function(app) {
 				return arrayValues
 			}
 
-			/* if (request.queryResult['rebanho_bovino']){
-				console.log('deu certo: ', request.queryResult['rebanho_bovino'])
-			} */
-	
-			//console.log('classe: ', [...classes])
 			for(let classe of [...classes]) {
 
 				if (classe == 'Pastagem') {
@@ -226,8 +218,6 @@ module.exports = function(app) {
 
 					//var percentual_area_ha = ((indicatorHigh.value * 100) / indicatorHigh.area_mun);
 
-					console.log('pasturefer', chart)
-
 					//.toLocaleString('pt-BR')
 					var text = "A área de pastagem "+ region +" é "+ indicatorPastureLast.value +" ha em "+ indicatorPastureLast.label +". "
 											+"O ano que atingiu sua maior marca em áreas de pastagem foi em 2009 onde alcançou 64.751.995 ha. "
@@ -257,7 +247,20 @@ module.exports = function(app) {
 		response.send(chartResult)
     response.end();
 
-  }
+	}
+	
+	Controller.chartsDeforestation = function(request, response) {
+
+		var chartResult = [
+			{
+				"id": "desmatamento",
+				"title": "Em desenvolvimento"
+			}
+		]
+
+		response.send(chartResult)
+    response.end();
+	}
 
   return Controller;
 

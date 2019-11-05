@@ -72,7 +72,7 @@ hr {
   position: absolute; 
   right: 1%; 
   bottom: 1%;
-  width: 72%;
+  width: 42%;
   background-color: #FFF;
   color: #666;
   text-align: left;
@@ -90,7 +90,7 @@ hr {
   color: #666;
   text-align: left;
   z-index: 1000;
-  border: 1px solid #808080;
+  /* border: 1px solid #808080; */
   opacity: .93;
 }
 
@@ -218,7 +218,7 @@ h6 {
   border-color: #d1d1d1;
 }
 
-#positionLayers .btn, #positionCharts .btn, #position .btn {
+#positionLayers .btn, #positionCharts .btn, #position .btn, #positionLegend .btn{
 	border-radius: 2px;
 }
 
@@ -527,6 +527,10 @@ h6 {
 	margin-bottom: 0px;
 }
 
+.expansion-layer-legend {
+	padding: 2% 3%;
+}
+
 .layersContent {
 	padding: 1.5% 4%;
 }
@@ -537,7 +541,8 @@ h6 {
 
 .expansion-header-layer-legend {
 	margin-left: 0px;
-    margin-top: 0px;
+	padding: 5px 10px;
+	font-size: 0.9rem;
 }
 
 #dropdownPoints {

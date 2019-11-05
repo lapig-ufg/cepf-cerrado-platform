@@ -87,7 +87,7 @@ export class MapComponent implements OnInit {
   year: any;
   LayersTMS = {};
   limitsTMS = {};
-	selectedTypeLayer: any;
+	layersNames = [];
 
 	constructor(private http: HttpClient, private _service: SearchService) { 
 		this.projection = OlProj.get('EPSG:900913');
@@ -102,11 +102,11 @@ export class MapComponent implements OnInit {
 		this.selectRegion = this.defaultRegion;
 
     this.urls = [
-			'http://localhost:5501/ows'
-    	/* 'http://o1.lapig.iesa.ufg.br/ows',
+			/* 'http://localhost:5501/ows' */
+    	'http://o1.lapig.iesa.ufg.br/ows',
     	'http://o2.lapig.iesa.ufg.br/ows',
     	'http://o3.lapig.iesa.ufg.br/ows',
-    	'http://o4.lapig.iesa.ufg.br/ows' */
+    	'http://o4.lapig.iesa.ufg.br/ows'
     ];
 
 		this.tileGrid = new TileGrid({
@@ -179,7 +179,7 @@ export class MapComponent implements OnInit {
 	}
 
 	private updateCharts() {
-		console.log('filter:  ', this.msFilterRegion, this.selectRegion.type, this.selectRegion.text)
+		/* console.log('filter:  ', this.msFilterRegion, this.selectRegion.type, this.selectRegion.text) */
 		for (let group of this.descriptor.groups) {
 			if (group.dataService != undefined) {
 				this.http.get(group.dataService+"?typeRegion="+this.selectRegion.type+"&textRegion="+this.selectRegion.text+"&filterRegion="+this.msFilterRegion).subscribe(result => {
@@ -187,7 +187,7 @@ export class MapComponent implements OnInit {
 					group.chartConfig = result
 
 					for(let graphic of group.chartConfig) {
-						console.log(graphic)
+						/* console.log(graphic) */
 						if(graphic.type != 'line') {
 
 							graphic.data = {
@@ -423,14 +423,14 @@ export class MapComponent implements OnInit {
   	}
 	}
 
-  groupLayerschecked(layers, e) {
-
+ /*  groupLayerschecked(layers, e) {
+		
 		if (e.checked) {
 			this.LayersTMS[layers].setVisible(e.checked);
 		} else {
 	    	this.LayersTMS[layers].setVisible(e.checked);
 		}
-	}
+	} */
 
 	limitsLayersChecked(layers, e) {
 		//limits
@@ -462,6 +462,12 @@ export class MapComponent implements OnInit {
 		this.LayersTMS[layer.selectedType].setVisible(layer.visible)
 	}
 
+	legendchecked(layer, e) {
+		layer.visible = !layer.visible
+		this.changeVisibility(layer,e);
+		console.log(layer);
+	}
+
 	ngOnInit() {
 
 		this.http.get('service/map/descriptor').subscribe(result => {
@@ -481,10 +487,11 @@ export class MapComponent implements OnInit {
 					this.layersTypes.sort(function (e1, e2) {
 						return (e2.order - e1.order)
 					});
+
+					this.layersNames.push(layers);
 				}
 
       }
-      
       for(let basemap of this.descriptor.basemaps) {
 				for(let types of basemap.types){
 					this.basemapsNames.push(types)

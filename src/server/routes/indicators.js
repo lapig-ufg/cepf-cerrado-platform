@@ -6,5 +6,6 @@ module.exports = function (app) {
   app.get('/service/indicators/teste', indicators.teste);
 	app.get('/service/charts/lulc', dataInjector, indicators.chartslulc);
 	app.get('/service/charts/farming', dataInjector, indicators.chartsFarming);
+	app.get('/service/charts/deforestation', indicators.chartsDeforestation);
 	/*app.get('/service/indicators/search', dataInjector, indicators.search); */
 }
