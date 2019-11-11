@@ -14,9 +14,9 @@
       <div id="positionLayers">
 	      <div class= "titleWindows">
 	      		Camadas de Informações
-	        	<button type="button" class="collapse-btn btn btn-light btn-sm float-right" (click)="collapseLayer = !collapseLayer" [attr.aria-expanded]="!collapseLayer" aria-controls="camadageografica">-</button>
+	        	<button type="button" class="collapse-btn btn btn-light btn-sm float-right" aria-controls="camadageografica">-</button>
 	      </div>
-	      <div class="collapseLayer" [ngbCollapse]="collapseLayer">
+	      <div class="collapseLayer">
 	      	<mat-tab-group class="layersConteudo">
 						<mat-tab label="Pastagem">
 							<mat-accordion>
@@ -107,9 +107,9 @@
 			<div id="positionCharts">
 				<div class= "titleWindows">
 	      	Análises
-	        <button type="button" class="collapse-btn btn btn-light btn-sm float-right" (click)="collapseCharts = !collapseCharts" [attr.aria-expanded]="!collapseCharts" aria-controls="camadageografica">-</button>
+	        <button type="button" class="collapse-btn btn btn-light btn-sm float-right" aria-controls="camadageografica">-</button>
 	      </div>
-				<div [ngbCollapse]="collapseCharts" id= "matgroup">
+				<div id= "matgroup">
 					<mat-tab-group class="charts" #matgroup>
 						<div *ngFor="let groups of descriptor.groups">
 							<mat-tab label={{groups.label}} *ngIf="groups.dataService">
@@ -130,9 +130,9 @@
 			<div id= "positionLegend">
 				<div class= "titleWindows">
 	      	Legendas
-	        <button type="button" class="collapse-btn btn btn-light btn-sm float-right" (click)="collapseLegends = !collapseLegends" [attr.aria-expanded]="!collapseLegends" aria-controls="camadageografica">-</button>
+	        <button type="button" class="collapse-btn btn btn-light btn-sm float-right" aria-controls="camadageografica">-</button>
 	      </div>
-				<div [ngbCollapse]="collapseLegends" class="legendasConteudo">
+				<div class="legendasConteudo">
 					<mat-expansion-panel [expanded] = "layer.visible" *ngFor="let layer of layersNames">
 						<mat-expansion-panel-header [collapsedHeight]="'35px'" [expandedHeight]="'35px'" class="expansion-header-layer" *ngIf="layer.visible">
 							<div>
