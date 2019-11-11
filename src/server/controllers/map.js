@@ -1,14 +1,8 @@
 module.exports = function(app) {
 	var Controller = {}
-	var Internal = {}
-
-	//var config = app.config;
-	/*var conString = "postgres://postgres@localhost:5433/atlas_pastagem";*/
-	//var conString = "postgres://"+config.postgres.host+":"+config.postgres.port+"/"+config.postgres.dbname;
 
 	Controller.extent = function(request, response) {
-
-		var queryResult = request.queryResult
+    var queryResult = request.queryResult
 		var result = {
       'type': 'Feature',
       'geometry': JSON.parse(queryResult[0]['geom'])
@@ -26,21 +20,21 @@ module.exports = function(app) {
 
     queryResult.forEach(function(row){
 
-		  		if(row.uf === null) {
-		  			regiao = row.text
-		  		}else {
-		  			regiao = row.text + " (" + row.uf + ")"
-		  		}
+      if(row.uf === null) {
+        regiao = row.text
+      }else {
+        regiao = row.text + " (" + row.uf + ")"
+      }
 
-		  		result.push({
-		  			text: regiao,
-		  			value: row.value,
-		  			type: row.type
-		  		})
-		  	})
+      result.push({
+        text: regiao,
+        value: row.value,
+        type: row.type
+      })
+    })
 
-				response.send(result)
-				response.end()
+    response.send(result)
+    response.end()
 	}
 
 	Controller.descriptor = function(request, response) {
@@ -811,8 +805,7 @@ module.exports = function(app) {
                  }
 							]
             }
-          ],
-          "dataService": "/service/charts/deforestation"
+          ]
         },
         {
           "id": "pontos_validacao",
@@ -907,8 +900,7 @@ module.exports = function(app) {
                 }
 							]
             }
-          ],
-          "dataService": "/service/charts/deforestation"
+          ]
         }
       ],
       "basemaps": [

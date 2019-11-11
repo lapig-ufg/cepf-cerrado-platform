@@ -2,14 +2,11 @@ module.exports = function(app) {
 	var Controller = {}
 	var Internal = {}
 
-	Controller.teste = function(request, response) {
-
-		var teste = 'Fernanda está aqui!'
-
-		response.send(teste)
-    response.end();
-
-	};
+	function numberFormat(numero) {
+		numero = numero.toFixed(2).split('.');
+		numero[0] = numero[0].split(/(?=(?:...)*$)/).join('.');
+		return numero.join(',');
+	}
 	
 	Controller.chartslulc = function(request, response) {
 
@@ -24,8 +21,6 @@ module.exports = function(app) {
 			region = "A região de fronteira do "+ textRegion
 		}
 
-		
-
 		var chartResult = [
 				{
 					"id": "terraclass",
@@ -38,9 +33,10 @@ module.exports = function(app) {
 
 						var percentual_area_ha = ((value * 100) / areaMun);
 
-						var text =	region+" possui uma área total de "+ areaMun +" de hectares. "
-						+ "A cobertura do solo que mais predomina nesta região no ano de 2013 "
-						+ "é a " + label + " cobrindo cerca de " + value + " de hectares ("+ Math.round(percentual_area_ha) +"% da área total), "
+						var text = "De acordo com o projeto Terra Class Cerrado(referente ao ano de 2013), " + region 
+						+ " possui uma área total de " + numberFormat(parseFloat(areaMun)) + " de hectares, "
+						+"sendo a classe " + label + " a de maior predominância, com " + numberFormat(parseFloat(value)) 
+						+ " de hectares (" + Math.round(percentual_area_ha) + "% da área total). "
 
 						return text
 					},
@@ -56,14 +52,13 @@ module.exports = function(app) {
 					"title": "PROBIO",
 					"getText": function(chart) {
 						var label = chart['indicators'][0]["label"]
-						var value = chart['indicators'][0]["value"].toLocaleString('pt-BR')
+						var value = chart['indicators'][0]["value"]
 						var areaMun = chart['indicators'][0]["area_mun"]
 
 						var percentual_area_ha = ((value * 100) / areaMun);
 
-						var text =	region+" possui uma área total de "+ areaMun +" de hectares. "
-						+ "A cobertura do solo que mais predomina nesta região no ano de 2002 "
-						+ "é a " + label + " cobrindo cerca de " + value + " de hectares ("+ Math.round(percentual_area_ha) +"% da área total), "
+						var text = "De acordo com o projeto PROBIO Cerrado(referente ao ano de 2002), a cobertura do solo que mais predomina nesta região "
+						+"é a " + label + " cobrindo cerca de " + numberFormat(parseFloat(value)) + " de hectares (" + Math.round(percentual_area_ha) + "% da área total). "
 
 						return text
 					},
@@ -184,8 +179,8 @@ module.exports = function(app) {
 					var percentual_area_ha = ((indicatorHigh.value * 100) / indicatorHigh.area_mun);
 
 					//.toLocaleString('pt-BR')
-					var text = "No ano de "+ indicatorHigh.label + " o cultivo de "+ indicatorHigh.classe 
-										+" predominou nesta região cobrindo cerca de "+ indicatorHigh.value 
+					var text = "De acordo com esta instituição, no ano de " + indicatorHigh.label + " o cultivo de " + indicatorHigh.classe
+										+" predominou nesta região, cobrindo cerca de " + numberFormat(parseFloat(indicatorHigh.value))
 										+" de hectares ("+ Math.round(percentual_area_ha) +"% da área total). "
 
 					return text
@@ -204,23 +199,14 @@ module.exports = function(app) {
 				"getText": function(chart) {
 
 					var indicatorPastureLast = chart.indicators[chart.indicators.length - 1]
-					var indicatorRebanhoLast = chart.indicatorsRebanho[0]
-					
-					/* var indicatorHigh = chart.indicators[0];
+					var indicatorRebanhoLast = chart.indicatorsRebanho[chart.indicatorsRebanho.length - 2]
+	
+					var percentual_area_ha = ((indicatorPastureLast.value * 100) / indicatorPastureLast.area_mun);
 
-					for(let indicator of chart.indicators) {
-
-						if(Number(indicator.value) > Number(indicatorHigh.value)) {
-							indicatorHigh = indicator
-						}
-
-					} */
-
-					//var percentual_area_ha = ((indicatorHigh.value * 100) / indicatorHigh.area_mun);
-
-					//.toLocaleString('pt-BR')
-					var text = "A área de pastagem "+ region +" é "+ indicatorPastureLast.value +" ha em "+ indicatorPastureLast.label +". "
-											+"O ano que atingiu sua maior marca em áreas de pastagem foi em 2009 onde alcançou 64.751.995 ha. "
+					var text = "De acordo com mapeamento do Lapig, a área de pastagem " + region + " em " + indicatorPastureLast.label
+						+" foi de "+ numberFormat(parseFloat(indicatorPastureLast.value)) + "ha "
+						+ " (" + Math.round(percentual_area_ha) + "% da área total). Já o Rebanho Bovino contabilizou " 
+						+ numberFormat(parseFloat(indicatorRebanhoLast.value)) + "UA em "+indicatorRebanhoLast.label+"."
 
 					return text
 				},

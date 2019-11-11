@@ -7,11 +7,6 @@ module.exports = function(app) {
 		"clientDir": appRoot + "/../client/dist/",
 		"langDir": appRoot + "/lang",
 		"logDir": appRoot + "/log/",
-		"postgres": {
-			"host": "postgres@localhost",
-			"port": "5433",
-			"dbname": "lapig"
-		},
 		"pg": {
 			"user": 'postgres',
 		  "host": '10.0.0.14',
@@ -26,19 +21,13 @@ module.exports = function(app) {
 	};
 
 	if(process.env.NODE_ENV == 'prod') {
-		config["port"] = "4004",
-		config["postgres"] = {
-			"host": "postgres@200.137.217.158",
-			"port": "5432",
-			"dbname": "lapig"
-		},
 		config["pg"] = {
-			"user": 'postgres',
-		  "host": '200.137.217.158',
-		  "database": 'lapig',
-		  "password": 'postgres',
-		  "port": 5432,
-		  "debug": true
+			"host": "172.18.0.4",
+			"port": 5432,
+			"dbname": "lapig",
+			"user": "lapig",
+			"password": "lapig123",
+			"debug": true
 		}
 	}
 

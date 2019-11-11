@@ -8,12 +8,12 @@ module.exports = function(app) {
 		'region': 'Cerrado'
 	}
 
-	Query.extent = function() {
-		return "SELECT * FROM regions_geom WHERE text=${region}";
+	Query.extent = function(params) {
+		return "SELECT * FROM regions_geom_cerrado WHERE text=${region}";
 	}
 
 	Query.search = function() {
-		return "SELECT INITCAP(text) as text, value, type, uf FROM search WHERE TEXT LIKE ${key}% LIMIT 10";
+		return "SELECT INITCAP(text) as text, value, type, uf, bioma FROM search WHERE TEXT LIKE ${key}% AND bioma='CERRADO' LIMIT 10";
 	}
 
 	return Query;

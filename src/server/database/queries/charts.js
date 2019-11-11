@@ -40,7 +40,6 @@ module.exports = function(app) {
       tableRegionsFilter = tableRegionsFilter + " AND "+regionsFilter;
     }
     
-    
     return [
       {
         id: 'agrosatelite',

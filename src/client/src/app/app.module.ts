@@ -8,8 +8,6 @@ import { AppComponent } from './app.component';
 import { MapComponent } from './uso_do_solo/uso_do_solo.component';
 import { MapMobileComponent } from './uso_do_solo/uso_do_solo-mobile.component';
 import { AppRoutingModule } from './app-routing.module';
-import { LayoutComponent } from './layout/layout.component';
-import { HeaderComponent } from './layout/header/header.component';
 import { PaginasModule } from './paginas/paginas.module';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -37,9 +35,7 @@ registerLocaleData(localePt);
   declarations: [
     AppComponent,
     MapComponent,
-    MapMobileComponent,
-    LayoutComponent,
-    HeaderComponent
+    MapMobileComponent
   ],
   imports: [
     BrowserAnimationsModule,

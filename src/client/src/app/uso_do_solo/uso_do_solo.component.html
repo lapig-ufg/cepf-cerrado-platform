@@ -112,11 +112,11 @@
 				<div [ngbCollapse]="collapseCharts" id= "matgroup">
 					<mat-tab-group class="charts" #matgroup>
 						<div *ngFor="let groups of descriptor.groups">
-							<mat-tab label={{groups.label}}>
+							<mat-tab label={{groups.label}} *ngIf="groups.dataService">
 								<div *ngFor="let graphic of groups.chartConfig" class="graphicsBlocks">
 									<div class="graphicTexts">
 										<p style="font-weight: bold">{{graphic.title}}</p>
-										{{graphic.text}}
+										<div style="height: 100px">{{graphic.text}}</div>
 										<p-chart *ngIf="graphic.type" [type]="graphic.type" [data]="graphic.data" [options]="graphic.options"></p-chart>
 									</div>
 									<div>
