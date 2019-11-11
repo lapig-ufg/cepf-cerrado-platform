@@ -81,6 +81,10 @@ export class MapComponent implements OnInit {
 	defaultRegion: any;
 	regionSource: any;
 
+	collapseLayer: boolean;
+  collapseCharts: boolean;
+  collapseLegends: boolean;
+
 	layersTypes= [];
   basemapsNames = [];
   limitsNames = [];
