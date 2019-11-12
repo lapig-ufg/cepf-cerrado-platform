@@ -4,7 +4,7 @@ module.exports = function(app) {
 	
 	var config = {
 		"appRoot": appRoot, 
-		"clientDir": appRoot + "/../client/dist/",
+		"clientDir": appRoot + "/../client/dist/lapig-cepf-cerrado/",
 		"langDir": appRoot + "/lang",
 		"logDir": appRoot + "/log/",
 		"pg": {
