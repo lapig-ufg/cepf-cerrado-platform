@@ -24,7 +24,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { HttpClientModule } from '@angular/common/http';
 
 import { LOCALE_ID } from '@angular/core';
-import { registerLocaleData } from '@angular/common';
+import { registerLocaleData, LocationStrategy, HashLocationStrategy } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 
 import {ChartModule} from 'primeng/chart';
@@ -51,6 +51,7 @@ registerLocaleData(localePt);
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    RouterModule,
     FormsModule,
     PaginasModule,
     ChartModule,
@@ -58,7 +59,8 @@ registerLocaleData(localePt);
   ],
   entryComponents:[],
   providers: [
-    { provide: LOCALE_ID, useValue: 'pt-BR' }
+    { provide: LOCALE_ID, useValue: 'pt-BR' },
+    { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
   bootstrap: [AppComponent]
 })
