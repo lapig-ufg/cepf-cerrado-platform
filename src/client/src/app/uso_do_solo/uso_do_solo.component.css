@@ -105,12 +105,14 @@ hr {
 
 .graphicsBlocks {
 	display:inline-flex;
+	max-width: 50%;
 	width: 400px;
   text-align: justify;
 }
 
 .graphicTexts {
 	padding:10px;
+	max-width: 100%;
 }
 
 .searchRegion {
