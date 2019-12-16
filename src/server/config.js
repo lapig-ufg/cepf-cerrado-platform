@@ -7,6 +7,7 @@ module.exports = function(app) {
 		"clientDir": appRoot + "/../client/dist/lapig-cepf-cerrado/",
 		"langDir": appRoot + "/lang",
 		"logDir": appRoot + "/log/",
+		"fotoDir": "/data/dados-lapig/fotos_campo/",
 		"pg": {
 			"user": 'postgres',
 		  "host": '10.0.0.14',

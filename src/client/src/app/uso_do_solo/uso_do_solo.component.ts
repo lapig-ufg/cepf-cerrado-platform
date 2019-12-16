@@ -21,7 +21,12 @@ import VectorLayer from 'ol/layer/Vector';
 import Style from 'ol/style/Style';
 import Stroke from 'ol/style/Stroke';
 import VectorSource from 'ol/source/Vector';
+import Select from 'ol/interaction/Select';
+import * as Condition from 'ol/events/condition';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { style } from '@angular/animations';
+import Fill from 'ol/style/Fill';
+import Circle from 'ol/style/Circle';
 
 const SEARCH_URL = 'service/map/search';
 const PARAMS = new HttpParams({
@@ -92,6 +97,7 @@ export class MapComponent implements OnInit {
   LayersTMS = {};
   limitsTMS = {};
 	layersNames = [];
+	fieldPointsStop: any;
 
 	constructor(private http: HttpClient, private _service: SearchService) { 
 		this.projection = OlProj.get('EPSG:900913');
@@ -180,6 +186,7 @@ export class MapComponent implements OnInit {
   	this.zoomExtent();
 		this.updateSourceAllLayer();
 		this.updateCharts();
+		this.addPoints();
 	}
 
 	private updateCharts() {
@@ -235,7 +242,47 @@ export class MapComponent implements OnInit {
 	    }),
 	    loadTilesWhileAnimating: true,
     	loadTilesWhileInteracting: true 
+		});
+		
+		var selectOver = new Select({
+			condition: Condition.pointerMove,
+			layers: [this.fieldPointsStop],
+			style: style
     });
+
+    var select = new Select({
+			condition: Condition.click,
+			layers: [this.fieldPointsStop],
+			style: style
+    });
+
+    select.on('select', function(event) {
+    	if(event.selected.length > 0) {
+    		var featureSel = event.selected[0]
+    		this.closeInfo = false;
+    		this.totalFotos = featureSel.get('foto').length
+    		this.fotoAtual = 1
+	    	this.infoFeature = {
+	    		id: featureSel.get('id'),
+	    		foto: featureSel.get('foto'),
+	    		cobertura: featureSel.get('cobertura'),
+	    		obs: featureSel.get('obs'),
+	    		data: featureSel.get('data'),
+	    		periodo: featureSel.get('periodo'),
+					horario: featureSel.get('horario'),
+					altura: featureSel.get('altura'),
+					homoge: featureSel.get('homoge'),
+					invasoras: featureSel.get('invasoras'),
+					gado: featureSel.get('gado'),
+					qtd_cupins: featureSel.get('qtd_cupins'),
+					forrageira: featureSel.get('forrageira'),
+					solo_exp: featureSel.get('solo_exp')
+	    	}
+    	}
+  	}.bind(this));
+
+  	this.map.addInteraction(select);
+  	this.map.addInteraction(selectOver);
 
 	}
 
@@ -327,8 +374,12 @@ export class MapComponent implements OnInit {
 			this.layers.push(this.limitsTMS[limits.value])
 		}
 
+		this.fieldPointsStop = this.createVectorLayer('fieldPointsStop', '#fc16ef', 3);
+		this.fieldPointsStop.setVisible(false);
+
 		this.regionsLimits = this.createVectorLayer('regions', '#663300', 3);
 		this.layers.push(this.regionsLimits);
+		this.layers.push(this.fieldPointsStop);
     
 		this.layers.push()
 		this.layers = this.layers.concat(olLayers.reverse());
@@ -352,6 +403,13 @@ export class MapComponent implements OnInit {
       source: new VectorSource({
 	    }),
 	    style: [
+				new Style({
+          image: new Circle({
+		        radius: 4,
+		        fill: new Fill({color: '#ffd5c1', width: 1}),
+		        stroke: new Stroke({color: '#7b2900', width: 2})
+		      })
+        }),
 		    new Style({
 	        stroke: new Stroke({
 	          color: strokeColor,
@@ -471,6 +529,25 @@ export class MapComponent implements OnInit {
 		console.log(layer);
 	}
 
+	addPoints() {
+		var msfilter = "?msfilter=bioma='CERRADO'";
+		if (this.msFilterRegion) {
+			msfilter = msfilter+' AND '+this.msFilterRegion;
+		}
+		var fieldValidationUrl = '/service/map/fieldPoints'+msfilter;
+
+		this.http.get(fieldValidationUrl).subscribe(fieldValResult => {
+			var features = (new GeoJSON()).readFeatures(fieldValResult, {
+			  dataProjection : 'EPSG:4326',
+			  featureProjection: 'EPSG:3857'
+			});
+
+			this.regionSource = this.fieldPointsStop.getSource();
+			this.regionSource.clear()
+			this.regionSource.addFeatures(features)
+		})
+	}
+
 	ngOnInit() {
 
 		this.http.get('service/map/descriptor').subscribe(result => {
@@ -509,6 +586,7 @@ export class MapComponent implements OnInit {
 
 			this.createMap();
 			this.updateCharts();
+			this.addPoints();
 		});
 		
 	}

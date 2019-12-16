@@ -1,5 +1,8 @@
+var fs = require('fs');
+
 module.exports = function(app) {
-	var Controller = {}
+  var Controller = {}
+  var config = app.config;
 
 	Controller.extent = function(request, response) {
     var queryResult = request.queryResult
@@ -35,7 +38,44 @@ module.exports = function(app) {
 
     response.send(result)
     response.end()
-	}
+  }
+  
+  Controller.fieldPoints = function (request, response) {
+
+        var result = []
+        var diretorioFotos = config.fotoDir;
+        var queryResult = request.queryResult
+        
+        queryResult.forEach(function (row) {
+
+          result.push({
+            'type': 'Feature',
+            'geometry': JSON.parse(row['geojson']),
+            'properties': {
+              'id': row['id'],
+              'foto': fs.readdirSync(diretorioFotos + row['id']),
+              'cobertura': row['cobertura'],
+              'obs': row['obs'],
+              'data': row['data'],
+              'periodo': row['periodo'],
+              'horario': row['horario'],
+              'altura': row['altura'],
+              'homoge': row['homoge'],
+              'invasoras': row['invasoras'],
+              'gado': row['gado'],
+              'qtd_cupins': row['qtd_cupins'],
+              'forrageira': row['forrageira'],
+              'solo_exp': row['solo_exp']
+            }
+          })
+        })
+
+        response.send({
+          "type": "FeatureCollection",
+          "features": result
+        })
+        response.end();
+  }
 
 	Controller.descriptor = function(request, response) {
 
@@ -53,7 +93,7 @@ module.exports = function(app) {
 							"visible": true,
               "selectedType": 'uso_solo_terraclass',
               "types": [
-								/* {
+								{
                   "value": "uso_solo_mapbiomas", 
                   "Viewvalue": "Mapbiomas", 
                   "visible": false, 
@@ -62,10 +102,10 @@ module.exports = function(app) {
                   "order": 1,
                   "typeLabel": "Tipo",
                   "timeLabel": "Ano",
-                  "timeSelected": "year=2017",
+                  "timeSelected": "year=1985",
                   "timeHandler": "msfilter",
                   "times": [
-                    {"value": "year=1985", "Viewvalue": 1985},
+                    {"value": "year=1985", "Viewvalue": 1985}/* ,
                     {"value": "year=1986", "Viewvalue": 1986},
                     {"value": "year=1987", "Viewvalue": 1987},
                     {"value": "year=1988", "Viewvalue": 1988},
@@ -97,9 +137,9 @@ module.exports = function(app) {
                     {"value": "year=2014", "Viewvalue": 2014},
                     {"value": "year=2015", "Viewvalue": 2015},
                     {"value": "year=2016", "Viewvalue": 2016},
-                    {"value": "year=2017", "Viewvalue": 2017}
+                    {"value": "year=2017", "Viewvalue": 2017} */
                   ]
-                }, */
+                },
                 {
                   "value": "uso_solo_terraclass", 
                   "Viewvalue": "Terraclass",
@@ -228,7 +268,7 @@ module.exports = function(app) {
                   "order": 4,
                   "typeLabel": "Quantidade",
                   "timeLabel": "Ano",
-                  "timeSelected": "year=2017",
+                  "timeSelected": "year=2018",
                   "timeHandler": "msfilter",
                   "times": [
                     {"value": "year=1985", "Viewvalue": 1985},
@@ -263,7 +303,8 @@ module.exports = function(app) {
                     {"value": "year=2014", "Viewvalue": 2014},
                     {"value": "year=2015", "Viewvalue": 2015},
                     {"value": "year=2016", "Viewvalue": 2016},
-                    {"value": "year=2017", "Viewvalue": 2017}
+                    {"value": "year=2017", "Viewvalue": 2017},
+                    {"value": "year=2018", "Viewvalue": 2018}
                   ]
                 },
                 {
@@ -275,7 +316,7 @@ module.exports = function(app) {
                   "order": 4,
                   "typeLabel": "Quantidade",
                   "timeLabel": "Ano",
-                  "timeSelected": "year=2016",
+                  "timeSelected": "year=2018",
                   "timeHandler": "msfilter",
                   "times": [
                     {"value": "year=1985", "Viewvalue": 1985},
@@ -309,7 +350,9 @@ module.exports = function(app) {
                     {"value": "year=2013", "Viewvalue": 2013},
                     {"value": "year=2014", "Viewvalue": 2014},
                     {"value": "year=2015", "Viewvalue": 2015},
-                    {"value": "year=2016", "Viewvalue": 2016}
+                    {"value": "year=2016", "Viewvalue": 2016},
+                    {"value": "year=2017", "Viewvalue": 2017},
+                    {"value": "year=2018", "Viewvalue": 2018}
                   ]
                 }
 							]
@@ -329,24 +372,9 @@ module.exports = function(app) {
                   "order": 3,
                   "typeLabel": "Área Plantada",
                   "timeLabel": "Ano",
-                  "timeSelected": "year=2017",
+                  "timeSelected": "year=2018",
                   "timeHandler": "msfilter",
                   "times": [
-                    {"value": "year=1985", "Viewvalue": 1985},
-                    {"value": "year=1986", "Viewvalue": 1986},
-                    {"value": "year=1987", "Viewvalue": 1987},
-                    {"value": "year=1988", "Viewvalue": 1988},
-                    {"value": "year=1989", "Viewvalue": 1989},
-                    {"value": "year=1990", "Viewvalue": 1990},
-                    {"value": "year=1991", "Viewvalue": 1991},
-                    {"value": "year=1992", "Viewvalue": 1992},
-                    {"value": "year=1993", "Viewvalue": 1993},
-                    {"value": "year=1994", "Viewvalue": 1994},
-                    {"value": "year=1995", "Viewvalue": 1995},
-                    {"value": "year=1996", "Viewvalue": 1996},
-                    {"value": "year=1997", "Viewvalue": 1997},
-                    {"value": "year=1998", "Viewvalue": 1998},
-                    {"value": "year=1999", "Viewvalue": 1999},
                     {"value": "year=2000", "Viewvalue": 2000},
                     {"value": "year=2001", "Viewvalue": 2001},
                     {"value": "year=2002", "Viewvalue": 2002},
@@ -364,7 +392,8 @@ module.exports = function(app) {
                     {"value": "year=2014", "Viewvalue": 2014},
                     {"value": "year=2015", "Viewvalue": 2015},
                     {"value": "year=2016", "Viewvalue": 2016},
-                    {"value": "year=2017", "Viewvalue": 2017}
+                    {"value": "year=2017", "Viewvalue": 2017},
+                    {"value": "year=2018", "Viewvalue": 2018}
                   ]
                 },
                 {
@@ -376,24 +405,9 @@ module.exports = function(app) {
                   "order": 3,
                   "typeLabel": "Área Plantada",
                   "timeLabel": "Ano",
-                  "timeSelected": "year=2016",
+                  "timeSelected": "year=2018",
                   "timeHandler": "msfilter",
                   "times": [
-                    {"value": "year=1985", "Viewvalue": 1985},
-                    {"value": "year=1986", "Viewvalue": 1986},
-                    {"value": "year=1987", "Viewvalue": 1987},
-                    {"value": "year=1988", "Viewvalue": 1988},
-                    {"value": "year=1989", "Viewvalue": 1989},
-                    {"value": "year=1990", "Viewvalue": 1990},
-                    {"value": "year=1991", "Viewvalue": 1991},
-                    {"value": "year=1992", "Viewvalue": 1992},
-                    {"value": "year=1993", "Viewvalue": 1993},
-                    {"value": "year=1994", "Viewvalue": 1994},
-                    {"value": "year=1995", "Viewvalue": 1995},
-                    {"value": "year=1996", "Viewvalue": 1996},
-                    {"value": "year=1997", "Viewvalue": 1997},
-                    {"value": "year=1998", "Viewvalue": 1998},
-                    {"value": "year=1999", "Viewvalue": 1999},
                     {"value": "year=2000", "Viewvalue": 2000},
                     {"value": "year=2001", "Viewvalue": 2001},
                     {"value": "year=2002", "Viewvalue": 2002},
@@ -410,7 +424,9 @@ module.exports = function(app) {
                     {"value": "year=2013", "Viewvalue": 2013},
                     {"value": "year=2014", "Viewvalue": 2014},
                     {"value": "year=2015", "Viewvalue": 2015},
-                    {"value": "year=2016", "Viewvalue": 2016}
+                    {"value": "year=2016", "Viewvalue": 2016},
+                    {"value": "year=2017", "Viewvalue": 2017},
+                    {"value": "year=2018", "Viewvalue": 2018}
                   ]
                 },
                 {
@@ -422,24 +438,9 @@ module.exports = function(app) {
                   "order": 3,
                   "typeLabel": "Área Plantada",
                   "timeLabel": "Ano",
-                  "timeSelected": "year=2016",
+                  "timeSelected": "year=2018",
                   "timeHandler": "msfilter",
                   "times": [
-                    {"value": "year=1985", "Viewvalue": 1985},
-                    {"value": "year=1986", "Viewvalue": 1986},
-                    {"value": "year=1987", "Viewvalue": 1987},
-                    {"value": "year=1988", "Viewvalue": 1988},
-                    {"value": "year=1989", "Viewvalue": 1989},
-                    {"value": "year=1990", "Viewvalue": 1990},
-                    {"value": "year=1991", "Viewvalue": 1991},
-                    {"value": "year=1992", "Viewvalue": 1992},
-                    {"value": "year=1993", "Viewvalue": 1993},
-                    {"value": "year=1994", "Viewvalue": 1994},
-                    {"value": "year=1995", "Viewvalue": 1995},
-                    {"value": "year=1996", "Viewvalue": 1996},
-                    {"value": "year=1997", "Viewvalue": 1997},
-                    {"value": "year=1998", "Viewvalue": 1998},
-                    {"value": "year=1999", "Viewvalue": 1999},
                     {"value": "year=2000", "Viewvalue": 2000},
                     {"value": "year=2001", "Viewvalue": 2001},
                     {"value": "year=2002", "Viewvalue": 2002},
@@ -456,7 +457,9 @@ module.exports = function(app) {
                     {"value": "year=2013", "Viewvalue": 2013},
                     {"value": "year=2014", "Viewvalue": 2014},
                     {"value": "year=2015", "Viewvalue": 2015},
-                    {"value": "year=2016", "Viewvalue": 2016}
+                    {"value": "year=2016", "Viewvalue": 2016},
+                    {"value": "year=2017", "Viewvalue": 2017},
+                    {"value": "year=2018", "Viewvalue": 2018}
                   ]
                 },
                 {
@@ -468,24 +471,9 @@ module.exports = function(app) {
                   "order": 3,
                   "typeLabel": "Área Plantada",
                   "timeLabel": "Ano",
-                  "timeSelected": "year=2016",
+                  "timeSelected": "year=2018",
                   "timeHandler": "msfilter",
                   "times": [
-                    {"value": "year=1985", "Viewvalue": 1985},
-                    {"value": "year=1986", "Viewvalue": 1986},
-                    {"value": "year=1987", "Viewvalue": 1987},
-                    {"value": "year=1988", "Viewvalue": 1988},
-                    {"value": "year=1989", "Viewvalue": 1989},
-                    {"value": "year=1990", "Viewvalue": 1990},
-                    {"value": "year=1991", "Viewvalue": 1991},
-                    {"value": "year=1992", "Viewvalue": 1992},
-                    {"value": "year=1993", "Viewvalue": 1993},
-                    {"value": "year=1994", "Viewvalue": 1994},
-                    {"value": "year=1995", "Viewvalue": 1995},
-                    {"value": "year=1996", "Viewvalue": 1996},
-                    {"value": "year=1997", "Viewvalue": 1997},
-                    {"value": "year=1998", "Viewvalue": 1998},
-                    {"value": "year=1999", "Viewvalue": 1999},
                     {"value": "year=2000", "Viewvalue": 2000},
                     {"value": "year=2001", "Viewvalue": 2001},
                     {"value": "year=2002", "Viewvalue": 2002},
@@ -502,11 +490,13 @@ module.exports = function(app) {
                     {"value": "year=2013", "Viewvalue": 2013},
                     {"value": "year=2014", "Viewvalue": 2014},
                     {"value": "year=2015", "Viewvalue": 2015},
-                    {"value": "year=2016", "Viewvalue": 2016}
+                    {"value": "year=2016", "Viewvalue": 2016},
+                    {"value": "year=2017", "Viewvalue": 2017},
+                    {"value": "year=2018", "Viewvalue": 2018}
                   ]
-                }/* ,
+                },
                 {
-                  "value": "producao_carvao", 
+                  "value": "quantidade_produzida_carvao_censo",
                   "Viewvalue": "Carvão", 
                   "visible": false, 
                   "opacity": 1,
@@ -514,24 +504,9 @@ module.exports = function(app) {
                   "order": 3,
                   "typeLabel": "Produção",
                   "timeLabel": "Ano",
-                  "timeSelected": "year=2016",
+                  "timeSelected": "year=2018",
                   "timeHandler": "msfilter",
                   "times": [
-                    {"value": "year=1985", "Viewvalue": 1985},
-                    {"value": "year=1986", "Viewvalue": 1986},
-                    {"value": "year=1987", "Viewvalue": 1987},
-                    {"value": "year=1988", "Viewvalue": 1988},
-                    {"value": "year=1989", "Viewvalue": 1989},
-                    {"value": "year=1990", "Viewvalue": 1990},
-                    {"value": "year=1991", "Viewvalue": 1991},
-                    {"value": "year=1992", "Viewvalue": 1992},
-                    {"value": "year=1993", "Viewvalue": 1993},
-                    {"value": "year=1994", "Viewvalue": 1994},
-                    {"value": "year=1995", "Viewvalue": 1995},
-                    {"value": "year=1996", "Viewvalue": 1996},
-                    {"value": "year=1997", "Viewvalue": 1997},
-                    {"value": "year=1998", "Viewvalue": 1998},
-                    {"value": "year=1999", "Viewvalue": 1999},
                     {"value": "year=2000", "Viewvalue": 2000},
                     {"value": "year=2001", "Viewvalue": 2001},
                     {"value": "year=2002", "Viewvalue": 2002},
@@ -548,11 +523,13 @@ module.exports = function(app) {
                     {"value": "year=2013", "Viewvalue": 2013},
                     {"value": "year=2014", "Viewvalue": 2014},
                     {"value": "year=2015", "Viewvalue": 2015},
-                    {"value": "year=2016", "Viewvalue": 2016}
+                    {"value": "year=2016", "Viewvalue": 2016},
+                    {"value": "year=2017", "Viewvalue": 2017}, 
+                    {"value": "year=2018", "Viewvalue": 2018}
                   ]
                 },
                 {
-                  "value": "producao_lenha", 
+                  "value": "quantidade_produzida_lenha_censo",
                   "Viewvalue": "Lenha", 
                   "visible": false, 
                   "opacity": 1,
@@ -560,24 +537,9 @@ module.exports = function(app) {
                   "order": 3,
                   "typeLabel": "Produção",
                   "timeLabel": "Ano",
-                  "timeSelected": "year=2016",
+                  "timeSelected": "year=2018",
                   "timeHandler": "msfilter",
                   "times": [
-                    {"value": "year=1985", "Viewvalue": 1985},
-                    {"value": "year=1986", "Viewvalue": 1986},
-                    {"value": "year=1987", "Viewvalue": 1987},
-                    {"value": "year=1988", "Viewvalue": 1988},
-                    {"value": "year=1989", "Viewvalue": 1989},
-                    {"value": "year=1990", "Viewvalue": 1990},
-                    {"value": "year=1991", "Viewvalue": 1991},
-                    {"value": "year=1992", "Viewvalue": 1992},
-                    {"value": "year=1993", "Viewvalue": 1993},
-                    {"value": "year=1994", "Viewvalue": 1994},
-                    {"value": "year=1995", "Viewvalue": 1995},
-                    {"value": "year=1996", "Viewvalue": 1996},
-                    {"value": "year=1997", "Viewvalue": 1997},
-                    {"value": "year=1998", "Viewvalue": 1998},
-                    {"value": "year=1999", "Viewvalue": 1999},
                     {"value": "year=2000", "Viewvalue": 2000},
                     {"value": "year=2001", "Viewvalue": 2001},
                     {"value": "year=2002", "Viewvalue": 2002},
@@ -594,11 +556,13 @@ module.exports = function(app) {
                     {"value": "year=2013", "Viewvalue": 2013},
                     {"value": "year=2014", "Viewvalue": 2014},
                     {"value": "year=2015", "Viewvalue": 2015},
-                    {"value": "year=2016", "Viewvalue": 2016}
+                    {"value": "year=2016", "Viewvalue": 2016},
+                    {"value": "year=2017", "Viewvalue": 2017}, 
+                    {"value": "year=2018", "Viewvalue": 2018}
                   ]
                 },
                 {
-                  "value": "producao_madeira", 
+                  "value": "quantidade_produzida_madeira_censo",
                   "Viewvalue": "Madeira", 
                   "visible": false, 
                   "opacity": 1,
@@ -606,24 +570,9 @@ module.exports = function(app) {
                   "order": 3,
                   "typeLabel": "Produção",
                   "timeLabel": "Ano",
-                  "timeSelected": "year=2016",
+                  "timeSelected": "year=2018",
                   "timeHandler": "msfilter",
                   "times": [
-                    {"value": "year=1985", "Viewvalue": 1985},
-                    {"value": "year=1986", "Viewvalue": 1986},
-                    {"value": "year=1987", "Viewvalue": 1987},
-                    {"value": "year=1988", "Viewvalue": 1988},
-                    {"value": "year=1989", "Viewvalue": 1989},
-                    {"value": "year=1990", "Viewvalue": 1990},
-                    {"value": "year=1991", "Viewvalue": 1991},
-                    {"value": "year=1992", "Viewvalue": 1992},
-                    {"value": "year=1993", "Viewvalue": 1993},
-                    {"value": "year=1994", "Viewvalue": 1994},
-                    {"value": "year=1995", "Viewvalue": 1995},
-                    {"value": "year=1996", "Viewvalue": 1996},
-                    {"value": "year=1997", "Viewvalue": 1997},
-                    {"value": "year=1998", "Viewvalue": 1998},
-                    {"value": "year=1999", "Viewvalue": 1999},
                     {"value": "year=2000", "Viewvalue": 2000},
                     {"value": "year=2001", "Viewvalue": 2001},
                     {"value": "year=2002", "Viewvalue": 2002},
@@ -640,9 +589,11 @@ module.exports = function(app) {
                     {"value": "year=2013", "Viewvalue": 2013},
                     {"value": "year=2014", "Viewvalue": 2014},
                     {"value": "year=2015", "Viewvalue": 2015},
-                    {"value": "year=2016", "Viewvalue": 2016}
+                    {"value": "year=2016", "Viewvalue": 2016},
+                    {"value": "year=2017", "Viewvalue": 2017}, 
+                    {"value": "year=2018", "Viewvalue": 2018}
                   ]
-                } */
+                }
 							]
 						}
           ],
@@ -930,7 +881,7 @@ module.exports = function(app) {
             },
             {
               "value":"landsat",
-              "viewValue": "Landsat - 2017",
+              "viewValue": "Landsat - 2018",
               "visible": false
             }
           ]
@@ -959,6 +910,27 @@ module.exports = function(app) {
               "value": "municipios",  
               "Viewvalue": "Municípios", 
               "visible": false, 
+              "layer_limits": true,
+              "opacity": 1
+            },
+            {
+              "value": "limites_terras_indigenas",
+              "Viewvalue": "Terras Indígenas",
+              "visible": false,
+              "layer_limits": true,
+              "opacity": 1
+            },
+            {
+              "value": "geo_car_imovel",
+              "Viewvalue": "Terras Privadas CAR",
+              "visible": false,
+              "layer_limits": true,
+              "opacity": 1
+            },
+            {
+              "value": "limites_unidades_protecao_integral",
+              "Viewvalue": "Unidades de Conservação Integral ",
+              "visible": false,
               "layer_limits": true,
               "opacity": 1
             }
