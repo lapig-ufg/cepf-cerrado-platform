@@ -86,7 +86,7 @@
 							</mat-accordion>
 						</mat-tab>
 						<mat-tab label="Mapa Base">
-							<div class="form-group baseMap" *ngFor="let basemap of basemapsNames">
+							<div class="baseMap" *ngFor="let basemap of basemapsNames">
 								<mat-slide-toggle (change)="baseLayerChecked(basemap, $event)" [(ngModel)]="basemap.visible">
 									{{basemap.viewValue}}
 								</mat-slide-toggle>
@@ -94,7 +94,7 @@
 						</mat-tab>
 						<mat-tab label="Limites">
 							<div *ngFor="let limits of descriptor.limits">
-								<div class="form-group baseMap" *ngFor="let name_limits of limits.types">
+								<div class="baseMap" *ngFor="let name_limits of limits.types">
 									<mat-slide-toggle (change)="limitsLayersChecked(name_limits, $event)" [(ngModel)]="name_limits.visible" class="slideEstados" >
 										{{name_limits.Viewvalue}}
 									</mat-slide-toggle>

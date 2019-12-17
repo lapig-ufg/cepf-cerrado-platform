@@ -93,7 +93,7 @@ module.exports = function(app) {
 							"visible": true,
               "selectedType": 'uso_solo_terraclass',
               "types": [
-								{
+								/*{
                   "value": "uso_solo_mapbiomas", 
                   "Viewvalue": "Mapbiomas", 
                   "visible": false, 
@@ -105,7 +105,7 @@ module.exports = function(app) {
                   "timeSelected": "year=1985",
                   "timeHandler": "msfilter",
                   "times": [
-                    {"value": "year=1985", "Viewvalue": 1985}/* ,
+                    {"value": "year=1985", "Viewvalue": 1985} ,
                     {"value": "year=1986", "Viewvalue": 1986},
                     {"value": "year=1987", "Viewvalue": 1987},
                     {"value": "year=1988", "Viewvalue": 1988},
@@ -137,9 +137,9 @@ module.exports = function(app) {
                     {"value": "year=2014", "Viewvalue": 2014},
                     {"value": "year=2015", "Viewvalue": 2015},
                     {"value": "year=2016", "Viewvalue": 2016},
-                    {"value": "year=2017", "Viewvalue": 2017} */
+                    {"value": "year=2017", "Viewvalue": 2017} 
                   ]
-                },
+                }, */
                 {
                   "value": "uso_solo_terraclass", 
                   "Viewvalue": "Terraclass",
@@ -894,7 +894,7 @@ module.exports = function(app) {
 					"types": [
 						{
               "value": "biomas", 
-              "Viewvalue": "Cerrado", 
+              "Viewvalue": "Biomas", 
               "visible": true, 
               "layer_limits": true,
               "opacity": 1
@@ -914,6 +914,41 @@ module.exports = function(app) {
               "opacity": 1
             },
             {
+              "value": "limites_areas_chave_biodiversidade",
+              "Viewvalue": "Áreas Chaves de Biodiversidade - KBA's",
+              "visible": false,
+              "layer_limits": true,
+              "opacity": 1
+            },
+            {
+              "value": "limites_assentamentos",
+              "Viewvalue": "Assentamentos",
+              "visible": false,
+              "layer_limits": true,
+              "opacity": 1
+            },
+            {
+              "value": "limites_cartas_ibge",
+              "Viewvalue": "Cartas IBGE",
+              "visible": false,
+              "layer_limits": true,
+              "opacity": 1
+            },
+            {
+              "value": "limites_corredores_prioritarios_cepf",
+              "Viewvalue": "Corredores Prioritários CEPF",
+              "visible": false,
+              "layer_limits": true,
+              "opacity": 1
+            },
+            {
+              "value": "limites_regioes_hidrograficas",
+              "Viewvalue": "Regiões Hidrográficas",
+              "visible": false,
+              "layer_limits": true,
+              "opacity": 1
+            },
+            {
               "value": "limites_terras_indigenas",
               "Viewvalue": "Terras Indígenas",
               "visible": false,
@@ -929,7 +964,14 @@ module.exports = function(app) {
             },
             {
               "value": "limites_unidades_protecao_integral",
-              "Viewvalue": "Unidades de Conservação Integral ",
+              "Viewvalue": "Unidades de Conservação Integral",
+              "visible": false,
+              "layer_limits": true,
+              "opacity": 1
+            },
+            {
+              "value": "limites_unidades_planejamento_hidrico",
+              "Viewvalue": "Unidades de Planejamento Hídrico",
               "visible": false,
               "layer_limits": true,
               "opacity": 1
