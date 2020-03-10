@@ -91,18 +91,18 @@ module.exports = function(app) {
 							"id": "mapa_uso_solo",
 							"label": "Uso e Cobertura do Solo",
 							"visible": true,
-              "selectedType": 'uso_solo_terraclass',
+              "selectedType": 'uso_solo_mapbiomas',
               "types": [
-								/*{
+								{
                   "value": "uso_solo_mapbiomas", 
                   "Viewvalue": "Mapbiomas", 
-                  "visible": false, 
+                  "visible": true, 
                   "opacity": 1,
                   "regionFilter": true,
                   "order": 1,
                   "typeLabel": "Tipo",
                   "timeLabel": "Ano",
-                  "timeSelected": "year=1985",
+                  "timeSelected": "year=2018",
                   "timeHandler": "msfilter",
                   "times": [
                     {"value": "year=1985", "Viewvalue": 1985} ,
@@ -137,17 +137,46 @@ module.exports = function(app) {
                     {"value": "year=2014", "Viewvalue": 2014},
                     {"value": "year=2015", "Viewvalue": 2015},
                     {"value": "year=2016", "Viewvalue": 2016},
-                    {"value": "year=2017", "Viewvalue": 2017} 
-                  ]
-                }, */
+                    {"value": "year=2017", "Viewvalue": 2017},
+                    {"value": "year=2018", "Viewvalue": 2018}
+                  ],
+                  "metadados": {
+                    "title": "Cobertura e Uso do Solo do Brasil - Mapbiomas",
+                    "description": "O Projeto de Mapeamento Anual da Cobertura e Uso do Solo do Brasil é uma iniciativa que envolve uma rede colaborativa com especialistas nos biomas, usos da terra, sensoriamento remoto, SIG e ciência da computação que utiliza processamento em nuvem e classificadores automatizados desenvolvidos e operados a partir da plataforma Google Earth Engine para gerar uma série histórica de mapas anuais de cobertura e uso da terra doBrasil.",
+                    "link_description": "https://mapbiomas-br-site.s3.amazonaws.com/ATBD_Collection_4_v2_Dez2019.pdf",
+                    "format": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+                    "region": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+                    "period": "1985 à 2018, Coleção 4.",
+                    "scale": "30 metros",
+                    "system_coordinator": "Superfície de referência SIRGAS 2000, sistema de coordenadas em grau.",
+                    "cartographic_projection": "Universal de Mercator.",
+                    "cod_caracter": "Latin 1.",
+                    "fonte": "Laboratório de Processamento de Imagens e Geoprocessamento – Lapig (geração do dado). Projeto Spatial metrics and baselines of degradation patterns and provision of ecosystem services by pastures in Brazil. (viabilizador).",
+                    "contato": "Fernanda Stefani - fer.stefani.souza@gmail.com<br /> Lana Teixeira - lanamarast @gmail.com"
+                  }
+                },
                 {
                   "value": "uso_solo_terraclass", 
                   "Viewvalue": "Terraclass",
                   "typeLabel": "Tipo",
-                  "visible": true, 
+                  "visible": false, 
                   "opacity": 1,
                   "regionFilter": true,
-                  "order": 1
+                  "order": 1,
+                  "metadados": {
+                    "title": "Mapeamento do Uso e Cobertura Vegetal do Cerrado – TerraClass Cerrado",
+                    "description": "Mapeamento do Uso e Cobertura Vegetal do Cerrado - TerraClass Cerrado, utiliza como base de mapeamento 118 cenas do satélite Landsat 8, sensor Operational Land Imager ( OLI), do ano de 2013 que recobrem todo o bioma. A área mínima mapeável é de 6,25 hectares.",
+                    "format": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+                    "region": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+                    "period": "2013",
+                    "scale": "1:250.000",
+                    "system_coordinator": "Superfície de referência SIRGAS 2000, sistema de coordenadas em grau.",
+                    "cartographic_projection": "Universal de Mercator",
+                    "cod_caracter": "Latin 1",
+                    "fonte": "UFG, IBAMA CSR, INPE OBT e CRA, EMBRAPA MONITORAMENTO POR SATÉLITE, EMBRAPA INFORMÁTICA AGROPECUÁRIA, UFU. Programa conduzido pelo Ministério de Meio Ambiente (MMA) e conta com recursos financeiros oriundos do Global Environment Facility (GEF) por meio do Banco Mundial e do Fundo Brasileiro para a Biodiversidade (Funbio). Para acessar a publicação completa do projeto, clique aqui!",
+                    "link_fonte": "https://www.mma.gov.br/images/arquivo/80049/Cerrado/publicacoes/Livro%20EMBRAPA-WEB-1-TerraClass%20Cerrado.pdf",
+                    "contato": "Fernanda Stefani - fer.stefani.souza@gmail.com <br /> Lana Teixeira - lanamarast @gmail.com"
+                  }
                 },
                 {
                   "value": "uso_solo_probio", 
@@ -156,7 +185,20 @@ module.exports = function(app) {
                   "visible": false, 
                   "opacity": 1,
                   "regionFilter": true,
-                  "order": 1
+                  "order": 1,
+                  "metadados": {
+                    "title": "",
+                    "description": "",
+                    "format": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+                    "region": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+                    "period": "",
+                    "scale": "",
+                    "system_coordinator": "",
+                    "cartographic_projection": "",
+                    "cod_caracter": "",
+                    "fonte": "",
+                    "contato": "lapig.cepf@gmail.com"
+                  }
                 }
               ]
 						}
@@ -185,7 +227,20 @@ module.exports = function(app) {
                 {"value": "year=2001", "Viewvalue": 2001},
                 {"value": "year=2007", "Viewvalue": 2007},
                 {"value": "year=2014", "Viewvalue": 2014}
-              ]
+              ],
+              "metadados": {
+                "title": "Agrosatelite",
+                "description": "",
+                "format": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+                "region": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+                "period": "",
+                "scale": "",
+                "system_coordinator": "",
+                "cartographic_projection": "",
+                "cod_caracter": "",
+                "fonte": "",
+                "contato": "lapig.cepf@gmail.com"
+              }
 						},
 						{
 							"id": "mapa_pastagem",
@@ -239,7 +294,22 @@ module.exports = function(app) {
                     {"value": "year=2016", "Viewvalue": 2016},
                     {"value": "year=2017", "Viewvalue": 2017},
                     {"value": "year=2018", "Viewvalue": 2018}
-                  ]
+                  ],
+                  "metadados": {
+                    "title": "Áreas de Pastagens do Brasil",
+                    "description": "Mapeamento anual das pastagens brasileiras, realizado através do uso de séries de dados Landsat de 1985 a 2018. Utilizando abordagens de classificação supervisionada (Random Forest) através da plataforma Earth Engine da Google.",
+                    "link_description": "https://mapbiomas-br-site.s3.amazonaws.com/ATBD_Collection_4_v2_Dez2019.pdf",
+                    "format": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+                    "region": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+                    "period": "De 1985 a 2018.",
+                    "scale": "30 metros.",
+                    "system_coordinator": "Superfície de referência SIRGAS 2000, sistema de coordenadas em graus.",
+                    "cartographic_projection": "Universal de Mercator.",
+                    "update": "Anual",
+                    "cod_caracter": "Latin 1.",
+                    "fonte": "Laboratório de Processamento de Imagens e Geoprocessamento - Lapig (geração do dado). Projeto de Mapeamento Anual da Cobertura e Uso do Solo do Brasil - MapBiomas (viabilizador). ",
+                    "contato": "lapig.cepf@gmail.com"
+                  }
                  },
 								 {
                    "value": "pasture_degraded", 
@@ -249,7 +319,20 @@ module.exports = function(app) {
                    "opacity": 1,
                    "regionFilter": true,
                    "order": 10,
-                   "layerfilter": "category='1'"
+                   "layerfilter": "category='1'",
+                   "metadados": {
+                     "title": "Indícios de degradação das pastagens brasileiras",
+                     "description": "Mapeamento da qualidade de pastagens, gerado pelo Lapig, onde foram analisados os dados de pastagens pixel a pixel para o período de 2011 a 2016, por meio de análise de tendências em anomalias acumuladas. A análise foi baseado em dados satelitários (NDVI/MOD13Q1), e avalia perdas ou ganho em produtividade. As áreas com tendência significativas de perda em produtividade (p < 0.05) foram consideradas áreas com indícios de degradação.",
+                     "format": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+                     "region": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+                     "period": "2017",
+                     "scale": "1:250.000 ",
+                     "system_coordinator": "Superfície de referência SIRGAS 2000, sistema de coordenadas em graus.",
+                     "cartographic_projection": "Universal de Mercator.",
+                     "cod_caracter": "Latin 1",
+                     "fonte": "Laboratório de Processamento de Imagens e Geoprocessamento - Lapig",
+                     "contato": "lapig.cepf@gmail.com"
+                   }
                  }
 							]
 						},
@@ -305,7 +388,20 @@ module.exports = function(app) {
                     {"value": "year=2016", "Viewvalue": 2016},
                     {"value": "year=2017", "Viewvalue": 2017},
                     {"value": "year=2018", "Viewvalue": 2018}
-                  ]
+                  ],
+                  "metadados": {
+                    "title": "Rebanho Bovino em Unidades Animal (UA)",
+                    "description": "Cálculo realizado considerando a composição do rebanho para o censo agropecuário. Para os anos de 1986 a 1999, utilizou-se os dados do censo agropecuário de 1996. Para os anos de 2000 a 2018. utilizou-se os dados do censo agropecuário de 2006. Sendo que uma Unidade Animal (UA), equivale a um animal de 450 kg vivo.",
+                    "format": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+                    "region": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+                    "period": "1985 á 2018.",
+                    "scale": "1:250.000",
+                    "system_coordinator": "Superfície de referência SIRGAS 2000, sistema de coordenadas em grau.",
+                    "cartographic_projection": "Universal de Mercator.",
+                    "cod_caracter": "Latin 1.",
+                    "fonte": "Laboratório de Processamento de Imagens e Geoprocessamento - Lapig (geração do dado).",
+                    "contato": "lapig.cepf@gmail.com"
+                  }
                 },
                 {
                   "value": "producao_leite", 
@@ -353,7 +449,20 @@ module.exports = function(app) {
                     {"value": "year=2016", "Viewvalue": 2016},
                     {"value": "year=2017", "Viewvalue": 2017},
                     {"value": "year=2018", "Viewvalue": 2018}
-                  ]
+                  ],
+                  "metadados": {
+                    "title": "Produção de Leite por Municípios do Brasil",
+                    "description": "Quantidade de Leite produzido por municípios do Brasil, em Litros, no período de 1974 a 2018, conforme dados da Pesquisa da Pecuária Municipal.",
+                    "format": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+                    "region": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+                    "period": "2000 a 2018",
+                    "scale": "1:250.000",
+                    "system_coordinator": "Superfície de referência SIRGAS 2000, sistema de coordenadas em graus.",
+                    "cartographic_projection": "Universal de Mercator.",
+                    "cod_caracter": "Latin 1",
+                    "fonte": "SIDRA / IBGE",
+                    "contato": "lapig.cepf@gmail.com"
+                  }
                 }
 							]
             },
@@ -394,7 +503,20 @@ module.exports = function(app) {
                     {"value": "year=2016", "Viewvalue": 2016},
                     {"value": "year=2017", "Viewvalue": 2017},
                     {"value": "year=2018", "Viewvalue": 2018}
-                  ]
+                  ],
+                  "metadados": {
+                    "title": "Áreas de Plantação de Algodão por Municípios do Brasil",
+                    "description": "Áreas de plantação de algodão em caroço por municípios do Brasil, por hectares, no período de 2000 a 2018, conforme dados da Pesquisa Agrícola Municipal",
+                    "format": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+                    "region": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+                    "period": "2000 a 2018.",
+                    "scale": "1:250.000",
+                    "system_coordinator": "Superfície de referência SIRGAS 2000, sistema de coordenadas em graus.",
+                    "cartographic_projection": "Universal de Mercator",
+                    "cod_caracter": "Latin 1",
+                    "fonte": "SIDRA / IBGE",
+                    "contato": "lapig.cepf@gmail.com"
+                  }
                 },
                 {
                   "value": "area_plantada_cana_censo", 
@@ -427,7 +549,20 @@ module.exports = function(app) {
                     {"value": "year=2016", "Viewvalue": 2016},
                     {"value": "year=2017", "Viewvalue": 2017},
                     {"value": "year=2018", "Viewvalue": 2018}
-                  ]
+                  ],
+                  "metadados": {
+                    "title": "Áreas de Plantação de Cana-de-açúcar por Municípios do Brasil",
+                    "description": "Áreas de plantação de cana-de-açúcar por municípios do Brasil, por hectares, no período de 2000 a 2018, conforme dados da Pesquisa Agrícola Municipal.",
+                    "format": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+                    "region": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+                    "period": "2000 a 2018.",
+                    "scale": "1:250.000",
+                    "system_coordinator": "Superfície de referência SIRGAS 2000, sistema de coordenadas em graus",
+                    "cartographic_projection": "Universal de Mercator.",
+                    "cod_caracter": "Latin 1",
+                    "fonte": "SIDRA / IBGE",
+                    "contato": "lapig.cepf@gmail.com"
+                  }
                 },
                 {
                   "value": "area_plantada_milho_censo", 
@@ -460,7 +595,20 @@ module.exports = function(app) {
                     {"value": "year=2016", "Viewvalue": 2016},
                     {"value": "year=2017", "Viewvalue": 2017},
                     {"value": "year=2018", "Viewvalue": 2018}
-                  ]
+                  ],
+                  "metadados": {
+                    "title": "Áreas de Plantação de Milho por Municípios do Brasil",
+                    "description": "Áreas de plantação de milho por municípios do Brasil, por hectares, no período de 2000 a 2018, conforme dados da Pesquisa Agrícola Municipal.",
+                    "format": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+                    "region": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+                    "period": "2000 a 2018.",
+                    "scale": "1:250.000",
+                    "system_coordinator": "Superfície de referência SIRGAS 2000, sistema de coordenadas em graus.",
+                    "cartographic_projection": "Universal de Mercator.",
+                    "cod_caracter": "Latin 1",
+                    "fonte": "SIDRA / IBGE",
+                    "contato": "lapig.cepf@gmail.com"
+                  }
                 },
                 {
                   "value": "area_plantada_soja_censo", 
@@ -493,7 +641,20 @@ module.exports = function(app) {
                     {"value": "year=2016", "Viewvalue": 2016},
                     {"value": "year=2017", "Viewvalue": 2017},
                     {"value": "year=2018", "Viewvalue": 2018}
-                  ]
+                  ],
+                  "metadados": {
+                    "title": "Áreas de Plantação de Soja por Municípios do Brasil",
+                    "description": "Áreas de plantação de soja por municípios do Brasil, por hectares, no período de 2000 a 2018, conforme dados da Pesquisa Agrícola Municipal.",
+                    "format": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+                    "region": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+                    "period": "2000 a 2018.",
+                    "scale": "1:250.000",
+                    "system_coordinator": "Superfície de referência SIRGAS 2000, sistema de coordenadas em graus.",
+                    "cartographic_projection": "Universal de Mercator.",
+                    "cod_caracter": "Latin 1",
+                    "fonte": "SIDRA / IBGE",
+                    "contato": "lapig.cepf@gmail.com"
+                  }
                 },
                 {
                   "value": "quantidade_produzida_carvao_censo",
@@ -526,7 +687,20 @@ module.exports = function(app) {
                     {"value": "year=2016", "Viewvalue": 2016},
                     {"value": "year=2017", "Viewvalue": 2017}, 
                     {"value": "year=2018", "Viewvalue": 2018}
-                  ]
+                  ],
+                  "metadados": {
+                    "title": "Produção de Carvão por Municípios do Brasil",
+                    "description": "Quantidade de carvão vegetal produzido por municípios do brasil, em Toneladas, no período de 2000 a 2018, conforme dados da Produção de Extração Vegetal e da Silvicultura.",
+                    "format": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+                    "region": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+                    "period": "2000 a 2018.",
+                    "scale": "1:250.000",
+                    "system_coordinator": "Superfície de referência SIRGAS 2000, sistema de coordenadas em graus.",
+                    "cartographic_projection": "Universal de Mercator.",
+                    "cod_caracter": "Latin 1",
+                    "fonte": "SIDRA / IBGE",
+                    "contato": "lapig.cepf@gmail.com"
+                  }
                 },
                 {
                   "value": "quantidade_produzida_lenha_censo",
@@ -559,7 +733,20 @@ module.exports = function(app) {
                     {"value": "year=2016", "Viewvalue": 2016},
                     {"value": "year=2017", "Viewvalue": 2017}, 
                     {"value": "year=2018", "Viewvalue": 2018}
-                  ]
+                  ],
+                  "metadados": {
+                    "title": "Produção de Lenha por Municípios do Brasil",
+                    "description": "Quantidade de Lenha produzida por municípios do brasil, em Metros Cúbicos, no período de 2000 a 2018, conforme dados da Produção de Extração Vegetal e da Silvicultura.",
+                    "format": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+                    "region": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+                    "period": "2000 a 2018.",
+                    "scale": "1:250.000",
+                    "system_coordinator": "Superfície de referência SIRGAS 2000, sistema de coordenadas em graus.",
+                    "cartographic_projection": "Universal de Mercator.",
+                    "cod_caracter": "Latin 1",
+                    "fonte": "SIDRA / IBGE",
+                    "contato": "lapig.cepf@gmail.com"
+                  }
                 },
                 {
                   "value": "quantidade_produzida_madeira_censo",
@@ -592,7 +779,20 @@ module.exports = function(app) {
                     {"value": "year=2016", "Viewvalue": 2016},
                     {"value": "year=2017", "Viewvalue": 2017}, 
                     {"value": "year=2018", "Viewvalue": 2018}
-                  ]
+                  ],
+                  "metadados": {
+                    "title": "Produção de Madeira por Municípios do Brasil",
+                    "description": "Quantidade de Madeira produzida por municípios do brasil, em Metros Cúbicos, no período de 2000 a 2018, conforme dados da Produção de Extração Vegetal e da Silvicultura.",
+                    "format": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+                    "region": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+                    "period": "2000 a 2018.",
+                    "scale": "1:250.000",
+                    "system_coordinator": "Superfície de referência SIRGAS 2000, sistema de coordenadas em graus.",
+                    "cartographic_projection": "Universal de Mercator.",
+                    "cod_caracter": "Latin 1",
+                    "fonte": "SIDRA / IBGE",
+                    "contato": "lapig.cepf@gmail.com"
+                  }
                 }
 							]
 						}
@@ -633,7 +833,20 @@ module.exports = function(app) {
                     {"value": "year=2016", "Viewvalue": 2016},
                     {"value": "year=2017", "Viewvalue": 2017},
                     {"value": "year=2018", "Viewvalue": 2018}
-                  ]
+                  ],
+                  "metadados": {
+                    "title": "Monitoramento do Desmatamento no Cerrado Brasileiro por Satélite",
+                    "description": "Área desmatada a partir de 2000 discretizadas em uma séria histórica bienal para o período de 2000 a 2012 e anual para os anos de 2013 a 2018. O mapeamento utiliza imagens do satélite Landsat ou similares, para registrar e quantificar as áreas desmatadas maiores que 1 hectare. O PRODES considera como desmatamento a remoção completa da cobertura florestal primária por corte raso, independentemente da futura utilização destas áreas",
+                    "format": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+                    "region": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+                    "period": "Bienal de 2000 a 2012 e anual de 2013 a 2018.",
+                    "scale": "1:250.000",
+                    "system_coordinator": "Superfície de referência SIRGAS 2000, sistema de coordenadas em graus.",
+                    "cartographic_projection": "Universal de Mercator.",
+                    "cod_caracter": "Latin 1.",
+                    "fonte": "Programa conduzido pelo Ministério de Meio Ambiente (MMA) e o Ministério da Ciência, Tecnologia, Inovação e Comunicações (MCTIC) contando com recursos financeiros oriundos do Banco Mundial (World Bank – IBRD-IDA), além das instituições alemães KfW e GIZ.",
+                    "contato": "lapig.cepf@gmail.com"
+                  }
                  },
                  {
                   "value": "desmatamento_siad", 
@@ -662,7 +875,20 @@ module.exports = function(app) {
                     {"value": "year=2015", "Viewvalue": 2015},
                     {"value": "year=2016", "Viewvalue": 2016},
                     {"value": "year=2017", "Viewvalue": 2017}
-                  ]
+                  ],
+                  "metadados": {
+                    "title": "Áreas de Desmatamento no Cerrado",
+                    "description": "Dados de desmatamentos ocorridos no Bioma Cerrado, disponibilizados anualmente, no período de 2003 a 2017, produzidos a partir de imagens MODIS (MOD13Q1), sendo utilizadas imagens LANDSAT e CBERS para validação.",
+                    "format": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+                    "region": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+                    "period": "",
+                    "scale": "",
+                    "system_coordinator": "",
+                    "cartographic_projection": "",
+                    "cod_caracter": "",
+                    "fonte": "",
+                    "contato": "lapig.cepf@gmail.com"
+                  }
                  },
                  {
                   "value": "desmatamento_glad", 
@@ -694,7 +920,20 @@ module.exports = function(app) {
                     {"value": "year=2016", "Viewvalue": 2016},
                     {"value": "year=2017", "Viewvalue": 2017},
                     {"value": "year=2018", "Viewvalue": 2018}
-                  ]
+                  ],
+                  "metadados": {
+                    "title": "",
+                    "description": "",
+                    "format": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+                    "region": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+                    "period": "",
+                    "scale": "",
+                    "system_coordinator": "",
+                    "cartographic_projection": "",
+                    "cod_caracter": "",
+                    "fonte": "",
+                    "contato": "lapig.cepf@gmail.com"
+                  }
                  }
 							]
             },
@@ -711,7 +950,20 @@ module.exports = function(app) {
                   "opacity": 1,
                   "regionFilter": true,
                   "order": 1,
-                  "typeLabel": "Fonte"
+                  "typeLabel": "Fonte",
+                  "metadados": {
+                    "title": "",
+                    "description": "",
+                    "format": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+                    "region": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+                    "period": "",
+                    "scale": "",
+                    "system_coordinator": "",
+                    "cartographic_projection": "",
+                    "cod_caracter": "",
+                    "fonte": "",
+                    "contato": "lapig.cepf@gmail.com"
+                  }
                 }
 							]
             },
@@ -752,7 +1004,20 @@ module.exports = function(app) {
                     {"value": "year=2016", "Viewvalue": 2016},
                     {"value": "year=2017", "Viewvalue": 2017},
                     {"value": "year=2018", "Viewvalue": 2018}
-                  ]
+                  ],
+                  "metadados": {
+                    "title": "Áreas de Queimadas do Cerrado",
+                    "description": "Dados de queimadas ocorridos no Brasil, para o período de 2002 à 2018, produzidos a partir de imagens MODIS (MCD45A1).",
+                    "format": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+                    "region": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+                    "period": "2000 a 2018.",
+                    "scale": "1:500.000 ",
+                    "system_coordinator": "Superfície de referência SIRGAS 2000, sistema de coordenadas em graus.",
+                    "cartographic_projection": "Universal de Mercator.",
+                    "cod_caracter": "Latin 1.",
+                    "fonte": "LAPIG / UFG.",
+                    "contato": "lapig.cepf@gmail.com"
+                  }
                  }
 							]
             }
@@ -777,6 +1042,19 @@ module.exports = function(app) {
                   "regionFilter": true,
                   "order": 1,
                   "typeLabel": "Tipo",
+                  "metadados": {
+                    "title": "Pontos de Campo",
+                    "description": "Com o propósito de validar mapas produzidos pelo LAPIG-UFG no âmbito do MapBiomas e de subsidiar pesquisas voltadas à qualificação das pastagens brasileiras, seis atividades de campo foram realizadas durante os anos de 2017 e 2018. Um grande conjunto de pontos georreferenciados foi formado e organizado com dados de uso/cobertura do solo e indicativos de qualidade das pastagens.",
+                    "format": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+                    "region": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+                    "period": "2017",
+                    "scale": "1:250.000",
+                    "system_coordinator": "Superfície de referência SIRGAS 2000, sistema de coordenadas em graus.",
+                    "cartographic_projection": "Universal de Mercator.",
+                    "cod_caracter": "Latin 1.",
+                    "fonte": "Laboratório de Processamento de Imagens e Geoprocessamento – Lapig (geração do dado). Projeto Spatial metrics and baselines of degradation patterns and provision of ecosystem services by pastures in Brazil. (viabilizador).",
+                    "contato": "lapig.cepf@gmail.com"
+                  }
                   /* "timeLabel": "Ano",
                   "timeSelected": "year=2018",
                   "timeHandler": "msfilter",
@@ -802,6 +1080,19 @@ module.exports = function(app) {
                   "regionFilter": true,
                   "order": 2,
                   "typeLabel": "Tipo",
+                  "metadados": {
+                    "title": "Pontos de Campo",
+                    "description": "Com o propósito de validar mapas produzidos pelo LAPIG-UFG no âmbito do MapBiomas e de subsidiar pesquisas voltadas à qualificação das pastagens brasileiras, seis atividades de campo foram realizadas durante os anos de 2017 e 2018. Um grande conjunto de pontos georreferenciados foi formado e organizado com dados de uso/cobertura do solo e indicativos de qualidade das pastagens.",
+                    "format": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+                    "region": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+                    "period": "2017",
+                    "scale": "1:250.000",
+                    "system_coordinator": "Superfície de referência SIRGAS 2000, sistema de coordenadas em graus.",
+                    "cartographic_projection": "Universal de Mercator.",
+                    "cod_caracter": "Latin 1.",
+                    "fonte": "Laboratório de Processamento de Imagens e Geoprocessamento – Lapig (geração do dado). Projeto Spatial metrics and baselines of degradation patterns and provision of ecosystem services by pastures in Brazil. (viabilizador).",
+                    "contato": "lapig.cepf@gmail.com"
+                  }
                   /* "timeLabel": "Ano",
                   "timeSelected": "year=2017",
                   "timeHandler": "msfilter",
@@ -838,7 +1129,20 @@ module.exports = function(app) {
                   "opacity": 1,
                   "regionFilter": true,
                   "order": 1,
-                  "typeLabel": "Tipo"
+                  "typeLabel": "Tipo",
+                  "metadados": {
+                    "title": "Pontos Visualmente Inspecionados",
+                    "description": "Conjunto georreferenciado de pontos para todo o território brasileiro, sendo atribuídas classes de uso e cobertura do solo referente a cada ano no período de 1985 a 2017. Foram utilizadas imagens Landsat provenientes dos sensores TM, ETM+ e OLI. Buscou-se também abordar os critérios adotados, dificuldades e especificidades encontradas quanto a interpretação de imagens em cada um dos 6 biomas brasileiros.",
+                    "format": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+                    "region": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+                    "period": "1985 à 2017.",
+                    "scale": "não se aplica",
+                    "system_coordinator": "Superfície de referência SIRGAS 2000, sistema de coordenadas em graus.",
+                    "cartographic_projection": "Universal de Mercator.",
+                    "cod_caracter": "Latin 1.",
+                    "fonte": "Laboratório de Processamento de Imagens e Geoprocessamento – Lapig (geração do dado). Projeto Spatial metrics and baselines of degradation patterns and provision of ecosystem services by pastures in Brazil. (viabilizador).",
+                    "contato": "lapig.cepf@gmail.com"
+                  }
                 },
                 {
                   "value": "pontos_tvi_validacao", 
@@ -847,7 +1151,20 @@ module.exports = function(app) {
                   "opacity": 1,
                   "regionFilter": true,
                   "order": 1,
-                  "typeLabel": "Tipo"
+                  "typeLabel": "Tipo",
+                  "metadados": {
+                    "title": "Pontos Visualmente Inspecionados",
+                    "description": "Conjunto georreferenciado de pontos para todo o território brasileiro, sendo atribuídas classes de uso e cobertura do solo referente a cada ano no período de 1985 a 2017. Foram utilizadas imagens Landsat provenientes dos sensores TM, ETM+ e OLI. Buscou-se também abordar os critérios adotados, dificuldades e especificidades encontradas quanto a interpretação de imagens em cada um dos 6 biomas brasileiros.",
+                    "format": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+                    "region": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+                    "period": "1985 à 2017.",
+                    "scale": "não se aplica",
+                    "system_coordinator": "Superfície de referência SIRGAS 2000, sistema de coordenadas em graus.",
+                    "cartographic_projection": "Universal de Mercator.",
+                    "cod_caracter": "Latin 1.",
+                    "fonte": "Laboratório de Processamento de Imagens e Geoprocessamento – Lapig (geração do dado). Projeto Spatial metrics and baselines of degradation patterns and provision of ecosystem services by pastures in Brazil. (viabilizador).",
+                    "contato": "lapig.cepf@gmail.com"
+                  }
                 }
 							]
             }
@@ -907,7 +1224,7 @@ module.exports = function(app) {
               "opacity": 1
             },
 						{
-              "value": "municipios",  
+              "value": "municipios_cerrado",
               "Viewvalue": "Municípios", 
               "visible": false, 
               "layer_limits": true,
@@ -985,7 +1302,14 @@ module.exports = function(app) {
 		response.send(result)
 		response.end()
 
-	}
+  }
+  
+  Controller.downloadSHP = function (request, response) {
+
+    
+      response.send("Fernanda Teste");
+      response.end();
+  }
 
 	return Controller;
 

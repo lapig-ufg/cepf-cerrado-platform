@@ -125,9 +125,10 @@ hr {
 	width: 20px;
 	height: 20px;
 	line-height: 0px;
+	position: absolute;
 }
 
-..mat-form-field-infix{
+.mat-form-field-infix{
 	padding: 0px  !important;
 	border-top: 0px !important;
 }

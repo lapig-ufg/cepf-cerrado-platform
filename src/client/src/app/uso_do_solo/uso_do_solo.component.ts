@@ -1,5 +1,6 @@
-import {Component, Injectable, OnInit} from '@angular/core';
+import {Component, Injectable, OnInit, Inject} from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
+import { FormGroup, FormControl } from '@angular/forms';
 
 import * as ol from 'openlayers';
 
@@ -27,6 +28,7 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { style } from '@angular/animations';
 import Fill from 'ol/style/Fill';
 import Circle from 'ol/style/Circle';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 const SEARCH_URL = 'service/map/search';
 const PARAMS = new HttpParams({
@@ -88,7 +90,9 @@ export class MapComponent implements OnInit {
 
 	collapseLayer: boolean;
   collapseCharts: boolean;
-  collapseLegends: boolean;
+	collapseLegends: boolean;
+	
+	metadados: any;
 
 	layersTypes= [];
   basemapsNames = [];
@@ -99,7 +103,14 @@ export class MapComponent implements OnInit {
 	layersNames = [];
 	fieldPointsStop: any;
 
-	constructor(private http: HttpClient, private _service: SearchService) { 
+	downloadLayer: string;
+	downloadLimit: string;
+	layerCheckedDow: any;
+
+	layerofDowloads = [];
+	
+
+	constructor(private http: HttpClient, private _service: SearchService, public dialog: MatDialog) { 
 		this.projection = OlProj.get('EPSG:900913');
 		this.currentZoom = 5.8;
 		this.layers = [];
@@ -150,6 +161,28 @@ export class MapComponent implements OnInit {
 
 	formatter = (x: {text: string}) => x.text;
 
+	 openDialog(layer): void {
+		
+		if (layer.types) {
+			for(let info of layer.types) {
+				if(info.value == layer.selectedType) {
+					this.metadados = info.metadados
+				}
+			}
+		} else {
+			this.metadados = layer.metadados
+		}
+
+
+		const dialogRef = this.dialog.open(UsoDoSoloMetadados, {
+      width: '650px',
+			data: {name: this.metadados}
+		});
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+
 	private zoomExtent() {
 		var map = this.map;
   	if (this.selectRegion.type != '') {
@@ -190,15 +223,13 @@ export class MapComponent implements OnInit {
 	}
 
 	private updateCharts() {
-		/* console.log('filter:  ', this.msFilterRegion, this.selectRegion.type, this.selectRegion.text) */
 		for (let group of this.descriptor.groups) {
 			if (group.dataService != undefined) {
-				this.http.get(group.dataService+"?typeRegion="+this.selectRegion.type+"&textRegion="+this.selectRegion.text+"&filterRegion="+this.msFilterRegion).subscribe(result => {
+				this.http.get(group.dataService+"?typeRegion="+this.selectRegion.type+"&textRegion="+this.selectRegion.text+"&filterRegion="+this.msFilterRegion+"&year="+this.year).subscribe(result => {
 					
 					group.chartConfig = result
 
 					for(let graphic of group.chartConfig) {
-						/* console.log(graphic) */
 						if(graphic.type != 'line') {
 
 							graphic.data = {
@@ -206,7 +237,8 @@ export class MapComponent implements OnInit {
 								datasets: [
 									{
 											data: graphic.indicators.map(element => element.value),
-											backgroundColor: graphic.indicators.map(element => element.color)
+											backgroundColor: graphic.indicators.map(element => element.color),
+											hoverBackgroundColor: graphic.indicators.map(element => element.color)
 									}
 								]
 							}
@@ -437,9 +469,13 @@ export class MapComponent implements OnInit {
 		var msfilter = '&MSFILTER=' + filters.join(' AND ')
 
 		var layername = layer.value
+
+		if(layer.timeSelected) {
+			this.year = layer.timeSelected
+		}
+
 		if (layer.timeHandler == 'layername')
 			layername = layer.timeSelected
-
 		for (let url of this.urls) {
 			result.push(url
 				+ "?layers=" + layername
@@ -463,6 +499,10 @@ export class MapComponent implements OnInit {
 	  	var source_layers = this.LayersTMS[layer.value].getSource();
 			source_layers.setUrls(this.parseUrls(layer))
 			source_layers.refresh();
+			if(layer.value == "uso_solo_mapbiomas") {
+				this.year = layer.timeSelected
+				this.updateCharts();
+			}
   }
 
   baseLayerChecked(base, e) {
@@ -484,30 +524,49 @@ export class MapComponent implements OnInit {
   	}
 	}
 
- /*  groupLayerschecked(layers, e) {
-		
-		if (e.checked) {
-			this.LayersTMS[layers].setVisible(e.checked);
-		} else {
-	    	this.LayersTMS[layers].setVisible(e.checked);
-		}
-	} */
-
 	limitsLayersChecked(layers, e) {
 		//limits
 		for(let limits of this.limitsNames) {
-			if(layers.value == limits.value && e.checked){
+			if(layers.value == limits.value) {
+				this.limitsTMS[limits.value].setVisible(e.checked);
+				limits.visible = e.checked;
+			}
+
+			/* if(layers.value == limits.value && e.checked){
 				this.limitsTMS[limits.value].setVisible(true);
   			limits.visible = true;
 			} else {
 				this.limitsTMS[limits.value].setVisible(false);
 				limits.visible = false;
-			}
+			} */
 		}
 
 	}
+
+	downloadLayers(layer,e) {
+
+		this.layerofDowloads.push({
+			'layer':layer,
+			'checked': e.checked
+		})
+
+		if(e.checked === false) {
+			for (var i=0; i <= this.layerofDowloads.length; i++) {
+				console.log(layer)
+				if(layer == this.layerofDowloads[i].layer) {
+					this.layerofDowloads.splice(i)
+				}
+			}
+		}
+
+		console.log('downloadLayers: ', this.layerofDowloads)
+	}
   
   changeVisibility(layer, e) {
+		//if(e) {
+			//this.downloadLayers(layer.selectedType, e)
+		//}
+		//console.log('changeeeee::', layer.selectedType, e)
 
     if(layer.types) {
       for(let layerType of layer.types) {
@@ -520,14 +579,13 @@ export class MapComponent implements OnInit {
 		if (e != undefined)
 			layer.visible = e.checked
 
-		this.LayersTMS[layer.selectedType].setVisible(layer.visible)
-	}
-
-	legendchecked(layer, e) {
-		layer.visible = !layer.visible
-		this.changeVisibility(layer,e);
-		console.log(layer);
-	}
+			this.LayersTMS[layer.selectedType].setVisible(layer.visible)
+		}
+		
+		legendchecked(layer, e) {
+			layer.visible = !layer.visible
+			this.changeVisibility(layer,e);
+		}
 
 	addPoints() {
 		var msfilter = "?msfilter=bioma='CERRADO'";
@@ -546,6 +604,18 @@ export class MapComponent implements OnInit {
 			this.regionSource.clear()
 			this.regionSource.addFeatures(features)
 		})
+	}
+
+	onSubmit(layer) {
+		// TODO: Use EventEmitter with form value
+		var form_download = document.querySelectorAll(".FormDown")
+		/* for(let layers of form_download) {
+
+		} */
+		/* for(let teste of form_download) {
+			console.log()
+		} */
+		console.log(typeof(form_download), form_download)
 	}
 
 	ngOnInit() {
@@ -590,5 +660,21 @@ export class MapComponent implements OnInit {
 		});
 		
 	}
+
+}
+
+@Component({
+  selector: 'uso_do_solo_metadados',
+  templateUrl: 'uso_do_solo_metadados.html',
+})
+export class UsoDoSoloMetadados {
+
+  constructor(
+    public dialogRef: MatDialogRef<UsoDoSoloMetadados>,
+    @Inject(MAT_DIALOG_DATA) public data) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
 
 }

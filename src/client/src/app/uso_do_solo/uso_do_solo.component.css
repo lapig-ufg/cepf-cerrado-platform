@@ -1,4 +1,4 @@
-html, body { margin:0; height: 100%;}
+html, body { margin:0; height: 100%; overflow: hidden;}
 
 .bckgdisabled {
 	background-color: #e9ecef !important;
@@ -72,7 +72,8 @@ hr {
   position: absolute; 
   right: 1%; 
   bottom: 1%;
-  width: 42%;
+	width: 35%;
+	max-height: 53%;
   background-color: #FFF;
   color: #666;
   text-align: left;
@@ -103,10 +104,13 @@ hr {
 	height: 86%
 }*/
 
+
+
 .graphicsBlocks {
 	display:inline-flex;
-	max-width: 50%;
-	width: 400px;
+	overflow: none !important;
+	max-width: 100%;
+	width: 520px;
   text-align: justify;
 }
 
@@ -178,6 +182,7 @@ hr {
 	width: 20px;
 	height: 20px;
 	line-height: 0px;
+	/* position: absolute; */
 }
 
 .mat-form-field-infix{
@@ -246,6 +251,11 @@ h6 {
 	/* padding-left: 0px; */
 }
 
+.icon-cepf-div {
+	max-width: 60px;
+	border-right: 1px solid black;
+}
+
 .paddingLayerLegend {
 	padding-left: 0px;
 	padding-right: 0px;
@@ -255,8 +265,16 @@ h6 {
 	padding: 10px 10px 5px 30px
 }
 
-.logos-atlas {
-	text-align: right;
+.abaDownload {
+	font-size: 0.8rem;
+}
+
+.logos-cepf {
+	text-align: center;
+}
+
+.icon-cepf {
+	height: 40px;
 }
 
 .logo-cepf {
@@ -321,6 +339,20 @@ h6 {
 
 .optionPontosTVI {
 	margin-left: 5%;
+}
+
+.orientDownloads {
+	padding-bottom: 15px;
+}
+
+.radio-group {
+	display: flex;
+	flex-direction: column;
+	margin: 15px 0;
+}
+
+.radio-button {
+	margin: 5px;
 }
 
 .fotosCampo {
@@ -487,7 +519,8 @@ h6 {
 }
 
 .iconInfo {
-	font-size: 20px;
+	font-size: 17px;
+	line-height: 18px !important;
 }
 
 @media (min-width: 1400px) and (max-width: 1700px) {

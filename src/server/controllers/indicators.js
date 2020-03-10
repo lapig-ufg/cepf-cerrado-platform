@@ -23,7 +23,7 @@ module.exports = function(app) {
 
 		var chartResult = [
 				{
-					"id": "terraclass",
+					"id": "uso_solo_terraclass",
 					"title": "Terraclas",
 					"getText": function(chart) {
 
@@ -48,7 +48,7 @@ module.exports = function(app) {
 					}
 				},
 				{
-					"id": "probio",
+					"id": "uso_solo_probio",
 					"title": "PROBIO",
 					"getText": function(chart) {
 						var label = chart['indicators'][0]["label"]
@@ -59,6 +59,29 @@ module.exports = function(app) {
 
 						var text = "De acordo com o projeto PROBIO Cerrado(referente ao ano de 2002), a cobertura do solo que mais predomina nesta região "
 						+"é a " + label + " cobrindo cerca de " + numberFormat(parseFloat(value)) + " de hectares (" + Math.round(percentual_area_ha) + "% da área total). "
+
+						return text
+					},
+					"type": 'pie',
+					"options": {
+						legend: {
+							display: false
+						}
+					}
+				},
+				{
+					"id": "uso_solo_mapbiomas",
+					"title": "MapBiomas",
+					"getText": function (chart) {
+						var label = chart['indicators'][0]["label"]
+						var value = chart['indicators'][0]["value"]
+						var areaMun = chart['indicators'][0]["area_mun"]
+						var year = chart['indicators'][0]["year"]
+
+						var percentual_area_ha = ((value * 100) / areaMun);
+
+						var text = "De acordo com o projeto MapBiomas, em "+year+" a cobertura do solo que mais predominou nesta região " +
+							"foi a " + label + " cobrindo cerca de " + numberFormat(parseFloat(value)) + " de hectares (" + Math.round(percentual_area_ha) + "% da área total). "
 
 						return text
 					},
@@ -140,7 +163,7 @@ module.exports = function(app) {
 
 					dataInfo.datasets.push({
 						label: 'Rebanho Bovino',
-						data: getValues('Rebanho Bovino', 'rebanho_bovino'),
+						data: getValues('Rebanho Bovino', 'lotacao_bovina_regions'),
 						fill: false,
 						backgroundColor: color,
 						borderColor: color
@@ -162,7 +185,7 @@ module.exports = function(app) {
 
 		var chartResult = [
 			{
-				"id": "agrosatelite",
+				"id": "agricultura_agrosatelite",
 				"title": "Agricultura Agrosatélite",
 				"getText": function(chart) {
 
@@ -185,7 +208,7 @@ module.exports = function(app) {
 
 					return text
 				},
-				"data": getDataSets('agrosatelite'),
+				"data": getDataSets('agricultura_agrosatelite'),
 				"type": 'line',
 				"options": {
 					legend: {
@@ -223,8 +246,8 @@ module.exports = function(app) {
 		for(let chart of chartResult) {
 			chart['indicators'] = request.queryResult[chart.id]
 
-			if(chart.id == 'pasture') {
-				chart['indicatorsRebanho'] = (request.queryResult['rebanho_bovino'])
+			if (chart.id == 'pasture') {
+				chart['indicatorsRebanho'] = (request.queryResult['lotacao_bovina_regions'])
 			}
 
 			chart['text'] = chart.getText(chart)

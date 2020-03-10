@@ -7,4 +7,5 @@ module.exports = function (app) {
 	app.get('/service/map/extent', dataInjector, map.extent);
 	app.get('/service/map/search', dataInjector, map.search);
 	app.get('/service/map/fieldPoints', dataInjector, map.fieldPoints);
+	app.get('/service/map/downloadSHP', map.downloadSHP);
 }
