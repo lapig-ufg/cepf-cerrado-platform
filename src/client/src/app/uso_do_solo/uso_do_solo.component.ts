@@ -268,7 +268,7 @@ export class MapComponent implements OnInit {
       target: 'map',
       layers: this.layers,
       view: new OlView({
-	      center: OlProj.fromLonLat([-52, -14]),
+	      center: OlProj.fromLonLat([-48, -13.5]),
 	      projection: this.projection,
 	      zoom: this.currentZoom,
 	    }),

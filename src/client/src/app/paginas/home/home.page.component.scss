@@ -39,3 +39,24 @@
 	width: 30%;
 	text-align: right
 }
+
+.team-block {
+	text-align: center; 
+	flex: 25%; 
+	max-width: 25%;
+	padding-top: 15px;
+}
+
+.team-img {
+	max-width: 190px !important; 
+	border-radius: 100%
+}
+
+#team h5 {
+	padding-top: 10px;
+	font-weight: bold;
+}
+
+#team a {
+	color: #585858
+}
