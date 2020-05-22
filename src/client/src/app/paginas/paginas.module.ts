@@ -6,7 +6,8 @@ import { FooterPageComponent } from './footer/footer.page.component';
 import { ProjectPageComponent } from './project/project.page.component';
 import { BiomaPageComponent } from './bioma/bioma.page.component';
 import { SalvaGuardaPageComponent } from './salva_guarda/salva_guarda.page.component';
-import { OuvidoriaPageComponent } from './ouvidoria/ouvidoria.page.component'
+import { OuvidoriaPageComponent } from './ouvidoria/ouvidoria.page.component';
+import { CovidgoiasComponent } from './covidgoias/covidgoias/covidgoias.component'
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { OuvidoriaPageComponent } from './ouvidoria/ouvidoria.page.component'
     BiomaPageComponent, 
     OuvidoriaPageComponent,
     SalvaGuardaPageComponent,
-    FooterPageComponent
+    FooterPageComponent,
+    CovidgoiasComponent
   ],
   imports: [
     CommonModule
