@@ -54,7 +54,7 @@
                             <div style="padding-left: 8%" *ngIf="layer.times">
                               <mat-form-field>
                                 <mat-label>{{layer.timeLabel}}</mat-label>
-                                  <mat-select (selectionChange)="updateSourceLayer(layer)" [(value)]="layer.timeSelected">
+                                  <mat-select (selectionChange)="updateSourceLayer(layer)" [(value)]="layer.timeSelected" [disabled]="!layer.visible">
                                     <mat-option *ngFor="let times of layer.times" [value]="times.value">
                                       {{times.Viewvalue}}
                                     </mat-option>
@@ -64,7 +64,7 @@
 														<div style="padding-left: 8%" *ngIf="layer.types">
 															<mat-form-field style="margin-right: 15%; width: 130px">
 															  <mat-label *ngFor="let type of layer.types" [hidden]="type.value != layer.selectedType">{{type.typeLabel}}</mat-label>
-															  <mat-select (selectionChange)="changeVisibility(layer)" [(value)]="layer.selectedType">
+															  <mat-select (selectionChange)="changeVisibility(layer)" [(value)]="layer.selectedType" [disabled]="!layer.visible">
 															  	<mat-option *ngFor="let type of layer.types" [value]="type.value">
 														        {{type.Viewvalue}}
 														      </mat-option>
@@ -73,13 +73,25 @@
                               <span *ngFor="let type of layer.types" [hidden]="type.value != layer.selectedType">
                                 <mat-form-field *ngIf="type.times">
                                   <mat-label>{{type.timeLabel}}</mat-label>
-                                    <mat-select (selectionChange)="updateSourceLayer(type)" [(value)]="type.timeSelected">
+                                    <mat-select (selectionChange)="updateSourceLayer(type)" [(value)]="type.timeSelected" [disabled]="!layer.visible">
                                       <mat-option *ngFor="let times of type.times" [value]="times.value">
                                         {{times.Viewvalue}}
                                       </mat-option>
                                     </mat-select>
                                 </mat-form-field>
                               </span>
+														</div>
+														<div class="buttons-download-past" *ngIf="layer.downloadSHP || layer.downloadCSV">
+															<a style="margin-left: 10px;" *ngIf="layer.downloadCSV" href="{{ linkDownload }}">
+																<button mat-raised-button class="buttons_download" href (click)="buttonDownload('csv', layer, $event)" value='buttonCSV' [disabled]="!layer.visible">
+																	<mat-icon>cloud_download</mat-icon>&nbsp;CSV
+																</button>
+															</a>
+															<a style="margin-left: 10px;" *ngIf="layer.downloadSHP"  href="{{ linkDownload }}">
+																<button mat-raised-button class="buttons_download" (click)="buttonDownload('shp', layer, $event)" [disabled]="!layer.visible">
+																	<mat-icon>cloud_download</mat-icon>&nbsp;SHP
+																</button>
+															</a>
 														</div>
 													</div>
 												</mat-expansion-panel>

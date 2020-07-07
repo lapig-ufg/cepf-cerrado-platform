@@ -309,8 +309,14 @@ h6 {
 	color: #707070 !important;
 }
 
+.buttons_download {
+	background-color: #ffd54f;
+	color: #424242 !important;
+}
+
 .buttons-download-past {
 	padding-left: 6%;
+	padding-bottom: 8%;
 }
 
 .buttons-download {

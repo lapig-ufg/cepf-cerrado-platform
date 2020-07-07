@@ -29,6 +29,7 @@ import { style } from '@angular/animations';
 import Fill from 'ol/style/Fill';
 import Circle from 'ol/style/Circle';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { saveAs } from 'file-saver';
 
 const SEARCH_URL = 'service/map/search';
 const PARAMS = new HttpParams({
@@ -108,6 +109,10 @@ export class MapComponent implements OnInit {
 	layerCheckedDow: any;
 
 	layerofDowloads = [];
+	linkDownload: any;
+	loadingSHP: boolean;
+  loadingCSV: boolean;
+
 	
 
 	constructor(private http: HttpClient, private _service: SearchService, public dialog: MatDialog) { 
@@ -116,7 +121,7 @@ export class MapComponent implements OnInit {
 		this.layers = [];
 		
 		this.defaultRegion = {
-			type: 'biome',
+			type: 'bioma',
 			text: 'CERRADO',
 			value: 'CERRADO'
 		}
@@ -141,6 +146,8 @@ export class MapComponent implements OnInit {
 		}
 		
 		this.updateCharts();
+		this.loadingSHP = false;
+    this.loadingCSV = false;
 	}
 
 	search = (text$: Observable<string>) =>
@@ -543,24 +550,24 @@ export class MapComponent implements OnInit {
 
 	}
 
-	downloadLayers(layer,e) {
+	// downloadLayers(layer,e) {
 
-		this.layerofDowloads.push({
-			'layer':layer,
-			'checked': e.checked
-		})
+	// 	this.layerofDowloads.push({
+	// 		'layer':layer,
+	// 		'checked': e.checked
+	// 	})
 
-		if(e.checked === false) {
-			for (var i=0; i <= this.layerofDowloads.length; i++) {
-				console.log(layer)
-				if(layer == this.layerofDowloads[i].layer) {
-					this.layerofDowloads.splice(i)
-				}
-			}
-		}
+	// 	if(e.checked === false) {
+	// 		for (var i=0; i <= this.layerofDowloads.length; i++) {
+	// 			console.log(layer)
+	// 			if(layer == this.layerofDowloads[i].layer) {
+	// 				this.layerofDowloads.splice(i)
+	// 			}
+	// 		}
+	// 	}
 
-		console.log('downloadLayers: ', this.layerofDowloads)
-	}
+	// 	console.log('downloadLayers: ', this.layerofDowloads)
+	// }
   
   changeVisibility(layer, e) {
 		//if(e) {
@@ -606,17 +613,103 @@ export class MapComponent implements OnInit {
 		})
 	}
 
-	onSubmit(layer) {
+	buttonDownload(tipo, layer, e) {
+		var yearDownload = '';
+		var columnsCSV = '';
+		var regionType = this.selectRegion.type;
+		var filterRegion;
+		if(layer.types) {
+			for(let layerSelected of layer.types) {
+				if (layerSelected.value == layer.selectedType){
+					if(layerSelected.timeSelected)
+						yearDownload = '&'+layerSelected.timeSelected;
+						columnsCSV = '&columnsCSV='+layerSelected.columnsCSV;
+				}
+			}
+		} else if (layer.timeSelected) {
+			yearDownload = '&'+layer.timeSelected;
+			columnsCSV = '&columnsCSV='+layer.columnsCSV;
+		}
+
+		if(this.msFilterRegion == "") {
+			filterRegion = this.regionFilterDefault
+		} else {
+			filterRegion = this.msFilterRegion
+		}
+
+		console.log('region',this.selectRegion)
+
+		if (this.selectRegion.type == 'estado')
+			regionType = "uf"
+
+		if (tipo == 'shp') {
+			this.linkDownload = "/service/map/downloadSHP?layer="+layer.selectedType+yearDownload+'&regionType='+regionType+'&region='+this.selectRegion.value;
+		} else {
+			console.log("/service/map/downloadCSV?layer="+layer.selectedType+yearDownload+'&filterRegion='+filterRegion+columnsCSV+'&regionName='+this.selectRegion.value)
+			this.linkDownload = "/service/map/downloadCSV?layer="+layer.selectedType+yearDownload+'&filterRegion='+filterRegion+columnsCSV+'&regionName='+this.selectRegion.value;
+		}
+	}
+
+  // downloadCSV(layer) {
+
+	// 	var yearDownload = '';
+	// 	var columnsCSV = '';
+	// 	var filterRegion;
+	// 	if(layer.types) {
+	// 		for(let layerSelected of layer.types) {
+	// 			if (layerSelected.value == layer.selectedType){
+	// 				if(layerSelected.timeSelected)
+	// 					yearDownload = layerSelected.timeSelected;
+	// 					columnsCSV = layerSelected.columnsCSV;
+	// 			}
+	// 		}
+	// 	} else if (layer.timeSelected) {
+	// 		yearDownload = layer.timeSelected;
+	// 		columnsCSV = layer.columnsCSV;
+	// 	}
+
+	// 	if(this.msFilterRegion == "") {
+	// 		filterRegion = this.regionFilterDefault
+	// 	} else {
+	// 		filterRegion = this.msFilterRegion
+	// 	}
+
+  //   let parameters = {
+  //     "layer": layer.selectedType,
+  //     "filterRegion": filterRegion,
+  //     "year": yearDownload,
+	// 		"columnsCSV": columnsCSV
+  //   };
+
+  //   this.http.post("/service/map/downloadCSV", parameters, {responseType: 'blob'})
+  //       .toPromise()
+  //       .then(blob => {
+  //         saveAs(blob, parameters.layer+'_'+ parameters.year + '.csv');
+  //         this.loadingCSV = false;
+  //       }).catch(err => this.loadingCSV = false);
+  // }
+
+  // buttonDownload(tipo, layer, e) {
+  //   if (tipo == 'csv') {
+  //     this.loadingCSV = true;
+  //     this.downloadCSV(layer);
+  //   } else {
+  //     this.loadingSHP = true;
+  //     this.downloadSHP(layer);
+  //   }
+  // }
+
+	//onSubmit(layer) {
 		// TODO: Use EventEmitter with form value
-		var form_download = document.querySelectorAll(".FormDown")
+		//var form_download = document.querySelectorAll(".FormDown")
 		/* for(let layers of form_download) {
 
 		} */
 		/* for(let teste of form_download) {
 			console.log()
 		} */
-		console.log(typeof(form_download), form_download)
-	}
+		//console.log(typeof(form_download), form_download)
+	//}
 
 	ngOnInit() {
 

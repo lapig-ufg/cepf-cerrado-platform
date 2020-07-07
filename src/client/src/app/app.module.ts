@@ -21,6 +21,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -51,6 +52,7 @@ registerLocaleData(localePt);
     MatIconModule,
     MatRadioModule,
     MatDialogModule,
+    MatProgressBarModule,
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,

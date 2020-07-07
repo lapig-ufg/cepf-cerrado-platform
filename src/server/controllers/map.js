@@ -1,4 +1,6 @@
-var fs = require('fs');
+var fs = require('fs')
+    , archiver = require('archiver')
+    , json2csv = require('json2csv').parse;
 
 module.exports = function(app) {
   var Controller = {}
@@ -43,7 +45,7 @@ module.exports = function(app) {
   Controller.fieldPoints = function (request, response) {
 
         var result = []
-        var diretorioFotos = config.fotoDir;
+        // var diretorioFotos = config.fotoDir;
         var queryResult = request.queryResult
         
         queryResult.forEach(function (row) {
@@ -53,7 +55,7 @@ module.exports = function(app) {
             'geometry': JSON.parse(row['geojson']),
             'properties': {
               'id': row['id'],
-              'foto': fs.readdirSync(diretorioFotos + row['id']),
+              // 'foto': fs.readdirSync(diretorioFotos + row['id']),
               'cobertura': row['cobertura'],
               'obs': row['obs'],
               'data': row['data'],
@@ -92,6 +94,8 @@ module.exports = function(app) {
 							"label": "Uso e Cobertura do Solo",
 							"visible": true,
               "selectedType": 'uso_solo_mapbiomas',
+              "downloadSHP": false,
+              "downloadCSV": true,
               "types": [
 								{
                   "value": "uso_solo_mapbiomas", 
@@ -153,7 +157,8 @@ module.exports = function(app) {
                     "cod_caracter": "Latin 1.",
                     "fonte": "Laboratório de Processamento de Imagens e Geoprocessamento – Lapig (geração do dado). Projeto Spatial metrics and baselines of degradation patterns and provision of ecosystem services by pastures in Brazil. (viabilizador).",
                     "contato": "Fernanda Stefani - fer.stefani.souza@gmail.com<br /> Lana Teixeira - lanamarast @gmail.com"
-                  }
+                  },
+                  "columnsCSV": "area_ha, classe, year"
                 },
                 {
                   "value": "uso_solo_terraclass", 
@@ -176,7 +181,8 @@ module.exports = function(app) {
                     "fonte": "UFG, IBAMA CSR, INPE OBT e CRA, EMBRAPA MONITORAMENTO POR SATÉLITE, EMBRAPA INFORMÁTICA AGROPECUÁRIA, UFU. Programa conduzido pelo Ministério de Meio Ambiente (MMA) e conta com recursos financeiros oriundos do Global Environment Facility (GEF) por meio do Banco Mundial e do Fundo Brasileiro para a Biodiversidade (Funbio). Para acessar a publicação completa do projeto, clique aqui!",
                     "link_fonte": "https://www.mma.gov.br/images/arquivo/80049/Cerrado/publicacoes/Livro%20EMBRAPA-WEB-1-TerraClass%20Cerrado.pdf",
                     "contato": "Fernanda Stefani - fer.stefani.souza@gmail.com <br /> Lana Teixeira - lanamarast @gmail.com"
-                  }
+                  },
+                  "columnsCSV": "area_ha, classe"
                 },
                 {
                   "value": "uso_solo_probio", 
@@ -198,7 +204,8 @@ module.exports = function(app) {
                     "cod_caracter": "",
                     "fonte": "",
                     "contato": "lapig.cepf@gmail.com"
-                  }
+                  },
+                  "columnsCSV": "area_ha, classe"
                 }
               ]
 						}
@@ -240,13 +247,18 @@ module.exports = function(app) {
                 "cod_caracter": "",
                 "fonte": "",
                 "contato": "lapig.cepf@gmail.com"
-              }
+              },
+              "columnsCSV": "area_ha, classe, year",
+              "downloadSHP": true,
+              "downloadCSV": true
 						},
 						{
 							"id": "mapa_pastagem",
 							"label": "Pastagem - Lapig",
 							"visible": false,
-              "selectedType": 'pasture', 
+              "selectedType": 'pasture',
+              "downloadSHP": true,
+              "downloadCSV": true,
 							"types": [
 								{
                   "value": "pasture", 
@@ -309,7 +321,8 @@ module.exports = function(app) {
                     "cod_caracter": "Latin 1.",
                     "fonte": "Laboratório de Processamento de Imagens e Geoprocessamento - Lapig (geração do dado). Projeto de Mapeamento Anual da Cobertura e Uso do Solo do Brasil - MapBiomas (viabilizador). ",
                     "contato": "lapig.cepf@gmail.com"
-                  }
+                  },
+                  "columnsCSV": "area_ha, year"
                  },
 								 {
                    "value": "pasture_degraded", 
@@ -332,7 +345,8 @@ module.exports = function(app) {
                      "cod_caracter": "Latin 1",
                      "fonte": "Laboratório de Processamento de Imagens e Geoprocessamento - Lapig",
                      "contato": "lapig.cepf@gmail.com"
-                   }
+                   },
+                   "columnsCSV": "area_ha"
                  }
 							]
 						},
@@ -341,6 +355,8 @@ module.exports = function(app) {
 							"label": "Pecuária Censitária - IBGE",
 							"visible": false,
               "selectedType": 'lotacao_bovina_regions',
+              "downloadSHP": false,
+              "downloadCSV": true,
 							"types": [
                 {
                   "value": "lotacao_bovina_regions", 
@@ -401,7 +417,8 @@ module.exports = function(app) {
                     "cod_caracter": "Latin 1.",
                     "fonte": "Laboratório de Processamento de Imagens e Geoprocessamento - Lapig (geração do dado).",
                     "contato": "lapig.cepf@gmail.com"
-                  }
+                  },
+                  "columnsCSV": "n_kbcs, ua, year"
                 },
                 {
                   "value": "producao_leite", 
@@ -462,7 +479,8 @@ module.exports = function(app) {
                     "cod_caracter": "Latin 1",
                     "fonte": "SIDRA / IBGE",
                     "contato": "lapig.cepf@gmail.com"
-                  }
+                  },
+                  "columnsCSV": "prod_leite, year"
                 }
 							]
             },
@@ -471,6 +489,8 @@ module.exports = function(app) {
 							"label": "Agricultura Censitária - IBGE",
 							"visible": false,
               "selectedType": 'area_plantada_algodao_censo',
+              "downloadSHP": false,
+              "downloadCSV": true,
 							"types": [
                 {
                   "value": "area_plantada_algodao_censo", 
@@ -516,7 +536,8 @@ module.exports = function(app) {
                     "cod_caracter": "Latin 1",
                     "fonte": "SIDRA / IBGE",
                     "contato": "lapig.cepf@gmail.com"
-                  }
+                  },
+                  "columnsCSV": "area_ha, year"
                 },
                 {
                   "value": "area_plantada_cana_censo", 
@@ -562,7 +583,8 @@ module.exports = function(app) {
                     "cod_caracter": "Latin 1",
                     "fonte": "SIDRA / IBGE",
                     "contato": "lapig.cepf@gmail.com"
-                  }
+                  },
+                  "columnsCSV": "area_ha, year"
                 },
                 {
                   "value": "area_plantada_milho_censo", 
@@ -608,7 +630,8 @@ module.exports = function(app) {
                     "cod_caracter": "Latin 1",
                     "fonte": "SIDRA / IBGE",
                     "contato": "lapig.cepf@gmail.com"
-                  }
+                  },
+                  "columnsCSV": "area_ha, year"
                 },
                 {
                   "value": "area_plantada_soja_censo", 
@@ -654,7 +677,8 @@ module.exports = function(app) {
                     "cod_caracter": "Latin 1",
                     "fonte": "SIDRA / IBGE",
                     "contato": "lapig.cepf@gmail.com"
-                  }
+                  },
+                  "columnsCSV": "area_ha, year"
                 },
                 {
                   "value": "quantidade_produzida_carvao_censo",
@@ -700,7 +724,8 @@ module.exports = function(app) {
                     "cod_caracter": "Latin 1",
                     "fonte": "SIDRA / IBGE",
                     "contato": "lapig.cepf@gmail.com"
-                  }
+                  },
+                  "columnsCSV": "qto_produz, year"
                 },
                 {
                   "value": "quantidade_produzida_lenha_censo",
@@ -746,7 +771,8 @@ module.exports = function(app) {
                     "cod_caracter": "Latin 1",
                     "fonte": "SIDRA / IBGE",
                     "contato": "lapig.cepf@gmail.com"
-                  }
+                  },
+                  "columnsCSV": "qto_produz, year"
                 },
                 {
                   "value": "quantidade_produzida_madeira_censo",
@@ -792,7 +818,8 @@ module.exports = function(app) {
                     "cod_caracter": "Latin 1",
                     "fonte": "SIDRA / IBGE",
                     "contato": "lapig.cepf@gmail.com"
-                  }
+                  },
+                  "columnsCSV": "qto_produz, year"
                 }
 							]
 						}
@@ -808,7 +835,9 @@ module.exports = function(app) {
 							"id": "mapa_desmatamento",
 							"label": "Áreas Desmatamento",
 							"visible": false,
-              "selectedType": 'desmatamento_prodes', 
+              "selectedType": 'desmatamento_prodes',
+              "downloadSHP": false,
+              "downloadCSV": true,
 							"types": [
 								{
                   "value": "desmatamento_prodes", 
@@ -846,7 +875,8 @@ module.exports = function(app) {
                     "cod_caracter": "Latin 1.",
                     "fonte": "Programa conduzido pelo Ministério de Meio Ambiente (MMA) e o Ministério da Ciência, Tecnologia, Inovação e Comunicações (MCTIC) contando com recursos financeiros oriundos do Banco Mundial (World Bank – IBRD-IDA), além das instituições alemães KfW e GIZ.",
                     "contato": "lapig.cepf@gmail.com"
-                  }
+                  },
+                  "columnsCSV": "area_km2, view_date, year"
                  },
                  {
                   "value": "desmatamento_siad", 
@@ -888,7 +918,8 @@ module.exports = function(app) {
                     "cod_caracter": "",
                     "fonte": "",
                     "contato": "lapig.cepf@gmail.com"
-                  }
+                  },
+                  "columnsCSV": "area_km2, year"
                  },
                  {
                   "value": "desmatamento_glad", 
@@ -933,7 +964,8 @@ module.exports = function(app) {
                     "cod_caracter": "",
                     "fonte": "",
                     "contato": "lapig.cepf@gmail.com"
-                  }
+                  },
+                  "columnsCSV": "area_km2, year"
                  }
 							]
             },
@@ -941,7 +973,9 @@ module.exports = function(app) {
 							"id": "mapa_alertas_desmatamento",
 							"label": "Alertas Desmatamento",
 							"visible": false,
-              "selectedType": 'alertas_desmatamento_deter', 
+              "selectedType": 'alertas_desmatamento_deter',
+              "downloadSHP": false,
+              "downloadCSV": true, 
 							"types": [
 								{
                   "value": "alertas_desmatamento_deter", 
@@ -963,7 +997,8 @@ module.exports = function(app) {
                     "cod_caracter": "",
                     "fonte": "",
                     "contato": "lapig.cepf@gmail.com"
-                  }
+                  },
+                  "columnsCSV": "area_km2, view_date, created_da, year"
                 }
 							]
             },
@@ -971,7 +1006,9 @@ module.exports = function(app) {
 							"id": "mapa_queimadas",
 							"label": "Áreas de Queimadas",
 							"visible": false,
-              "selectedType": 'queimadas_lapig', 
+              "selectedType": 'queimadas_lapig',
+              "downloadSHP": false,
+              "downloadCSV": true,
 							"types": [
                  {
                   "value": "queimadas_lapig", 
@@ -1017,7 +1054,8 @@ module.exports = function(app) {
                     "cod_caracter": "Latin 1.",
                     "fonte": "LAPIG / UFG.",
                     "contato": "lapig.cepf@gmail.com"
-                  }
+                  },
+                  "columnsCSV": "area_km2, burndate, year"
                  }
 							]
             }
@@ -1032,7 +1070,9 @@ module.exports = function(app) {
 							"id": "pontos_coletados_campo",
 							"label": "Pontos Coletados em Campo",
 							"visible": false,
-              "selectedType": 'pontos_campo_sem_parada', 
+              "selectedType": 'pontos_campo_sem_parada',
+              "downloadSHP": false,
+              "downloadCSV": true, 
 							"types": [
 								{
                   "value": "pontos_campo_parada", 
@@ -1054,7 +1094,8 @@ module.exports = function(app) {
                     "cod_caracter": "Latin 1.",
                     "fonte": "Laboratório de Processamento de Imagens e Geoprocessamento – Lapig (geração do dado). Projeto Spatial metrics and baselines of degradation patterns and provision of ecosystem services by pastures in Brazil. (viabilizador).",
                     "contato": "lapig.cepf@gmail.com"
-                  }
+                  },
+                  "columnsCSV": "cobertura, data, periodo, horario, latitude, longitude, altura, homoge, invasoras, gado, qtd_cupins, forrageira, cultivo, solo_exp, obs, condicao"
                   /* "timeLabel": "Ano",
                   "timeSelected": "year=2018",
                   "timeHandler": "msfilter",
@@ -1092,7 +1133,8 @@ module.exports = function(app) {
                     "cod_caracter": "Latin 1.",
                     "fonte": "Laboratório de Processamento de Imagens e Geoprocessamento – Lapig (geração do dado). Projeto Spatial metrics and baselines of degradation patterns and provision of ecosystem services by pastures in Brazil. (viabilizador).",
                     "contato": "lapig.cepf@gmail.com"
-                  }
+                  },
+                  "columnsCSV": "cobertura, data, periodo, horario, latitude, longitude, altura, homoge, invasoras, gado, qtd_cupins, forrageira, cultivo, solo_exp, obs, condicao"
                   /* "timeLabel": "Ano",
                   "timeSelected": "year=2017",
                   "timeHandler": "msfilter",
@@ -1120,7 +1162,9 @@ module.exports = function(app) {
 							"id": "pontos_inspecionados_visualmente",
 							"label": "Pontos Inpecionados Visualmente",
 							"visible": false,
-              "selectedType": 'pontos_tvi_treinamento', 
+              "selectedType": 'pontos_tvi_treinamento',
+              "downloadSHP": false,
+              "downloadCSV": true,
 							"types": [
 								{
                   "value": "pontos_tvi_treinamento", 
@@ -1142,7 +1186,8 @@ module.exports = function(app) {
                     "cod_caracter": "Latin 1.",
                     "fonte": "Laboratório de Processamento de Imagens e Geoprocessamento – Lapig (geração do dado). Projeto Spatial metrics and baselines of degradation patterns and provision of ecosystem services by pastures in Brazil. (viabilizador).",
                     "contato": "lapig.cepf@gmail.com"
-                  }
+                  },
+                  "columnsCSV": "index, lon, lat, cons_1985, cons_1986, cons_1987, cons_1988, cons_1989, cons_1990, cons_1991, cons_1992, cons_1993, cons_1994, cons_1995, cons_1996, cons_1997, cons_1998, cons_1999, cons_2000, cons_2001, cons_2002, cons_2003, cons_2004, cons_2005, cons_2006, cons_2007, cons_2008, cons_2009, cons_2010, cons_2011, cons_2012, cons_2013, cons_2014, cons_2015, cons_2016, cons_2017, pointedite"
                 },
                 {
                   "value": "pontos_tvi_validacao", 
@@ -1164,7 +1209,8 @@ module.exports = function(app) {
                     "cod_caracter": "Latin 1.",
                     "fonte": "Laboratório de Processamento de Imagens e Geoprocessamento – Lapig (geração do dado). Projeto Spatial metrics and baselines of degradation patterns and provision of ecosystem services by pastures in Brazil. (viabilizador).",
                     "contato": "lapig.cepf@gmail.com"
-                  }
+                  },
+                  "columnsCSV": "index, lon, lat, cons_1985, cons_1986, cons_1987, cons_1988, cons_1989, cons_1990, cons_1991, cons_1992, cons_1993, cons_1994, cons_1995, cons_1996, cons_1997, cons_1998, cons_1999, cons_2000, cons_2001, cons_2002, cons_2003, cons_2004, cons_2005, cons_2006, cons_2007, cons_2008, cons_2009, cons_2010, cons_2011, cons_2012, cons_2013, cons_2014, cons_2015, cons_2016, cons_2017, pointedite"
                 }
 							]
             }
@@ -1303,12 +1349,72 @@ module.exports = function(app) {
 		response.end()
 
   }
+
+  Controller.downloadCSV = function(request, response) {
+    var file = request.param('layer', '') +'_'+request.param('regionName', '')+'_'+request.param('year', '')+'.csv';
+    var queryResult = request.queryResult
+    var result = []
+
+    queryResult.forEach(function (row) {
+      if (row) {
+				result.push(row);
+			}
+    })
+
+    var csv = json2csv(result);
+
+    fs.writeFile(file, csv, function(err) {
+      response.setHeader('Content-disposition', 'attachment; filename='+file);
+      response.set('Content-Type', 'text/csv');
+      response.send(csv);
+      response.end();
+    });
+	}
   
   Controller.downloadSHP = function (request, response) {
-
     
-      response.send("Fernanda Teste");
-      response.end();
+    var pathFile;
+		var layer = request.param('layer', '');
+		var regionType = request.param('regionType', '');
+		var region = request.param('region', '');
+    var year = request.param('year', '');
+		var fileParam = layer;
+
+    if(year != '') {
+      fileParam = layer+'_'+year;
+    }
+		
+		var diretorio = config.downloadDir+layer+'/'+regionType+'/'+region+'/';
+    var	pathFile = diretorio+fileParam;
+    
+    if(fileParam.indexOf("../") == 0){
+			res.send('Arquivo inválido!')
+			res.end();
+		} else if(fs.existsSync(pathFile+'.shp')) {
+			var nameFile = regionType+'_'+region+'_'+fileParam
+			response.setHeader('Content-disposition', 'attachment; filename='+nameFile+'.zip');
+			response.setHeader('Content-type', 'application/zip')
+
+			var zipFile = archiver('zip');
+			zipFile.pipe(response);
+
+			fs.readdir(diretorio, (err, files) => {
+			  files.forEach(fileresult => {
+
+			  	if(fileresult.indexOf(fileParam) == 0){
+			  		var pathFile = diretorio+fileresult;
+						zipFile.file(pathFile, {name:fileresult});
+			  	}
+
+			  });
+
+				zipFile.finalize();
+			})
+
+		}else {
+			response.send("Arquivo indisponível");
+  		response.end();
+		}
   }
 
 	return Controller;

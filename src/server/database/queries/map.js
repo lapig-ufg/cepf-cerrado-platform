@@ -4,7 +4,7 @@ module.exports = function(app) {
 	var Query = {};
 
 	Query.defaultParams = {
-		'type': 'biome',
+		'type': 'bioma',
 		'region': 'Cerrado'
 	}
 
@@ -27,6 +27,45 @@ module.exports = function(app) {
 
 		return "SELECT ST_AsGeoJSON(geom) geojson," + colums + " FROM pontos_campo_parada " + condition;
 	}
+
+	Query.downloadCSV = function(params) {
+		var layer = params['layer'];
+    var filterRegion = params['filterRegion'];
+		var year = params['year'];
+		var columnsCSV= "cd_geouf,cd_geocmu,regiao,uf,estado,municipio,bioma,arcodesmat,matopiba,mun_ha,pol_ha,pct_areapo, "+params['columnsCSV']
+    var filter = filterRegion;
+
+    if(year != undefined && year != '') 
+      filter = filterRegion +' AND year='+ year;
+	
+		if (layer == 'pontos_campo_parada' || layer=='pontos_campo_sem_parada' || layer=='pontos_tvi_treinamento' || layer=='pontos_tvi_validacao'){
+			columnsCSV = '*'
+			filter = filterRegion;
+		}
+
+		return "SELECT "+columnsCSV+" FROM "+layer+" WHERE "+filter;
+		
+	}
+
+	// Query.downloadCSV = function(params) {
+	// 	var layer = params.layer;
+  //   var filterRegion = params.filterRegion;
+	// 	var year = params.year;
+	// 	var columnsCSV= "cd_geouf,cd_geocmu,regiao,uf,estado,municipio,bioma,arcodesmat,matopiba,mun_ha,pol_ha,pct_areapo, "+params.columnsCSV;
+  //   var filter = filterRegion;
+	// 	var sqlquery;
+	// 	console.log('paramsss::',params)
+
+  //   if(year != undefined && year != '') 
+  //     filter = filterRegion +' AND '+ year;
+	
+	// 	if (layer == 'pontos_campo_parada' || layer=='pontos_campo_sem_parada' || layer=='pontos_tvi_treinamento' || layer=='pontos_tvi_validacao'){
+	// 		columnsCSV = '*'
+	// 		filter = filterRegion;
+	// 	}
+	// 	console.log("SELECT "+columnsCSV+" FROM "+layer+" WHERE "+filter)
+	// 	return "SELECT "+columnsCSV+" FROM "+layer+" WHERE "+filter;
+	// }
 
 	return Query;
 
