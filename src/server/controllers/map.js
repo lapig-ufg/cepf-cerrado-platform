@@ -325,14 +325,14 @@ module.exports = function(app) {
                   "columnsCSV": "area_ha, year"
                  },
 								 {
-                   "value": "pasture_degraded", 
-                   "Viewvalue": "Degradada",
+                   "value": "classes_degradacao_pastagem", 
+                   "Viewvalue": "Classes degradação",
                    "typeLabel": "Tipo", 
                    "visible": false, 
                    "opacity": 1,
                    "regionFilter": true,
                    "order": 10,
-                   "layerfilter": "category='1'",
+                   //"layerfilter": "category='1'",
                    "metadados": {
                      "title": "Indícios de degradação das pastagens brasileiras",
                      "description": "Mapeamento da qualidade de pastagens, gerado pelo Lapig, onde foram analisados os dados de pastagens pixel a pixel para o período de 2011 a 2016, por meio de análise de tendências em anomalias acumuladas. A análise foi baseado em dados satelitários (NDVI/MOD13Q1), e avalia perdas ou ganho em produtividade. As áreas com tendência significativas de perda em produtividade (p < 0.05) foram consideradas áreas com indícios de degradação.",
@@ -1071,7 +1071,7 @@ module.exports = function(app) {
 							"label": "Pontos Coletados em Campo",
 							"visible": false,
               "selectedType": 'pontos_campo_sem_parada',
-              "downloadSHP": false,
+              "downloadSHP": true,
               "downloadCSV": true, 
 							"types": [
 								{
@@ -1163,7 +1163,7 @@ module.exports = function(app) {
 							"label": "Pontos Inpecionados Visualmente",
 							"visible": false,
               "selectedType": 'pontos_tvi_treinamento',
-              "downloadSHP": false,
+              "downloadSHP": true,
               "downloadCSV": true,
 							"types": [
 								{
