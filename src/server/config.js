@@ -5,7 +5,7 @@ module.exports = function(app) {
 	var config = {
 		"appRoot": appRoot, 
 		"clientDir": appRoot + "/../client/dist/lapig-cepf-cerrado/",
-		"downloadDir": "/Users/ferstefani/Documents/download_atlas/",
+		"downloadDir": "/data/dados-lapig/download_atlas/",
 		"langDir": appRoot + "/lang",
 		"logDir": appRoot + "/log/",
 		// "fotoDir": "/data/dados-lapig/fotos_campo/",

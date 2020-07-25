@@ -130,7 +130,8 @@
             <img class="img-fluid-plataforms" src="assets/img/plataforms/desmatamento.jpg" alt="">
           </div>
           <div class="services-content">
-            <h3><a href="http://cerradodpat.org/" target="_blank">Desmatamento</a></h3>
+            <!-- @TODO REMOVE <h3><a href="http://cerradodpat.org/" target="_blank">Desmatamento</a></h3> -->
+            <h3><a (click)="openDialog()" >Desmatamento</a></h3>
             <p>Uma radiografia dos desmatamentos praticados no bioma Cerrado, com dados providos pelo INPE e outras
               instituições, e validados pelo DPAT/LAPIG.</p>
           </div>
@@ -162,7 +163,10 @@
             <img class="img-fluid-plataforms" src="assets/img/plataforms/uso_solo.png" alt="">
           </div>
           <div class="services-content">
-            <h3><a href="/#/usodosolo" target="_blank">Uso do Solo</a></h3>
+            <h3>
+              <a (click)="openDialog()">Uso do Solo</a>
+            </h3>
+            <!-- @TODO REMOVE  <h3><a href="/#/usodosolo" target="_blank">Uso do Solo</a></h3> -->
             <p>Distribuição, quantificação, estatísticas e outras informações referentes ao uso e ocupação do solo do
               bioma Cerrado.</p>
           </div>
@@ -247,11 +251,11 @@
           <!-- <div class="icon">
             <i class="lni-cog"></i>
           </div> -->
-          <a href="/#/usodosolo" target="_blank">
+          <!-- @TODO REMOVE <a href="/#/usodosolo" target="_blank"> -->
             <div>
               <img class="img-fluid-graphics" src="assets/img/graphics/grafico2.png" alt="">
             </div>
-          </a>
+          <!-- </a> -->
           <div class="services-content">
             <!-- <h3><a href="#">Biodiversidade</a></h3> -->
             <p style="text-align: justify;">De acordo com mapeamento do Lapig, a área de pastagem no bioma Cerrado, em
@@ -266,11 +270,11 @@
           <!-- <div class="icon">
             <i class="lni-stats-up"></i>
           </div> -->
-          <a href="/#/usodosolo" target="_blank">
+          <!-- @TODO REMOVE <a href="/#/usodosolo" target="_blank"> -->
             <div>
               <img class="img-fluid-graphics" src="assets/img/graphics/grafico1.png" alt="">
             </div>
-          </a>
+          <!-- </a> -->
           <div class="services-content">
             <!-- <h3><a href="#">Social</a></h3> -->
             <p style="text-align: justify;">De acordo com o projeto Terra Class Cerrado (referente ao ano de 2013), o
@@ -283,11 +287,11 @@
       <!-- Services item -->
       <div class="col-md-6 col-lg-4 col-xs-12">
         <div class="services-item wow fadeInRight" data-wow-delay="0.9s">
-          <a href="http://cerradodpat.org/" target="_blank">
+          <!-- @TODO REMOVE <a href="http://cerradodpat.org/" target="_blank"> -->
             <div>
               <img class="img-fluid-graphics" src="assets/img/graphics/grafico3.png" alt="">
             </div>
-          </a>
+          <!-- </a> -->
           <div class="services-content">
             <p style="text-align: justify;">Áreas desmatadas nos estados do bioma Cerrado, entre os anos de 2017/2018.
             </p>
@@ -370,6 +374,25 @@
     <div class="row">
       <div class="col-lg-6 col-md-12 col-xs-12">
         <!-- Team Item Starts -->
+        <div class="team-item wow fadeInRight" data-wow-delay="0.8s">
+          <div class="team-img">
+            <img class="img-fluid" src="assets/img/news/news4.4.4.jpeg" alt="">
+          </div>
+          <div class="contetn">
+            <div class="info-text">
+              <h3><a
+                  href="https://www.lapig.iesa.ufg.br/lapig/index.php/imprensa/noticias/929-aviso-as-plataformas-do-lapig-estao-indisponiveis"
+                  target="_blank">AVISO: As Plataformas do Lapig estão indisponíveis</a></h3>
+              <p>Fonte: Lapig - UFG</p>
+            </div>
+            <p>O Laboratório de Processamento de Imagens e Geoprocessamento (Lapig), da Universidade Federal de Goiás
+              (UFG), informa que as plataformas: Lapig Maps, Plataforma de Conhecimento do Cerrado, Cerrado-DPAT...</p>
+          </div>
+        </div>
+        <!-- Team Item Ends -->
+      </div>
+      <div class="col-lg-6 col-md-12 col-xs-12">
+        <!-- Team Item Starts -->
         <div class="team-item wow fadeInRight" data-wow-delay="0.2s">
           <div class="team-img">
             <img class="img-fluid" src="assets/img/plataforms/covidgoias.jpg" alt="">
@@ -383,7 +406,7 @@
             </div>
             <p>Neste momento de crise mundial da COVID-19, uma equipe multidisciplinar da Universidade Federal de Goiás (UFG), 
               vinculada ao Laboratório de Processamento de Imagens e Geoprocessamento, 
-              desenvolveu uma plataforma web que permite o monitoramento desta pandemia no Estado de Goiás, em nível municipal...</p>
+              desenvolveu uma plataforma web que permite o monitoramento desta pandemia...</p>
           </div>
         </div>
         <!-- Team Item Ends -->
@@ -392,18 +415,19 @@
         <!-- Team Item Starts -->
         <div class="team-item wow fadeInRight" data-wow-delay="0.4s">
           <div class="team-img">
-            <img class="img-fluid" src="assets/img/news/news2.2.2.jpeg" alt="">
+            <img class="img-fluid" src="assets/img/news/news2.2.2.jpg" alt="">
           </div>
           <div class="contetn">
             <div class="info-text">
-              <h3><a href="http://cepfcerrado.iieb.org.br/impactos-agenda-2030/odss-cerrado/"
-                  target="_blank">Objetivos de Desenvolvimento Sustentável & Cerrado</a></h3>
+              <h3><a
+                  href="http://cepfcerrado.iieb.org.br/agricultores-familiares-do-df-recebem-capacitacao-para-coleta-de-sementes-nativas-do-cerrado/"
+                  target="_blank">Agricultores familiares do DF recebem capacitação para a coleta de sementes nativas do
+                  Cerrado</a></h3>
               <p>Fonte: IEB</p>
             </div>
-            <p>Entre os dias 25 a 27 de Setembro de 2015, em Nova York, 
-              chefes de Estado e Governo e altos representantes ratificaram a Agenda 2030 para o Desenvolvimento Sustentável, 
-              um plano de ações global visando alcançar a paz mundial, o acesso universal à saúde e educação, 
-              habitats humanos sustentáveis e um mundo livre da fome, miséria e pobreza...</p>
+            <p>Nos meses de maio e junho a Rede Bartô concluiu mais duas etapas do Componente de “Regularização
+              ambiental do Assentamento Rural Roseli Nunes” – parte do projeto Agroflorestas Prestadoras de Serviços
+              Ecossistêmicos...</p>
           </div>
         </div>
         <!-- Team Item Ends -->
@@ -412,36 +436,18 @@
         <!-- Team Item Starts -->
         <div class="team-item wow fadeInRight" data-wow-delay="0.6s">
           <div class="team-img">
-            <img class="img-fluid" src="assets/img/news/news3.3.3.png" alt="">
+            <img class="img-fluid" src="assets/img/news/news3.3.3.jpg" alt="">
           </div>
           <div class="contetn">
             <div class="info-text">
-              <h3><a href="http://cepfcerrado.iieb.org.br/o-desconhecido-cerrado-e-sua-colossal-relevancia-biologica-comentario/"
-                  target="_blank">O desconhecido Cerrado e sua colossal relevância biológica</a></h3>
+              <h3><a
+                  href="http://cepfcerrado.iieb.org.br/mosaico-sertao-veredas-peruacu-tem-novo-plano-de-desenvolvimento-territorial-de-base-conservacionista/"
+                  target="_blank">Mosaico Sertão Veredas-Peruaçu tem novo Plano de Desenvolvimento Territorial de Base
+                  Conservacionista</a></h3>
               <p>Fonte: IEB</p>
             </div>
-            <p>Os incêndios que assolaram a Amazônia no ano passado botaram o Brasil nas manchetes do mundo todo, e com razão.
-                A icônica floresta tropical armazena milhões de toneladas de dióxido de carbono – sua queima significa um clima menos estável em toda a Terra. 
-                Mas os incêndios também devastaram, na mesma proporção, outro bioma da América do Sul... </p>
-          </div>
-        </div>
-        <!-- Team Item Ends -->
-      </div>
-      <div class="col-lg-6 col-md-12 col-xs-12">
-        <!-- Team Item Starts -->
-        <div class="team-item wow fadeInRight" data-wow-delay="0.8s">
-          <div class="team-img">
-            <img class="img-fluid" src="assets/img/news/news4.4.4.jpg" alt="">
-          </div>
-          <div class="contetn">
-            <div class="info-text">
-              <h3><a href="http://cepfcerrado.iieb.org.br/agricultores-familiares-lancam-loja-virtual-com-produtos-dos-biomas-cerrado-e-caatinga/"
-                  target="_blank">Agricultores familiares lançam loja virtual com produtos dos biomas Cerrado e Caatinganew</a></h3>
-              <p>Fonte: IEB</p>
-            </div>
-            <p>Baru, jatobá, pequi, umbu. Ingredientes regionais que simbolizam a biodiversidade encontrada nos sabores brasileiros. 
-              A safra do Cerrado e da Caatinga inspira agricultores que residem nestes territórios — 
-              nos Estados de Minas Gerais, Distrito Federal, Tocantins, Bahia, Mato Grosso do Sul, Mato Grosso, Maranhão, Pará e Goiás...</p>
+            <p>Após 10 anos de esforços conjuntos, o Mosaico Sertão Veredas-Peruaçu passa para uma nova fase de
+              consolidação e ampliação das ações de conservação e uso sustentável dos biomas Cerrado e Caatinga.... </p>
           </div>
         </div>
         <!-- Team Item Ends -->
@@ -490,7 +496,7 @@
                   4 – Acesse o Lapig Drive, através do botão "Upload" logo abaixo e clique no ícone de envio <img class="img-fluid"
                     src="assets/img/envio_lapig_drive.png" alt=""> <br />
                 </p>
-                <p style="text-align: center"><a href="https://www.lapig.iesa.ufg.br/drive/index.php/s/fkAl1emQAhhBJeP"
+                <p style="text-align: center"><a href="https://www.lapig.iesa.ufg.br/drive/index.php/s/FK9QbRP78LhZdGc"
                     class="btn btn-common mt-3" target="_blank">Upload</a></p> <br /> <br />
               </div>
             </div>
@@ -840,9 +846,11 @@
         <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
           <h3 class="footer-titel">Produtos</h3>
           <ul class="footer-link">
-            <li><a href="http://dpat.lapig.iesa.ufg.br">Desmatamento</a></li>
+            <!-- @TODO REMOVE <li><a href="http://cerradodpat.org>Desmatamento</a></li> -->
+            <li>Desmatamento</li>
             <li><a href="http://vant.lapig.iesa.ufg.br">Imagens Aéreas</a></li>
-            <li><a href="/#/usodosolo">Uso do Solo</a></li>
+            <!-- @TODO REMOVE <li><a href="/#/usodosolo">Uso do Solo</a></li> -->
+            <li>Uso do Solo</li>
             <li><a href="#">Biodiversidade (Em breve)</a></li>
             <li><a href="#">Literatura (Em breve)</a></li>
             <li><a href="#">Social (Em breve)</a></li>

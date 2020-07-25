@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HomePageComponent } from './home/home.page.component';
+import { HomePageComponent, PaginaIndisponivelDialog } from './home/home.page.component';
 import { HeaderPageComponent } from './header/header.page.component';
 import { FooterPageComponent } from './footer/footer.page.component';
 import { ProjectPageComponent } from './project/project.page.component';
@@ -13,6 +13,7 @@ import { CovidgoiasComponent } from './covidgoias/covidgoias/covidgoias.componen
 @NgModule({
   declarations: [ 
     HomePageComponent, 
+    PaginaIndisponivelDialog,
     HeaderPageComponent, 
     ProjectPageComponent, 
     BiomaPageComponent, 
@@ -23,6 +24,7 @@ import { CovidgoiasComponent } from './covidgoias/covidgoias/covidgoias.componen
   ],
   imports: [
     CommonModule
-  ]
+  ],
+  entryComponents:[PaginaIndisponivelDialog],
 })
 export class PaginasModule { }
