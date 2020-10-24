@@ -1,4 +1,4 @@
-module.exports = function(app) {
+module.exports = function (app) {
 
 	var Internal = {}
 	var Query = {};
@@ -8,12 +8,12 @@ module.exports = function(app) {
 		'region': 'Cerrado'
 	}
 
-	Query.extent = function(params) {
+	Query.extent = function (params) {
 		return "SELECT * FROM regions_geom_cerrado WHERE text=${region}";
 	}
 
-	Query.search = function() {
-		return "SELECT INITCAP(text) as text, value, type, uf, bioma FROM search WHERE TEXT LIKE ${key}% AND bioma='CERRADO' LIMIT 10";
+	Query.search = function () {
+		return "SELECT text as text, value, type, uf, bioma FROM search WHERE TEXT LIKE ${key}% AND bioma='CERRADO' LIMIT 10";
 	}
 
 	Query.fieldPoints = function (params) {
@@ -28,37 +28,37 @@ module.exports = function(app) {
 		return "SELECT ST_AsGeoJSON(geom) geojson," + colums + " FROM pontos_campo_parada " + condition;
 	}
 
-	Query.downloadCSV = function(params) {
+	Query.downloadCSV = function (params) {
 		var layer = params['layer'];
-    var filterRegion = params['filterRegion'];
+		var filterRegion = params['filterRegion'];
 		var year = params['year'];
-		var columnsCSV= "cd_geouf,cd_geocmu,regiao,uf,estado,municipio,bioma,arcodesmat,matopiba,mun_ha,pol_ha,pct_areapo, "+params['columnsCSV']
-    var filter = filterRegion;
+		var columnsCSV = "cd_geouf,cd_geocmu,regiao,uf,estado,municipio,bioma,arcodesmat,matopiba,mun_ha,pol_ha,pct_areapo, " + params['columnsCSV']
+		var filter = filterRegion;
 
-    if(year != undefined && year != '') 
-      filter = filterRegion +' AND year='+ year;
-	
-		if (layer == 'pontos_campo_parada' || layer=='pontos_campo_sem_parada' || layer=='pontos_tvi_treinamento' || layer=='pontos_tvi_validacao'){
+		if (year != undefined && year != '')
+			filter = filterRegion + ' AND year=' + year;
+
+		if (layer == 'pontos_campo_parada' || layer == 'pontos_campo_sem_parada' || layer == 'pontos_tvi_treinamento' || layer == 'pontos_tvi_validacao') {
 			columnsCSV = '*'
 			filter = filterRegion;
 		}
 
-		return "SELECT "+columnsCSV+" FROM "+layer+" WHERE "+filter;
-		
+		return "SELECT " + columnsCSV + " FROM " + layer + " WHERE " + filter;
+
 	}
 
 	// Query.downloadCSV = function(params) {
 	// 	var layer = params.layer;
-  //   var filterRegion = params.filterRegion;
+	//   var filterRegion = params.filterRegion;
 	// 	var year = params.year;
 	// 	var columnsCSV= "cd_geouf,cd_geocmu,regiao,uf,estado,municipio,bioma,arcodesmat,matopiba,mun_ha,pol_ha,pct_areapo, "+params.columnsCSV;
-  //   var filter = filterRegion;
+	//   var filter = filterRegion;
 	// 	var sqlquery;
 	// 	console.log('paramsss::',params)
 
-  //   if(year != undefined && year != '') 
-  //     filter = filterRegion +' AND '+ year;
-	
+	//   if(year != undefined && year != '') 
+	//     filter = filterRegion +' AND '+ year;
+
 	// 	if (layer == 'pontos_campo_parada' || layer=='pontos_campo_sem_parada' || layer=='pontos_tvi_treinamento' || layer=='pontos_tvi_validacao'){
 	// 		columnsCSV = '*'
 	// 		filter = filterRegion;
