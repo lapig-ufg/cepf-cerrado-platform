@@ -3,7 +3,7 @@
 		<a href="#"><img class="icon-cepf" src="assets/img/intro-mobile.png"/></a>
 	</div>
   <div class="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 title-atlas-div">
-  	<div class="title-atlas">Plataforma de Conhecimento do Cerrado - Uso do Solo</div>
+  	<div class="title-atlas">Plataforma de Conhecimento do Cerrado</div>
   </div>
   <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 logos-cepf">
     <a href="http://cepfcerrado.iieb.org.br/" target="_blank"><img  class="logo-cepf" src="assets/logo/cepf_ieb.png" /></a>
@@ -117,36 +117,6 @@
 								</div>
 							</div>
 						</mat-tab>
-						<!-- <mat-tab label="Download">
-							<div class="baseMap">
-								<div class='orientDownloads'>
-									<p class="abaDownload">* O dado selecionado para visualização estará disponível para Download.</p>
-									<p class="abaDownload">** A região será recortada conforme a filtrada pelo usuário ou a padrão, o Bioma Cerrado.</p>
-									<p class="abaDownload">** Desmarque os itens que não deseja fazer o Download</p>
-								</div>
-								<h5>Dados para Download:</h5>
-								<div>
-									<form id="FormDown" class="FormDown" (ngSubmit)="onSubmit()">
-										<div *ngFor="let layer of layersNames">
-											<mat-checkbox [id]=layer.id class="example-margin" *ngIf="layer.visible"
-												(change)="downloadLayers(layer.selectedType, $event)" [checked]=false [value]='layer.selectedType'>
-												{{ layer.label }}
-											</mat-checkbox>
-										</div>
-
-										<div *ngFor="let limits of descriptor.limits">
-											<div *ngFor="let name_limits of limits.types">
-												<mat-checkbox class="example-margin" *ngIf="name_limits.visible"
-													(change)="downloadLayers(name_limits.value, $event)" [value]='name_limits.value' [checked]=false>
-													Limites - {{ name_limits.Viewvalue }}
-												</mat-checkbox>
-											</div>
-										</div>
-										<button type="submit" class="center btn btn-light btn-sm">Submit</button>
-									</form>
-								</div>
-							</div>
-						</mat-tab> -->
 					</mat-tab-group>
 				</div>
 			</div>
