@@ -305,7 +305,8 @@ module.exports = function(app) {
                     {"value": "year=2015", "Viewvalue": 2015},
                     {"value": "year=2016", "Viewvalue": 2016},
                     {"value": "year=2017", "Viewvalue": 2017},
-                    {"value": "year=2018", "Viewvalue": 2018}
+                    {"value": "year=2018", "Viewvalue": 2018},
+                    {"value": "year=2019", "Viewvalue": 2019}
                   ],
                   "metadados": {
                     "title": "Áreas de Pastagens do Brasil",
