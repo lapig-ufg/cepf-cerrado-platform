@@ -7,13 +7,15 @@ import * as ol from 'openlayers';
 import { Observable } from 'rxjs';
 import { of } from 'rxjs/observable/of';
 import { catchError, debounceTime, distinctUntilChanged, map, tap, switchMap } from 'rxjs/operators';
-
-import BingMaps from 'ol/source/BingMaps';
+import { defaults as defaultInteractions } from 'ol/interaction';
 import OlMap from 'ol/Map';
 import OlXYZ from 'ol/source/XYZ';
 import OlTileLayer from 'ol/layer/Tile';
-import TileWMS from 'ol/source/TileWMS';
 import OlView from 'ol/View';
+import Overlay from 'ol/Overlay.js';
+import BingMaps from 'ol/source/BingMaps';
+import TileWMS from 'ol/source/TileWMS';
+import UTFGrid from 'ol/source/UTFGrid.js';
 import * as OlProj from 'ol/proj';
 import TileGrid from 'ol/tilegrid/TileGrid';
 import * as OlExtent from 'ol/extent.js';
@@ -102,7 +104,7 @@ export class MapComponent implements OnInit {
 	collapseLegends: boolean;
 
 	metadados: any;
-
+	infodata: any
 	layersTypes = [];
 	basemapsNames = [];
 	limitsNames = [];
@@ -173,7 +175,11 @@ export class MapComponent implements OnInit {
 
 	}
 	httpOptions: any;
-
+	utfgridsource: UTFGrid;
+	utfgridlayer: OlTileLayer;
+	infoOverlay: Overlay;
+	keyForClick: any;
+	keyForPointer: any;
 
 	constructor(private http: HttpClient, private _service: SearchService, public dialog: MatDialog) {
 		this.projection = OlProj.get('EPSG:900913');
@@ -279,8 +285,6 @@ export class MapComponent implements OnInit {
 
 
 		this.selectRegion = region;
-
-		console.log(this.selectRegion)
 
 		if (this.selectRegion.type == 'municipio')
 			this.msFilterRegion = "cd_geocmu = '" + this.selectRegion.value + "'"
@@ -691,7 +695,8 @@ export class MapComponent implements OnInit {
 				zoom: this.currentZoom,
 			}),
 			loadTilesWhileAnimating: true,
-			loadTilesWhileInteracting: true
+			loadTilesWhileInteracting: true,
+			interactions: defaultInteractions({ altShiftDragRotate: false, pinchRotate: false })
 		});
 
 		var selectOver = new Select({
@@ -731,9 +736,75 @@ export class MapComponent implements OnInit {
 			}
 		}.bind(this));
 
+
+		this.infoOverlay = new Overlay({
+			element: document.getElementById('map-info'),
+			offset: [15, 15],
+			stopEvent: false
+		});
+		this.keyForPointer = this.map.on(
+			'pointermove',
+			this.callbackPointerMoveMap.bind(this)
+		);
+
+		this.keyForClick = this.map.on(
+			'singleclick',
+			this.callbackClickMap.bind(this)
+		);
+
+		this.map.addOverlay(this.infoOverlay);
+
+
+
 		this.map.addInteraction(select);
 		this.map.addInteraction(selectOver);
 
+	}
+
+	private callbackPointerMoveMap(evt) {
+
+		let utfgridlayerVisible = this.utfgridlayer.getVisible();
+		if (!utfgridlayerVisible || evt.dragging) {
+			return;
+		}
+
+		let coordinate = this.map.getEventCoordinate(evt.originalEvent);
+		let viewResolution = this.map.getView().getResolution();
+
+		if (this.utfgridsource) {
+			this.utfgridsource.forDataAtCoordinateAndResolution(coordinate, viewResolution, function (data) {
+				if (data) {
+					data.origin_table = data.origin_table.toUpperCase();
+					window.document.body.style.cursor = 'pointer';
+					this.infodata = data;
+					console.log(this.infodata)
+					this.infoOverlay.setPosition(this.infodata ? coordinate : undefined);
+				} else {
+					window.document.body.style.cursor = 'auto';
+					this.infodata = null;
+				}
+
+			}.bind(this)
+			);
+		}
+	}
+
+	callbackClickMap(evt) {
+
+		let zoom = this.map.getView().getZoom();
+		let viewResolution = this.map.getView().getResolution();
+		let coordinate = null;
+
+		coordinate = this.map.getEventCoordinate(evt.originalEvent);
+
+		if (this.utfgridsource) {
+			this.utfgridsource.forDataAtCoordinateAndResolution(coordinate, viewResolution, function (data) {
+				if (data) {
+
+				}
+			}.bind(this)
+			);
+		}
 	}
 
 	private createBaseLayers() {
@@ -833,8 +904,42 @@ export class MapComponent implements OnInit {
 		this.layers.push(this.fieldPointsStop);
 
 		this.layers.push()
-		this.layers = this.layers.concat(olLayers.reverse());
 
+		this.utfgridsource = new UTFGrid({
+			tileJSON: this.getTileJSON()
+		});
+
+		this.utfgridlayer = new OlTileLayer({
+			source: this.utfgridsource
+		});
+
+		this.layers.push(this.utfgridlayer);
+
+		this.layers = this.layers.concat(olLayers.reverse());
+	}
+
+	private getTileJSON() {
+
+		let text = ''
+
+		if (this.selectRegion.type == 'municipio')
+			text += "cd_geocmu = '" + this.selectRegion.value + "'"
+		else if (this.selectRegion.type == 'estado')
+			text += "uf = '" + this.selectRegion.value + "'"
+		else
+			text += ""
+
+		return {
+			version: '2.2.0',
+			grids: [
+				this.returnUTFGRID('cepf_pasture_rebanho_regions_utfgrid', text, '{x}+{y}+{z}')
+			]
+		};
+
+	}
+
+	private returnUTFGRID(layername, filter, tile) {
+		return '/ows?layers=' + layername + '&MSFILTER=' + filter + '&mode=tile&tile=' + tile + '&tilemode=gmap&map.imagetype=utfgrid'
 	}
 
 	private createTMSLayer(layer) {
