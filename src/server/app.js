@@ -31,6 +31,17 @@ app.database.client.init(function () {
 
 	var publicDir = path.join(__dirname, '');
 
+	app.use(requestTimeout({
+		'timeout': 2000 * 60 * 30,
+		'callback': function (err, options) {
+			var response = options.res;
+			if (err) {
+				util.log('Timeout: ' + err);
+			}
+			response.end();
+		}
+	}));
+
 	app.use(responseTime());
 	app.use(bodyParser.json({ limit: '1gb' }));
 	app.use(bodyParser({ limit: '1gb' }));
@@ -42,15 +53,13 @@ app.database.client.init(function () {
 		next();
 	});
 
-	load('controllers')
+	load('models', { 'verbose': false })
+		.then('controllers')
 		.then('routes')
 		.into(app);
 
 	http.listen(app.config.port, function () {
 		console.log('CEPF - Cerrado Server @ [port %s] [pid %s]', app.config.port, process.pid.toString());
-		if (process.env.PRIMARY_WORKER) {
-
-		}
 	});
 
 	process.on('uncaughtException', function (err) {

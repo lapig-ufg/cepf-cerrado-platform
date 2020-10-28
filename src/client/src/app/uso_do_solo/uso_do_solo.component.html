@@ -1,89 +1,120 @@
 <nav class="navbar navbar-expand-md fixed-top barra-titulo navbar-title">
 	<div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 icon-cepf-div">
-		<a href="#"><img class="icon-cepf" src="assets/img/intro-mobile.png"/></a>
+		<a href="#"><img class="icon-cepf" src="assets/img/intro-mobile.png" /></a>
 	</div>
-  <div class="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 title-atlas-div">
-  	<div class="title-atlas">Plataforma de Conhecimento do Cerrado - Uso do Solo</div>
-  </div>
-  <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 logos-cepf">
-    <a href="http://cepfcerrado.iieb.org.br/" target="_blank"><img  class="logo-cepf" src="assets/logo/cepf_ieb.png" /></a>
-    <a href="https://www.lapig.iesa.ufg.br/lapig/" target="_blank"><img  class="logo-lapig" src="assets/logo/lapig.png" /></a>
-  </div>
+	<div class="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 title-atlas-div">
+		<div class="title-atlas">Plataforma de Conhecimento do Cerrado - Uso do Solo</div>
+	</div>
+	<div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 logos-cepf">
+		<a href="http://cepfcerrado.iieb.org.br/" target="_blank"><img class="logo-cepf"
+				src="assets/logo/cepf_ieb.png" /></a>
+		<a href="https://www.lapig.iesa.ufg.br/lapig/" target="_blank"><img class="logo-lapig"
+				src="assets/logo/lapig.png" /></a>
+	</div>
 </nav>
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 dpat-ol-div">
-      <div id="map" class="dpat-ol-map"></div>
-      <div id="positionLayers">
-	      <div class= "titleWindows">
-	      		Camadas de Informações
-	        	<button type="button" class="collapse-btn btn btn-light btn-sm float-right" (click)="collapseLayer = !collapseLayer" [attr.aria-expanded]="!collapseLayer" aria-controls="camadageografica">-</button>
-	      </div>
-	      <div class="collapseLayer" [ngbCollapse]="collapseLayer">
-	      	<mat-tab-group class="layersConteudo">
+	<div class="row">
+		<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 dpat-ol-div">
+			<div id="map" class="dpat-ol-map"></div>
+			<div id="positionLayers">
+				<div class="titleWindows">
+					Camadas de Informações
+					<button type="button" class="collapse-btn btn btn-light btn-sm float-right"
+						(click)="collapseLayer = !collapseLayer" [attr.aria-expanded]="!collapseLayer"
+						aria-controls="camadageografica">-</button>
+				</div>
+				<div class="collapseLayer" [ngbCollapse]="collapseLayer">
+					<mat-tab-group class="layersConteudo">
 						<mat-tab label="Camadas">
 							<mat-accordion>
-				      	<div id="layers_pastagens">
-				      		<div class="regions-row">
+								<div id="layers_pastagens">
+									<div class="regions-row">
 										<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-										  <ng-template #rt let-r="result" let-t="term">
-											  <ngb-highlight [result]="r.text" [term]="t"></ngb-highlight>
+											<ng-template #rt let-r="result" let-t="term">
+												<ngb-highlight [result]="r.text" [term]="t"></ngb-highlight>
 											</ng-template>
-										  <input id="typeahead-http" type="text" class="form-control searchRegion" [class.is-invalid]="searchFailed" [(ngModel)]="valueRegion" [ngbTypeahead]="search" placeholder="Escolha um bioma / estado / município..." (selectItem)="updateRegion($event.item)" [resultTemplate]="rt" [inputFormatter]="formatter"/>
-										  <img [hidden]="selectRegion == defaultRegion" class="clear-region-btn" (click)="updateRegion(defaultRegion)" src="assets/clear_button.png" />
-										  <span *ngIf="searching">localizando...</span>
-										  <div class="invalid-feedback" *ngIf="searchFailed">Desculpe, Região não encontrada.</div>
+											<input id="typeahead-http" type="text" class="form-control searchRegion"
+												[class.is-invalid]="searchFailed" [(ngModel)]="valueRegion"
+												[ngbTypeahead]="search" placeholder="Escolha um estado / município..."
+												(selectItem)="updateRegion($event.item)" [resultTemplate]="rt"
+												[inputFormatter]="formatter" />
+											<img [hidden]="selectRegion == defaultRegion" class="clear-region-btn"
+												(click)="updateRegion(defaultRegion)" src="assets/clear_button.png" />
+											<span *ngIf="searching">localizando...</span>
+											<div class="invalid-feedback" *ngIf="searchFailed">Desculpe, Região não
+												encontrada.</div>
 										</div>
-								  </div>
-								  <div class="row" *ngFor="let groups of descriptor.groups">
-									  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-											<div >
-												<mat-expansion-panel [expanded] = groups.group_expanded>
-													<mat-expansion-panel-header [collapsedHeight]="'40px'" [expandedHeight]="'40px'" class="expansion-header-layer">
+									</div>
+									<div class="row" *ngFor="let groups of descriptor.groups">
+										<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+											<div>
+												<mat-expansion-panel [expanded]=groups.group_expanded>
+													<mat-expansion-panel-header [collapsedHeight]="'40px'"
+														[expandedHeight]="'40px'" class="expansion-header-layer">
 														<h5 class="expansion-layer"><b>{{groups.label}}</b></h5>
 													</mat-expansion-panel-header>
 													<div class="layersContent" *ngFor="let layer of groups.layers">
 														<div>
-															<mat-checkbox [id]=layer.id class="example-margin" (change)="changeVisibility(layer, $event)" [checked]=layer.visible>
+															<mat-checkbox [id]=layer.id class="example-margin"
+																(change)="changeVisibility(layer, $event)"
+																[checked]=layer.visible>
 																{{layer.label}}
 															</mat-checkbox>
-															<button class="button-row" (click)="openDialog(layer)" mat-icon-button>
+															<button class="button-row" (click)="openDialog(layer)"
+																mat-icon-button>
 																<mat-icon class="iconInfo">info</mat-icon>
 															</button>
 														</div>
-                            <div style="padding-left: 8%" *ngIf="layer.times">
-                              <mat-form-field>
-                                <mat-label>{{layer.timeLabel}}</mat-label>
-                                  <mat-select (selectionChange)="updateSourceLayer(layer)" [(value)]="layer.timeSelected" [disabled]="!layer.visible">
-                                    <mat-option *ngFor="let times of layer.times" [value]="times.value">
-                                      {{times.Viewvalue}}
-                                    </mat-option>
-                                  </mat-select>
-                              </mat-form-field>
-                            </div>
+														<div style="padding-left: 8%" *ngIf="layer.times">
+															<mat-form-field>
+																<mat-label>{{layer.timeLabel}}</mat-label>
+																<mat-select (selectionChange)="updateSourceLayer(layer)"
+																	[(value)]="layer.timeSelected"
+																	[disabled]="!layer.visible">
+																	<mat-option *ngFor="let times of layer.times"
+																		[value]="times.value">
+																		{{times.Viewvalue}}
+																	</mat-option>
+																</mat-select>
+															</mat-form-field>
+														</div>
 														<div style="padding-left: 8%" *ngIf="layer.types">
 															<mat-form-field style="margin-right: 15%; width: 130px">
-															  <mat-label *ngFor="let type of layer.types" [hidden]="type.value != layer.selectedType">{{type.typeLabel}}</mat-label>
-															  <mat-select (selectionChange)="changeVisibility(layer)" [(value)]="layer.selectedType" [disabled]="!layer.visible">
-															  	<mat-option *ngFor="let type of layer.types" [value]="type.value">
-														        {{type.Viewvalue}}
-														      </mat-option>
-															  </mat-select>
-                              </mat-form-field>
-                              <span *ngFor="let type of layer.types" [hidden]="type.value != layer.selectedType">
-                                <mat-form-field *ngIf="type.times">
-                                  <mat-label>{{type.timeLabel}}</mat-label>
-                                    <mat-select (selectionChange)="updateSourceLayer(type)" [(value)]="type.timeSelected" [disabled]="!layer.visible">
-                                      <mat-option *ngFor="let times of type.times" [value]="times.value">
-                                        {{times.Viewvalue}}
-                                      </mat-option>
-                                    </mat-select>
-                                </mat-form-field>
-                              </span>
+																<mat-label *ngFor="let type of layer.types"
+																	[hidden]="type.value != layer.selectedType">
+																	{{type.typeLabel}}</mat-label>
+																<mat-select (selectionChange)="changeVisibility(layer)"
+																	[(value)]="layer.selectedType"
+																	[disabled]="!layer.visible">
+																	<mat-option *ngFor="let type of layer.types"
+																		[value]="type.value">
+																		{{type.Viewvalue}}
+																	</mat-option>
+																</mat-select>
+															</mat-form-field>
+															<span *ngFor="let type of layer.types"
+																[hidden]="type.value != layer.selectedType">
+																<mat-form-field *ngIf="type.times">
+																	<mat-label>{{type.timeLabel}}</mat-label>
+																	<mat-select
+																		(selectionChange)="updateSourceLayer(type)"
+																		[(value)]="type.timeSelected"
+																		[disabled]="!layer.visible">
+																		<mat-option *ngFor="let times of type.times"
+																			[value]="times.value">
+																			{{times.Viewvalue}}
+																		</mat-option>
+																	</mat-select>
+																</mat-form-field>
+															</span>
 														</div>
-														<div class="buttons-download-past" *ngIf="layer.downloadSHP || layer.downloadCSV">
-															<a style="margin-left: 10px;" *ngIf="layer.downloadCSV" href="{{ linkDownload }}">
-																<button mat-raised-button class="buttons_download" href (click)="buttonDownload('csv', layer, $event)" value='buttonCSV' [disabled]="!layer.visible">
+														<div class="buttons-download-past"
+															*ngIf="layer.downloadSHP || layer.downloadCSV">
+															<a style="margin-left: 10px;" *ngIf="layer.downloadCSV"
+																href="{{ linkDownload }}">
+																<button mat-raised-button class="buttons_download" href
+																	(click)="buttonDownload('csv', layer, $event)"
+																	value='buttonCSV' [disabled]="!layer.visible">
 																	<mat-icon>cloud_download</mat-icon>&nbsp;CSV
 																</button>
 															</a>
@@ -103,7 +134,8 @@
 						</mat-tab>
 						<mat-tab label="Mapas Base">
 							<div class="baseMap" *ngFor="let basemap of basemapsNames">
-								<mat-slide-toggle (change)="baseLayerChecked(basemap, $event)" [(ngModel)]="basemap.visible">
+								<mat-slide-toggle (change)="baseLayerChecked(basemap, $event)"
+									[(ngModel)]="basemap.visible">
 									{{basemap.viewValue}}
 								</mat-slide-toggle>
 							</div>
@@ -111,7 +143,8 @@
 						<mat-tab label="Limites">
 							<div *ngFor="let limits of descriptor.limits">
 								<div class="baseMap" *ngFor="let name_limits of limits.types">
-									<mat-slide-toggle (change)="limitsLayersChecked(name_limits, $event)" [(ngModel)]="name_limits.visible" class="slideEstados" >
+									<mat-slide-toggle (change)="limitsLayersChecked(name_limits, $event)"
+										[(ngModel)]="name_limits.visible" class="slideEstados">
 										{{name_limits.Viewvalue}}
 									</mat-slide-toggle>
 								</div>
@@ -151,11 +184,13 @@
 				</div>
 			</div>
 			<div id="positionCharts">
-				<div class= "titleWindows">
-	      	Análises
-	        <button type="button" class="collapse-btn btn btn-light btn-sm float-right" (click)="collapseCharts = !collapseCharts" [attr.aria-expanded]="!collapseCharts" aria-controls="camadageografica">-</button>
-	      </div>
-				<div [ngbCollapse]="collapseCharts" id= "matgroup">
+				<div class="titleWindows">
+					Análises
+					<button type="button" class="collapse-btn btn btn-light btn-sm float-right"
+						(click)="collapseCharts = !collapseCharts" [attr.aria-expanded]="!collapseCharts"
+						aria-controls="camadageografica">-</button>
+				</div>
+				<div [ngbCollapse]="collapseCharts" id="matgroup">
 					<mat-tab-group class="charts" #matgroup>
 						<div *ngFor="let groups of descriptor.groups">
 							<mat-tab label={{groups.label}} *ngIf="groups.dataService">
@@ -165,9 +200,10 @@
 											<div class="graphicTexts">
 												<p style="font-weight: bold">{{graphic.title}}</p>
 												<div>{{graphic.text}}</div>
-												<p-chart *ngIf="graphic.type" [type]="graphic.type" [data]="graphic.data" [options]="graphic.options"></p-chart>
+												<p-chart *ngIf="graphic.type" [type]="graphic.type"
+													[data]="graphic.data" [options]="graphic.options"></p-chart>
 											</div>
-										</div> 
+										</div>
 									</div>
 								</div>
 							</mat-tab>
@@ -175,14 +211,17 @@
 					</mat-tab-group>
 				</div>
 			</div>
-			<div id= "positionLegend">
-				<div class= "titleWindows">
-	      	Legendas
-	        <button type="button" class="collapse-btn btn btn-light btn-sm float-right" (click)="collapseLegends = !collapseLegends" [attr.aria-expanded]="!collapseLegends" aria-controls="camadageografica">-</button>
-	      </div>
+			<div id="positionLegend">
+				<div class="titleWindows">
+					Legendas
+					<button type="button" class="collapse-btn btn btn-light btn-sm float-right"
+						(click)="collapseLegends = !collapseLegends" [attr.aria-expanded]="!collapseLegends"
+						aria-controls="camadageografica">-</button>
+				</div>
 				<div [ngbCollapse]="collapseLegends" class="legendasConteudo">
-					<mat-expansion-panel [expanded] = "layer.visible" *ngFor="let layer of layersNames">
-						<mat-expansion-panel-header [collapsedHeight]="'35px'" [expandedHeight]="'35px'" class="expansion-header-layer" *ngIf="layer.visible">
+					<mat-expansion-panel [expanded]="layer.visible" *ngFor="let layer of layersNames">
+						<mat-expansion-panel-header [collapsedHeight]="'35px'" [expandedHeight]="'35px'"
+							class="expansion-header-layer" *ngIf="layer.visible">
 							<div>
 								<h6 class="expansion-header-layer-legend">
 									<b>{{ layer.label }}</b>
@@ -190,11 +229,75 @@
 							</div>
 						</mat-expansion-panel-header>
 						<div *ngIf="layer.visible">
-							<img src='http://ows.lapig.iesa.ufg.br/ows?EXCEPTIONS=application%2Fvnd.ogc.se_xml&TRANSPARENT=TRUE&VERSION=1.1.1&SERVICE=WMS&REQUEST=GetLegendGraphic&layer={{ layer.selectedType }}&format=image%2Fpng'>
+							<img
+								src='http://ows.lapig.iesa.ufg.br/ows?EXCEPTIONS=application%2Fvnd.ogc.se_xml&TRANSPARENT=TRUE&VERSION=1.1.1&SERVICE=WMS&REQUEST=GetLegendGraphic&layer={{ layer.selectedType }}&format=image%2Fpng'>
 						</div>
 					</mat-expansion-panel>
 				</div>
 			</div>
-    </div>
-  </div>
-</div>
+
+			<div id="map-info" class="card" [ngStyle]="showDialogUTFGrid()">
+				<div *ngIf="infodataPastagem" class="card-body">
+					<p class="card-text">{{infodataPastagem.municipio }} - {{infodataPastagem.uf }}</p>
+					<table>
+						<tbody>
+							<tr *ngIf="infodataPastagem.cd_geocmu != ''">
+								<th>{{titlesLayerBox.cd_geocmu}} </th>
+								<td>{{infodataPastagem.cd_geocmu}}</td>
+							</tr>
+							<tr *ngIf="infodataPastagem.mun_ha != ''">
+								<th>{{titlesLayerBox.area_mun}} </th>
+								<td>{{infodataPastagem.mun_ha | number:'1.2-3' }} ha</td>
+							</tr>
+							<tr *ngIf="infodataPastagem.past_ha != ''">
+								<th>{{titlesLayerBox.area_pastagem}} </th>
+								<td>{{infodataPastagem.past_ha | number:'1.2-3' }} ha</td>
+							</tr>
+							<tr *ngIf="infodataPastagem.n_kbcs != ''">
+								<th>{{titlesLayerBox.n_kbcs}} </th>
+								<td>{{infodataPastagem.n_kbcs | number:'1.0-0'}}</td>
+							</tr>
+							<tr *ngIf="infodataPastagem.ua != ''">
+								<th>{{titlesLayerBox.ua}} </th>
+								<td>{{infodataPastagem.ua | number:'1.0-0'}}</td>
+							</tr>
+							<tr *ngIf="infodataPastagem.year != ''">
+								<th>{{titlesLayerBox.year}} </th>
+								<td>{{infodataPastagem.year}}</td>
+							</tr>
+						</tbody>
+					</table>
+					<div style="text-align:center;color:#ff5b4f"> <strong>{{titlesLayerBox.click_more_text}}
+						</strong></div>
+				</div>
+				<div *ngIf="infodataMapbiomas" class="card-body">
+					<p class="card-text">{{infodataMapbiomas.municipio }} - {{infodataMapbiomas.uf }}</p>
+					<table>
+						<tbody>
+							<tr *ngIf="infodataMapbiomas.cd_geocmu != ''">
+								<th>{{titlesLayerBox.cd_geocmu}} </th>
+								<td>{{infodataMapbiomas.cd_geocmu}}</td>
+							</tr>
+							<tr *ngIf="infodataMapbiomas.mun_ha != ''">
+								<th>{{titlesLayerBox.area_mun}} </th>
+								<td>{{infodataMapbiomas.mun_ha | number:'1.2-3' }} ha</td>
+							</tr>
+
+							<tr *ngFor="let item of infodataMapbiomas.arrLulc"
+								[style.background-color]="item.lulc_color">
+								<th>{{item.lulc_name}} </th>
+								<td>{{item.lulc_area | number:'1.2-2' }} ha</td>
+							</tr>
+
+							<tr *ngIf="infodataMapbiomas.year != ''">
+								<th>{{titlesLayerBox.year}} </th>
+								<td>{{infodataMapbiomas.year}}</td>
+							</tr>
+						</tbody>
+					</table>
+					<div style="text-align:center;color:#ff5b4f"> <strong>{{titlesLayerBox.click_more_text}}
+						</strong></div>
+				</div>
+			</div>
+		</div>
+	</div>

@@ -13,7 +13,11 @@ module.exports = function (app) {
 	}
 
 	Query.search = function () {
-		return "SELECT text as text, value, type, uf, bioma FROM search WHERE TEXT LIKE ${key}% AND bioma='CERRADO' LIMIT 10";
+		return "SELECT text as text, value, type, uf, bioma FROM search WHERE unaccent(TEXT) LIKE unaccent(${key}%) AND bioma='CERRADO' LIMIT 10";
+	}
+
+	Query.searchregion = function () {
+		return "SELECT text, value, type FROM search WHERE unaccent(value) ILIKE unaccent(${key}) LIMIT 10";
 	}
 
 	Query.fieldPoints = function (params) {
