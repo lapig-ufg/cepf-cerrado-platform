@@ -305,7 +305,8 @@ module.exports = function(app) {
                     {"value": "year=2015", "Viewvalue": 2015},
                     {"value": "year=2016", "Viewvalue": 2016},
                     {"value": "year=2017", "Viewvalue": 2017},
-                    {"value": "year=2018", "Viewvalue": 2018}
+                    {"value": "year=2018", "Viewvalue": 2018},
+                    {"value": "year=2019", "Viewvalue": 2019}
                   ],
                   "metadados": {
                     "title": "Áreas de Pastagens do Brasil",
@@ -367,7 +368,7 @@ module.exports = function(app) {
                   "order": 4,
                   "typeLabel": "Quantidade",
                   "timeLabel": "Ano",
-                  "timeSelected": "year=2018",
+                  "timeSelected": "year=2019",
                   "timeHandler": "msfilter",
                   "times": [
                     {"value": "year=1985", "Viewvalue": 1985},
@@ -403,7 +404,8 @@ module.exports = function(app) {
                     {"value": "year=2015", "Viewvalue": 2015},
                     {"value": "year=2016", "Viewvalue": 2016},
                     {"value": "year=2017", "Viewvalue": 2017},
-                    {"value": "year=2018", "Viewvalue": 2018}
+                    {"value": "year=2018", "Viewvalue": 2018},
+                    {"value": "year=2019", "Viewvalue": 2019}
                   ],
                   "metadados": {
                     "title": "Rebanho Bovino em Unidades Animal (UA)",
