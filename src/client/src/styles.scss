@@ -30,6 +30,36 @@
 	background: #ffd54f;
 }
 
+#map-info {
+	.card table {
+	  margin: 10px;
+	  border-radius: 10px ;
+	}
+  
+	table tr th{
+	  padding-left: 10px !important;
+	  width: 8vw;
+	  line-height: 15px;
+	}
+	table tr td{
+	  padding-left: 10px !important;
+	  width: 6vw;
+	  line-height: 15px;
+	}
+  
+	.card-body {
+	  color: #000 !important;
+	  padding: 0px !important;
+	}
+	.card-body p.card-text {
+	  background: #91880d !important;
+	  color: #fff !important;
+	  height: 24px;
+	  border-top-left-radius: 10px;
+	  border-top-right-radius: 10px;
+	}
+  }
+
 .mat-mini-fab {
 	width: 35px !important;
 	height: 35px !important;
