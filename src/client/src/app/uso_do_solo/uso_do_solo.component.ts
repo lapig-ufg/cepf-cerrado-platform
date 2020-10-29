@@ -1,7 +1,7 @@
 import { Component, Injectable, OnInit, Inject } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { FormGroup, FormControl } from '@angular/forms';
-
+import { TranslateService } from '@ngx-translate/core';
 import * as ol from 'openlayers';
 import * as _ol_TileUrlFunction_ from 'ol/tileurlfunction.js';
 import { Observable } from 'rxjs';
@@ -196,7 +196,18 @@ export class MapComponent implements OnInit {
 	keyForClick: any;
 	keyForPointer: any;
 
-	constructor(private http: HttpClient, private _service: SearchService, public dialog: MatDialog) {
+	constructor(
+		private http: HttpClient,
+		private _service: SearchService,
+		public dialog: MatDialog,
+		public translate: TranslateService,
+	) {
+		translate.addLangs(['en', 'pt']);
+		translate.setDefaultLang('pt');
+		const browserLang = translate.getBrowserLang();
+		translate.use(browserLang.match(/en|pt/) ? browserLang : 'en');
+
+
 		this.projection = OlProj.get('EPSG:900913');
 		this.currentZoom = 5.8;
 		this.layers = [];
