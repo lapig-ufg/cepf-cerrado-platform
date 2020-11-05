@@ -322,7 +322,7 @@ module.exports = function (app) {
 
 				regions.push({
 					'type': row['type'],
-					'name': row['value']
+					'name': row['text'] + (row['type'] == 'municipio' ? ' - ' + row['uf'] : ''),
 				})
 			});
 
@@ -520,8 +520,9 @@ module.exports = function (app) {
 			}
 
 			let res = {
-				areasByYear: graphQueimadasPastagem,
-				terraclass: graphTerraclass
+				chart_pastagem_queimadas_peryear: graphQueimadasPastagem,
+				table_pastagem_queimadas_peryear: arrayAreasGrouped,
+				terraclass: graphTerraclass,
 			}
 
 			response.status(200).send(res);
