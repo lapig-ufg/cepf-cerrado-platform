@@ -1,3 +1,4 @@
+var languageJson = require('../assets/lang/language.json');
 module.exports = function (app) {
 	var Controller = {}
 	var Internal = {}
@@ -9,16 +10,21 @@ module.exports = function (app) {
 	}
 
 	Controller.chartslulc = function (request, response) {
-
+		var language = request.param('lang')
 		var typeRegion = request.query['typeRegion'];
 		var textRegion = request.query['textRegion'];
 
-		var region = "O bioma Cerrado, "
+		var region = languageJson["charts_regions"]["biome"][language]
 
 		if (typeRegion == 'municipio' || typeRegion == 'estado') {
-			region = "O " + typeRegion + " de " + textRegion
+			if (typeRegion == 'municipio')
+				typeRegionTranslate = language == 'pt-br' ? 'municipio' : 'municipality';
+			else if (typeRegion == 'estado')
+				typeRegionTranslate = language == 'pt-br' ? 'estado' : 'state';
+
+			region = languageJson["charts_regions"]["o_municipio_estado"][language] + typeRegionTranslate + languageJson["charts_regions"]["de_municipio_estado"][language] + textRegion
 		} else if (typeRegion == 'região de fronteira') {
-			region = "A região de fronteira do " + textRegion
+			region = languageJson["charts_regions"]["region_fronteira"][language] + textRegion
 		}
 
 		var chartResult = [
@@ -32,11 +38,11 @@ module.exports = function (app) {
 					var areaMun = chart['indicators'][0]["area_mun"]
 
 					var percentual_area_ha = ((value * 100) / areaMun);
-
-					var text = "De acordo com o projeto Terra Class Cerrado(referente ao ano de 2013), " + region
-						+ " possui uma área total de " + numberFormat(parseFloat(areaMun)) + " de hectares, "
-						+ "sendo a classe " + label + " a de maior predominância, com " + numberFormat(parseFloat(value))
-						+ " de hectares (" + Math.round(percentual_area_ha) + "% da área total). "
+					var parttext = languageJson["charts_text"]["uso_solo_terraclass"];
+					var text = parttext["part1"][language] + region
+						+ parttext["part2"][language] + numberFormat(parseFloat(areaMun)) + parttext["part3"][language]
+						+ parttext["part4"][language] + label + parttext["part5"][language] + numberFormat(parseFloat(value))
+						+ parttext["part6"][language] + Math.round(percentual_area_ha) + parttext["part7"][language]
 
 					return text
 				},
@@ -54,11 +60,13 @@ module.exports = function (app) {
 					var label = chart['indicators'][0]["label"]
 					var value = chart['indicators'][0]["value"]
 					var areaMun = chart['indicators'][0]["area_mun"]
-
+					var parttext = languageJson["charts_text"]["uso_solo_probio"];
 					var percentual_area_ha = ((value * 100) / areaMun);
 
-					var text = "De acordo com o projeto PROBIO Cerrado(referente ao ano de 2002), a cobertura do solo que mais predomina nesta região "
-						+ "é a " + label + " cobrindo cerca de " + numberFormat(parseFloat(value)) + " de hectares (" + Math.round(percentual_area_ha) + "% da área total). "
+					var text = parttext["part1"][language]
+										+ parttext["part2"][language] + label + parttext["part3"][language] 
+										+ numberFormat(parseFloat(value)) + parttext["part4"][language] 
+										+ Math.round(percentual_area_ha) + parttext["part5"][language]
 
 					return text
 				},
@@ -77,11 +85,13 @@ module.exports = function (app) {
 					var value = chart['indicators'][0]["value"]
 					var areaMun = chart['indicators'][0]["area_mun"]
 					var year = chart['indicators'][0]["year"]
-
+					var parttext = languageJson["charts_text"]["uso_solo_mapbiomas"];
 					var percentual_area_ha = ((value * 100) / areaMun);
 
-					var text = "De acordo com o projeto MapBiomas, em " + year + " a cobertura do solo que mais predominou nesta região " +
-						"foi a " + label + " cobrindo cerca de " + numberFormat(parseFloat(value)) + " de hectares (" + Math.round(percentual_area_ha) + "% da área total). "
+					var text = parttext["part1"][language] + year 
+										+ parttext["part2"][language] + parttext["part3"][language] 
+										+ label + parttext["part4"][language]  + numberFormat(parseFloat(value)) 
+										+ parttext["part5"][language] + Math.round(percentual_area_ha) + parttext["part6"][language]
 
 					return text
 				},
@@ -107,16 +117,21 @@ module.exports = function (app) {
 	}
 
 	Controller.chartsFarming = function (request, response) {
-
+		var language = request.param('lang')
 		var typeRegion = request.query['typeRegion'];
 		var textRegion = request.query['textRegion'];
 
-		var region = "do bioma Cerrado"
+		var region = languageJson["charts_regions"]["do_bioma"][language]
 
 		if (typeRegion == 'municipio' || typeRegion == 'estado') {
-			region = "do " + typeRegion + " de " + textRegion
+			if (typeRegion == 'municipio') 
+				typeRegionTranslate = language == 'pt-br' ? 'municipio' : 'municipality';
+			else if (typeRegion == 'estado') 
+				typeRegionTranslate = language == 'pt-br' ? 'estado' : 'state';
+			
+			region = languageJson["charts_regions"]["do_municipio_estado"][language] + typeRegionTranslate + languageJson["charts_regions"]["de_municipio_estado"][language] + textRegion
 		} else if (typeRegion == 'região de fronteira') {
-			region = "da região de fronteira do " + textRegion
+			region = languageJson["charts_regions"]["da_region_fronteira"][language] + textRegion
 		}
 
 		getDataSets = function (indicator) {
@@ -162,7 +177,7 @@ module.exports = function (app) {
 				if (classe == 'Pastagem') {
 
 					dataInfo.datasets.push({
-						label: 'Rebanho Bovino',
+						label: languageJson["charts_title_layer"]["rebanho_bovino"][language],
 						data: getValues('Rebanho Bovino', 'lotacao_bovina_regions'),
 						fill: false,
 						backgroundColor: color,
@@ -186,7 +201,7 @@ module.exports = function (app) {
 		var chartResult = [
 			{
 				"id": "agricultura_agrosatelite",
-				"title": "Agricultura Agrosatélite",
+				"title": languageJson["charts_title_layer"]["agrosatelite"][language],
 				"getText": function (chart) {
 
 					var indicatorHigh = chart.indicators[0];
@@ -198,13 +213,12 @@ module.exports = function (app) {
 						}
 
 					}
-
+					var parttext = languageJson["charts_text"]["agrosatelite"];
 					var percentual_area_ha = ((indicatorHigh.value * 100) / indicatorHigh.area_mun);
 
-					//.toLocaleString('pt-BR')
-					var text = "De acordo com esta instituição, no ano de " + indicatorHigh.label + " o cultivo de " + indicatorHigh.classe
-						+ " predominou nesta região, cobrindo cerca de " + numberFormat(parseFloat(indicatorHigh.value))
-						+ " de hectares (" + Math.round(percentual_area_ha) + "% da área total). "
+					var text = parttext["part1"][language] + indicatorHigh.label + parttext["part2"][language] + indicatorHigh.classe
+						+ parttext["part3"][language] + numberFormat(parseFloat(indicatorHigh.value))
+						+parttext["part4"][language] + Math.round(percentual_area_ha) + parttext["part5"][language]
 
 					return text
 				},
@@ -218,18 +232,20 @@ module.exports = function (app) {
 			},
 			{
 				"id": "pasture",
-				"title": "Áreas de Pastagem - Lapig",
+				"title": languageJson["charts_title_layer"]["pasture"][language],
 				"getText": function (chart) {
 
 					var indicatorPastureLast = chart.indicators[chart.indicators.length - 1]
 					var indicatorRebanhoLast = chart.indicatorsRebanho[chart.indicatorsRebanho.length - 2]
-
+					var parttext = languageJson["charts_text"]["pasture"];
 					var percentual_area_ha = ((indicatorPastureLast.value * 100) / indicatorPastureLast.area_mun);
 
-					var text = "De acordo com mapeamento do Lapig, a área de pastagem " + region + " em " + indicatorPastureLast.label
-						+ " foi de " + numberFormat(parseFloat(indicatorPastureLast.value)) + "ha "
-						+ " (" + Math.round(percentual_area_ha) + "% da área total). Já o Rebanho Bovino contabilizou "
-						+ numberFormat(parseFloat(indicatorRebanhoLast.value)) + "UA em " + indicatorRebanhoLast.label + "."
+					var text = parttext["part1"][language] + region + parttext["part2"][language] 
+										+ indicatorPastureLast.label + parttext["part3"][language] 
+										+numberFormat(parseFloat(indicatorPastureLast.value)) + parttext["part4"][language] 
+										+ Math.round(percentual_area_ha) + parttext["part5"][language]
+										+numberFormat(parseFloat(indicatorRebanhoLast.value)) 
+										+ parttext["part6"][language] + indicatorRebanhoLast.label + "."
 
 					return text
 				},

@@ -1265,6 +1265,178 @@
 			"en-us": "Water Planning"
 		}
 	},
+	"charts_regions": {
+		"biome": {
+			"pt-br": "O bioma Cerrado, ",
+			"en-us": "The Cerrado biome, "
+		},
+		"do_bioma": {
+			"pt-br": "do bioma Cerrado",
+			"en-us": "of the Cerrado biome"
+		},
+		"o_municipio_estado": {
+			"pt-br": "O ",
+			"en-us": "The "
+		},
+		"de_municipio_estado": {
+			"pt-br": " de ",
+			"en-us": " of "
+		},
+		"do_municipio_estado": {
+			"pt-br": " do ",
+			"en-us": " of "
+		},
+		"region_fronteira": {
+			"pt-br": "A região de fronteira do ",
+			"en-us": "The border region of "
+		},
+		"da_region_fronteira": {
+			"pt-br": "da região de fronteira do ",
+			"en-us": "the border region of the "
+		}
+	},
+	"charts_text": {
+		"uso_solo_terraclass": {
+			"part1": {
+				"pt-br": "De acordo com o projeto Terra Class Cerrado(referente ao ano de 2013), ",
+				"en-us": "According to the Terra Class Cerrado project (referring to the year 2013), "
+			},
+			"part2": {
+				"pt-br": " possui uma área total de ",
+				"en-us": " has a total area of "
+			},
+			"part3": {
+				"pt-br": " hectares,",
+				"en-us": " hectares,"
+			},
+			"part4": {
+				"pt-br": " sendo a classe ",
+				"en-us": " the class being "
+			},
+			"part5": {
+				"pt-br": " a de maior predominância, com ",
+				"en-us": " the most predominant, with "
+			},
+			"part6": {
+				"pt-br": " hectares (",
+				"en-us": " hectares ("
+			},
+			"part7": {
+				"pt-br": "% da área total). ",
+				"en-us": "% of the total area)."
+			}
+		},
+		"uso_solo_probio": {
+			"part1": {
+				"pt-br": "De acordo com o projeto PROBIO Cerrado (referente ao ano de 2002), uma cobertura do solo que mais predomina nesta região",
+				"en-us": "According to the PROBIO Cerrado project (referring to the year 2002), a land cover that predominates most in this region"
+			},
+			"part2": {
+				"pt-br": " é a ",
+				"en-us": " is the "
+			},
+			"part3": {
+				"pt-br": " cobrindo cerca de ",
+				"en-us": " covering about "
+			},
+			"part4": {
+				"pt-br": " hectares (",
+				"en-us": " hectares ("
+			},
+			"part5": {
+				"pt-br": "% da área total). ",
+				"en-us": "% of the total area)."
+			}
+		},
+		"uso_solo_mapbiomas": {
+			"part1": {
+				"pt-br": "De acordo com o projeto MapBiomas, em ",
+				"en-us": "According to MapBiomas, in "
+			},
+			"part2": {
+				"pt-br": " o uso do solo predominante nesta região ",
+				"en-us": " the most prevalent land use in this region "
+			},
+			"part3": {
+				"pt-br": " foi ",
+				"en-us": " was "
+			},
+			"part4": {
+				"pt-br": " cobrindo cerca de ",
+				"en-us": " covering about "
+			},
+			"part5": {
+				"pt-br": " hectares (",
+				"en-us": " hectares ("
+			},
+			"part6": {
+				"pt-br": "% da área total). ",
+				"en-us": "% of the total area)."
+			}
+		},
+		"agrosatelite": {
+			"part1": {
+				"pt-br": "De acordo com o Agrosatélite, no ano de ",
+				"en-us": "According to Agrosatélite, in "
+			},
+			"part2": {
+				"pt-br": "  o cultivo de ",
+				"en-us": " the cultivation of "
+			},
+			"part3": {
+				"pt-br": " predominou nesta região, cobrindo cerca de ",
+				"en-us": " predominated in this region, covering about "
+			},
+			"part4": {
+				"pt-br": " hectares (",
+				"en-us": " hectares ("
+			},
+			"part5": {
+				"pt-br": "% da área total). ",
+				"en-us": "% of the total area)."
+			}
+		},
+		"pasture": {
+			"part1": {
+				"pt-br": "De acordo com mapeamento do Lapig, a área de pastagem ",
+				"en-us": "According to Lapig mapping, the pasture area "
+			},
+			"part2": {
+				"pt-br": "  em ",
+				"en-us": " in "
+			},
+			"part3": {
+				"pt-br": " foi de ",
+				"en-us": " was of  "
+			},
+			"part4": {
+				"pt-br": " hectares (",
+				"en-us": " hectares ("
+			},
+			"part5": {
+				"pt-br": "% da área total). Já o Rebanho Bovino contabilizou ",
+				"en-us": "% of the total area). The Cattle Herd had"
+			},
+			"part6": {
+				"pt-br": " UA em ",
+				"en-us": " UA in "
+			}
+		}
+	},
+	"charts_title_layer": {
+		"rebanho_bovino": {
+			"pt-br": "Rebanho Bovino",
+			"en-us": "Cattle Herd"
+		},
+		"agrosatelite": {
+			"pt-br": "Agricultura Agrosatélite",
+			"en-us": "Agriculture - Agrosatélite"
+		},
+		"pasture": {
+			"pt-br": "Áreas de Pastagem - Lapig",
+			"en-us": "Pasture Areas - Lapig"
+		}
+	},
 	"legends_box_title": {
 		"pt-br": "Legenda",
 		"en-us": "Legend"
