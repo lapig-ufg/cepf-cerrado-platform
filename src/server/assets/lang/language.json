@@ -1,4 +1,1270 @@
 {
+	"typelabel_layer": {
+		"type": {
+			"pt-br": "Tipo",
+			"en-us": "Type"
+		},
+		"quantity": {
+			"pt-br": "Quantidade",
+			"en-us": "Quantity"
+		},
+		"area_planted": {
+			"pt-br": "Área Plantada",
+			"en-us": "Planted Area"
+		},
+		"production": {
+			"pt-br": "Produção",
+			"en-us": "Production"
+		},
+		"fonte": {
+			"pt-br": "Fonte",
+			"en-us": "Source"
+		},
+		"year": {
+			"pt-br": "Ano",
+			"en-us": "Year"
+		}
+	},
+	"title_group_label": {
+		"usodosolo": {
+			"pt-br": "Uso do Solo",
+			"en-us": "Land Use"
+		},
+		"agropecuaria": {
+			"pt-br": "Agropecuária",
+			"en-us": "Agriculture"
+		},
+		"desmatamentos_queimadas": {
+			"pt-br": "Desmatamentos / Queimadas",
+			"en-us": "Deforestation / Burning"
+		},
+		"pontos_validacao": {
+			"pt-br": "Pontos de Validação",
+			"en-us": "Validation Points"
+		}
+	},
+	"title_layer_label": {
+		"usodosolo": {
+			"pt-br": "Uso e Cobertura do Solo",
+			"en-us": "Land Use and Land Cover"
+		},
+		"agrosatelite": {
+			"pt-br": "Agricultura - Agrosatélite",
+			"en-us": "Agriculture - Agrosatélite"
+		},
+		"pasture": {
+			"pt-br": "Pastagem - Lapig",
+			"en-us": "Pasturelands - Lapig"
+		},
+		"pecuaria_censitaria": {
+			"pt-br": "Pecuária Censitária - IBGE",
+			"en-us": "Livestock Census - IBGE"
+		},
+		"agricultura_censitaria": {
+			"pt-br": "Agricultura Censitária - IBGE",
+			"en-us": "Agriculture Census - IBGE"
+		},
+		"desmatamentos_queimadas": {
+			"pt-br": "Áreas Desmatamento",
+			"en-us": "Deforestation areas"
+		},
+		"alertas_desmatamentos": {
+			"pt-br": "Alertas de Desmatamento",
+			"en-us": "Deforestation Alerts"
+		},
+		"areas_queimadas": {
+			"pt-br": "Áreas de Queimadas",
+			"en-us": "Burning areas"
+		},
+		"pontos_campo": {
+			"pt-br": "Pontos Coletados em Campo",
+			"en-us": "Field Collected Points"
+		},
+		"pontos_inspecionados": {
+			"pt-br": "Pontos Inspecionados Visualmente",
+			"en-us": "Visually Inspected Points"
+		}
+	},
+	"type_layer_viewvalue": {
+		"usodosolo_mapbiomas": {
+			"pt-br": "Mapbiomas",
+			"en-us": "Mapbiomas"
+		},
+		"usodosolo_terraclass": {
+			"pt-br": "Terraclass",
+			"en-us": "Terraclass"
+		},
+		"usodosolo_probio": {
+			"pt-br": "PROBIO",
+			"en-us": "PROBIO"
+		},
+		"pasture_regular": {
+			"pt-br": "Regular",
+			"en-us": "Regular"
+		},
+		"pasture_degraded": {
+			"pt-br": "Classes degradação",
+			"en-us": "Degradation classes"
+		},
+		"rebanho_bovino": {
+			"pt-br": "Rebanho Bovino",
+			"en-us": "Cattle Herd"
+		},
+		"producao_leite": {
+			"pt-br": "Produção de Leite",
+			"en-us": "Milk production"
+		},
+		"algodao": {
+			"pt-br": "Algodão",
+			"en-us": "Cotton"
+		},
+		"cana": {
+			"pt-br": "Cana",
+			"en-us": "Sugarcane"
+		},
+		"milho": {
+			"pt-br": "Milho",
+			"en-us": "Corn"
+		},
+		"soja": {
+			"pt-br": "Soja",
+			"en-us": "Soy"
+		},
+		"carvao": {
+			"pt-br": "Carvão vegetal",
+			"en-us": "Charcoal"
+		},
+		"lenha": {
+			"pt-br": "Lenha",
+			"en-us": "Firewood"
+		},
+		"madeira": {
+			"pt-br": "Madeira",
+			"en-us": "Wood"
+		},
+		"prodes": {
+			"pt-br": "PRODES",
+			"en-us": "PRODES"
+		},
+		"siad": {
+			"pt-br": "SIAD",
+			"en-us": "SIAD"
+		},
+		"glad": {
+			"pt-br": "GLAD",
+			"en-us": "GLAD"
+		},
+		"deter": {
+			"pt-br": "DETER",
+			"en-us": "DETER"
+		},
+		"lapig": {
+			"pt-br": "LAPIG",
+			"en-us": "LAPIG"
+		},
+		"parada": {
+			"pt-br": "Parada",
+			"en-us": "Stop"
+		},
+		"sem_parada": {
+			"pt-br": "Sem Parada",
+			"en-us": "No Stop"
+		},
+		"treinamento": {
+			"pt-br": "Treinamento",
+			"en-us": "Training"
+		},
+		"validacao": {
+			"pt-br": "Validação",
+			"en-us": "Validation"
+		}
+	},
+	"metadata": {
+		"usodosolo_mapbiomas": {
+			"title": {
+				"pt-br": "Mapa de Cobertura e Uso do Solo do Brasil - Mapbiomas",
+				"en-us": "Land Use and Land Cover mapping of Brazil - Mapbiomas"
+			},
+			"description": {
+				"pt-br": "O Projeto de Mapeamento Anual da Cobertura e Uso do Solo do Brasil é uma iniciativa que envolve uma rede colaborativa com especialistas nos biomas, usos da terra, sensoriamento remoto, SIG e ciência da computação. São utilizadas tecnicas envolvendo processamento em nuvem e classificadores automatizados desenvolvidos e operados a partir da plataforma Google Earth Engine para gerar uma série histórica de mapas anuais de cobertura e uso da terra do Brasil.",
+				"en-us": "Brazil's Annual Land Cover and Land Use Mapping Project is an initiative that involves a collaborative network with experts in biomes, land uses, remote sensing, GIS, and computer science. Techniques involving cloud processing and automated classifiers developed and operated from the Google Earth Engine platform are used to generate a historical series of annual maps of coverage and land use in Brazil."
+			},
+			"format": {
+				"pt-br": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+				"en-us": "Shapefile (* .SHP), with complementary files (* .PRJ, * DBF, * .SHX, * .SBX, * MAP). Comma-separated values (* .CSV)."
+			},
+			"region": {
+				"pt-br": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+				"en-us": "Cerrado Biome, allowing to analyze the classes of land use by other regions of interest such as: states and municipalities."
+			},
+			"period": {
+				"pt-br": "1985 à 2018, Coleção 4.",
+				"en-us": "1985 to 2018, Collection 4."
+			},
+			"scale": {
+				"pt-br": "30 metros",
+				"en-us": "30 meters"
+			},
+			"system_coordinator": {
+				"pt-br": "Superfície de referência SIRGAS 2000, Sistema de Coordenada Geográfica (em graus).",
+				"en-us": "SIRGAS 2000 reference surface, Geographic Coordinate System (in degrees)."
+			},
+			"cartographic_projection": {
+				"pt-br": "Universal Transversa de Mercator.",
+				"en-us": "Universal Transverse Mercator"
+			},
+			"cod_caracter": {
+				"pt-br": "Latin 1.",
+				"en-us": "Latin 1."
+			},
+			"fonte": {
+				"pt-br": "Laboratório de Processamento de Imagens e Geoprocessamento – Lapig (geração do dado). Projeto financiador: Spatial metrics and baselines of degradation patterns and provision of ecosystem services by pastures in Brazil.",
+				"en-us": "Laboratory of Image Processing and Geoprocessing - Lapig (data generation). Project 'Spatial metrics and baselines of degradation patterns and provision of ecosystem services by pastures in Brazil' (funder)."
+			}
+		},
+		"usodosolo_terraclass": {
+			"title": {
+				"pt-br": "Mapeamento do Uso e Cobertura Vegetal do Cerrado – TerraClass Cerrado",
+				"en-us": "Land Use and Land Cover mapping of the Cerrado - TerraClass Cerrado"
+			},
+			"description": {
+				"pt-br": "Mapeamento do Uso e Cobertura Vegetal do Cerrado - TerraClass Cerrado, utiliza como base de mapeamento 118 cenas do satélite Landsat 8, sensor Operational Land Imager ( OLI), ano de 2013, que recobrem todo o bioma. A área mínima mapeável é de 6,25 hectares.",
+				"en-us": "Land Use and Land Cover mapping of the Cerrado - TerraClass Cerrado uses 118 scenes from Landsat 8, Operational Land Imager (OLI) sensor, 2013, that cover the entire biome. The minimum mappable area is 6.25 hectares."
+			},
+			"format": {
+				"pt-br": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+				"en-us": "Shapefile (* .SHP), with complementary files (* .PRJ, * DBF, * .SHX, * .SBX, * MAP). Comma-separated values (* .CSV)."
+			},
+			"region": {
+				"pt-br": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+				"en-us": "Cerrado Biome, allowing to analyze the classes of land use by other regions of interest such as: states and municipalities."
+			},
+			"period": {
+				"pt-br": "2013",
+				"en-us": "2013"
+			},
+			"scale": {
+				"pt-br": "1:250.000",
+				"en-us": "1:250.000"
+			},
+			"system_coordinator": {
+				"pt-br": "Superfície de referência SIRGAS 2000, Sistema de Coordenada Geográfica (em graus).",
+				"en-us": "SIRGAS 2000 reference surface, Geographic Coordinate System (in degrees)."
+			},
+			"cartographic_projection": {
+				"pt-br": "Universal Transversa de Mercator.",
+				"en-us": "Universal Transverse Mercator"
+			},
+			"cod_caracter": {
+				"pt-br": "Latin 1",
+				"en-us": "Latin 1"
+			},
+			"fonte": {
+				"pt-br": "UFG, IBAMA CSR, INPE OBT e CRA, EMBRAPA MONITORAMENTO POR SATÉLITE, EMBRAPA INFORMÁTICA AGROPECUÁRIA, UFU. Programa conduzido pelo Ministério de Meio Ambiente (MMA), com recursos financeiros oriundos do Global Environment Facility (GEF) por meio do Banco Mundial e do Fundo Brasileiro para a Biodiversidade (Funbio). Para acessar a publicação completa do projeto, clique aqui!",
+				"en-us": "UFG, IBAMA CSR, INPE OBT and CRA, EMBRAPA MONITORAMENTO POR SATÉLITE, EMBRAPA INFORMÁTICA AGROPECUÁRIA, UFU. Program conducted by the Ministry of Environment (MMA) with financial resources from the Global Environment Facility (GEF) through the World Bank and the Brazilian Fund for Biodiversity (Funbio). To access the complete publication of the project, click here!"
+			}
+		},
+		"usodosolo_probio": {
+			"title": {
+				"pt-br": "Mapeamento do Uso e Cobertura Vegetal do Cerrado - PROBIO",
+				"en-us": "Land Use and Land Cover mapping of the Cerrado - PROBIO"
+			},
+			"description": {
+				"pt-br": "Mapeamento da cobertura vegetal do bioma Cerrado - PROBIO utiliza como base de mapeamento 121 cenas do satélite Landsat ETM+, da estação seca do ano de 2002.",
+				"en-us": "Land Use and Land Cover mapping of the Cerrado - PROBIO uses 121 scenes from the Landsat ETM + satellite, from the dry season of 2002, as a mapping base."
+			},
+			"format": {
+				"pt-br": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+				"en-us": "Shapefile (* .SHP), with complementary files (* .PRJ, * DBF, * .SHX, * .SBX, * MAP). Comma-separated values (* .CSV)."
+			},
+			"region": {
+				"pt-br": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+				"en-us": "Cerrado Biome, allowing to analyze the classes of land use by other regions of interest such as: states and municipalities."
+			},
+			"period": {
+				"pt-br": "2002",
+				"en-us": "2002"
+			},
+			"scale": {
+				"pt-br": "1:250.000",
+				"en-us": "1:250.000"
+			},
+			"system_coordinator": {
+				"pt-br": "Superfície de referência SIRGAS 2000, Sistema de Coordenada Geográfica (em graus).",
+				"en-us": "SIRGAS 2000 reference surface, Geographic Coordinate System (in degrees)."
+			},
+			"cartographic_projection": {
+				"pt-br": "Universal Transversa de Mercator.",
+				"en-us": "Universal Transverse Mercator"
+			},
+			"cod_caracter": {
+				"pt-br": "Latin 1",
+				"en-us": "Latin 1"
+			},
+			"fonte": {
+				"pt-br": "Projeto de Conservação e Utilização Sustentável da Diversidade Biológica Brasileira - PROBIO-MMA",
+				"en-us": "Project for the Conservation and Sustainable Use of Brazilian Biological Diversity - PROBIO-MMA"
+			}
+		},
+		"agricultura_agrosatelite": {
+			"title": {
+				"pt-br": "Agricultura - Agrosatélite",
+				"en-us": "Agriculture - Agrosatélite"
+			},
+			"description": {
+				"pt-br": "Dinâmica da expansão da área plantada com culturas anuais no Bioma Cerrado.",
+				"en-us": "Dynamics of expanding the area planted with annual crops in the Cerrado Biome."
+			},
+			"format": {
+				"pt-br": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+				"en-us": "Shapefile (* .SHP), with complementary files (* .PRJ, * DBF, * .SHX, * .SBX, * MAP). Comma-separated values (* .CSV)."
+			},
+			"region": {
+				"pt-br": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+				"en-us": "Cerrado Biome, allowing to analyze the classes of land use by other regions of interest such as: states and municipalities."
+			},
+			"period": {
+				"pt-br": "2001; 2007; 2014",
+				"en-us": "2001; 2007; 2014"
+			},
+			"scale": {
+				"pt-br": "1:250.000",
+				"en-us": "1:250.000"
+			},
+			"system_coordinator": {
+				"pt-br": "Superfície de referência SIRGAS 2000, Sistema de Coordenada Geográfica (em graus).",
+				"en-us": "SIRGAS 2000 reference surface, Geographic Coordinate System (in degrees)."
+			},
+			"cartographic_projection": {
+				"pt-br": "Universal Transversa de Mercator.",
+				"en-us": "Universal Transverse Mercator"
+			},
+			"cod_caracter": {
+				"pt-br": "Latin 1",
+				"en-us": "Latin 1"
+			},
+			"fonte": {
+				"pt-br": "Agrosatélite Geotecnologia Aplicada, Fundação Gordon and Betty Moore (Financiadores)",
+				"en-us": "Agrosatélite Applied Geotechnology, Gordon and Betty Moore Foundation (funders)"
+			}
+		},
+		"pasture_regular": {
+			"title": {
+				"pt-br": "Áreas de Pastagens do Brasil",
+				"en-us": "Pasture Areas of Brazil"
+			},
+			"description": {
+				"pt-br": "Mapeamento anual das pastagens brasileiras, realizado através do uso de séries de dados Landsat de 1985 a 2018. Utilizando abordagens de classificação supervisionada (Random Forest) através da plataforma Earth Engine da Google.",
+				"en-us": "Annual mapping of Brazilian pastures, carried out using Landsat data series from 1985 to 2018. Using supervised classification approaches (Random Forest) from Google's Earth Engine platform."
+			},
+			"format": {
+				"pt-br": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+				"en-us": "Shapefile (* .SHP), with complementary files (* .PRJ, * DBF, * .SHX, * .SBX, * MAP). Comma-separated values (* .CSV)."
+			},
+			"region": {
+				"pt-br": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+				"en-us": "Cerrado Biome, allowing to analyze the classes of land use by other regions of interest such as: states and municipalities."
+			},
+			"period": {
+				"pt-br": "De 1985 a 2018.",
+				"en-us": "1985 to 2018."
+			},
+			"scale": {
+				"pt-br": "30 metros.",
+				"en-us": "30 meters."
+			},
+			"system_coordinator": {
+				"pt-br": "Superfície de referência SIRGAS 2000, Sistema de Coordenada Geográfica (em graus).",
+				"en-us": "SIRGAS 2000 reference surface, Geographic Coordinate System (in degrees)."
+			},
+			"cartographic_projection": {
+				"pt-br": "Universal Transversa de Mercator.",
+				"en-us": "Universal Transverse Mercator"
+			},
+			"regular_update": {
+				"pt-br": "Anual",
+				"en-us": "Annual"
+			},
+			"cod_caracter": {
+				"pt-br": "Latin 1.",
+				"en-us": "Latin 1."
+			},
+			"fonte": {
+				"pt-br": "Laboratório de Processamento de Imagens e Geoprocessamento - Lapig (geração do dado). Projeto de Mapeamento Anual da Cobertura e Uso do Solo do Brasil - MapBiomas (viabilizador).",
+				"en-us": "Laboratory of Image Processing and Geoprocessing - Lapig (data generation). Annual Land Use and Land Cover Mapping Project in Brazil - MapBiomas (funder)."
+			}
+		},
+		"pasture_degraded": {
+			"title": {
+				"pt-br": "Indícios de degradação das pastagens brasileiras",
+				"en-us": "Evidence of degradation of Brazilian pastures"
+			},
+			"description": {
+				"pt-br": "Mapeamento da qualidade de pastagens, gerado pelo Lapig, onde foram analisados os dados de pastagens pixel a pixel para o período de 2011 a 2016, por meio de análise de tendências em anomalias acumuladas. A análise foi baseado em dados satelitários (NDVI/MOD13Q1), e avalia perdas ou ganho em produtividade. As áreas com tendência significativas de perda em produtividade (p < 0.05) foram consideradas áreas com indícios de degradação.",
+				"en-us": "Mapping of pasture quality generated by Lapig, where data from pastures were analyzed pixel by pixel for the period from 2011 to 2016, through analysis of trends in accumulated anomalies. The analysis was based on satellite data (NDVI / MOD13Q1), through losses or gains in productivity assessment. Areas with a significant tendency to lost productivity (p <0.05) were considered areas with evidence of degradation."
+			},
+			"format": {
+				"pt-br": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+				"en-us": "Shapefile (* .SHP), with complementary files (* .PRJ, * DBF, * .SHX, * .SBX, * MAP). Comma-separated values (* .CSV)."
+			},
+			"region": {
+				"pt-br": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+				"en-us": "Cerrado Biome, allowing to analyze the classes of land use by other regions of interest such as: states and municipalities."
+			},
+			"period": {
+				"pt-br": "2017",
+				"en-us": "2017"
+			},
+			"scale": {
+				"pt-br": "1:250.000",
+				"en-us": "1:250.000"
+			},
+			"system_coordinator": {
+				"pt-br": "Superfície de referência SIRGAS 2000, Sistema de Coordenada Geográfica (em graus).",
+				"en-us": "SIRGAS 2000 reference surface, Geographic Coordinate System (in degrees)."
+			},
+			"cartographic_projection": {
+				"pt-br": "Universal Transversa de Mercator.",
+				"en-us": "Universal Transverse Mercator"
+			},
+			"cod_caracter": {
+				"pt-br": "Latin 1",
+				"en-us": "Latin 1."
+			},
+			"fonte": {
+				"pt-br": "Laboratório de Processamento de Imagens e Geoprocessamento - Lapig",
+				"en-us": "Laboratory of Image Processing and Geoprocessing - Lapig (data generation)."
+			}
+		},
+		"rebanho_bovino": {
+			"title": {
+				"pt-br": "Rebanho Bovino em Unidades Animal (UA)",
+				"en-us": "Bovine Herd in Animal Units (UA)"
+			},
+			"description": {
+				"pt-br": "Cálculo realizado considerando a composição do rebanho para o censo agropecuário. Para os anos de 1986 a 1999, utilizou-se os dados do censo agropecuário de 1996. Para os anos de 2000 a 2018. utilizou-se os dados do censo agropecuário de 2006. Sendo que uma Unidade Animal (UA), equivale a um animal de 450 kg vivo.",
+				"en-us": "Calculation performed considering the composition of the herd for the agricultural census. For the years 1986 to 1999, data from the 1996 agricultural census were used. For the years 2000 to 2018, data from the 2006 agricultural census were used. Animal Unit (UA) is equivalent to 450 kg animal alive."
+			},
+			"format": {
+				"pt-br": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+				"en-us": "Shapefile (* .SHP), with complementary files (* .PRJ, * DBF, * .SHX, * .SBX, * MAP). Comma-separated values (* .CSV)."
+			},
+			"region": {
+				"pt-br": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+				"en-us": "Cerrado Biome, allowing to analyze the classes of land use by other regions of interest such as: states and municipalities."
+			},
+			"period": {
+				"pt-br": "1985 á 2018",
+				"en-us": "1985 to 2018"
+			},
+			"scale": {
+				"pt-br": "1:250.000",
+				"en-us": "1:250.000"
+			},
+			"system_coordinator": {
+				"pt-br": "Superfície de referência SIRGAS 2000, Sistema de Coordenada Geográfica (em graus).",
+				"en-us": "SIRGAS 2000 reference surface, Geographic Coordinate System (in degrees)."
+			},
+			"cartographic_projection": {
+				"pt-br": "Universal Transversa de Mercator.",
+				"en-us": "Universal Transverse Mercator"
+			},
+			"cod_caracter": {
+				"pt-br": "Latin 1.",
+				"en-us": "Latin 1."
+			},
+			"fonte": {
+				"pt-br": "Laboratório de Processamento de Imagens e Geoprocessamento - Lapig (geração do dado).",
+				"en-us": "Laboratory of Image Processing and Geoprocessing - Lapig (data generation)."
+			}
+		},
+		"producao_leite": {
+			"title": {
+				"pt-br": "Produção de Leite por Municípios do Brasil",
+				"en-us": "Milk Production by Municipalities in Brazil"
+			},
+			"description": {
+				"pt-br": "Quantidade de Leite produzido por municípios do Brasil, em Litros, no período de 2000 a 2019, conforme dados da Pesquisa da Pecuária Municipal.",
+				"en-us": "Quantity of Milk produced by municipalities in Brazil, in Liters, from 2000 to 2019, according to data from the Municipal Livestock Research."
+			},
+			"format": {
+				"pt-br": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+				"en-us": "Shapefile (* .SHP), with complementary files (* .PRJ, * DBF, * .SHX, * .SBX, * MAP). Comma-separated values (* .CSV)."
+			},
+			"region": {
+				"pt-br": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+				"en-us": "Cerrado Biome, allowing to analyze the classes of land use by other regions of interest such as: states and municipalities."
+			},
+			"period": {
+				"pt-br": "2000 a 2019",
+				"en-us": "2000 to 2019"
+			},
+			"scale": {
+				"pt-br": "1:250.000",
+				"en-us": "1:250.000"
+			},
+			"system_coordinator": {
+				"pt-br": "Superfície de referência SIRGAS 2000, Sistema de Coordenada Geográfica (em graus).",
+				"en-us": "SIRGAS 2000 reference surface, Geographic Coordinate System (in degrees)."
+			},
+			"cartographic_projection": {
+				"pt-br": "Universal Transversa de Mercator.",
+				"en-us": "Universal Transverse Mercator"
+			},
+			"cod_caracter": {
+				"pt-br": "Latin 1.",
+				"en-us": "Latin 1."
+			},
+			"fonte": {
+				"pt-br": "SIDRA / IBGE",
+				"en-us": "SIDRA / IBGE"
+			}
+		},
+		"area_algodao": {
+			"title": {
+				"pt-br": "Áreas de Plantação de Algodão por Municípios do Brasil",
+				"en-us": "Cotton Planting Areas by Municipalities in Brazil"
+			},
+			"description": {
+				"pt-br": "Áreas de plantação de algodão em caroço por municípios do Brasil, por hectares, no período de 2000 a 2019, conforme dados da Pesquisa Agrícola Municipal",
+				"en-us": "Cotton seed planting areas by municipalities in Brazil, per hectare, in the period from 2000 to 2019, according to data from the Municipal Agricultural Survey"
+			},
+			"format": {
+				"pt-br": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+				"en-us": "Shapefile (* .SHP), with complementary files (* .PRJ, * DBF, * .SHX, * .SBX, * MAP). Comma-separated values (* .CSV)."
+			},
+			"region": {
+				"pt-br": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+				"en-us": "Cerrado Biome, allowing to analyze the classes of land use by other regions of interest such as: states and municipalities."
+			},
+			"period": {
+				"pt-br": "2000 a 2019",
+				"en-us": "2000 to 2019"
+			},
+			"scale": {
+				"pt-br": "1:250.000",
+				"en-us": "1:250.000"
+			},
+			"system_coordinator": {
+				"pt-br": "Superfície de referência SIRGAS 2000, Sistema de Coordenada Geográfica (em graus).",
+				"en-us": "SIRGAS 2000 reference surface, Geographic Coordinate System (in degrees)."
+			},
+			"cartographic_projection": {
+				"pt-br": "Universal Transversa de Mercator.",
+				"en-us": "Universal Transverse Mercator"
+			},
+			"cod_caracter": {
+				"pt-br": "Latin 1.",
+				"en-us": "Latin 1."
+			},
+			"fonte": {
+				"pt-br": "SIDRA / IBGE",
+				"en-us": "SIDRA / IBGE"
+			}
+		},
+		"area_cana": {
+			"title": {
+				"pt-br": "Áreas de Plantação de Cana-de-açúcar por Municípios do Brasil",
+				"en-us": "Sugarcane Planting Areas by Municipalities in Brazil"
+			},
+			"description": {
+				"pt-br": "Áreas de plantação de cana-de-açúcar por municípios do Brasil, por hectares, no período de 2000 a 2019, conforme dados da Pesquisa Agrícola Municipal.",
+				"en-us": "Sugarcane planting areas by municipalities in Brazil, per hectare, from 2000 to 2019, according to data from the Municipal Agricultural Survey."
+			},
+			"format": {
+				"pt-br": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+				"en-us": "Shapefile (* .SHP), with complementary files (* .PRJ, * DBF, * .SHX, * .SBX, * MAP). Comma-separated values (* .CSV)."
+			},
+			"region": {
+				"pt-br": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+				"en-us": "Cerrado Biome, allowing to analyze the classes of land use by other regions of interest such as: states and municipalities."
+			},
+			"period": {
+				"pt-br": "2000 a 2019",
+				"en-us": "2000 to 2019"
+			},
+			"scale": {
+				"pt-br": "1:250.000",
+				"en-us": "1:250.000"
+			},
+			"system_coordinator": {
+				"pt-br": "Superfície de referência SIRGAS 2000, Sistema de Coordenada Geográfica (em graus).",
+				"en-us": "SIRGAS 2000 reference surface, Geographic Coordinate System (in degrees)."
+			},
+			"cartographic_projection": {
+				"pt-br": "Universal Transversa de Mercator.",
+				"en-us": "Universal Transverse Mercator"
+			},
+			"cod_caracter": {
+				"pt-br": "Latin 1.",
+				"en-us": "Latin 1."
+			},
+			"fonte": {
+				"pt-br": "SIDRA / IBGE",
+				"en-us": "SIDRA / IBGE"
+			}
+		},
+		"area_milho": {
+			"title": {
+				"pt-br": "Áreas de Plantação de Milho por Municípios do Brasil",
+				"en-us": "Corn Planting Areas by municipalities in Brazil"
+			},
+			"description": {
+				"pt-br": "Áreas de plantação de milho por municípios do Brasil, por hectares, no período de 2000 a 2019, conforme dados da Pesquisa Agrícola Municipal.",
+				"en-us": "Corn Planting Areas by municipalities in Brazil, by hectares, in the period from 2000 to 2019, according to data from the Municipal Agricultural Survey."
+			},
+			"format": {
+				"pt-br": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+				"en-us": "Shapefile (* .SHP), with complementary files (* .PRJ, * DBF, * .SHX, * .SBX, * MAP). Comma-separated values (* .CSV)."
+			},
+			"region": {
+				"pt-br": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+				"en-us": "Cerrado Biome, allowing to analyze the classes of land use by other regions of interest such as: states and municipalities."
+			},
+			"period": {
+				"pt-br": "2000 a 2019",
+				"en-us": "2000 to 2019"
+			},
+			"scale": {
+				"pt-br": "1:250.000",
+				"en-us": "1:250.000"
+			},
+			"system_coordinator": {
+				"pt-br": "Superfície de referência SIRGAS 2000, Sistema de Coordenada Geográfica (em graus).",
+				"en-us": "SIRGAS 2000 reference surface, Geographic Coordinate System (in degrees)."
+			},
+			"cartographic_projection": {
+				"pt-br": "Universal Transversa de Mercator.",
+				"en-us": "Universal Transverse Mercator"
+			},
+			"cod_caracter": {
+				"pt-br": "Latin 1.",
+				"en-us": "Latin 1."
+			},
+			"fonte": {
+				"pt-br": "SIDRA / IBGE",
+				"en-us": "SIDRA / IBGE"
+			}
+		},
+		"area_soja": {
+			"title": {
+				"pt-br": "Áreas de Plantação de Soja por Municípios do Brasil",
+				"en-us": "Soybean Planting Areas by Municipalities in Brazil"
+			},
+			"description": {
+				"pt-br": "Áreas de plantação de soja por municípios do Brasil, por hectares, no período de 2000 a 2019, conforme dados da Pesquisa Agrícola Municipal.",
+				"en-us": "Soybean planting areas by municipalities in Brazil, by hectares, in the period from 2000 to 2019, according to data from the Municipal Agricultural Survey."
+			},
+			"format": {
+				"pt-br": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+				"en-us": "Shapefile (* .SHP), with complementary files (* .PRJ, * DBF, * .SHX, * .SBX, * MAP). Comma-separated values (* .CSV)."
+			},
+			"region": {
+				"pt-br": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+				"en-us": "Cerrado Biome, allowing to analyze the classes of land use by other regions of interest such as: states and municipalities."
+			},
+			"period": {
+				"pt-br": "2000 a 2019",
+				"en-us": "2000 to 2019"
+			},
+			"scale": {
+				"pt-br": "1:250.000",
+				"en-us": "1:250.000"
+			},
+			"system_coordinator": {
+				"pt-br": "Superfície de referência SIRGAS 2000, Sistema de Coordenada Geográfica (em graus).",
+				"en-us": "SIRGAS 2000 reference surface, Geographic Coordinate System (in degrees)."
+			},
+			"cartographic_projection": {
+				"pt-br": "Universal Transversa de Mercator.",
+				"en-us": "Universal Transverse Mercator"
+			},
+			"cod_caracter": {
+				"pt-br": "Latin 1.",
+				"en-us": "Latin 1."
+			},
+			"fonte": {
+				"pt-br": "SIDRA / IBGE",
+				"en-us": "SIDRA / IBGE"
+			}
+		}, 
+		"producao_carvao": {
+			"title": {
+				"pt-br": "Produção de Carvão vegetal por Municípios do Brasil",
+				"en-us": "Charcoal Production by Municipalities in Brazil"
+			},
+			"description": {
+				"pt-br": "Quantidade de carvão vegetal produzido por municípios do brasil, em Toneladas, no período de 2000 a 2019, conforme dados da Produção de Extração Vegetal e da Silvicultura.",
+				"en-us": "Amount of charcoal produced by municipalities in Brazil, in Tons, in the period from 2000 to 2019, according to data from the Production of Vegetable Extraction and Silviculture."
+			},
+			"format": {
+				"pt-br": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+				"en-us": "Shapefile (* .SHP), with complementary files (* .PRJ, * DBF, * .SHX, * .SBX, * MAP). Comma-separated values (* .CSV)."
+			},
+			"region": {
+				"pt-br": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+				"en-us": "Cerrado Biome, allowing to analyze the classes of land use by other regions of interest such as: states and municipalities."
+			},
+			"period": {
+				"pt-br": "2000 a 2019",
+				"en-us": "2000 to 2019"
+			},
+			"scale": {
+				"pt-br": "1:250.000",
+				"en-us": "1:250.000"
+			},
+			"system_coordinator": {
+				"pt-br": "Superfície de referência SIRGAS 2000, Sistema de Coordenada Geográfica (em graus).",
+				"en-us": "SIRGAS 2000 reference surface, Geographic Coordinate System (in degrees)."
+			},
+			"cartographic_projection": {
+				"pt-br": "Universal Transversa de Mercator.",
+				"en-us": "Universal Transverse Mercator"
+			},
+			"cod_caracter": {
+				"pt-br": "Latin 1.",
+				"en-us": "Latin 1."
+			},
+			"fonte": {
+				"pt-br": "SIDRA / IBGE",
+				"en-us": "SIDRA / IBGE"
+			}
+		}, 
+		"producao_lenha": {
+			"title": {
+				"pt-br": "Produção de Lenha por Municípios do Brasil",
+				"en-us": "Firewood Production by Municipalities in Brazil."
+			},
+			"description": {
+				"pt-br": "Quantidade de Lenha produzida por municípios do brasil, em Metros Cúbicos, no período de 2000 a 2019, conforme dados da Produção de Extração Vegetal e da Silvicultura.",
+				"en-us": "Quantity of firewood produced by municipalities in Brazil, in Cubic Meters, in the period from 2000 to 2019, according to data from the Production of Vegetable Extraction and Silviculture."
+			},
+			"format": {
+				"pt-br": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+				"en-us": "Shapefile (* .SHP), with complementary files (* .PRJ, * DBF, * .SHX, * .SBX, * MAP). Comma-separated values (* .CSV)."
+			},
+			"region": {
+				"pt-br": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+				"en-us": "Cerrado biome, allowing to analyze the classes of land use by other regions of interest such as: states and municipalities."
+			},
+			"period": {
+				"pt-br": "2000 a 2019",
+				"en-us": "From 2000 to 2019"
+			},
+			"scale": {
+				"pt-br": "1:250.000",
+				"en-us": "1:250.000"
+			},
+			"system_coordinator": {
+				"pt-br": "Superfície de referência SIRGAS 2000, Sistema de Coordenada Geográfica (em graus).",
+				"en-us": "SIRGAS 2000 reference surface, Geographic Coordinate System (in degrees)."
+			},
+			"cartographic_projection": {
+				"pt-br": "Universal de Mercator.",
+				"en-us": "Universal Transverse Mercator (UTM)."
+			},
+			"cod_caracter": {
+				"pt-br": "Latin 1.",
+				"en-us": "Latin 1."
+			},
+			"fonte": {
+				"pt-br": "SIDRA / IBGE",
+				"en-us": "SIDRA / IBGE"
+			}
+		}, 
+		"producao_madeira": {
+			"title": {
+				"pt-br": "Produção de Madeira por Municípios do Brasil",
+				"en-us": "Wood Production by Municipalities in Brazil."
+			},
+			"description": {
+				"pt-br": "Quantidade de Madeira produzida por municípios do brasil, em Metros Cúbicos, no período de 2000 a 2019, conforme dados da Produção de Extração Vegetal e da Silvicultura.",
+				"en-us": "Quantity of wood produced by municipalities in Brazil, in Cubic Meters, in the period from 2000 to 2019, according to data from the Production of Vegetable Extraction and Silviculture."
+			},
+			"format": {
+				"pt-br": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+				"en-us": "Shapefile (* .SHP), with complementary files (* .PRJ, * DBF, * .SHX, * .SBX, * MAP). Comma-separated values (* .CSV)."
+			},
+			"region": {
+				"pt-br": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+				"en-us": "Cerrado biome, allowing to analyze the classes of land use by other regions of interest such as: states and municipalities."
+			},
+			"period": {
+				"pt-br": "2000 a 2019",
+				"en-us": "2000 to 2019"
+			},
+			"scale": {
+				"pt-br": "1:250.000",
+				"en-us": "1:250.000"
+			},
+			"system_coordinator": {
+				"pt-br": "Superfície de referência SIRGAS 2000, Sistema de Coordenada Geográfica (em graus).",
+				"en-us": "SIRGAS 2000 reference surface, Geographic Coordinate System (in degrees)."
+			},
+			"cartographic_projection": {
+				"pt-br": "Universal de Mercator.",
+				"en-us": "Universal Transverse Mercator (UTM)."
+			},
+			"cod_caracter": {
+				"pt-br": "Latin 1.",
+				"en-us": "Latin 1."
+			},
+			"fonte": {
+				"pt-br": "SIDRA / IBGE",
+				"en-us": "SIDRA / IBGE"
+			}
+		}, 
+		"desmatamento_prodes": {
+			"title": {
+				"pt-br": "Monitoramento do Desmatamento no Cerrado Brasileiro por Satélite",
+				"en-us": "Monitoring Deforestation in the Brazilian Cerrado by Satellite."
+			},
+			"description": {
+				"pt-br": "Área desmatada a partir de 2000 discretizadas em uma séria histórica bienal para o período de 2000 a 2012, e anual para os anos de 2013 a 2018. O mapeamento utiliza imagens do satélite Landsat ou similares para registrar e quantificar as áreas desmatadas maiores que 1 hectare. O PRODES considera como desmatamento a remoção completa da cobertura florestal primária por corte raso, independentemente da futura utilização destas áreas",
+				"en-us": "Deforested area from 2000 discretized in a historical biennial series for the period from 2000 to 2012, and annual for the years 2013 to 2018. This mapping uses images from the Landsat satellite or similar, to record and quantify as deforested areas larger than 1 hectare . PRODES considers deforestation as the complete removal of primary forest cover by clear cutting, regardless of the future use of these areas."
+			},
+			"format": {
+				"pt-br": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+				"en-us": "Shapefile (* .SHP), with complementary files (* .PRJ, * DBF, * .SHX, * .SBX, * MAP). Comma-separated values (* .CSV)."
+			},
+			"region": {
+				"pt-br": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+				"en-us": "Cerrado biome, allowing to analyze the classes of land use by other regions of interest such as: states and municipalities."
+			},
+			"period": {
+				"pt-br": "Bienal de 2000 a 2012, e anual de 2013 a 2018.",
+				"en-us": "Biennial from 2000 to 2012, and annual from 2013 from 2018."
+			},
+			"scale": {
+				"pt-br": "1:250.000",
+				"en-us": "1:250.000"
+			},
+			"system_coordinator": {
+				"pt-br": "Superfície de referência SIRGAS 2000, Sistema de Coordenada Geográfica (em graus).",
+				"en-us": "SIRGAS 2000 reference surface, Geographic Coordinate System (in degrees)."
+			},
+			"cartographic_projection": {
+				"pt-br": "Universal de Mercator.",
+				"en-us": "Universal Transverse Mercator (UTM)."
+			},
+			"cod_caracter": {
+				"pt-br": "Latin 1.",
+				"en-us": "Latin 1."
+			},
+			"fonte": {
+				"pt-br": "Programa conduzido pelo Ministério de Meio Ambiente (MMA) e o Ministério da Ciência, Tecnologia e Inovação (MCTI), with recursos financeiros oriundos do Banco Mundial (World Bank – IBRD-IDA), além das instituições alemães KfW e GIZ.",
+				"en-us": "Program conducted by Ministry by Environment (MMA) and the Ministry of Science, Tecnology and Innovation (MCTI), with financial resources from the World Bank (World Bank - IBRD-IDA), in addition to the German institutions KfW and GIZ."
+			}
+		}, 
+		"desmatamento_siad": {
+			"title": {
+				"pt-br": "Áreas de Desmatamento no Cerrado",
+				"en-us": "Deforestation Areas of the Cerrado."
+			},
+			"description": {
+				"pt-br": "Dados de desmatamentos ocorridos no Bioma Cerrado, disponibilizados anualmente, no período de 2003 a 2017, produzidos a partir de imagens MODIS (MOD13Q1), sendo utilizadas imagens LANDSAT e CBERS para validação.",
+				"en-us": "Deforestation data occurred in the Cerrado Biome, available annually in the period from 2003 to 2017, produced from images MODIS (MOD13Q1), and validated with LANDSAT and CBERS imagery."
+			},
+			"format": {
+				"pt-br": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+				"en-us": "Shapefile (* .SHP), with complementary files (* .PRJ, * DBF, * .SHX, * .SBX, * MAP). Comma-separated values (* .CSV)."
+			},
+			"region": {
+				"pt-br": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+				"en-us": "Cerrado biome, allowing to analyze the classes of land use by other regions of interest such as: states and municipalities."
+			},
+			"period": {
+				"pt-br": "2003 a 2017",
+				"en-us": "2003 to 2017"
+			},
+			"scale": {
+				"pt-br": "1:500.000",
+				"en-us": "1:500.000"
+			},
+			"system_coordinator": {
+				"pt-br": "Superfície de referência SIRGAS 2000, Sistema de Coordenada Geográfica (em graus).",
+				"en-us": "SIRGAS 2000 reference surface, Geographic Coordinate System (in degrees)."
+			},
+			"cartographic_projection": {
+				"pt-br": "Universal Transversa de Mercator.",
+				"en-us": "Universal Transverse Mercator"
+			},
+			"cod_caracter": {
+				"pt-br": "Latin 1.",
+				"en-us": "Latin 1."
+			},
+			"fonte": {
+				"pt-br": "Lapig/UFG",
+				"en-us": "Lapig/UFG"
+			}
+		}, 
+		"desmatamento_glad": {
+			"title": {
+				"pt-br": "Perda de Cobertura Árborea",
+				"en-us": "Loss of Arboreal Coverage"
+			},
+			"description": {
+				"pt-br": "Sistema de alerta para desmatamentos baseado em Landsat (perda de cobertura de árvores). As imagens Landsat são avaliadas quanto à cobertura de nuvens ou à baixa qualidade dos dados e comparadas aos três anos anteriores de métricas derivadas do Landsat (incluindo classificações, médias e regressões de vermelho, infravermelho e bandas de ondas curtas, e fileiras de NDVI, NBR e NDWI). As métricas e a imagem mais recente do Landsat são executadas em sete árvores de decisão para calcular uma probabilidade mediana de distúrbio na floresta. Pixels com probabilidade> 50% são relatados como alertas de perda de cobertura de árvore. Para mais informações sobre metodologia, consulte o artigo em Cartas de Pesquisa Ambiental",
+				"en-us": "Warning deforestation system based on Landsat for loss of tree cover. Landsat images are evaluated for cloud cover or poor data quality and compared to the previous three years of Landsat-derived metrics (including ratings, averages and regressions of red, infrared and short wave bands, and rows of NDVI, NBR and NDWI). Metrics and the latest Landsat image are run on seven decision trees to calculate a median probability of disturbance in the forest. Pixels with> 50% probability are reported as tree cover loss alerts. For more information on methodology, see the article in 'Cartas de Pesquisa Ambiental'"
+			},
+			"format": {
+				"pt-br": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+				"en-us": "Shapefile (* .SHP), with complementary files (* .PRJ, * DBF, * .SHX, * .SBX, * MAP). Comma-separated values (* .CSV)."
+			},
+			"region": {
+				"pt-br": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+				"en-us": "Cerrado biome, allowing to analyze the classes of land use by other regions of interest such as: states and municipalities."
+			},
+			"period": {
+				"pt-br": "2001 a 2018",
+				"en-us": "2001 to 2018"
+			},
+			"scale": {
+				"pt-br": "1:250.000",
+				"en-us": "1:250.000"
+			},
+			"system_coordinator": {
+				"pt-br": "Superfície de referência SIRGAS 2000, Sistema de Coordenada Geográfica (em graus).",
+				"en-us": "SIRGAS 2000 reference surface, Geographic Coordinate System (in degrees)."
+			},
+			"cartographic_projection": {
+				"pt-br": "Universal Transversa de Mercator.",
+				"en-us": "Universal Transverse Mercator"
+			},
+			"cod_caracter": {
+				"pt-br": "Latin 1",
+				"en-us": "Latin 1"
+			},
+			"fonte": {
+				"pt-br": "Hansen/UMD/Google/USGS/NASA, Global Forest Watch.",
+				"en-us": "Hansen/UMD/Google/USGS/NASA, Global Forest Watch."
+			}
+		}, 
+		"desmatamento_deter": {
+			"title": {
+				"pt-br": "Alertas de Desmatamento no Cerrado",
+				"en-us": "Deforestation Alerts in the Cerrado"
+			},
+			"description": {
+				"pt-br": "Área desmatada à partir de 2018. Este mapeamento utiliza imagens do satélite Landsat ou similares, para registrar e quantificar as áreas de avisos de desmatamento com solo exposto, desmatamento com vegetação e mineração.",
+				"en-us": "Deforested area as of 2018. This mapping uses images from the Landsat or similar, to record and quantify the areas of deforestation alerts with exposed soil, deforestation with vegetation and mining."
+			},
+			"format": {
+				"pt-br": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+				"en-us": "Shapefile (* .SHP), with complementary files (* .PRJ, * DBF, * .SHX, * .SBX, * MAP). Comma-separated values (* .CSV)."
+			},
+			"region": {
+				"pt-br": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+				"en-us": "Cerrado biome, allowing to analyze the classes of land use by other regions of interest such as: states and municipalities."
+			},
+			"period": {
+				"pt-br": "2018 e 2019",
+				"en-us": "2018 to 2019"
+			},
+			"scale": {
+				"pt-br": "1:250.000",
+				"en-us": "1:250.000"
+			},
+			"system_coordinator": {
+				"pt-br": "Superfície de referência SIRGAS 2000, Sistema de Coordenada Geográfica (em graus).",
+				"en-us": "SIRGAS 2000 reference surface, Geographic Coordinate System (in degrees)."
+			},
+			"cartographic_projection": {
+				"pt-br": "Universal Transversa de Mercator.",
+				"en-us": "Universal Transverse Mercator"
+			},
+			"cod_caracter": {
+				"pt-br": "Latin 1",
+				"en-us": "Latin 1"
+			},
+			"fonte": {
+				"pt-br": "Programa conduzido pelo Ministério de Meio Ambiente (MMA) e o Ministério da Ciência, Tecnologia e Inovação (MCTI) contando com recursos financeiros oriundos do Banco Mundial (World Bank – IBRD-IDA), além das instituições alemães KfW e GIZ.",
+				"en-us": "Program conducted by the Ministry of Environment (MMA) and the Ministry of Science, Technology and Innovation (MCTI) with financial resources from the World Bank (World Bank - IBRD-IDA), in addition to the German institutions KfW and GIZ."
+			}
+		}, 
+		"queimadas_lapig": {
+			"title": {
+				"pt-br": "Áreas de Queimadas do Cerrado",
+				"en-us": "Cerrado Burning Areas"
+			},
+			"description": {
+				"pt-br": "Dados de queimadas ocorridos no Brasil, para o período de 2002 à 2018, produzidos a partir de imagens MODIS (MCD45A1).",
+				"en-us": "Data of burnings that occurred in Brazil, for the period from 2002 to 2018, produced from MODIS images (MCD45A1)."
+			},
+			"format": {
+				"pt-br": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+				"en-us": "Shapefile (* .SHP), with complementary files (* .PRJ, * DBF, * .SHX, * .SBX, * MAP). Comma-separated values (* .CSV)."
+			},
+			"region": {
+				"pt-br": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+				"en-us": "Cerrado biome, allowing to analyze the classes of land use by other regions of interest such as: states and municipalities."
+			},
+			"period": {
+				"pt-br": "2000 a 2019",
+				"en-us": "2000 to 2019"
+			},
+			"scale": {
+				"pt-br": "1:500.000",
+				"en-us": "1:500.000"
+			},
+			"system_coordinator": {
+				"pt-br": "Superfície de referência SIRGAS 2000, Sistema de Coordenada Geográfica (em graus).",
+				"en-us": "SIRGAS 2000 reference surface, Geographic Coordinate System (in degrees)."
+			},
+			"cartographic_projection": {
+				"pt-br": "Universal de Mercator.",
+				"en-us": "Universal Transverse Mercator (UTM)."
+			},
+			"cod_caracter": {
+				"pt-br": "Latin 1.",
+				"en-us": "Latin 1."
+			},
+			"fonte": {
+				"pt-br": "LAPIG / UFG.",
+				"en-us": "LAPIG / UFG."
+			}
+		}, 
+		"pontos_campo_parada": {
+			"title": {
+				"pt-br": "Pontos de Campo",
+				"en-us": "Field Points"
+			},
+			"description": {
+				"pt-br": "Com o propósito de validar mapas produzidos pelo LAPIG-UFG no âmbito do MapBiomas e de subsidiar pesquisas voltadas à qualificação das pastagens brasileiras, seis atividades de campo foram realizadas durante os anos de 2017 e 2018. Um grande conjunto de pontos georreferenciados foi formado e organizado com dados de uso/cobertura do solo e indicativos de qualidade das pastagens.",
+				"en-us": "Aiming to validate maps produced by LAPIG-UFG within the scope of MapBiomas and to subsidize research in order to qualifying Brazilian pasturelands, six field activities were carried out during the years 2017 and 2018. A large set of georeferenced points was formed and organized with data on land use / land cover and indicative of pasturelands quality."
+			},
+			"format": {
+				"pt-br": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+				"en-us": "Shapefile (* .SHP), with complementary files (* .PRJ, * DBF, * .SHX, * .SBX, * MAP). Comma-separated values (* .CSV)."
+			},
+			"region": {
+				"pt-br": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+				"en-us": "Cerrado biome, allowing to analyze the classes of land use by other regions of interest such as: states and municipalities."
+			},
+			"period": {
+				"pt-br": "2017",
+				"en-us": "2017"
+			},
+			"scale": {
+				"pt-br": "1:250.000",
+				"en-us": "1:250.000"
+			},
+			"system_coordinator": {
+				"pt-br": "Superfície de referência SIRGAS 2000, Sistema de Coordenada Geográfica (em graus).",
+				"en-us": "SIRGAS 2000 reference surface, Geographic Coordinate System (in degrees)."
+			},
+			"cartographic_projection": {
+				"pt-br": "Universal de Mercator.",
+				"en-us": "Universal Transverse Mercator (UTM)."
+			},
+			"cod_caracter": {
+				"pt-br": "Latin 1.",
+				"en-us": "Latin 1."
+			},
+			"fonte": {
+				"pt-br": "Laboratório de Processamento de Imagens e Geoprocessamento – Lapig (geração do dado). Projeto financiador: Spatial metrics and baselines of degradation patterns and provision of ecosystem services by pastures in Brazil.",
+				"en-us": "Laboratory of Image Processing and Geoprocessing - Lapig (data generation). Project 'Spatial metrics and baselines of degradation patterns and provision of ecosystem services by pastures in Brazil' (funder)."
+			}
+		}, 
+		"pontos_campo_sem_parada": {
+			"title": {
+				"pt-br": "Pontos de Campo",
+				"en-us": "Field points"
+			},
+			"description": {
+				"pt-br": "Com o propósito de validar mapas produzidos pelo LAPIG-UFG no âmbito do MapBiomas e de subsidiar pesquisas voltadas à qualificação das pastagens brasileiras, seis atividades de campo foram realizadas durante os anos de 2017 e 2018. Um grande conjunto de pontos georreferenciados foi formado e organizado com dados de uso/cobertura do solo e indicativos de qualidade das pastagens.",
+				"en-us": "Aiming to validate maps produced by LAPIG-UFG within the scope of MapBiomas and to subsidize research in order to qualifying Brazilian pastures, six field activities were carried out during the years 2017 and 2018. A large set of georeferenced points was formed and organized with data on land use / cover and indicative of pasture quality."
+			},
+			"format": {
+				"pt-br": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+				"en-us": "Shapefile (* .SHP), with complementary files (* .PRJ, * DBF, * .SHX, * .SBX, * MAP). Comma-separated values (* .CSV)."
+			},
+			"region": {
+				"pt-br": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+				"en-us": "Cerrado biome, allowing to analyze the classes of land use by other regions of interest such as: states and municipalities."
+			},
+			"period": {
+				"pt-br": "2017",
+				"en-us": "2017"
+			},
+			"scale": {
+				"pt-br": "1:250.000",
+				"en-us": "1:250.000"
+			},
+			"system_coordinator": {
+				"pt-br": "Superfície de referência SIRGAS 2000, sistema de coordenadas em graus.",
+				"en-us": "Datum SIRGAS 2000, coordinate system in degrees."
+			},
+			"cartographic_projection": {
+				"pt-br": "Universal de Mercator.",
+				"en-us": "Universal Transverse Mercator (UTM)."
+			},
+			"cod_caracter": {
+				"pt-br": "Latin 1.",
+				"en-us": "Latin 1."
+			},
+			"fonte": {
+				"pt-br": "Laboratório de Processamento de Imagens e Geoprocessamento – Lapig (geração do dado). Projeto Spatial metrics and baselines of degradation patterns and provision of ecosystem services by pastures in Brazil. (viabilizador).",
+				"en-us": "Image Processing and Geoprocessing Laboratory - Lapig (data generation). Project Spatial metrics and baselines of degradation patterns and provision of ecosystem services by pastures in Brazil. (enabler)."
+			}
+		}, 
+		"pontos_inspecionados_treinamento": {
+			"title": {
+				"pt-br": "Pontos Visualmente Inspecionados",
+				"en-us": "Visually Inspected Points"
+			},
+			"description": {
+				"pt-br": "Conjunto georreferenciado de pontos para todo o território brasileiro, sendo atribuídas classes de uso e cobertura do solo referente a cada ano no período de 1985 a 2017. Foram utilizadas imagens Landsat provenientes dos sensores TM, ETM+ e OLI. Buscou-se também abordar os critérios adotados, dificuldades e especificidades encontradas quanto a interpretação de imagens em cada um dos 6 biomas brasileiros.",
+				"en-us": "Georeferenced set of points for the entire Brazilian territory, with classes of Land use and land cover referring to each year, from 1985 to 2017. Landsat images from TM, ETM + and OLI sensors were used. We also sought to address the criteria adopted, difficulties and specificities encountered regarding the interpretation of images in each of the 6 Brazilian biomes."
+			},
+			"format": {
+				"pt-br": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+				"en-us": "Shapefile (* .SHP), with complementary files (* .PRJ, * DBF, * .SHX, * .SBX, * MAP). Comma-separated values (* .CSV)."
+			},
+			"region": {
+				"pt-br": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+				"en-us": "Cerrado biome, allowing to analyze the classes of land use by other regions of interest such as: states and municipalities."
+			},
+			"period": {
+				"pt-br": "1985 à 2017",
+				"en-us": "1985 to 2017"
+			},
+			"scale": {
+				"pt-br": "não se aplica",
+				"en-us": "not applicable"
+			},
+			"system_coordinator": {
+				"pt-br": "Superfície de referência SIRGAS 2000, Sistema de Coordenada Geográfica (em graus).",
+				"en-us": "SIRGAS 2000 reference surface, Geographic Coordinate System (in degrees)."
+			},
+			"cartographic_projection": {
+				"pt-br": "Universal de Mercator.",
+				"en-us": "Universal Transverse Mercator (UTM)."
+			},
+			"cod_caracter": {
+				"pt-br": "Latin 1.",
+				"en-us": "Latin 1."
+			},
+			"fonte": {
+				"pt-br": "Laboratório de Processamento de Imagens e Geoprocessamento – Lapig (geração do dado). Projeto financiador: Spatial metrics and baselines of degradation patterns and provision of ecosystem services by pastures in Brazil.",
+				"en-us": "Laboratory of Image Processing and Geoprocessing - Lapig (data generation). Project 'Spatial metrics and baselines of degradation patterns and provision of ecosystem services by pastures in Brazil ' (funder)."
+			}
+		}, 
+		"pontos_inspecionados_validacao": {
+			"title": {
+				"pt-br": "Pontos Visualmente Inspecionados",
+				"en-us": "Visually Inspected Points"
+			},
+			"description": {
+				"pt-br": "Conjunto georreferenciado de pontos para todo o território brasileiro, sendo atribuídas classes de uso e cobertura do solo referente a cada ano no período de 1985 a 2017. Foram utilizadas imagens Landsat provenientes dos sensores TM, ETM+ e OLI. Buscou-se também abordar os critérios adotados, dificuldades e especificidades encontradas quanto a interpretação de imagens em cada um dos 6 biomas brasileiros.",
+				"en-us": "Georeferenced set of points for the entire Brazilian territory, with classes of Land use and land cover referring to each year, from 1985 to 2017. Landsat images from TM, ETM + and OLI sensors were used. We also sought to address the criteria adopted, difficulties and specificities encountered regarding the interpretation of images in each of the 6 Brazilian biomes."
+			},
+			"format": {
+				"pt-br": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+				"en-us": "Shapefile (* .SHP), with complementary files (* .PRJ, * DBF, * .SHX, * .SBX, * MAP). Comma-separated values (* .CSV)."
+			},
+			"region": {
+				"pt-br": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+				"en-us": "Cerrado biome, allowing to analyze the classes of land use by other regions of interest such as: states and municipalities."
+			},
+			"period": {
+				"pt-br": "1985 à 2017",
+				"en-us": "1985 to 2017"
+			},
+			"scale": {
+				"pt-br": "não se aplica",
+				"en-us": "not applicable"
+			},
+			"system_coordinator": {
+				"pt-br": "Superfície de referência SIRGAS 2000, Sistema de Coordenada Geográfica (em graus).",
+				"en-us": "SIRGAS 2000 reference surface, Geographic Coordinate System (in degrees)."
+			},
+			"cartographic_projection": {
+				"pt-br": "Universal de Mercator.",
+				"en-us": "Universal Transverse Mercator (UTM)."
+			},
+			"cod_caracter": {
+				"pt-br": "Latin 1.",
+				"en-us": "Latin 1."
+			},
+			"fonte": {
+				"pt-br": "Laboratório de Processamento de Imagens e Geoprocessamento – Lapig (geração do dado). Projeto financiador: Spatial metrics and baselines of degradation patterns and provision of ecosystem services by pastures in Brazil.",
+				"en-us": "Laboratory of Image Processing and Geoprocessing - Lapig (data generation). Project 'Spatial metrics and baselines of degradation patterns and provision of ecosystem services by pastures in Brazil' (funder)."
+			}
+		}
+	},
+	"basemap": {
+		"geopolitico": {
+			"pt-br": "Geopolítico",
+			"en-us": "Geopolitical"
+		},
+		"satelite": {
+			"pt-br": "Satélite",
+			"en-us": "Satellite"
+		},
+		"estradas": {
+			"pt-br": "Estradas",
+			"en-us": "Roads"
+		},
+		"relevo": {
+			"pt-br": "Relevo",
+			"en-us": "Relief"
+		},
+		"landsat": {
+			"pt-br": "Landsat - 2018",
+			"en-us": "Landsat - 2018"
+		}
+	},
+	"limits": {
+		"bioma": {
+			"pt-br": "Biomas",
+			"en-us": "Biomes"
+		},
+		"estados": {
+			"pt-br": "Estados",
+			"en-us": "States"
+		},
+		"municipios": {
+			"pt-br": "Municípios",
+			"en-us": "Municipalities"
+		},
+		"chaves_kba": {
+			"pt-br": "Áreas Chaves de Biodiversidade - KBA's",
+			"en-us": "Key Biodiversity Areas - KBA's"
+		},
+		"assentamentos": {
+			"pt-br": "Assentamentos",
+			"en-us": "Settlements"
+		},
+		"cartas_ibge": {
+			"pt-br": "Cartas IBGE",
+			"en-us": "Chart's IBGE"
+		},
+		"corredores_cepf": {
+			"pt-br": "Corredores Prioritários CEPF",
+			"en-us": "CEPF Priority Corridors"
+		},
+		"regioes_hidrograficas": {
+			"pt-br": "Regiões Hidrográficas",
+			"en-us": "Hydrographic Regions"
+		},
+		"terras_indigenas": {
+			"pt-br": "Terras Indígenas",
+			"en-us": "Indigenous Lands"
+		},
+		"terras_privadas": {
+			"pt-br": "Terras Privadas CAR",
+			"en-us": "Private Lands CAR"
+		},
+		"conservacao_integral": {
+			"pt-br": "Unidades de Conservação Integral",
+			"en-us": "Integral Conservation Units"
+		},
+		"planejamento_hidrico": {
+			"pt-br": "Unidades de Planejamento Hídrico",
+			"en-us": "Water Planning"
+		}
+	},
 	"legends_box_title": {
 		"pt-br": "Legenda",
 		"en-us": "Legend"

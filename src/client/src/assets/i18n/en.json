@@ -1,3 +1,13 @@
 {
-  "platform_title": "Cerrado Knowledge Platform - Land Use"
+  "platform_title": "Cerrado Knowledge Platform",
+  "title_layers_infos": "Information Layers",
+  "title_tab_layers": "Layers",
+  "title_tab_basemap": "Basemap",
+  "title_tab_limits": "Bounderies",
+  "text_box_searching_input": "Choose a state / municipality...",
+  "text_box_searching": "Searching ...",
+  "text_box_notsearch": "Sorry, Region not found.",
+  "title_charts_main": "Analysis",
+  "title_legends_main": "Legend",
+  "typelabel_layer_type": "Type"
 }

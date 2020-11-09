@@ -18,14 +18,14 @@
 			<div id="map" class="dpat-ol-map"></div>
 			<div id="positionLayers">
 				<div class="titleWindows">
-					Camadas de Informações
+					{{'title_layers_infos' | translate}}
 					<button type="button" class="collapse-btn btn btn-light btn-sm float-right"
 						(click)="collapseLayer = !collapseLayer" [attr.aria-expanded]="!collapseLayer"
 						aria-controls="camadageografica">-</button>
 				</div>
 				<div class="collapseLayer" [ngbCollapse]="collapseLayer">
 					<mat-tab-group class="layersConteudo">
-						<mat-tab label="Camadas">
+						<mat-tab label="{{'title_tab_layers' | translate}}">
 							<mat-accordion>
 								<div id="layers_pastagens">
 									<div class="regions-row">
@@ -35,14 +35,13 @@
 											</ng-template>
 											<input id="typeahead-http" type="text" class="form-control searchRegion"
 												[class.is-invalid]="searchFailed" [(ngModel)]="valueRegion"
-												[ngbTypeahead]="search" placeholder="Escolha um estado / município..."
+												[ngbTypeahead]="search" placeholder="{{'text_box_searching_input' | translate}}"
 												(selectItem)="updateRegion($event.item)" [resultTemplate]="rt"
 												[inputFormatter]="formatter" />
 											<img [hidden]="selectRegion == defaultRegion" class="clear-region-btn"
 												(click)="updateRegion(defaultRegion)" src="assets/clear_button.png" />
-											<span *ngIf="searching">localizando...</span>
-											<div class="invalid-feedback" *ngIf="searchFailed">Desculpe, Região não
-												encontrada.</div>
+											<span *ngIf="searching">{{'text_box_searching' | translate}}</span>
+											<div class="invalid-feedback" *ngIf="searchFailed">{{'text_box_notsearch' | translate}}</div>
 										</div>
 									</div>
 									<div class="row" *ngFor="let groups of descriptor.groups">
@@ -132,7 +131,7 @@
 								</div>
 							</mat-accordion>
 						</mat-tab>
-						<mat-tab label="Mapas Base">
+						<mat-tab label="{{'title_tab_basemap' | translate}}">
 							<div class="baseMap" *ngFor="let basemap of basemapsNames">
 								<mat-slide-toggle (change)="baseLayerChecked(basemap, $event)"
 									[(ngModel)]="basemap.visible">
@@ -140,7 +139,7 @@
 								</mat-slide-toggle>
 							</div>
 						</mat-tab>
-						<mat-tab label="Limites">
+						<mat-tab label="{{'title_tab_limits' | translate}}">
 							<div *ngFor="let limits of descriptor.limits">
 								<div class="baseMap" *ngFor="let name_limits of limits.types">
 									<mat-slide-toggle (change)="limitsLayersChecked(name_limits, $event)"
@@ -155,7 +154,7 @@
 			</div>
 			<div id="positionCharts">
 				<div class="titleWindows">
-					Análises
+					{{'title_charts_main' | translate}}
 					<button type="button" class="collapse-btn btn btn-light btn-sm float-right"
 						(click)="collapseCharts = !collapseCharts" [attr.aria-expanded]="!collapseCharts"
 						aria-controls="camadageografica">-</button>
@@ -183,7 +182,7 @@
 			</div>
 			<div id="positionLegend">
 				<div class="titleWindows">
-					Legendas
+					{{'title_legends_main' | translate}}
 					<button type="button" class="collapse-btn btn btn-light btn-sm float-right"
 						(click)="collapseLegends = !collapseLegends" [attr.aria-expanded]="!collapseLegends"
 						aria-controls="camadageografica">-</button>

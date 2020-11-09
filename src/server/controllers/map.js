@@ -1,6 +1,7 @@
 var fs = require('fs')
     , archiver = require('archiver')
-    , json2csv = require('json2csv').parse;
+    , json2csv = require('json2csv').parse
+    , languageJson = require('../assets/lang/language.json');
 
 module.exports = function(app) {
   var Controller = {}
@@ -80,18 +81,19 @@ module.exports = function(app) {
   }
 
 	Controller.descriptor = function(request, response) {
+    var language = request.param('lang')
 
 		var result = {
       "regionFilterDefault": "bioma='CERRADO'",
 			"groups": [
         {
           "id": "mapeamento_uso_solo",
-          "label": "Uso do Solo",
+          "label": languageJson["title_group_label"]["usodosolo"][language],
           "group_expanded": true,
           "layers":[
             {
 							"id": "mapa_uso_solo",
-							"label": "Uso e Cobertura do Solo",
+							"label": languageJson["title_layer_label"]["usodosolo"][language],
 							"visible": true,
               "selectedType": 'uso_solo_terraclass',
               "downloadSHP": false,
@@ -99,14 +101,14 @@ module.exports = function(app) {
               "types": [
 								// {
                 //   "value": "uso_solo_mapbiomas", 
-                //   "Viewvalue": "Mapbiomas", 
+                //   "Viewvalue": languageJson["type_layer_viewvalue"]["usodosolo_mapbiomas"][language],
                 //   "visible": true, 
                 //   "opacity": 1,
                 //   "regionFilter": true,
                 //   "order": 1,
-                //   "typeLabel": "Tipo",
-                //   "timeLabel": "Ano",
-                //   "timeSelected": "year=2018",
+                //   "typeLabel": languageJson["typelabel_layer"]["type"][language],
+                //   "timeLabel": languageJson["typelabel_layer"]["year"][language],
+                //   "timeSelected": "year=2019",
                 //   "timeHandler": "msfilter",
                 //   "times": [
                 //     {"value": "year=1985", "Viewvalue": 1985} ,
@@ -142,68 +144,69 @@ module.exports = function(app) {
                 //     {"value": "year=2015", "Viewvalue": 2015},
                 //     {"value": "year=2016", "Viewvalue": 2016},
                 //     {"value": "year=2017", "Viewvalue": 2017},
-                //     {"value": "year=2018", "Viewvalue": 2018}
+                //     {"value": "year=2018", "Viewvalue": 2018},
+                //     {"value": "year=2019", "Viewvalue": 2019}
                 //   ],
                 //   "metadados": {
-                //     "title": "Cobertura e Uso do Solo do Brasil - Mapbiomas",
-                //     "description": "O Projeto de Mapeamento Anual da Cobertura e Uso do Solo do Brasil é uma iniciativa que envolve uma rede colaborativa com especialistas nos biomas, usos da terra, sensoriamento remoto, SIG e ciência da computação que utiliza processamento em nuvem e classificadores automatizados desenvolvidos e operados a partir da plataforma Google Earth Engine para gerar uma série histórica de mapas anuais de cobertura e uso da terra doBrasil.",
+                //     "title": languageJson["metadata"]["usodosolo_mapbiomas"]["title"][language],
+                //     "description": languageJson["metadata"]["usodosolo_mapbiomas"]["description"][language],
                 //     "link_description": "https://mapbiomas-br-site.s3.amazonaws.com/ATBD_Collection_4_v2_Dez2019.pdf",
-                //     "format": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
-                //     "region": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
-                //     "period": "1985 à 2018, Coleção 4.",
-                //     "scale": "30 metros",
-                //     "system_coordinator": "Superfície de referência SIRGAS 2000, sistema de coordenadas em grau.",
-                //     "cartographic_projection": "Universal de Mercator.",
-                //     "cod_caracter": "Latin 1.",
-                //     "fonte": "Laboratório de Processamento de Imagens e Geoprocessamento – Lapig (geração do dado). Projeto Spatial metrics and baselines of degradation patterns and provision of ecosystem services by pastures in Brazil. (viabilizador).",
-                //     "contato": "Fernanda Stefani - fer.stefani.souza@gmail.com<br /> Lana Teixeira - lanamarast @gmail.com"
+                //     "format": languageJson["metadata"]["usodosolo_mapbiomas"]["format"][language],
+                //     "region": languageJson["metadata"]["usodosolo_mapbiomas"]["region"][language],
+                //     "period": languageJson["metadata"]["usodosolo_mapbiomas"]["period"][language],
+                //     "scale": languageJson["metadata"]["usodosolo_mapbiomas"]["scale"][language],
+                //     "system_coordinator": languageJson["metadata"]["usodosolo_mapbiomas"]["system_coordinator"][language],
+                //     "cartographic_projection": languageJson["metadata"]["usodosolo_mapbiomas"]["cartographic_projection"][language],
+                //     "cod_caracter": languageJson["metadata"]["usodosolo_mapbiomas"]["cod_caracter"][language],
+                //     "fonte": languageJson["metadata"]["usodosolo_mapbiomas"]["fonte"][language],
+                //     "contato":"lapig.cepf@gmail.com"
                 //   },
                 //   "columnsCSV": "area_ha, classe, year"
                 // },
                 {
                   "value": "uso_solo_terraclass", 
-                  "Viewvalue": "Terraclass",
-                  "typeLabel": "Tipo",
+                  "Viewvalue": languageJson["type_layer_viewvalue"]["usodosolo_terraclass"][language],
+                  "typeLabel": languageJson["typelabel_layer"]["type"][language],
                   "visible": true, 
                   "opacity": 1,
                   "regionFilter": true,
                   "order": 1,
                   "metadados": {
-                    "title": "Mapeamento do Uso e Cobertura Vegetal do Cerrado – TerraClass Cerrado",
-                    "description": "Mapeamento do Uso e Cobertura Vegetal do Cerrado - TerraClass Cerrado, utiliza como base de mapeamento 118 cenas do satélite Landsat 8, sensor Operational Land Imager ( OLI), do ano de 2013 que recobrem todo o bioma. A área mínima mapeável é de 6,25 hectares.",
-                    "format": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
-                    "region": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
-                    "period": "2013",
-                    "scale": "1:250.000",
-                    "system_coordinator": "Superfície de referência SIRGAS 2000, sistema de coordenadas em grau.",
-                    "cartographic_projection": "Universal de Mercator",
-                    "cod_caracter": "Latin 1",
-                    "fonte": "UFG, IBAMA CSR, INPE OBT e CRA, EMBRAPA MONITORAMENTO POR SATÉLITE, EMBRAPA INFORMÁTICA AGROPECUÁRIA, UFU. Programa conduzido pelo Ministério de Meio Ambiente (MMA) e conta com recursos financeiros oriundos do Global Environment Facility (GEF) por meio do Banco Mundial e do Fundo Brasileiro para a Biodiversidade (Funbio). Para acessar a publicação completa do projeto, clique aqui!",
+                    "title": languageJson["metadata"]["usodosolo_terraclass"]["title"][language],
+                    "description": languageJson["metadata"]["usodosolo_terraclass"]["description"][language],
+                    "format": languageJson["metadata"]["usodosolo_terraclass"]["format"][language],
+                    "region": languageJson["metadata"]["usodosolo_terraclass"]["region"][language],
+                    "period": languageJson["metadata"]["usodosolo_terraclass"]["period"][language],
+                    "scale": languageJson["metadata"]["usodosolo_terraclass"]["scale"][language],
+                    "system_coordinator": languageJson["metadata"]["usodosolo_terraclass"]["system_coordinator"][language],
+                    "cartographic_projection": languageJson["metadata"]["usodosolo_terraclass"]["cartographic_projection"][language],
+                    "cod_caracter": languageJson["metadata"]["usodosolo_terraclass"]["cod_caracter"][language],
+                    "fonte": languageJson["metadata"]["usodosolo_terraclass"]["fonte"][language],
                     "link_fonte": "https://www.mma.gov.br/images/arquivo/80049/Cerrado/publicacoes/Livro%20EMBRAPA-WEB-1-TerraClass%20Cerrado.pdf",
-                    "contato": "Fernanda Stefani - fer.stefani.souza@gmail.com <br /> Lana Teixeira - lanamarast @gmail.com"
+                    "contato":"lapig.cepf@gmail.com"
                   },
                   "columnsCSV": "area_ha, classe"
                 },
                 {
                   "value": "uso_solo_probio", 
-                  "Viewvalue": "PROBIO",
-                  "typeLabel": "Tipo",
+                  "Viewvalue": languageJson["type_layer_viewvalue"]["usodosolo_probio"][language],
+                  "typeLabel": languageJson["typelabel_layer"]["type"][language],
                   "visible": false, 
                   "opacity": 1,
                   "regionFilter": true,
                   "order": 1,
                   "metadados": {
-                    "title": "",
-                    "description": "",
-                    "format": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
-                    "region": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
-                    "period": "",
-                    "scale": "",
-                    "system_coordinator": "",
-                    "cartographic_projection": "",
-                    "cod_caracter": "",
-                    "fonte": "",
-                    "contato": "lapig.cepf@gmail.com"
+                    "title": languageJson["metadata"]["usodosolo_probio"]["title"][language],
+                    "description": languageJson["metadata"]["usodosolo_probio"]["description"][language],
+                    "format": languageJson["metadata"]["usodosolo_probio"]["format"][language],
+                    "region": languageJson["metadata"]["usodosolo_probio"]["region"][language],
+                    "period": languageJson["metadata"]["usodosolo_probio"]["period"][language],
+                    "scale": languageJson["metadata"]["usodosolo_probio"]["scale"][language],
+                    "system_coordinator": languageJson["metadata"]["usodosolo_probio"]["system_coordinator"][language],
+                    "cartographic_projection": languageJson["metadata"]["usodosolo_probio"]["cartographic_projection"][language],
+                    "cod_caracter": languageJson["metadata"]["usodosolo_probio"]["cod_caracter"][language],
+                    "fonte": languageJson["metadata"]["usodosolo_probio"]["fonte"][language],
+                    "contato":"lapig.cepf@gmail.com"
                   },
                   "columnsCSV": "area_ha, classe"
                 }
@@ -214,20 +217,20 @@ module.exports = function(app) {
         },
 				{
           "id": "agropecuaria",
-          "label": "Agropecuária", 
+          "label": languageJson["title_group_label"]["agropecuaria"][language],
           "group_expanded": false,
 					"layers": [
             {
 							"id": "mapa_agricultura_agrosatelite",
-							"label": "Agricultura - Agrosatélite",
+							"label": languageJson["title_layer_label"]["agrosatelite"][language],
 							"visible": false,
               "selectedType": 'agricultura_agrosatelite',
               "value": "agricultura_agrosatelite",
               "opacity": 1,
               "regionFilter": true,
               "order": 2,
-              "typeLabel": "Tipo",
-              "timeLabel": "Ano",
+              "typeLabel": languageJson["typelabel_layer"]["type"][language],
+              "timeLabel": languageJson["typelabel_layer"]["year"][language],
               "timeSelected": "year=2014",
               "timeHandler": "msfilter",
               "times": [
@@ -236,17 +239,17 @@ module.exports = function(app) {
                 {"value": "year=2014", "Viewvalue": 2014}
               ],
               "metadados": {
-                "title": "Agrosatelite",
-                "description": "",
-                "format": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
-                "region": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
-                "period": "",
-                "scale": "",
-                "system_coordinator": "",
-                "cartographic_projection": "",
-                "cod_caracter": "",
-                "fonte": "",
-                "contato": "lapig.cepf@gmail.com"
+                "title": languageJson["metadata"]["agricultura_agrosatelite"]["title"][language],
+                "description": languageJson["metadata"]["agricultura_agrosatelite"]["description"][language],
+                "format": languageJson["metadata"]["agricultura_agrosatelite"]["format"][language],
+                "region": languageJson["metadata"]["agricultura_agrosatelite"]["region"][language],
+                "period": languageJson["metadata"]["agricultura_agrosatelite"]["period"][language],
+                "scale": languageJson["metadata"]["agricultura_agrosatelite"]["scale"][language],
+                "system_coordinator": languageJson["metadata"]["agricultura_agrosatelite"]["system_coordinator"][language],
+                "cartographic_projection": languageJson["metadata"]["agricultura_agrosatelite"]["cartographic_projection"][language],
+                "cod_caracter": languageJson["metadata"]["agricultura_agrosatelite"]["cod_caracter"][language],
+                "fonte": languageJson["metadata"]["agricultura_agrosatelite"]["fonte"][language],
+                "contato":"lapig.cepf@gmail.com"
               },
               "columnsCSV": "area_ha, classe, year",
               "downloadSHP": true,
@@ -254,7 +257,7 @@ module.exports = function(app) {
 						},
 						{
 							"id": "mapa_pastagem",
-							"label": "Pastagem - Lapig",
+							"label": languageJson["title_layer_label"]["pasture"][language],
 							"visible": false,
               "selectedType": 'pasture',
               "downloadSHP": true,
@@ -262,112 +265,13 @@ module.exports = function(app) {
 							"types": [
 								{
                   "value": "pasture", 
-                  "Viewvalue": "Regular", 
+                  "Viewvalue": languageJson["type_layer_viewvalue"]["pasture_regular"][language],
                   "visible": false, 
                   "opacity": 1,
                   "regionFilter": true,
                   "order": 1,
-                  "typeLabel": "Tipo",
-                  "timeLabel": "Ano",
-                  "timeSelected": "year=2018",
-                  "timeHandler": "msfilter",
-                  "times": [
-                    {"value": "year=1985", "Viewvalue": 1985},
-                    {"value": "year=1986", "Viewvalue": 1986},
-                    {"value": "year=1987", "Viewvalue": 1987},
-                    {"value": "year=1988", "Viewvalue": 1988},
-                    {"value": "year=1989", "Viewvalue": 1989},
-                    {"value": "year=1990", "Viewvalue": 1990},
-                    {"value": "year=1991", "Viewvalue": 1991},
-                    {"value": "year=1992", "Viewvalue": 1992},
-                    {"value": "year=1993", "Viewvalue": 1993},
-                    {"value": "year=1994", "Viewvalue": 1994},
-                    {"value": "year=1995", "Viewvalue": 1995},
-                    {"value": "year=1996", "Viewvalue": 1996},
-                    {"value": "year=1997", "Viewvalue": 1997},
-                    {"value": "year=1998", "Viewvalue": 1998},
-                    {"value": "year=1999", "Viewvalue": 1999},
-                    {"value": "year=2000", "Viewvalue": 2000},
-                    {"value": "year=2001", "Viewvalue": 2001},
-                    {"value": "year=2002", "Viewvalue": 2002},
-                    {"value": "year=2003", "Viewvalue": 2003},
-                    {"value": "year=2004", "Viewvalue": 2004},
-                    {"value": "year=2005", "Viewvalue": 2005},
-                    {"value": "year=2006", "Viewvalue": 2006},
-                    {"value": "year=2007", "Viewvalue": 2007},
-                    {"value": "year=2008", "Viewvalue": 2008},
-                    {"value": "year=2009", "Viewvalue": 2009},
-                    {"value": "year=2010", "Viewvalue": 2010},
-                    {"value": "year=2011", "Viewvalue": 2011},
-                    {"value": "year=2012", "Viewvalue": 2012},
-                    {"value": "year=2013", "Viewvalue": 2013},
-                    {"value": "year=2014", "Viewvalue": 2014},
-                    {"value": "year=2015", "Viewvalue": 2015},
-                    {"value": "year=2016", "Viewvalue": 2016},
-                    {"value": "year=2017", "Viewvalue": 2017},
-                    {"value": "year=2018", "Viewvalue": 2018},
-                    {"value": "year=2019", "Viewvalue": 2019}
-                  ],
-                  "metadados": {
-                    "title": "Áreas de Pastagens do Brasil",
-                    "description": "Mapeamento anual das pastagens brasileiras, realizado através do uso de séries de dados Landsat de 1985 a 2018. Utilizando abordagens de classificação supervisionada (Random Forest) através da plataforma Earth Engine da Google.",
-                    "link_description": "https://mapbiomas-br-site.s3.amazonaws.com/ATBD_Collection_4_v2_Dez2019.pdf",
-                    "format": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
-                    "region": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
-                    "period": "De 1985 a 2018.",
-                    "scale": "30 metros.",
-                    "system_coordinator": "Superfície de referência SIRGAS 2000, sistema de coordenadas em graus.",
-                    "cartographic_projection": "Universal de Mercator.",
-                    "update": "Anual",
-                    "cod_caracter": "Latin 1.",
-                    "fonte": "Laboratório de Processamento de Imagens e Geoprocessamento - Lapig (geração do dado). Projeto de Mapeamento Anual da Cobertura e Uso do Solo do Brasil - MapBiomas (viabilizador). ",
-                    "contato": "lapig.cepf@gmail.com"
-                  },
-                  "columnsCSV": "area_ha, year"
-                 },
-								 {
-                   "value": "classes_degradacao_pastagem", 
-                   "Viewvalue": "Classes degradação",
-                   "typeLabel": "Tipo", 
-                   "visible": false, 
-                   "opacity": 1,
-                   "regionFilter": true,
-                   "order": 10,
-                   //"layerfilter": "category='1'",
-                   "metadados": {
-                     "title": "Indícios de degradação das pastagens brasileiras",
-                     "description": "Mapeamento da qualidade de pastagens, gerado pelo Lapig, onde foram analisados os dados de pastagens pixel a pixel para o período de 2011 a 2016, por meio de análise de tendências em anomalias acumuladas. A análise foi baseado em dados satelitários (NDVI/MOD13Q1), e avalia perdas ou ganho em produtividade. As áreas com tendência significativas de perda em produtividade (p < 0.05) foram consideradas áreas com indícios de degradação.",
-                     "format": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
-                     "region": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
-                     "period": "2017",
-                     "scale": "1:250.000 ",
-                     "system_coordinator": "Superfície de referência SIRGAS 2000, sistema de coordenadas em graus.",
-                     "cartographic_projection": "Universal de Mercator.",
-                     "cod_caracter": "Latin 1",
-                     "fonte": "Laboratório de Processamento de Imagens e Geoprocessamento - Lapig",
-                     "contato": "lapig.cepf@gmail.com"
-                   },
-                   "columnsCSV": "area_ha"
-                 }
-							]
-						},
-						{
-							"id": "mapa_pecuaria_censitaria",
-							"label": "Pecuária Censitária - IBGE",
-							"visible": false,
-              "selectedType": 'lotacao_bovina_regions',
-              "downloadSHP": false,
-              "downloadCSV": true,
-							"types": [
-                {
-                  "value": "lotacao_bovina_regions", 
-                  "Viewvalue": "Rebanho Bovino", 
-                  "visible": false, 
-                  "opacity": 1,
-                  "regionFilter": true,
-                  "order": 4,
-                  "typeLabel": "Quantidade",
-                  "timeLabel": "Ano",
+                  "typeLabel": languageJson["typelabel_layer"]["type"][language],
+                  "timeLabel": languageJson["typelabel_layer"]["year"][language],
                   "timeSelected": "year=2019",
                   "timeHandler": "msfilter",
                   "times": [
@@ -408,29 +312,128 @@ module.exports = function(app) {
                     {"value": "year=2019", "Viewvalue": 2019}
                   ],
                   "metadados": {
-                    "title": "Rebanho Bovino em Unidades Animal (UA)",
-                    "description": "Cálculo realizado considerando a composição do rebanho para o censo agropecuário. Para os anos de 1986 a 1999, utilizou-se os dados do censo agropecuário de 1996. Para os anos de 2000 a 2018. utilizou-se os dados do censo agropecuário de 2006. Sendo que uma Unidade Animal (UA), equivale a um animal de 450 kg vivo.",
-                    "format": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
-                    "region": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
-                    "period": "1985 á 2018.",
-                    "scale": "1:250.000",
-                    "system_coordinator": "Superfície de referência SIRGAS 2000, sistema de coordenadas em grau.",
-                    "cartographic_projection": "Universal de Mercator.",
-                    "cod_caracter": "Latin 1.",
-                    "fonte": "Laboratório de Processamento de Imagens e Geoprocessamento - Lapig (geração do dado).",
-                    "contato": "lapig.cepf@gmail.com"
+                    "title": languageJson["metadata"]["pasture_regular"]["title"][language],
+                    "description": languageJson["metadata"]["pasture_regular"]["description"][language],
+                    "link_description": "https://mapbiomas-br-site.s3.amazonaws.com/ATBD_Collection_4_v2_Dez2019.pdf",
+                    "format": languageJson["metadata"]["pasture_regular"]["format"][language],
+                    "region": languageJson["metadata"]["pasture_regular"]["region"][language],
+                    "period": languageJson["metadata"]["pasture_regular"]["period"][language],
+                    "scale": languageJson["metadata"]["pasture_regular"]["scale"][language],
+                    "system_coordinator": languageJson["metadata"]["pasture_regular"]["system_coordinator"][language],
+                    "cartographic_projection": languageJson["metadata"]["pasture_regular"]["cartographic_projection"][language],
+                    "update": languageJson["metadata"]["pasture_regular"]["regular_update"][language],
+                    "cod_caracter": languageJson["metadata"]["pasture_regular"]["cod_caracter"][language],
+                    "fonte": languageJson["metadata"]["pasture_regular"]["fonte"][language],
+                    "contato":"lapig.cepf@gmail.com"
+                  },
+                  "columnsCSV": "area_ha, year"
+                 },
+								 {
+                   "value": "classes_degradacao_pastagem", 
+                   "Viewvalue": languageJson["type_layer_viewvalue"]["pasture_degraded"][language],
+                   "typeLabel": languageJson["typelabel_layer"]["type"][language],
+                   "visible": false, 
+                   "opacity": 1,
+                   "regionFilter": true,
+                   "order": 10,
+                   //"layerfilter": "category='1'",
+                   "metadados": {
+                      "title": languageJson["metadata"]["pasture_degraded"]["title"][language],
+                      "description": languageJson["metadata"]["pasture_degraded"]["description"][language],
+                      "format": languageJson["metadata"]["pasture_degraded"]["format"][language],
+                      "region": languageJson["metadata"]["pasture_degraded"]["region"][language],
+                      "period": languageJson["metadata"]["pasture_degraded"]["period"][language],
+                      "scale": languageJson["metadata"]["pasture_degraded"]["scale"][language],
+                      "system_coordinator": languageJson["metadata"]["pasture_degraded"]["system_coordinator"][language],
+                      "cartographic_projection": languageJson["metadata"]["pasture_degraded"]["cartographic_projection"][language],
+                      "cod_caracter": languageJson["metadata"]["pasture_degraded"]["cod_caracter"][language],
+                      "fonte": languageJson["metadata"]["pasture_degraded"]["fonte"][language],
+                      "contato":"lapig.cepf@gmail.com"
+                   },
+                   "columnsCSV": "area_ha"
+                 }
+							]
+						},
+						{
+							"id": "mapa_pecuaria_censitaria",
+							"label": languageJson["title_layer_label"]["pecuaria_censitaria"][language],
+							"visible": false,
+              "selectedType": 'lotacao_bovina_regions',
+              "downloadSHP": false,
+              "downloadCSV": true,
+							"types": [
+                {
+                  "value": "lotacao_bovina_regions", 
+                  "Viewvalue": languageJson["type_layer_viewvalue"]["rebanho_bovino"][language],
+                  "visible": false, 
+                  "opacity": 1,
+                  "regionFilter": true,
+                  "order": 4,
+                  "typeLabel": languageJson["typelabel_layer"]["quantity"][language],
+                  "timeLabel": languageJson["typelabel_layer"]["year"][language],
+                  "timeSelected": "year=2019",
+                  "timeHandler": "msfilter",
+                  "times": [
+                    {"value": "year=1985", "Viewvalue": 1985},
+                    {"value": "year=1986", "Viewvalue": 1986},
+                    {"value": "year=1987", "Viewvalue": 1987},
+                    {"value": "year=1988", "Viewvalue": 1988},
+                    {"value": "year=1989", "Viewvalue": 1989},
+                    {"value": "year=1990", "Viewvalue": 1990},
+                    {"value": "year=1991", "Viewvalue": 1991},
+                    {"value": "year=1992", "Viewvalue": 1992},
+                    {"value": "year=1993", "Viewvalue": 1993},
+                    {"value": "year=1994", "Viewvalue": 1994},
+                    {"value": "year=1995", "Viewvalue": 1995},
+                    {"value": "year=1996", "Viewvalue": 1996},
+                    {"value": "year=1997", "Viewvalue": 1997},
+                    {"value": "year=1998", "Viewvalue": 1998},
+                    {"value": "year=1999", "Viewvalue": 1999},
+                    {"value": "year=2000", "Viewvalue": 2000},
+                    {"value": "year=2001", "Viewvalue": 2001},
+                    {"value": "year=2002", "Viewvalue": 2002},
+                    {"value": "year=2003", "Viewvalue": 2003},
+                    {"value": "year=2004", "Viewvalue": 2004},
+                    {"value": "year=2005", "Viewvalue": 2005},
+                    {"value": "year=2006", "Viewvalue": 2006},
+                    {"value": "year=2007", "Viewvalue": 2007},
+                    {"value": "year=2008", "Viewvalue": 2008},
+                    {"value": "year=2009", "Viewvalue": 2009},
+                    {"value": "year=2010", "Viewvalue": 2010},
+                    {"value": "year=2011", "Viewvalue": 2011},
+                    {"value": "year=2012", "Viewvalue": 2012},
+                    {"value": "year=2013", "Viewvalue": 2013},
+                    {"value": "year=2014", "Viewvalue": 2014},
+                    {"value": "year=2015", "Viewvalue": 2015},
+                    {"value": "year=2016", "Viewvalue": 2016},
+                    {"value": "year=2017", "Viewvalue": 2017},
+                    {"value": "year=2018", "Viewvalue": 2018},
+                    {"value": "year=2019", "Viewvalue": 2019}
+                  ],
+                  "metadados": {
+                    "title": languageJson["metadata"]["rebanho_bovino"]["title"][language],
+                    "description": languageJson["metadata"]["rebanho_bovino"]["description"][language],
+                    "format": languageJson["metadata"]["rebanho_bovino"]["format"][language],
+                    "region": languageJson["metadata"]["rebanho_bovino"]["region"][language],
+                    "period": languageJson["metadata"]["rebanho_bovino"]["period"][language],
+                    "scale": languageJson["metadata"]["rebanho_bovino"]["scale"][language],
+                    "system_coordinator": languageJson["metadata"]["rebanho_bovino"]["system_coordinator"][language],
+                    "cartographic_projection": languageJson["metadata"]["rebanho_bovino"]["cartographic_projection"][language],
+                    "cod_caracter": languageJson["metadata"]["rebanho_bovino"]["cod_caracter"][language],
+                    "fonte": languageJson["metadata"]["rebanho_bovino"]["fonte"][language],
+                    "contato":"lapig.cepf@gmail.com"
                   },
                   "columnsCSV": "n_kbcs, ua, year"
                 },
                 {
                   "value": "producao_leite", 
-                  "Viewvalue": "Produção de Leite", 
+                  "Viewvalue": languageJson["type_layer_viewvalue"]["producao_leite"][language],
                   "visible": false, 
                   "opacity": 1,
                   "regionFilter": true,
                   "order": 4,
-                  "typeLabel": "Quantidade",
-                  "timeLabel": "Ano",
+                  "typeLabel": languageJson["typelabel_layer"]["quantity"][language],
+                  "timeLabel": languageJson["typelabel_layer"]["year"][language],
                   "timeSelected": "year=2018",
                   "timeHandler": "msfilter",
                   "times": [
@@ -470,17 +473,17 @@ module.exports = function(app) {
                     {"value": "year=2018", "Viewvalue": 2018}
                   ],
                   "metadados": {
-                    "title": "Produção de Leite por Municípios do Brasil",
-                    "description": "Quantidade de Leite produzido por municípios do Brasil, em Litros, no período de 1974 a 2018, conforme dados da Pesquisa da Pecuária Municipal.",
-                    "format": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
-                    "region": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
-                    "period": "2000 a 2018",
-                    "scale": "1:250.000",
-                    "system_coordinator": "Superfície de referência SIRGAS 2000, sistema de coordenadas em graus.",
-                    "cartographic_projection": "Universal de Mercator.",
-                    "cod_caracter": "Latin 1",
-                    "fonte": "SIDRA / IBGE",
-                    "contato": "lapig.cepf@gmail.com"
+                    "title": languageJson["metadata"]["producao_leite"]["title"][language],
+                    "description": languageJson["metadata"]["producao_leite"]["description"][language],
+                    "format": languageJson["metadata"]["producao_leite"]["format"][language],
+                    "region": languageJson["metadata"]["producao_leite"]["region"][language],
+                    "period": languageJson["metadata"]["producao_leite"]["period"][language],
+                    "scale": languageJson["metadata"]["producao_leite"]["scale"][language],
+                    "system_coordinator": languageJson["metadata"]["producao_leite"]["system_coordinator"][language],
+                    "cartographic_projection": languageJson["metadata"]["producao_leite"]["cartographic_projection"][language],
+                    "cod_caracter": languageJson["metadata"]["producao_leite"]["cod_caracter"][language],
+                    "fonte": languageJson["metadata"]["producao_leite"]["fonte"][language],
+                    "contato":"lapig.cepf@gmail.com"
                   },
                   "columnsCSV": "prod_leite, year"
                 }
@@ -488,7 +491,7 @@ module.exports = function(app) {
             },
             {
 							"id": "mapa_agricultura_censitaria",
-							"label": "Agricultura Censitária - IBGE",
+							"label": languageJson["title_layer_label"]["agricultura_censitaria"][language],
 							"visible": false,
               "selectedType": 'area_plantada_algodao_censo',
               "downloadSHP": false,
@@ -496,13 +499,13 @@ module.exports = function(app) {
 							"types": [
                 {
                   "value": "area_plantada_algodao_censo", 
-                  "Viewvalue": "Algodão", 
+                  "Viewvalue": languageJson["type_layer_viewvalue"]["algodao"][language],
                   "visible": false, 
                   "opacity": 1,
                   "regionFilter": true,
                   "order": 3,
-                  "typeLabel": "Área Plantada",
-                  "timeLabel": "Ano",
+                  "typeLabel": languageJson["typelabel_layer"]["area_planted"][language],
+                  "timeLabel": languageJson["typelabel_layer"]["year"][language],
                   "timeSelected": "year=2018",
                   "timeHandler": "msfilter",
                   "times": [
@@ -527,29 +530,29 @@ module.exports = function(app) {
                     {"value": "year=2018", "Viewvalue": 2018}
                   ],
                   "metadados": {
-                    "title": "Áreas de Plantação de Algodão por Municípios do Brasil",
-                    "description": "Áreas de plantação de algodão em caroço por municípios do Brasil, por hectares, no período de 2000 a 2018, conforme dados da Pesquisa Agrícola Municipal",
-                    "format": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
-                    "region": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
-                    "period": "2000 a 2018.",
-                    "scale": "1:250.000",
-                    "system_coordinator": "Superfície de referência SIRGAS 2000, sistema de coordenadas em graus.",
-                    "cartographic_projection": "Universal de Mercator",
-                    "cod_caracter": "Latin 1",
-                    "fonte": "SIDRA / IBGE",
-                    "contato": "lapig.cepf@gmail.com"
+                    "title": languageJson["metadata"]["area_algodao"]["title"][language],
+                    "description": languageJson["metadata"]["area_algodao"]["description"][language],
+                    "format": languageJson["metadata"]["area_algodao"]["format"][language],
+                    "region": languageJson["metadata"]["area_algodao"]["region"][language],
+                    "period": languageJson["metadata"]["area_algodao"]["period"][language],
+                    "scale": languageJson["metadata"]["area_algodao"]["scale"][language],
+                    "system_coordinator": languageJson["metadata"]["area_algodao"]["system_coordinator"][language],
+                    "cartographic_projection": languageJson["metadata"]["area_algodao"]["cartographic_projection"][language],
+                    "cod_caracter": languageJson["metadata"]["area_algodao"]["cod_caracter"][language],
+                    "fonte": languageJson["metadata"]["area_algodao"]["fonte"][language],
+                    "contato":"lapig.cepf@gmail.com"
                   },
                   "columnsCSV": "area_ha, year"
                 },
                 {
                   "value": "area_plantada_cana_censo", 
-                  "Viewvalue": "Cana", 
+                  "Viewvalue": languageJson["type_layer_viewvalue"]["cana"][language],
                   "visible": false, 
                   "opacity": 1,
                   "regionFilter": true,
                   "order": 3,
-                  "typeLabel": "Área Plantada",
-                  "timeLabel": "Ano",
+                  "typeLabel": languageJson["typelabel_layer"]["area_planted"][language],
+                  "timeLabel": languageJson["typelabel_layer"]["year"][language],
                   "timeSelected": "year=2018",
                   "timeHandler": "msfilter",
                   "times": [
@@ -574,29 +577,29 @@ module.exports = function(app) {
                     {"value": "year=2018", "Viewvalue": 2018}
                   ],
                   "metadados": {
-                    "title": "Áreas de Plantação de Cana-de-açúcar por Municípios do Brasil",
-                    "description": "Áreas de plantação de cana-de-açúcar por municípios do Brasil, por hectares, no período de 2000 a 2018, conforme dados da Pesquisa Agrícola Municipal.",
-                    "format": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
-                    "region": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
-                    "period": "2000 a 2018.",
-                    "scale": "1:250.000",
-                    "system_coordinator": "Superfície de referência SIRGAS 2000, sistema de coordenadas em graus",
-                    "cartographic_projection": "Universal de Mercator.",
-                    "cod_caracter": "Latin 1",
-                    "fonte": "SIDRA / IBGE",
-                    "contato": "lapig.cepf@gmail.com"
+                    "title": languageJson["metadata"]["area_cana"]["title"][language],
+                    "description": languageJson["metadata"]["area_cana"]["description"][language],
+                    "format": languageJson["metadata"]["area_cana"]["format"][language],
+                    "region": languageJson["metadata"]["area_cana"]["region"][language],
+                    "period": languageJson["metadata"]["area_cana"]["period"][language],
+                    "scale": languageJson["metadata"]["area_cana"]["scale"][language],
+                    "system_coordinator": languageJson["metadata"]["area_cana"]["system_coordinator"][language],
+                    "cartographic_projection": languageJson["metadata"]["area_cana"]["cartographic_projection"][language],
+                    "cod_caracter": languageJson["metadata"]["area_cana"]["cod_caracter"][language],
+                    "fonte": languageJson["metadata"]["area_cana"]["fonte"][language],
+                    "contato":"lapig.cepf@gmail.com"
                   },
                   "columnsCSV": "area_ha, year"
                 },
                 {
                   "value": "area_plantada_milho_censo", 
-                  "Viewvalue": "Milho", 
+                  "Viewvalue": languageJson["type_layer_viewvalue"]["milho"][language],
                   "visible": false, 
                   "opacity": 1,
                   "regionFilter": true,
                   "order": 3,
-                  "typeLabel": "Área Plantada",
-                  "timeLabel": "Ano",
+                  "typeLabel": languageJson["typelabel_layer"]["area_planted"][language],
+                  "timeLabel": languageJson["typelabel_layer"]["year"][language],
                   "timeSelected": "year=2018",
                   "timeHandler": "msfilter",
                   "times": [
@@ -621,29 +624,29 @@ module.exports = function(app) {
                     {"value": "year=2018", "Viewvalue": 2018}
                   ],
                   "metadados": {
-                    "title": "Áreas de Plantação de Milho por Municípios do Brasil",
-                    "description": "Áreas de plantação de milho por municípios do Brasil, por hectares, no período de 2000 a 2018, conforme dados da Pesquisa Agrícola Municipal.",
-                    "format": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
-                    "region": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
-                    "period": "2000 a 2018.",
-                    "scale": "1:250.000",
-                    "system_coordinator": "Superfície de referência SIRGAS 2000, sistema de coordenadas em graus.",
-                    "cartographic_projection": "Universal de Mercator.",
-                    "cod_caracter": "Latin 1",
-                    "fonte": "SIDRA / IBGE",
-                    "contato": "lapig.cepf@gmail.com"
+                    "title": languageJson["metadata"]["area_milho"]["title"][language],
+                    "description": languageJson["metadata"]["area_milho"]["description"][language],
+                    "format": languageJson["metadata"]["area_milho"]["format"][language],
+                    "region": languageJson["metadata"]["area_milho"]["region"][language],
+                    "period": languageJson["metadata"]["area_milho"]["period"][language],
+                    "scale": languageJson["metadata"]["area_milho"]["scale"][language],
+                    "system_coordinator": languageJson["metadata"]["area_milho"]["system_coordinator"][language],
+                    "cartographic_projection": languageJson["metadata"]["area_milho"]["cartographic_projection"][language],
+                    "cod_caracter": languageJson["metadata"]["area_milho"]["cod_caracter"][language],
+                    "fonte": languageJson["metadata"]["area_milho"]["fonte"][language],
+                    "contato":"lapig.cepf@gmail.com"
                   },
                   "columnsCSV": "area_ha, year"
                 },
                 {
                   "value": "area_plantada_soja_censo", 
-                  "Viewvalue": "Soja", 
+                  "Viewvalue": languageJson["type_layer_viewvalue"]["soja"][language],
                   "visible": false, 
                   "opacity": 1,
                   "regionFilter": true,
                   "order": 3,
-                  "typeLabel": "Área Plantada",
-                  "timeLabel": "Ano",
+                  "typeLabel": languageJson["typelabel_layer"]["area_planted"][language],
+                  "timeLabel": languageJson["typelabel_layer"]["year"][language],
                   "timeSelected": "year=2018",
                   "timeHandler": "msfilter",
                   "times": [
@@ -668,29 +671,29 @@ module.exports = function(app) {
                     {"value": "year=2018", "Viewvalue": 2018}
                   ],
                   "metadados": {
-                    "title": "Áreas de Plantação de Soja por Municípios do Brasil",
-                    "description": "Áreas de plantação de soja por municípios do Brasil, por hectares, no período de 2000 a 2018, conforme dados da Pesquisa Agrícola Municipal.",
-                    "format": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
-                    "region": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
-                    "period": "2000 a 2018.",
-                    "scale": "1:250.000",
-                    "system_coordinator": "Superfície de referência SIRGAS 2000, sistema de coordenadas em graus.",
-                    "cartographic_projection": "Universal de Mercator.",
-                    "cod_caracter": "Latin 1",
-                    "fonte": "SIDRA / IBGE",
-                    "contato": "lapig.cepf@gmail.com"
+                    "title": languageJson["metadata"]["area_soja"]["title"][language],
+                    "description": languageJson["metadata"]["area_soja"]["description"][language],
+                    "format": languageJson["metadata"]["area_soja"]["format"][language],
+                    "region": languageJson["metadata"]["area_soja"]["region"][language],
+                    "period": languageJson["metadata"]["area_soja"]["period"][language],
+                    "scale": languageJson["metadata"]["area_soja"]["scale"][language],
+                    "system_coordinator": languageJson["metadata"]["area_soja"]["system_coordinator"][language],
+                    "cartographic_projection": languageJson["metadata"]["area_soja"]["cartographic_projection"][language],
+                    "cod_caracter": languageJson["metadata"]["area_soja"]["cod_caracter"][language],
+                    "fonte": languageJson["metadata"]["area_soja"]["fonte"][language],
+                    "contato":"lapig.cepf@gmail.com"
                   },
                   "columnsCSV": "area_ha, year"
                 },
                 {
                   "value": "quantidade_produzida_carvao_censo",
-                  "Viewvalue": "Carvão", 
+                  "Viewvalue": languageJson["type_layer_viewvalue"]["carvao"][language],
                   "visible": false, 
                   "opacity": 1,
                   "regionFilter": true,
                   "order": 3,
-                  "typeLabel": "Produção",
-                  "timeLabel": "Ano",
+                  "typeLabel": languageJson["typelabel_layer"]["production"][language],
+                  "timeLabel": languageJson["typelabel_layer"]["year"][language],
                   "timeSelected": "year=2018",
                   "timeHandler": "msfilter",
                   "times": [
@@ -715,29 +718,29 @@ module.exports = function(app) {
                     {"value": "year=2018", "Viewvalue": 2018}
                   ],
                   "metadados": {
-                    "title": "Produção de Carvão por Municípios do Brasil",
-                    "description": "Quantidade de carvão vegetal produzido por municípios do brasil, em Toneladas, no período de 2000 a 2018, conforme dados da Produção de Extração Vegetal e da Silvicultura.",
-                    "format": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
-                    "region": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
-                    "period": "2000 a 2018.",
-                    "scale": "1:250.000",
-                    "system_coordinator": "Superfície de referência SIRGAS 2000, sistema de coordenadas em graus.",
-                    "cartographic_projection": "Universal de Mercator.",
-                    "cod_caracter": "Latin 1",
-                    "fonte": "SIDRA / IBGE",
-                    "contato": "lapig.cepf@gmail.com"
+                    "title": languageJson["metadata"]["producao_carvao"]["title"][language],
+                    "description": languageJson["metadata"]["producao_carvao"]["description"][language],
+                    "format": languageJson["metadata"]["producao_carvao"]["format"][language],
+                    "region": languageJson["metadata"]["producao_carvao"]["region"][language],
+                    "period": languageJson["metadata"]["producao_carvao"]["period"][language],
+                    "scale": languageJson["metadata"]["producao_carvao"]["scale"][language],
+                    "system_coordinator": languageJson["metadata"]["producao_carvao"]["system_coordinator"][language],
+                    "cartographic_projection": languageJson["metadata"]["producao_carvao"]["cartographic_projection"][language],
+                    "cod_caracter": languageJson["metadata"]["producao_carvao"]["cod_caracter"][language],
+                    "fonte": languageJson["metadata"]["producao_carvao"]["fonte"][language],
+                    "contato":"lapig.cepf@gmail.com"
                   },
                   "columnsCSV": "qto_produz, year"
                 },
                 {
                   "value": "quantidade_produzida_lenha_censo",
-                  "Viewvalue": "Lenha", 
+                  "Viewvalue": languageJson["type_layer_viewvalue"]["lenha"][language],
                   "visible": false, 
                   "opacity": 1,
                   "regionFilter": true,
                   "order": 3,
-                  "typeLabel": "Produção",
-                  "timeLabel": "Ano",
+                  "typeLabel": languageJson["typelabel_layer"]["production"][language],
+                  "timeLabel": languageJson["typelabel_layer"]["year"][language],
                   "timeSelected": "year=2018",
                   "timeHandler": "msfilter",
                   "times": [
@@ -762,29 +765,29 @@ module.exports = function(app) {
                     {"value": "year=2018", "Viewvalue": 2018}
                   ],
                   "metadados": {
-                    "title": "Produção de Lenha por Municípios do Brasil",
-                    "description": "Quantidade de Lenha produzida por municípios do brasil, em Metros Cúbicos, no período de 2000 a 2018, conforme dados da Produção de Extração Vegetal e da Silvicultura.",
-                    "format": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
-                    "region": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
-                    "period": "2000 a 2018.",
-                    "scale": "1:250.000",
-                    "system_coordinator": "Superfície de referência SIRGAS 2000, sistema de coordenadas em graus.",
-                    "cartographic_projection": "Universal de Mercator.",
-                    "cod_caracter": "Latin 1",
-                    "fonte": "SIDRA / IBGE",
-                    "contato": "lapig.cepf@gmail.com"
+                    "title": languageJson["metadata"]["producao_lenha"]["title"][language],
+                    "description": languageJson["metadata"]["producao_lenha"]["description"][language],
+                    "format": languageJson["metadata"]["producao_lenha"]["format"][language],
+                    "region": languageJson["metadata"]["producao_lenha"]["region"][language],
+                    "period": languageJson["metadata"]["producao_lenha"]["period"][language],
+                    "scale": languageJson["metadata"]["producao_lenha"]["scale"][language],
+                    "system_coordinator": languageJson["metadata"]["producao_lenha"]["system_coordinator"][language],
+                    "cartographic_projection": languageJson["metadata"]["producao_lenha"]["cartographic_projection"][language],
+                    "cod_caracter": languageJson["metadata"]["producao_lenha"]["cod_caracter"][language],
+                    "fonte": languageJson["metadata"]["producao_lenha"]["fonte"][language],
+                    "contato":"lapig.cepf@gmail.com"
                   },
                   "columnsCSV": "qto_produz, year"
                 },
                 {
                   "value": "quantidade_produzida_madeira_censo",
-                  "Viewvalue": "Madeira", 
+                  "Viewvalue": languageJson["type_layer_viewvalue"]["madeira"][language],
                   "visible": false, 
                   "opacity": 1,
                   "regionFilter": true,
                   "order": 3,
-                  "typeLabel": "Produção",
-                  "timeLabel": "Ano",
+                  "typeLabel": languageJson["typelabel_layer"]["production"][language],
+                  "timeLabel": languageJson["typelabel_layer"]["year"][language],
                   "timeSelected": "year=2018",
                   "timeHandler": "msfilter",
                   "times": [
@@ -809,17 +812,17 @@ module.exports = function(app) {
                     {"value": "year=2018", "Viewvalue": 2018}
                   ],
                   "metadados": {
-                    "title": "Produção de Madeira por Municípios do Brasil",
-                    "description": "Quantidade de Madeira produzida por municípios do brasil, em Metros Cúbicos, no período de 2000 a 2018, conforme dados da Produção de Extração Vegetal e da Silvicultura.",
-                    "format": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
-                    "region": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
-                    "period": "2000 a 2018.",
-                    "scale": "1:250.000",
-                    "system_coordinator": "Superfície de referência SIRGAS 2000, sistema de coordenadas em graus.",
-                    "cartographic_projection": "Universal de Mercator.",
-                    "cod_caracter": "Latin 1",
-                    "fonte": "SIDRA / IBGE",
-                    "contato": "lapig.cepf@gmail.com"
+                    "title": languageJson["metadata"]["producao_madeira"]["title"][language],
+                    "description": languageJson["metadata"]["producao_madeira"]["description"][language],
+                    "format": languageJson["metadata"]["producao_madeira"]["format"][language],
+                    "region": languageJson["metadata"]["producao_madeira"]["region"][language],
+                    "period": languageJson["metadata"]["producao_madeira"]["period"][language],
+                    "scale": languageJson["metadata"]["producao_madeira"]["scale"][language],
+                    "system_coordinator": languageJson["metadata"]["producao_madeira"]["system_coordinator"][language],
+                    "cartographic_projection": languageJson["metadata"]["producao_madeira"]["cartographic_projection"][language],
+                    "cod_caracter": languageJson["metadata"]["producao_madeira"]["cod_caracter"][language],
+                    "fonte": languageJson["metadata"]["producao_madeira"]["fonte"][language],
+                    "contato":"lapig.cepf@gmail.com"
                   },
                   "columnsCSV": "qto_produz, year"
                 }
@@ -830,12 +833,12 @@ module.exports = function(app) {
         },
         {
           "id": "desmatamento_queimadas",
-          "label": "Desmatamentos/Queimadas",
+          "label": languageJson["title_group_label"]["desmatamentos_queimadas"][language],
           "group_expanded": false,
           "layers":[
             {
 							"id": "mapa_desmatamento",
-							"label": "Áreas Desmatamento",
+							"label": languageJson["title_layer_label"]["desmatamentos_queimadas"][language],
 							"visible": false,
               "selectedType": 'desmatamento_prodes',
               "downloadSHP": false,
@@ -843,13 +846,13 @@ module.exports = function(app) {
 							"types": [
 								{
                   "value": "desmatamento_prodes", 
-                  "Viewvalue": "PRODES", 
+                  "Viewvalue": languageJson["type_layer_viewvalue"]["prodes"][language],
                   "visible": false, 
                   "opacity": 1,
                   "regionFilter": true,
                   "order": 1,
-                  "typeLabel": "Fonte",
-                  "timeLabel": "Ano",
+                  "typeLabel": languageJson["typelabel_layer"]["fonte"][language],
+                  "timeLabel": languageJson["typelabel_layer"]["year"][language],
                   "timeSelected": "year=2018",
                   "timeHandler": "msfilter",
                   "times": [
@@ -866,29 +869,29 @@ module.exports = function(app) {
                     {"value": "year=2018", "Viewvalue": 2018}
                   ],
                   "metadados": {
-                    "title": "Monitoramento do Desmatamento no Cerrado Brasileiro por Satélite",
-                    "description": "Área desmatada a partir de 2000 discretizadas em uma séria histórica bienal para o período de 2000 a 2012 e anual para os anos de 2013 a 2018. O mapeamento utiliza imagens do satélite Landsat ou similares, para registrar e quantificar as áreas desmatadas maiores que 1 hectare. O PRODES considera como desmatamento a remoção completa da cobertura florestal primária por corte raso, independentemente da futura utilização destas áreas",
-                    "format": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
-                    "region": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
-                    "period": "Bienal de 2000 a 2012 e anual de 2013 a 2018.",
-                    "scale": "1:250.000",
-                    "system_coordinator": "Superfície de referência SIRGAS 2000, sistema de coordenadas em graus.",
-                    "cartographic_projection": "Universal de Mercator.",
-                    "cod_caracter": "Latin 1.",
-                    "fonte": "Programa conduzido pelo Ministério de Meio Ambiente (MMA) e o Ministério da Ciência, Tecnologia, Inovação e Comunicações (MCTIC) contando com recursos financeiros oriundos do Banco Mundial (World Bank – IBRD-IDA), além das instituições alemães KfW e GIZ.",
-                    "contato": "lapig.cepf@gmail.com"
+                    "title": languageJson["metadata"]["desmatamento_prodes"]["title"][language],
+                    "description": languageJson["metadata"]["desmatamento_prodes"]["description"][language],
+                    "format": languageJson["metadata"]["desmatamento_prodes"]["format"][language],
+                    "region": languageJson["metadata"]["desmatamento_prodes"]["region"][language],
+                    "period": languageJson["metadata"]["desmatamento_prodes"]["period"][language],
+                    "scale": languageJson["metadata"]["desmatamento_prodes"]["scale"][language],
+                    "system_coordinator": languageJson["metadata"]["desmatamento_prodes"]["system_coordinator"][language],
+                    "cartographic_projection": languageJson["metadata"]["desmatamento_prodes"]["cartographic_projection"][language],
+                    "cod_caracter": languageJson["metadata"]["desmatamento_prodes"]["cod_caracter"][language],
+                    "fonte": languageJson["metadata"]["desmatamento_prodes"]["fonte"][language],
+                    "contato":"lapig.cepf@gmail.com"
                   },
                   "columnsCSV": "area_km2, view_date, year"
                  },
                  {
                   "value": "desmatamento_siad", 
-                  "Viewvalue": "SIAD", 
+                  "Viewvalue": languageJson["type_layer_viewvalue"]["siad"][language],
                   "visible": false, 
                   "opacity": 1,
                   "regionFilter": true,
                   "order": 2,
-                  "typeLabel": "Fonte",
-                  "timeLabel": "Ano",
+                  "typeLabel": languageJson["typelabel_layer"]["fonte"][language],
+                  "timeLabel": languageJson["typelabel_layer"]["year"][language],
                   "timeSelected": "year=2017",
                   "timeHandler": "msfilter",
                   "times": [
@@ -909,29 +912,29 @@ module.exports = function(app) {
                     {"value": "year=2017", "Viewvalue": 2017}
                   ],
                   "metadados": {
-                    "title": "Áreas de Desmatamento no Cerrado",
-                    "description": "Dados de desmatamentos ocorridos no Bioma Cerrado, disponibilizados anualmente, no período de 2003 a 2017, produzidos a partir de imagens MODIS (MOD13Q1), sendo utilizadas imagens LANDSAT e CBERS para validação.",
-                    "format": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
-                    "region": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
-                    "period": "",
-                    "scale": "",
-                    "system_coordinator": "",
-                    "cartographic_projection": "",
-                    "cod_caracter": "",
-                    "fonte": "",
-                    "contato": "lapig.cepf@gmail.com"
+                    "title": languageJson["metadata"]["desmatamento_siad"]["title"][language],
+                    "description": languageJson["metadata"]["desmatamento_siad"]["description"][language],
+                    "format": languageJson["metadata"]["desmatamento_siad"]["format"][language],
+                    "region": languageJson["metadata"]["desmatamento_siad"]["region"][language],
+                    "period": languageJson["metadata"]["desmatamento_siad"]["period"][language],
+                    "scale": languageJson["metadata"]["desmatamento_siad"]["scale"][language],
+                    "system_coordinator": languageJson["metadata"]["desmatamento_siad"]["system_coordinator"][language],
+                    "cartographic_projection": languageJson["metadata"]["desmatamento_siad"]["cartographic_projection"][language],
+                    "cod_caracter": languageJson["metadata"]["desmatamento_siad"]["cod_caracter"][language],
+                    "fonte": languageJson["metadata"]["desmatamento_siad"]["fonte"][language],
+                    "contato":"lapig.cepf@gmail.com"
                   },
                   "columnsCSV": "area_km2, year"
                  },
                  {
                   "value": "desmatamento_glad", 
-                  "Viewvalue": "GLAD", 
+                  "Viewvalue": languageJson["type_layer_viewvalue"]["glad"][language],
                   "visible": false, 
                   "opacity": 1,
                   "regionFilter": true,
                   "order": 3,
-                  "typeLabel": "Fonte",
-                  "timeLabel": "Ano",
+                  "typeLabel": languageJson["typelabel_layer"]["fonte"][language],
+                  "timeLabel": languageJson["typelabel_layer"]["year"][language],
                   "timeSelected": "year=2018",
                   "timeHandler": "msfilter",
                   "times": [
@@ -955,17 +958,17 @@ module.exports = function(app) {
                     {"value": "year=2018", "Viewvalue": 2018}
                   ],
                   "metadados": {
-                    "title": "",
-                    "description": "",
-                    "format": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
-                    "region": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
-                    "period": "",
-                    "scale": "",
-                    "system_coordinator": "",
-                    "cartographic_projection": "",
-                    "cod_caracter": "",
-                    "fonte": "",
-                    "contato": "lapig.cepf@gmail.com"
+                    "title": languageJson["metadata"]["desmatamento_glad"]["title"][language],
+                    "description": languageJson["metadata"]["desmatamento_glad"]["description"][language],
+                    "format": languageJson["metadata"]["desmatamento_glad"]["format"][language],
+                    "region": languageJson["metadata"]["desmatamento_glad"]["region"][language],
+                    "period": languageJson["metadata"]["desmatamento_glad"]["period"][language],
+                    "scale": languageJson["metadata"]["desmatamento_glad"]["scale"][language],
+                    "system_coordinator": languageJson["metadata"]["desmatamento_glad"]["system_coordinator"][language],
+                    "cartographic_projection": languageJson["metadata"]["desmatamento_glad"]["cartographic_projection"][language],
+                    "cod_caracter": languageJson["metadata"]["desmatamento_glad"]["cod_caracter"][language],
+                    "fonte": languageJson["metadata"]["desmatamento_glad"]["fonte"][language],
+                    "contato":"lapig.cepf@gmail.com"
                   },
                   "columnsCSV": "area_km2, year"
                  }
@@ -973,7 +976,7 @@ module.exports = function(app) {
             },
             {
 							"id": "mapa_alertas_desmatamento",
-							"label": "Alertas Desmatamento",
+							"label": languageJson["title_layer_label"]["alertas_desmatamentos"][language],
 							"visible": false,
               "selectedType": 'alertas_desmatamento_deter',
               "downloadSHP": false,
@@ -981,24 +984,24 @@ module.exports = function(app) {
 							"types": [
 								{
                   "value": "alertas_desmatamento_deter", 
-                  "Viewvalue": "DETER", 
+                  "Viewvalue": languageJson["type_layer_viewvalue"]["deter"][language],
                   "visible": false, 
                   "opacity": 1,
                   "regionFilter": true,
                   "order": 1,
-                  "typeLabel": "Fonte",
+                  "typeLabel": languageJson["typelabel_layer"]["fonte"][language],
                   "metadados": {
-                    "title": "",
-                    "description": "",
-                    "format": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
-                    "region": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
-                    "period": "",
-                    "scale": "",
-                    "system_coordinator": "",
-                    "cartographic_projection": "",
-                    "cod_caracter": "",
-                    "fonte": "",
-                    "contato": "lapig.cepf@gmail.com"
+                    "title": languageJson["metadata"]["desmatamento_deter"]["title"][language],
+                    "description": languageJson["metadata"]["desmatamento_deter"]["description"][language],
+                    "format": languageJson["metadata"]["desmatamento_deter"]["format"][language],
+                    "region": languageJson["metadata"]["desmatamento_deter"]["region"][language],
+                    "period": languageJson["metadata"]["desmatamento_deter"]["period"][language],
+                    "scale": languageJson["metadata"]["desmatamento_deter"]["scale"][language],
+                    "system_coordinator": languageJson["metadata"]["desmatamento_deter"]["system_coordinator"][language],
+                    "cartographic_projection": languageJson["metadata"]["desmatamento_deter"]["cartographic_projection"][language],
+                    "cod_caracter": languageJson["metadata"]["desmatamento_deter"]["cod_caracter"][language],
+                    "fonte": languageJson["metadata"]["desmatamento_deter"]["fonte"][language],
+                    "contato":"lapig.cepf@gmail.com"
                   },
                   "columnsCSV": "area_km2, view_date, created_da, year"
                 }
@@ -1006,7 +1009,7 @@ module.exports = function(app) {
             },
             {
 							"id": "mapa_queimadas",
-							"label": "Áreas de Queimadas",
+							"label": languageJson["title_layer_label"]["areas_queimadas"][language],
 							"visible": false,
               "selectedType": 'queimadas_lapig',
               "downloadSHP": false,
@@ -1014,13 +1017,13 @@ module.exports = function(app) {
 							"types": [
                  {
                   "value": "queimadas_lapig", 
-                  "Viewvalue": "LAPIG", 
+                  "Viewvalue": languageJson["type_layer_viewvalue"]["lapig"][language],
                   "visible": false, 
                   "opacity": 1,
                   "regionFilter": true,
                   "order": 5,
-                  "typeLabel": "Fonte",
-                  "timeLabel": "Ano",
+                  "typeLabel": languageJson["typelabel_layer"]["fonte"][language],
+                  "timeLabel": languageJson["typelabel_layer"]["year"][language],
                   "timeSelected": "year=2018",
                   "timeHandler": "msfilter",
                   "times": [
@@ -1045,17 +1048,17 @@ module.exports = function(app) {
                     {"value": "year=2018", "Viewvalue": 2018}
                   ],
                   "metadados": {
-                    "title": "Áreas de Queimadas do Cerrado",
-                    "description": "Dados de queimadas ocorridos no Brasil, para o período de 2002 à 2018, produzidos a partir de imagens MODIS (MCD45A1).",
-                    "format": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
-                    "region": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
-                    "period": "2000 a 2018.",
-                    "scale": "1:500.000 ",
-                    "system_coordinator": "Superfície de referência SIRGAS 2000, sistema de coordenadas em graus.",
-                    "cartographic_projection": "Universal de Mercator.",
-                    "cod_caracter": "Latin 1.",
-                    "fonte": "LAPIG / UFG.",
-                    "contato": "lapig.cepf@gmail.com"
+                    "title": languageJson["metadata"]["queimadas_lapig"]["title"][language],
+                    "description": languageJson["metadata"]["queimadas_lapig"]["description"][language],
+                    "format": languageJson["metadata"]["queimadas_lapig"]["format"][language],
+                    "region": languageJson["metadata"]["queimadas_lapig"]["region"][language],
+                    "period": languageJson["metadata"]["queimadas_lapig"]["period"][language],
+                    "scale": languageJson["metadata"]["queimadas_lapig"]["scale"][language],
+                    "system_coordinator": languageJson["metadata"]["queimadas_lapig"]["system_coordinator"][language],
+                    "cartographic_projection": languageJson["metadata"]["queimadas_lapig"]["cartographic_projection"][language],
+                    "cod_caracter": languageJson["metadata"]["queimadas_lapig"]["cod_caracter"][language],
+                    "fonte": languageJson["metadata"]["queimadas_lapig"]["fonte"][language],
+                    "contato":"lapig.cepf@gmail.com"
                   },
                   "columnsCSV": "area_km2, burndate, year"
                  }
@@ -1065,12 +1068,12 @@ module.exports = function(app) {
         },
         {
           "id": "pontos_validacao",
-          "label": "Pontos de Validação",
+          "label": languageJson["title_group_label"]["pontos_validacao"][language],
           "group_expanded": false,
           "layers":[
             {
 							"id": "pontos_coletados_campo",
-							"label": "Pontos Coletados em Campo",
+							"label": languageJson["title_layer_label"]["pontos_campo"][language],
 							"visible": false,
               "selectedType": 'pontos_campo_sem_parada',
               "downloadSHP": true,
@@ -1078,27 +1081,27 @@ module.exports = function(app) {
 							"types": [
 								{
                   "value": "pontos_campo_parada", 
-                  "Viewvalue": "Parada", 
+                  "Viewvalue": languageJson["type_layer_viewvalue"]["parada"][language],
                   "visible": false, 
                   "opacity": 1,
                   "regionFilter": true,
                   "order": 1,
-                  "typeLabel": "Tipo",
+                  "typeLabel": languageJson["typelabel_layer"]["type"][language],
                   "metadados": {
-                    "title": "Pontos de Campo",
-                    "description": "Com o propósito de validar mapas produzidos pelo LAPIG-UFG no âmbito do MapBiomas e de subsidiar pesquisas voltadas à qualificação das pastagens brasileiras, seis atividades de campo foram realizadas durante os anos de 2017 e 2018. Um grande conjunto de pontos georreferenciados foi formado e organizado com dados de uso/cobertura do solo e indicativos de qualidade das pastagens.",
-                    "format": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
-                    "region": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
-                    "period": "2017",
-                    "scale": "1:250.000",
-                    "system_coordinator": "Superfície de referência SIRGAS 2000, sistema de coordenadas em graus.",
-                    "cartographic_projection": "Universal de Mercator.",
-                    "cod_caracter": "Latin 1.",
-                    "fonte": "Laboratório de Processamento de Imagens e Geoprocessamento – Lapig (geração do dado). Projeto Spatial metrics and baselines of degradation patterns and provision of ecosystem services by pastures in Brazil. (viabilizador).",
-                    "contato": "lapig.cepf@gmail.com"
+                    "title": languageJson["metadata"]["pontos_campo_parada"]["title"][language],
+                    "description": languageJson["metadata"]["pontos_campo_parada"]["description"][language],
+                    "format": languageJson["metadata"]["pontos_campo_parada"]["format"][language],
+                    "region": languageJson["metadata"]["pontos_campo_parada"]["region"][language],
+                    "period": languageJson["metadata"]["pontos_campo_parada"]["period"][language],
+                    "scale": languageJson["metadata"]["pontos_campo_parada"]["scale"][language],
+                    "system_coordinator": languageJson["metadata"]["pontos_campo_parada"]["system_coordinator"][language],
+                    "cartographic_projection": languageJson["metadata"]["pontos_campo_parada"]["cartographic_projection"][language],
+                    "cod_caracter": languageJson["metadata"]["pontos_campo_parada"]["cod_caracter"][language],
+                    "fonte": languageJson["metadata"]["pontos_campo_parada"]["fonte"][language],
+                    "contato":"lapig.cepf@gmail.com"
                   },
                   "columnsCSV": "cobertura, data, periodo, horario, latitude, longitude, altura, homoge, invasoras, gado, qtd_cupins, forrageira, cultivo, solo_exp, obs, condicao"
-                  /* "timeLabel": "Ano",
+                  /* "timeLabel": languageJson["typelabel_layer"]["year"][language],
                   "timeSelected": "year=2018",
                   "timeHandler": "msfilter",
                   "times": [
@@ -1117,27 +1120,27 @@ module.exports = function(app) {
                  },
                  {
                   "value": "pontos_campo_sem_parada", 
-                  "Viewvalue": "Sem parada", 
+                  "Viewvalue": languageJson["type_layer_viewvalue"]["sem_parada"][language],
                   "visible": false, 
                   "opacity": 1,
                   "regionFilter": true,
                   "order": 2,
-                  "typeLabel": "Tipo",
+                  "typeLabel": languageJson["typelabel_layer"]["type"][language],
                   "metadados": {
-                    "title": "Pontos de Campo",
-                    "description": "Com o propósito de validar mapas produzidos pelo LAPIG-UFG no âmbito do MapBiomas e de subsidiar pesquisas voltadas à qualificação das pastagens brasileiras, seis atividades de campo foram realizadas durante os anos de 2017 e 2018. Um grande conjunto de pontos georreferenciados foi formado e organizado com dados de uso/cobertura do solo e indicativos de qualidade das pastagens.",
-                    "format": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
-                    "region": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
-                    "period": "2017",
-                    "scale": "1:250.000",
-                    "system_coordinator": "Superfície de referência SIRGAS 2000, sistema de coordenadas em graus.",
-                    "cartographic_projection": "Universal de Mercator.",
-                    "cod_caracter": "Latin 1.",
-                    "fonte": "Laboratório de Processamento de Imagens e Geoprocessamento – Lapig (geração do dado). Projeto Spatial metrics and baselines of degradation patterns and provision of ecosystem services by pastures in Brazil. (viabilizador).",
-                    "contato": "lapig.cepf@gmail.com"
+                   "title": languageJson["metadata"]["pontos_campo_sem_parada"]["title"][language],
+                     "description": languageJson["metadata"]["pontos_campo_sem_parada"]["description"][language],
+                     "format": languageJson["metadata"]["pontos_campo_sem_parada"]["format"][language],
+                     "region": languageJson["metadata"]["pontos_campo_sem_parada"]["region"][language],
+                     "period": languageJson["metadata"]["pontos_campo_sem_parada"]["period"][language],
+                     "scale": languageJson["metadata"]["pontos_campo_sem_parada"]["scale"][language],
+                     "system_coordinator": languageJson["metadata"]["pontos_campo_sem_parada"]["system_coordinator"][language],
+                     "cartographic_projection": languageJson["metadata"]["pontos_campo_sem_parada"]["cartographic_projection"][language],
+                     "cod_caracter": languageJson["metadata"]["pontos_campo_sem_parada"]["cod_caracter"][language],
+                     "fonte": languageJson["metadata"]["pontos_campo_sem_parada"]["fonte"][language],
+                    "contato":"lapig.cepf@gmail.com"
                   },
                   "columnsCSV": "cobertura, data, periodo, horario, latitude, longitude, altura, homoge, invasoras, gado, qtd_cupins, forrageira, cultivo, solo_exp, obs, condicao"
-                  /* "timeLabel": "Ano",
+                  /* "timeLabel": languageJson["typelabel_layer"]["year"][language],
                   "timeSelected": "year=2017",
                   "timeHandler": "msfilter",
                   "times": [
@@ -1162,7 +1165,7 @@ module.exports = function(app) {
             },
             {
 							"id": "pontos_inspecionados_visualmente",
-							"label": "Pontos Inpecionados Visualmente",
+							"label": languageJson["title_layer_label"]["pontos_inspecionados"][language],
 							"visible": false,
               "selectedType": 'pontos_tvi_treinamento',
               "downloadSHP": true,
@@ -1170,47 +1173,47 @@ module.exports = function(app) {
 							"types": [
 								{
                   "value": "pontos_tvi_treinamento", 
-                  "Viewvalue": "Treinamento", 
+                  "Viewvalue": languageJson["type_layer_viewvalue"]["treinamento"][language],
                   "visible": false, 
                   "opacity": 1,
                   "regionFilter": true,
                   "order": 1,
-                  "typeLabel": "Tipo",
+                  "typeLabel": languageJson["typelabel_layer"]["type"][language],
                   "metadados": {
-                    "title": "Pontos Visualmente Inspecionados",
-                    "description": "Conjunto georreferenciado de pontos para todo o território brasileiro, sendo atribuídas classes de uso e cobertura do solo referente a cada ano no período de 1985 a 2017. Foram utilizadas imagens Landsat provenientes dos sensores TM, ETM+ e OLI. Buscou-se também abordar os critérios adotados, dificuldades e especificidades encontradas quanto a interpretação de imagens em cada um dos 6 biomas brasileiros.",
-                    "format": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
-                    "region": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
-                    "period": "1985 à 2017.",
-                    "scale": "não se aplica",
-                    "system_coordinator": "Superfície de referência SIRGAS 2000, sistema de coordenadas em graus.",
-                    "cartographic_projection": "Universal de Mercator.",
-                    "cod_caracter": "Latin 1.",
-                    "fonte": "Laboratório de Processamento de Imagens e Geoprocessamento – Lapig (geração do dado). Projeto Spatial metrics and baselines of degradation patterns and provision of ecosystem services by pastures in Brazil. (viabilizador).",
-                    "contato": "lapig.cepf@gmail.com"
+                    "title": languageJson["metadata"]["pontos_inspecionados_treinamento"]["title"][language],
+                    "description": languageJson["metadata"]["pontos_inspecionados_treinamento"]["description"][language],
+                    "format": languageJson["metadata"]["pontos_inspecionados_treinamento"]["format"][language],
+                    "region": languageJson["metadata"]["pontos_inspecionados_treinamento"]["region"][language],
+                    "period": languageJson["metadata"]["pontos_inspecionados_treinamento"]["period"][language],
+                    "scale": languageJson["metadata"]["pontos_inspecionados_treinamento"]["scale"][language],
+                    "system_coordinator": languageJson["metadata"]["pontos_inspecionados_treinamento"]["system_coordinator"][language],
+                    "cartographic_projection": languageJson["metadata"]["pontos_inspecionados_treinamento"]["cartographic_projection"][language],
+                    "cod_caracter": languageJson["metadata"]["pontos_inspecionados_treinamento"]["cod_caracter"][language],
+                    "fonte": languageJson["metadata"]["pontos_inspecionados_treinamento"]["fonte"][language],
+                    "contato":"lapig.cepf@gmail.com"
                   },
                   "columnsCSV": "index, lon, lat, cons_1985, cons_1986, cons_1987, cons_1988, cons_1989, cons_1990, cons_1991, cons_1992, cons_1993, cons_1994, cons_1995, cons_1996, cons_1997, cons_1998, cons_1999, cons_2000, cons_2001, cons_2002, cons_2003, cons_2004, cons_2005, cons_2006, cons_2007, cons_2008, cons_2009, cons_2010, cons_2011, cons_2012, cons_2013, cons_2014, cons_2015, cons_2016, cons_2017, pointedite"
                 },
                 {
                   "value": "pontos_tvi_validacao", 
-                  "Viewvalue": "Validação", 
+                  "Viewvalue": languageJson["type_layer_viewvalue"]["validacao"][language],
                   "visible": false, 
                   "opacity": 1,
                   "regionFilter": true,
                   "order": 1,
-                  "typeLabel": "Tipo",
+                  "typeLabel": languageJson["typelabel_layer"]["type"][language],
                   "metadados": {
-                    "title": "Pontos Visualmente Inspecionados",
-                    "description": "Conjunto georreferenciado de pontos para todo o território brasileiro, sendo atribuídas classes de uso e cobertura do solo referente a cada ano no período de 1985 a 2017. Foram utilizadas imagens Landsat provenientes dos sensores TM, ETM+ e OLI. Buscou-se também abordar os critérios adotados, dificuldades e especificidades encontradas quanto a interpretação de imagens em cada um dos 6 biomas brasileiros.",
-                    "format": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
-                    "region": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
-                    "period": "1985 à 2017.",
-                    "scale": "não se aplica",
-                    "system_coordinator": "Superfície de referência SIRGAS 2000, sistema de coordenadas em graus.",
-                    "cartographic_projection": "Universal de Mercator.",
-                    "cod_caracter": "Latin 1.",
-                    "fonte": "Laboratório de Processamento de Imagens e Geoprocessamento – Lapig (geração do dado). Projeto Spatial metrics and baselines of degradation patterns and provision of ecosystem services by pastures in Brazil. (viabilizador).",
-                    "contato": "lapig.cepf@gmail.com"
+                    "title": languageJson["metadata"]["pontos_inspecionados_validacao"]["title"][language],
+                    "description": languageJson["metadata"]["pontos_inspecionados_validacao"]["description"][language],
+                    "format": languageJson["metadata"]["pontos_inspecionados_validacao"]["format"][language],
+                    "region": languageJson["metadata"]["pontos_inspecionados_validacao"]["region"][language],
+                    "period": languageJson["metadata"]["pontos_inspecionados_validacao"]["period"][language],
+                    "scale": languageJson["metadata"]["pontos_inspecionados_validacao"]["scale"][language],
+                    "system_coordinator": languageJson["metadata"]["pontos_inspecionados_validacao"]["system_coordinator"][language],
+                    "cartographic_projection": languageJson["metadata"]["pontos_inspecionados_validacao"]["cartographic_projection"][language],
+                    "cod_caracter": languageJson["metadata"]["pontos_inspecionados_validacao"]["cod_caracter"][language],
+                    "fonte": languageJson["metadata"]["pontos_inspecionados_validacao"]["fonte"][language],
+                    "contato":"lapig.cepf@gmail.com"
                   },
                   "columnsCSV": "index, lon, lat, cons_1985, cons_1986, cons_1987, cons_1988, cons_1989, cons_1990, cons_1991, cons_1992, cons_1993, cons_1994, cons_1995, cons_1996, cons_1997, cons_1998, cons_1999, cons_2000, cons_2001, cons_2002, cons_2003, cons_2004, cons_2005, cons_2006, cons_2007, cons_2008, cons_2009, cons_2010, cons_2011, cons_2012, cons_2013, cons_2014, cons_2015, cons_2016, cons_2017, pointedite"
                 }
@@ -1226,31 +1229,30 @@ module.exports = function(app) {
           "types": [
             {
               "value":"mapbox",
-              "viewValue": "Geopolítico",
+              "viewValue": languageJson["basemap"]["geopolitico"][language],
               "visible": true
             },
             {
               "value":"satelite",
-              "viewValue": "Satélite",
+              "viewValue": languageJson["basemap"]["satelite"][language],
               "visible": false
             },
             {
               "value":"estradas",
-              "viewValue": "Estradas",
+              "viewValue": languageJson["basemap"]["estradas"][language],
               "visible": false
             },
             {
               "value":"relevo",
-              "viewValue": "Relevo",
+              "viewValue": languageJson["basemap"]["relevo"][language],
               "visible": false
             },
             {
               "value":"landsat",
-              "viewValue": "Landsat - 2018",
+              "viewValue": languageJson["basemap"]["landsat"][language],
               "visible": false
             }
           ]
-
         }
       ],
 			"limits": [
@@ -1259,84 +1261,84 @@ module.exports = function(app) {
 					"types": [
 						{
               "value": "biomas", 
-              "Viewvalue": "Biomas", 
+              "Viewvalue": languageJson["limits"]["bioma"][language],
               "visible": true, 
               "layer_limits": true,
               "opacity": 1
             },
             {
               "value": "estados", 
-              "Viewvalue": "Estados", 
+              "Viewvalue": languageJson["limits"]["estados"][language],
               "visible": false, 
               "layer_limits": true,
               "opacity": 1
             },
 						{
               "value": "municipios_cerrado",
-              "Viewvalue": "Municípios", 
+              "Viewvalue": languageJson["limits"]["municipios"][language],
               "visible": false, 
               "layer_limits": true,
               "opacity": 1
             },
             {
               "value": "limites_areas_chave_biodiversidade",
-              "Viewvalue": "Áreas Chaves de Biodiversidade - KBA's",
+              "Viewvalue": languageJson["limits"]["chaves_kba"][language],
               "visible": false,
               "layer_limits": true,
               "opacity": 1
             },
             {
               "value": "limites_assentamentos",
-              "Viewvalue": "Assentamentos",
+              "Viewvalue": languageJson["limits"]["assentamentos"][language],
               "visible": false,
               "layer_limits": true,
               "opacity": 1
             },
             {
               "value": "limites_cartas_ibge",
-              "Viewvalue": "Cartas IBGE",
+              "Viewvalue": languageJson["limits"]["cartas_ibge"][language],
               "visible": false,
               "layer_limits": true,
               "opacity": 1
             },
             {
               "value": "limites_corredores_prioritarios_cepf",
-              "Viewvalue": "Corredores Prioritários CEPF",
+              "Viewvalue": languageJson["limits"]["corredores_cepf"][language],
               "visible": false,
               "layer_limits": true,
               "opacity": 1
             },
             {
               "value": "limites_regioes_hidrograficas",
-              "Viewvalue": "Regiões Hidrográficas",
+              "Viewvalue": languageJson["limits"]["regioes_hidrograficas"][language],
               "visible": false,
               "layer_limits": true,
               "opacity": 1
             },
             {
               "value": "limites_terras_indigenas",
-              "Viewvalue": "Terras Indígenas",
+              "Viewvalue": languageJson["limits"]["terras_indigenas"][language],
               "visible": false,
               "layer_limits": true,
               "opacity": 1
             },
             {
               "value": "geo_car_imovel",
-              "Viewvalue": "Terras Privadas CAR",
+              "Viewvalue": languageJson["limits"]["terras_privadas"][language],
               "visible": false,
               "layer_limits": true,
               "opacity": 1
             },
             {
               "value": "limites_unidades_protecao_integral",
-              "Viewvalue": "Unidades de Conservação Integral",
+              "Viewvalue": languageJson["limits"]["conservacao_integral"][language],
               "visible": false,
               "layer_limits": true,
               "opacity": 1
             },
             {
               "value": "limites_unidades_planejamento_hidrico",
-              "Viewvalue": "Unidades de Planejamento Hídrico",
+              "Viewvalue": languageJson["limits"]["planejamento_hidrico"][language],
               "visible": false,
               "layer_limits": true,
               "opacity": 1

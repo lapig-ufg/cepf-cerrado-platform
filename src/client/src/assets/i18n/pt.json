@@ -1,3 +1,12 @@
 {
-  "platform_title": "Plataforma de Conhecimento do Cerrado - Uso do Solo"
+  "platform_title": "Plataforma de Conhecimento do Cerrado",
+  "title_layers_infos": "Camadas de Informações",
+  "title_tab_layers": "Camadas",
+  "title_tab_basemap": "Mapas Base",
+  "title_tab_limits": "Limites",
+  "text_box_searching_input": "Escolha um estado / município...",
+  "text_box_searching": "localizando...",
+  "text_box_notsearch": "Desculpe, Região não encontrada.",
+  "title_charts_main": "Análises",
+  "title_legends_main": "Legendas"
 }

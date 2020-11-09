@@ -123,6 +123,8 @@ export class MapComponent implements OnInit {
 	linkDownload: any;
 	loadingSHP: boolean;
 	loadingCSV: boolean;
+	language: any;
+	languages: any = {};
 
 	/** Variables for upload shapdefiles **/
 	layerFromUpload: any = {
@@ -204,9 +206,17 @@ export class MapComponent implements OnInit {
 	) {
 		translate.addLangs(['en', 'pt']);
 		translate.setDefaultLang('pt');
+		
+
+		this.languages['pt'] = 'pt-br';
+    this.languages['en'] = 'en-us';
+    this.languages['pt-br'] = 'pt';
+		this.languages['en-us'] = 'en';
+		
 		const browserLang = translate.getBrowserLang();
 		translate.use(browserLang.match(/en|pt/) ? browserLang : 'en');
 
+		this.language = this.languages[browserLang];
 
 		this.projection = OlProj.get('EPSG:900913');
 		this.currentZoom = 5.8;
@@ -220,11 +230,11 @@ export class MapComponent implements OnInit {
 		this.selectRegion = this.defaultRegion;
 
 		this.urls = [
-			/* 'http://localhost:5501/ows' */
-			'http://o1.lapig.iesa.ufg.br/ows',
-			'http://o2.lapig.iesa.ufg.br/ows',
-			'http://o3.lapig.iesa.ufg.br/ows',
-			'http://o4.lapig.iesa.ufg.br/ows'
+			'http://localhost:5501/ows'
+			// 'http://o1.lapig.iesa.ufg.br/ows',
+			// 'http://o2.lapig.iesa.ufg.br/ows',
+			// 'http://o3.lapig.iesa.ufg.br/ows',
+			// 'http://o4.lapig.iesa.ufg.br/ows'
 		];
 
 		this.tileGrid = new TileGrid({
@@ -793,14 +803,14 @@ export class MapComponent implements OnInit {
 			return;
 		}
 
-		// let utfgridlayerMapbiomasVisible = this.utfgridlayerMapbiomas.getVisible();
-		// if (!utfgridlayerMapbiomasVisible || evt.dragging) {
-		// 	return;
-		// }
+		let utfgridlayerMapbiomasVisible = this.utfgridlayerMapbiomas.getVisible();
+		if (!utfgridlayerMapbiomasVisible || evt.dragging) {
+			return;
+		}
 
 
 		let pastagem = this.layersNames.find(element => element.id === "mapa_pastagem");
-		// let mapbiomas = this.layersNames.find(element => element.id === "mapa_uso_solo");
+		let mapbiomas = this.layersNames.find(element => element.id === "mapa_uso_solo");
 
 		let coordinate = this.map.getEventCoordinate(evt.originalEvent);
 		let viewResolution = this.map.getView().getResolution();
@@ -833,59 +843,59 @@ export class MapComponent implements OnInit {
 
 		}
 
-		// if (mapbiomas.visible) {
+		if (mapbiomas.visible) {
 
-		// 	let isMapbiomas = false
-		// 	if (mapbiomas.selectedType === 'uso_solo_mapbiomas') {
-		// 		isMapbiomas = true;
-		// 	}
-		// 	// console.log(this.layersNames, isPastagem)
-		// 	if (isMapbiomas) {
-		// 		if (this.utfgridsourceMapbiomas) {
-		// 			this.utfgridsourceMapbiomas.forDataAtCoordinateAndResolution(coordinate, viewResolution, function (data) {
-		// 				if (data) {
-		// 					window.document.body.style.cursor = 'pointer';
-		// 					this.infodataMapbiomas = data;
+			let isMapbiomas = false
+			if (mapbiomas.selectedType === 'uso_solo_mapbiomas') {
+				isMapbiomas = true;
+			}
+			// console.log(this.layersNames, isPastagem)
+			if (isMapbiomas) {
+				if (this.utfgridsourceMapbiomas) {
+					this.utfgridsourceMapbiomas.forDataAtCoordinateAndResolution(coordinate, viewResolution, function (data) {
+						if (data) {
+							window.document.body.style.cursor = 'pointer';
+							this.infodataMapbiomas = data;
 
-		// 					let auxColor = this.infodataMapbiomas.lulc_color.split("?")
-		// 					let auxName = this.infodataMapbiomas.lulc_name.split("?")
-		// 					let auxArea = this.infodataMapbiomas.lulc_ha.split("?")
-		// 					let arr = [];
-		// 					for (let i = 0; i < auxColor.length; i++) {
-		// 						arr.push({
-		// 							lulc_color: auxColor[i],
-		// 							lulc_name: auxName[i],
-		// 							lulc_area: parseFloat(auxArea[i])
-		// 						})
-		// 					}
+							let auxColor = this.infodataMapbiomas.lulc_color.split("?")
+							let auxName = this.infodataMapbiomas.lulc_name.split("?")
+							let auxArea = this.infodataMapbiomas.lulc_ha.split("?")
+							let arr = [];
+							for (let i = 0; i < auxColor.length; i++) {
+								arr.push({
+									lulc_color: auxColor[i],
+									lulc_name: auxName[i],
+									lulc_area: parseFloat(auxArea[i])
+								})
+							}
 
-		// 					let result = []
-		// 					arr.reduce(function (res, value) {
-		// 						if (!res[value.lulc_name]) {
-		// 							res[value.lulc_name] = { lulc_name: value.lulc_name, lulc_color: value.lulc_color, lulc_area: 0 };
-		// 							result.push(res[value.lulc_name])
-		// 						}
-		// 						res[value.lulc_name].lulc_area += value.lulc_area;
-		// 						return res;
-		// 					}, {});
+							let result = []
+							arr.reduce(function (res, value) {
+								if (!res[value.lulc_name]) {
+									res[value.lulc_name] = { lulc_name: value.lulc_name, lulc_color: value.lulc_color, lulc_area: 0 };
+									result.push(res[value.lulc_name])
+								}
+								res[value.lulc_name].lulc_area += value.lulc_area;
+								return res;
+							}, {});
 
 
-		// 					this.infodataMapbiomas.arrLulc = result
-		// 					// console.log(this.infodataMapbiomas)
+							this.infodataMapbiomas.arrLulc = result
+							// console.log(this.infodataMapbiomas)
 
-		// 					this.infoOverlay.setPosition(this.infodataMapbiomas ? coordinate : undefined);
-		// 				}
-		// 				else {
-		// 					window.document.body.style.cursor = 'auto';
-		// 					this.infodataMapbiomas = null;
-		// 				}
+							this.infoOverlay.setPosition(this.infodataMapbiomas ? coordinate : undefined);
+						}
+						else {
+							window.document.body.style.cursor = 'auto';
+							this.infodataMapbiomas = null;
+						}
 
-		// 			}.bind(this)
-		// 			);
-		// 		}
-		// 	}
+					}.bind(this)
+					);
+				}
+			}
 
-		// }
+		}
 
 
 	}
@@ -900,7 +910,7 @@ export class MapComponent implements OnInit {
 
 
 		let pastagem = this.layersNames.find(element => element.id === "mapa_pastagem");
-		// let mapbiomas = this.layersNames.find(element => element.id === "mapa_uso_solo");
+		let mapbiomas = this.layersNames.find(element => element.id === "mapa_uso_solo");
 
 		if (pastagem.visible) {
 			if (this.utfgridsourcePastagem) {
@@ -913,16 +923,16 @@ export class MapComponent implements OnInit {
 			}
 		}
 
-		// if (mapbiomas.visible) {
-		// 	if (this.utfgridsourceMapbiomas) {
-		// 		this.utfgridsourceMapbiomas.forDataAtCoordinateAndResolution(coordinate, viewResolution, function (data) {
-		// 			if (data) {
-		// 				this.searchAndAppRegion(data)
-		// 			}
-		// 		}.bind(this)
-		// 		);
-		// 	}
-		// }
+		if (mapbiomas.visible) {
+			if (this.utfgridsourceMapbiomas) {
+				this.utfgridsourceMapbiomas.forDataAtCoordinateAndResolution(coordinate, viewResolution, function (data) {
+					if (data) {
+						this.searchAndAppRegion(data)
+					}
+				}.bind(this)
+				);
+			}
+		}
 
 
 
@@ -1045,12 +1055,12 @@ export class MapComponent implements OnInit {
 		// 	tileJSON: this.getTileJSONMapbiomas()
 		// });
 
-		// this.utfgridlayerMapbiomas = new OlTileLayer({
-		// 	source: this.utfgridsourceMapbiomas
-		// });
+		this.utfgridlayerMapbiomas = new OlTileLayer({
+			source: this.utfgridsourceMapbiomas
+		});
 
 		this.layers.push(this.utfgridlayerPastagem);
-		// this.layers.push(this.utfgridlayerMapbiomas);
+		this.layers.push(this.utfgridlayerMapbiomas);
 
 		this.layers = this.layers.concat(olLayers.reverse());
 	}
@@ -1115,10 +1125,9 @@ export class MapComponent implements OnInit {
 	private handleInteraction() {
 
 		let pastagem = this.layersNames.find(element => element.id === "mapa_pastagem");
-		// let mapbiomas = this.layersNames.find(element => element.id === "mapa_uso_solo");
+		 let mapbiomas = this.layersNames.find(element => element.id === "mapa_uso_solo");
 
-		// if (pastagem.visible || mapbiomas.visible) {
-		if (pastagem.visible) {
+		if (pastagem.visible || mapbiomas.visible) {
 			if (pastagem.visible) {
 				if (this.utfgridsourcePastagem) {
 					let tileJSON = this.getTileJSONPastagem();
@@ -1134,30 +1143,30 @@ export class MapComponent implements OnInit {
 				this.infodataPastagem = null;
 			}
 
-			// if (mapbiomas.visible) {
+			if (mapbiomas.visible) {
 
-			// 	if (this.utfgridsourceMapbiomas) {
-			// 		let tileJSONmapbiomas = this.getTileJSONMapbiomas();
+				if (this.utfgridsourceMapbiomas) {
+					// let tileJSONmapbiomas = this.getTileJSONMapbiomas();
 
-			// 		this.utfgridsourceMapbiomas.tileUrlFunction_ = _ol_TileUrlFunction_.createFromTemplates(tileJSONmapbiomas.grids, this.utfgridsourceMapbiomas.tileGrid);
-			// 		this.utfgridsourceMapbiomas.tileJSON = tileJSONmapbiomas;
-			// 		this.utfgridsourceMapbiomas.refresh();
+					// this.utfgridsourceMapbiomas.tileUrlFunction_ = _ol_TileUrlFunction_.createFromTemplates(tileJSONmapbiomas.grids, this.utfgridsourceMapbiomas.tileGrid);
+					// this.utfgridsourceMapbiomas.tileJSON = tileJSONmapbiomas;
+					this.utfgridsourceMapbiomas.refresh();
 
-			// 		this.utfgridlayerMapbiomas.setVisible(true);
-			// 	}
-			// } else {
+					this.utfgridlayerMapbiomas.setVisible(true);
+				}
+			} else {
 				this.infodataMapbiomas = null;
-			// }
+			}
 
 
 		}
-		// else {
-		// 	this.utfgridlayerPastagem.setVisible(false);
-		// 	this.infodataPastagem = null;
-		// 	this.utfgridlayerMapbiomas.setVisible(false);
-		// 	this.infodataMapbiomas = null;
-		// 	window.document.body.style.cursor = 'auto';
-		// }
+		else {
+			this.utfgridlayerPastagem.setVisible(false);
+			this.infodataPastagem = null;
+			this.utfgridlayerMapbiomas.setVisible(false);
+			this.infodataMapbiomas = null;
+			window.document.body.style.cursor = 'auto';
+		}
 
 	}
 
@@ -1212,6 +1221,7 @@ export class MapComponent implements OnInit {
 
 		var msfilter = '&MSFILTER=' + filters.join(' AND ')
 
+
 		var layername = layer.value
 
 		if (layer.timeSelected) {
@@ -1226,6 +1236,7 @@ export class MapComponent implements OnInit {
 				+ msfilter
 				+ "&mode=tile&tile={x}+{y}+{z}"
 				+ "&tilemode=gmap"
+				+ "&lang=" + this.language
 				+ "&map.imagetype=png"
 			);
 		}
@@ -1458,9 +1469,9 @@ export class MapComponent implements OnInit {
 			dialog.visibility = 'visible'
 		}
 
-		// if (this.infodataMapbiomas) {
-		// 	dialog.visibility = 'visible'
-		// }
+		if (this.infodataMapbiomas) {
+			dialog.visibility = 'visible'
+		}
 
 
 		return dialog;
@@ -1468,13 +1479,13 @@ export class MapComponent implements OnInit {
 
 	disableUTFGrid() {
 		this.infodataPastagem = null
-		// this.infodataMapbiomas = null
+		this.infodataMapbiomas = null
 		window.document.body.style.cursor = 'auto';
 	}
 
 	ngOnInit() {
 
-		this.http.get('service/map/descriptor').subscribe(result => {
+		this.http.get('service/map/descriptor?lang='+this.language).subscribe(result => {
 			this.descriptor = result
 			this.regionFilterDefault = this.descriptor.regionFilterDefault;
 
@@ -1488,9 +1499,9 @@ export class MapComponent implements OnInit {
 					} else {
 						this.layersTypes.push(layers);
 					}
-					this.layersTypes.sort(function (e1, e2) {
-						return (e2.order - e1.order)
-					});
+					// this.layersTypes.sort(function (e1, e2) {
+					// 	return (e2.order - e1.order)
+					// });
 
 					this.layersNames.push(layers);
 				}
