@@ -305,11 +305,49 @@ export class MapComponent implements OnInit {
 		if (this.language != (lang)) {
 			this.language = lang;
 			this.setStylesLangButton();
-			// this.updateTexts();
+			this.updateDescriptor();
 			this.updateCharts();
-			// this.updateControls();
-			// this.updateDescriptor();
 		}
+	}
+	private updateDescriptor() {
+		this.http.get('service/map/descriptor?lang='+this.language).subscribe(result => {
+			this.descriptor = result
+			this.regionFilterDefault = this.descriptor.regionFilterDefault;
+			this.basemapsNames = [];
+			this.limitsNames = [];
+			this.layersNames = [];
+			this.layersTypes = [];
+
+			for (let groups of this.descriptor.groups) {
+
+				for (let layers of groups.layers) {
+					if (layers.types) {
+						for (let types of layers.types) {
+							this.layersTypes.push(types)
+						}
+					} else {
+						this.layersTypes.push(layers);
+					}
+					// this.layersTypes.sort(function (e1, e2) {
+					// 	return (e2.order - e1.order)
+					// });
+
+					this.layersNames.push(layers);
+				}
+
+			}
+			for (let basemap of this.descriptor.basemaps) {
+				for (let types of basemap.types) {
+					this.basemapsNames.push(types)
+				}
+			}
+
+			for (let limits of this.descriptor.limits) {
+				for (let types of limits.types) {
+					this.limitsNames.push(types)
+				}
+			}
+		});
 	}
 
 	openDialog(layer): void {
@@ -388,11 +426,10 @@ export class MapComponent implements OnInit {
 	}
 
 	private updateCharts() {
-		console.log(this.language)
+
 		for (let group of this.descriptor.groups) {
 			if (group.dataService != undefined) {
 				this.http.get(group.dataService + "?typeRegion=" + this.selectRegion.type + "&textRegion=" + this.selectRegion.text + "&filterRegion=" + this.msFilterRegion + "&year=" + this.year + "&lang=" + this.language).subscribe(result => {
-
 					group.chartConfig = result
 
 					for (let graphic of group.chartConfig) {

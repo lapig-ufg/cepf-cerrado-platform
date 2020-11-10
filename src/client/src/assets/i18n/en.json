@@ -21,6 +21,8 @@
   "analyzed_area_pasture_per_year": ["Year", "Pasture Area", "Burnt Area"],
   "legend": "Legend",
   "analysis": "Analysis",
+  "zoom_in": "Zoom In",
+  "zoom_out": "Zoom Out",
   "platform_title": "Cerrado Knowledge Platform",
   "title_layers_infos": "Information Layers",
   "title_tab_layers": "Layers",
