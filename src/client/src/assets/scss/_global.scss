@@ -288,3 +288,7 @@ a.back-to-top{
 hr{
   border-top: 1px dotted #ddd;
 }
+
+.cdk-overlay-container {
+  z-index: 1003 !important;
+}

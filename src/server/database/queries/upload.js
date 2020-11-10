@@ -30,7 +30,7 @@ module.exports = function (app) {
     Query.analysisarea = function (params) {
 
         var token = params['token']
-
+        console.log(token)
         return [
             {
                 id: 'queimadas',

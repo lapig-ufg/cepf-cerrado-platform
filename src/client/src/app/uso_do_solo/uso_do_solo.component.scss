@@ -1,3 +1,5 @@
+@import "../../assets/scss/colors/presets";
+
 html, body { margin:0; height: 100%; overflow: hidden;}
 
 .bckgdisabled {
@@ -232,7 +234,7 @@ h6 {
 .titleWindows {
 	font-family: 'Roboto', sans-serif;
 	color: #424242;
-	background-color: #ffd54f;
+	background-color: $secundary;
 	padding: 10px;
   font-weight: bold;
   border-bottom: 1px solid #424242;
@@ -271,6 +273,9 @@ h6 {
 
 .logos-cepf {
 	text-align: center;
+	display: block;
+	margin: 0 auto;
+	padding: 20px;
 }
 
 .icon-cepf {
@@ -298,25 +303,31 @@ h6 {
 }
 
 .button-csv {
-	color: #707070 !important;
+	color: white !important;
 } button {
-	color: #707070 !important;
+	color: white !important;
 }
 
 .button-shp{
 	text-align: left;
 } button {
-	color: #707070 !important;
+	color: white !important;
 }
 
 .buttons_download {
-	background-color: #ffd54f;
+	background-color: $tertiary;
 	color: #424242 !important;
 }
 
 .buttons-download-past {
 	padding-left: 6%;
 	padding-bottom: 8%;
+	display: flex;
+	justify-content: center;
+	button{
+		color: white !important;
+		font-weight: 900;
+	}
 }
 
 .buttons-download {
@@ -599,9 +610,9 @@ h6 {
 }
 
 .mat-expansion-panel-header.mat-expanded {
-  background: #4e4e4e;
- 	color: #eeeeee;
-  border: solid #eeeeee 3px;
+	background: darken($primary, 40%);
+	color: #eeeeee;
+	border: solid #eeeeee 3px;
 }
 
 .mat-expansion-panel-header.mat-expanded:focus, .mat-expansion-panel-header.mat-expanded:hover {
@@ -611,7 +622,7 @@ h6 {
 }
 
 .mat-expansion-panel-header {
-  background: #4e4e4e;
+  background: darken($primary, 40%);
   color: #eeeeee;
   border: solid #eeeeee 3px;
 }

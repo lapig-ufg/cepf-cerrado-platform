@@ -49,6 +49,7 @@ import { MatFormFieldModule, MatInputModule } from '@angular/material';
 import { PanelModule } from 'primeng/panel';
 import { SidebarModule } from 'primeng/sidebar';
 import { TooltipModule } from 'primeng/tooltip';
+import { TableModule } from 'primeng/table';
 
 registerLocaleData(localePt);
 
@@ -69,6 +70,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatInputModule,
     PanelModule,
     SidebarModule,
+    TableModule,
     TooltipModule,
     MatSidenavModule,
     MatTooltipModule,

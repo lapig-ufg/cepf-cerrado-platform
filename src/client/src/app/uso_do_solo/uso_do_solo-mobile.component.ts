@@ -10,7 +10,7 @@ import { of } from 'rxjs';
 	selector: 'app-map-mobile',
 	templateUrl: 'uso_do_solo-mobile.component.html',
 	styleUrls: [
-		'./uso_do_solo-mobile.component.css'
+		'./uso_do_solo-mobile.component.scss'
 	]
 })
 

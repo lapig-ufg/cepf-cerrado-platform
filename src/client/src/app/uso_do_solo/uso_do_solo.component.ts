@@ -1,4 +1,4 @@
-import { Component, Injectable, OnInit, Inject } from '@angular/core';
+import { Component, Injectable,HostListener, OnInit, Inject } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { FormGroup, FormControl } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
@@ -35,6 +35,7 @@ import { MatIconRegistry } from '@angular/material/icon';
 import { saveAs } from 'file-saver';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
+import { GoogleAnalyticsService } from '../services/google-analytics.service';
 
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
@@ -71,7 +72,7 @@ export class SearchService {
 	templateUrl: './uso_do_solo.component.html',
 	providers: [SearchService],
 	styleUrls: [
-		'./uso_do_solo.component.css'
+		'./uso_do_solo.component.scss'
 	]
 })
 
@@ -123,8 +124,6 @@ export class MapComponent implements OnInit {
 	linkDownload: any;
 	loadingSHP: boolean;
 	loadingCSV: boolean;
-	language: any;
-	languages: any = {};
 
 	/** Variables for upload shapdefiles **/
 	layerFromUpload: any = {
@@ -181,8 +180,6 @@ export class MapComponent implements OnInit {
 		n_kbcs: "Nº de Cabeças de Gado: ",
 		year: "Ano: ",
 		click_more_text: "Clique aqui para aproximar "
-
-
 	}
 	httpOptions: any;
 	utfgridsourcePastagem: UTFGrid;
@@ -191,36 +188,52 @@ export class MapComponent implements OnInit {
 	utfgridlayerMapbiomas: OlTileLayer;
 	infodataPastagem: any
 	infodataMapbiomas: any = {}
-
-
-
 	infoOverlay: Overlay;
 	keyForClick: any;
 	keyForPointer: any;
+	showStatistics: boolean;
+	innerHeigth: number;
+	showLayers: boolean;
+
+	languages: any = [];
+	language: string;
+
+	bntStylePOR: any;
+	bntStyleENG: any;
+
+	styleSelected: any;
+	styleDefault: any;
 
 	constructor(
 		private http: HttpClient,
 		private _service: SearchService,
 		public dialog: MatDialog,
+		public googleAnalyticsService: GoogleAnalyticsService,
 		public translate: TranslateService,
 	) {
+		// this.languages['pt'] = 'pt-br';
+		// this.languages['en'] = 'en-us';
+		// this.languages['pt-br'] = 'pt-br';
+		// this.languages['en-us'] = 'en';
+
 		translate.addLangs(['en', 'pt']);
 		translate.setDefaultLang('pt');
-		
-
-		this.languages['pt'] = 'pt-br';
-    this.languages['en'] = 'en-us';
-    this.languages['pt-br'] = 'pt';
-		this.languages['en-us'] = 'en';
-		
 		const browserLang = translate.getBrowserLang();
 		translate.use(browserLang.match(/en|pt/) ? browserLang : 'en');
 
-		this.language = this.languages[browserLang];
+		this.language = browserLang;
 
 		this.projection = OlProj.get('EPSG:900913');
 		this.currentZoom = 5.8;
 		this.layers = [];
+
+		this.styleSelected = {
+			'background-color': '#fe8321'
+		};
+
+		this.styleDefault = {
+			'background-color': '#707070'
+		};
 
 		this.defaultRegion = {
 			type: 'bioma',
@@ -230,11 +243,11 @@ export class MapComponent implements OnInit {
 		this.selectRegion = this.defaultRegion;
 
 		this.urls = [
-			'http://localhost:5501/ows'
-			// 'http://o1.lapig.iesa.ufg.br/ows',
-			// 'http://o2.lapig.iesa.ufg.br/ows',
-			// 'http://o3.lapig.iesa.ufg.br/ows',
-			// 'http://o4.lapig.iesa.ufg.br/ows'
+			/* 'http://localhost:5501/ows' */
+			'http://o1.lapig.iesa.ufg.br/ows',
+			'http://o2.lapig.iesa.ufg.br/ows',
+			'http://o3.lapig.iesa.ufg.br/ows',
+			'http://o4.lapig.iesa.ufg.br/ows'
 		];
 
 		this.tileGrid = new TileGrid({
@@ -254,6 +267,10 @@ export class MapComponent implements OnInit {
 		this.httpOptions = {
 			headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 		};
+
+		this.showStatistics = false;
+		this.showLayers = false;
+		this.innerHeigth = window.innerHeight;
 	}
 
 	search = (text$: Observable<string>) =>
@@ -273,6 +290,27 @@ export class MapComponent implements OnInit {
 		)
 
 	formatter = (x: { text: string }) => x.text;
+	private setStylesLangButton() {
+		if (this.language == 'pt' || this.language == 'pt-br') {
+			this.bntStyleENG = this.styleDefault;
+			this.bntStylePOR = this.styleSelected;
+		}
+		else {
+			this.bntStyleENG = this.styleSelected;
+			this.bntStylePOR = this.styleDefault;
+		}
+	}
+	changeLanguage(lang) {
+		this.translate.use(lang);
+		if (this.language != (lang)) {
+			this.language = lang;
+			this.setStylesLangButton();
+			// this.updateTexts();
+			this.updateCharts();
+			// this.updateControls();
+			// this.updateDescriptor();
+		}
+	}
 
 	openDialog(layer): void {
 
@@ -314,6 +352,19 @@ export class MapComponent implements OnInit {
 		}
 	}
 
+	zoomIn(level = 0.7) {
+		this.map.getView().setZoom(this.map.getView().getZoom() + level);
+	}
+
+	zoomOut(level = 0.7) {
+		this.map.getView().setZoom(this.map.getView().getZoom() - level);
+	}
+
+	@HostListener('window:resize', ['$event'])
+	onResize(event) {
+		this.innerHeigth = window.innerHeight;
+
+	}
 
 	updateRegion(region) {
 		if (region == this.defaultRegion) {
@@ -337,6 +388,7 @@ export class MapComponent implements OnInit {
 	}
 
 	private updateCharts() {
+		console.log(this.language)
 		for (let group of this.descriptor.groups) {
 			if (group.dataService != undefined) {
 				this.http.get(group.dataService + "?typeRegion=" + this.selectRegion.type + "&textRegion=" + this.selectRegion.text + "&filterRegion=" + this.msFilterRegion + "&year=" + this.year + "&lang=" + this.language).subscribe(result => {
@@ -403,7 +455,78 @@ export class MapComponent implements OnInit {
 		}
 
 	}
+	getCitiesAnalyzedArea(fromConsulta = false) {
+		let cities = '';
+		if (fromConsulta) {
+			if (this.layerFromConsulta.analyzedArea.regions_intersected.hasOwnProperty('municipio')) {
+				for (let [index, city] of this.layerFromConsulta.analyzedArea.regions_intersected.municipio.entries()) {
+					let citiesCount = this.layerFromConsulta.analyzedArea.regions_intersected.municipio.length;
+					if (citiesCount === 1) {
+						cities += city.name + '.';
+						return cities;
+					}
+					if (index === citiesCount - 1) {
+						cities += city.name + '.';
+					} else {
+						cities += city.name + ', ';
+					}
+				}
+			}
+		} else {
+			if (this.layerFromUpload.analyzedArea.regions_intersected.hasOwnProperty('municipio')) {
+				for (let [index, city] of this.layerFromUpload.analyzedArea.regions_intersected.municipio.entries()) {
+					let citiesCount = this.layerFromUpload.analyzedArea.regions_intersected.municipio.length;
+					if (citiesCount === 1) {
+						cities += city.name + '.';
+						return cities;
+					}
+					if (index === citiesCount - 1) {
+						cities += city.name + '.';
+					} else {
+						cities += city.name + ', ';
+					}
+				}
+			}
+		}
 
+		return cities;
+	}
+	getStatesAnalyzedArea(fromConsulta = false) {
+		let states = '';
+		if (fromConsulta) {
+			if (this.layerFromConsulta.analyzedArea.regions_intersected.hasOwnProperty('estado')) {
+				for (let [index, state] of this.layerFromConsulta.analyzedArea.regions_intersected.estado.entries()) {
+					let statesCount = this.layerFromConsulta.analyzedArea.regions_intersected.estado.length;
+					if (statesCount === 1) {
+						states += state.name + '.';
+						return states;
+					}
+					if (index === statesCount - 1) {
+						states += state.name + '.';
+					} else {
+						states += state.name + ', ';
+					}
+				}
+			}
+		} else {
+			if (this.layerFromUpload.analyzedArea.regions_intersected.hasOwnProperty('estado')) {
+				for (let [index, state] of this.layerFromUpload.analyzedArea.regions_intersected.estado.entries()) {
+					let statesCount = this.layerFromUpload.analyzedArea.regions_intersected.estado.length;
+					if (statesCount === 1) {
+						states += state.name + '.';
+						return states;
+					}
+					if (index === statesCount - 1) {
+						states += state.name + '.';
+					} else {
+						states += state.name + ', ';
+					}
+				}
+			}
+		}
+
+		return states;
+	}
 
 	// async printRegionsIdentification(token) {
 	// 	let language = this.language;
@@ -1523,6 +1646,7 @@ export class MapComponent implements OnInit {
 			this.updateCharts();
 			this.addPoints();
 		});
+		this.setStylesLangButton();
 
 	}
 

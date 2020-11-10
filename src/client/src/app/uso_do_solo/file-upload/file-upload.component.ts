@@ -19,7 +19,7 @@ import { catchError, last, map, tap } from 'rxjs/operators';
 @Component({
   selector: 'app-file-upload',
   templateUrl: './file-upload.component.html',
-  styleUrls: ['./file-upload.component.css'],
+  styleUrls: ['./file-upload.component.scss'],
   animations: [
     trigger('fadeInOut', [
       state('in', style({ opacity: 100 })),
@@ -69,9 +69,10 @@ export class FileUploadComponent implements OnInit {
   }
 
   files: Array<FileUploadModel> = [];
-
+  languages: any = [];
   constructor(private _http: HttpClient) {
-
+    this.languages['pt'] = 'pt-br';
+    this.languages['en'] = 'en-us';
     this.maxSize = (this.maxSize * 1024 * 1024);
 
   }
@@ -79,7 +80,7 @@ export class FileUploadComponent implements OnInit {
   ngOnInit() {}
 
   onClick() {
-
+    console.log(this.language)
     this.target =  '/service/upload/spatial-file' + "?lang=" + this.language;
     let self = this;
 
