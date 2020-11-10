@@ -14,7 +14,8 @@ $theme: mat-light-theme($primary, $accent, $warn);
 @include angular-material-theme($theme);
 
 // Service Area
-@import "/assets/scss/main";
+// @import "/assets/scss/main";
+@import "./assets/scss/main.scss";
 
 .mat-tab-label{
 	min-width: 100px !important;
