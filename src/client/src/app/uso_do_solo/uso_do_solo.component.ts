@@ -306,7 +306,6 @@ export class MapComponent implements OnInit {
 			this.language = lang;
 			this.setStylesLangButton();
 			this.updateDescriptor();
-			this.updateCharts();
 		}
 	}
 	private updateDescriptor() {
@@ -347,6 +346,7 @@ export class MapComponent implements OnInit {
 					this.limitsNames.push(types)
 				}
 			}
+			this.updateCharts();
 		});
 	}
 
@@ -1396,7 +1396,6 @@ export class MapComponent implements OnInit {
 				+ msfilter
 				+ "&mode=tile&tile={x}+{y}+{z}"
 				+ "&tilemode=gmap"
-				+ "&lang=" + this.language
 				+ "&map.imagetype=png"
 			);
 		}
