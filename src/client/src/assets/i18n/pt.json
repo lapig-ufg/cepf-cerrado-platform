@@ -21,6 +21,8 @@
   "analyzed_area_pasture_per_year": ["Ano", "Área Pastagem", "Área Queimada"],
   "legend": "Legendas",
   "analysis": "Análises",
+  "zoom_in": "Mais Zoom",
+  "zoom_out": "Menos Zoom",
   "platform_title": "Plataforma de Conhecimento do Cerrado",
   "title_layers_infos": "Camadas de Informações",
   "title_tab_layers": "Camadas",
