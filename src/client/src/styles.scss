@@ -17,6 +17,10 @@ $theme: mat-light-theme($primary, $accent, $warn);
 // @import "/assets/scss/main";
 @import "./assets/scss/main.scss";
 
+mat-icon{
+	font-family: 'Material Icons' !important;
+}
+
 .mat-tab-label{
 	min-width: 100px !important;
 	padding: 10px 10px !important;
@@ -262,25 +266,24 @@ $theme: mat-light-theme($primary, $accent, $warn);
 //	margin-bottom: 0 !important
 //}
 //
-//.title-row {
-//	width: 130px;
-//	font-size: 0.95rem;
-//	padding: 10px;
-//}
-//
-//.content-row {
-//	padding: 10px;
-//	font-size: 0.9rem;
-//}
-//
-//.a01 {
-//	background-color: #efefef;
-//}
-//
-//.title-metadados {
-//	text-align: center;
-//  	font-weight: 600;
-//}
+.title-row {
+	font-size: 0.95rem;
+	padding: 10px;
+}
+
+.content-row {
+	padding: 10px;
+	font-size: 0.9rem;
+}
+
+.a01 {
+	background-color: #efefef;
+}
+
+.title-metadados {
+	text-align: center;
+  	font-weight: 600;
+}
 //
 //.button-close-metadados {
 //	background-color: #959595;
