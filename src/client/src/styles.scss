@@ -34,19 +34,28 @@ $theme: mat-light-theme($primary, $accent, $warn);
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-	background: $secundary;
+	background: darken($primary, 40%);
 	border-radius: 5px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-	background: $secundary;
+	background: darken($primary, 40%);
 }
 
 .mat-expansion-indicator::after, .mat-expansion-panel-header-description {
 	color: white;
 }
 
+.button-close-metadados{
+	background: $tertiary;
+}
+.mat-dialog-actions{
+	justify-content: center;
+}
+.title-row{
+	width: 13rem;
+}
 
 //
 //.mat-mini-fab {

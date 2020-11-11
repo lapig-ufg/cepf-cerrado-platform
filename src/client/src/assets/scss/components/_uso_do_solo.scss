@@ -297,7 +297,9 @@
       width: 0px !important;
       cursor:pointer!important;
     }
-
+    .iconInfo{
+      color: darken($primary, 40%);
+    }
   }
   .layer-selections{
     display: flex;
@@ -355,6 +357,12 @@
   }
   .container-upload{
     margin-top: 15px;
+  }
+  .dropdown-item.active, .dropdown-item:active {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 900;
+    background-color: $primary;
   }
 }
 

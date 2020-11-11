@@ -364,7 +364,7 @@ export class MapComponent implements OnInit {
 
 
 		const dialogRef = this.dialog.open(UsoDoSoloMetadados, {
-			width: '650px',
+			width: '90%',
 			data: { name: this.metadados }
 		});
 		dialogRef.afterClosed().subscribe(result => {
