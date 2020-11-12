@@ -1,5 +1,6 @@
 {
   "platform_title": "Plataforma de Conhecimento do Cerrado - Uso do Solo",
+  "logo_img": "../../assets/logo/cepf_en.png",
   "layers": "Camadas",
   "base_maps": "Mapas Base",
   "upload_title": "Upload",

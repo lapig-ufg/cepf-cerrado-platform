@@ -2,7 +2,7 @@
 
 	<div class="container-logos">
 		<a routerLink="/">
-			<img src="../../assets/img/logo.png" alt="Logo CEPF" />
+			<img [src]="'logo_img' | translate" alt="Logo CEPF" />
 		</a>
 	</div>
 	<div class="controls">
@@ -34,7 +34,7 @@
 		<p-sidebar [id]="'sideBarLeft'" [modal]="false" [dismissible]="true" [autoZIndex]="true" [style]="{'width':'30rem'}" [(visible)]="showLayers" position="left">
 			<div class="logo">
 				<a class="cepf-logo" routerLink="/">
-					<img src="assets/img/logo.png" alt="Logo CEPF" />
+					<img [src]="'logo_img' | translate" alt="Logo CEPF" />
 				</a>
 			</div>
 			<div class="btn-languages">
@@ -521,10 +521,7 @@
 				</div>
 				<div class="logos-cepf">
 					<a href="http://cepfcerrado.iieb.org.br/" target="_blank">
-						<img class="logo-cepf"  src="assets/logo/cepf_ieb.png" />
-					</a>
-					<a href="https://www.lapig.iesa.ufg.br/lapig/" target="_blank">
-						<img class="logo-lapig" src="assets/logo/lapig.png" />
+						<img class="logo-cepf"  src="assets/logo/partners.jpg" />
 					</a>
 				</div>
 				<div style="height: 20vh"></div>
