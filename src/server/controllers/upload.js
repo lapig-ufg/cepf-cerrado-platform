@@ -234,7 +234,7 @@ module.exports = function (app) {
 
 		let INSERT_STATEMENT = 'INSERT INTO upload_shapes (token, geom, data_insercao) values ($1, ST_Transform(ST_SetSRID(ST_Force2D(ST_GeomFromGeoJSON($2)),$3), 4674), $4) returning token;'
 
-		let makeValid = 'select ST_MAKEVALID(geom) from upload_shapes where token= $1'
+		let makeValid = 'update upload_shapes set geom = ST_MAKEVALID(geom) where token= $1'
 
 		const client = await pool.connect()
 		try {

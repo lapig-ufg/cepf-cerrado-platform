@@ -8,7 +8,7 @@ module.exports = function (app) {
         return [
             {
                 id: 'regions_pershape',
-                sql: "select s.text, s.type, s.value, s.uf from search s inner join regions_geom_cerrado r on r.text = s.value INNER JOIN upload_shapes up on ST_Intersects(up.geom, ST_Transform(r.geometry,4674) ) where s.type not in ('região de fronteira', 'bioma') AND up.token= ${token} order by 1 asc",
+                sql: "select s.text, s.type, s.value, s.uf from search s inner join regions_geom_cerrado r on r.text = s.value INNER JOIN upload_shapes up on ST_Intersects(up.geom, st_transform(ST_SetSRID(r.geometry, 4326), 4674)) where s.type not in ('região de fronteira', 'bioma') AND up.token= ${token} order by 1 asc",
                 mantain: true
             },
             {
