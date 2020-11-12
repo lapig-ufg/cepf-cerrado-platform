@@ -396,19 +396,19 @@ module.exports = function (app) {
 				})
 			});
 
-			var queryResult = request.queryResult['pastagem']
+			// var queryResult = request.queryResult['pastagem']
 
-			var pastagemByYear = []
-			queryResult.forEach(function (row) {
+			// var pastagemByYear = []
+			// queryResult.forEach(function (row) {
 
-				var year = Number(row['year'])
-				var area = Number(row['area_pastagem'])
+			// 	var year = Number(row['year'])
+			// 	var area = Number(row['area_pastagem'])
 
-				queimadasByYear.push({
-					'area_pastagem': area,
-					'year': year
-				})
-			});
+			// 	queimadasByYear.push({
+			// 		'area_pastagem': area,
+			// 		'year': year
+			// 	})
+			// });
 
 			// Accepts the array and key
 			const groupBy = (array, key) => {
@@ -426,52 +426,52 @@ module.exports = function (app) {
 			const groupByKey = (list, key, { omitKey = false }) => list.reduce((hash, { [key]: value, ...rest }) => ({ ...hash, [value]: (hash[value] || []).concat(omitKey ? { ...rest } : { [key]: value, ...rest }) }), {})
 
 			// Group by color as key to the person array
-			const areasGroupedByYear = groupByKey(queimadasByYear, 'year', { omitKey: true });
-			// const areasGroupedByYear = groupBy(queimadasByYear, 'year');
-			let arrayAreasGrouped = []
-			for (let key of Object.keys(areasGroupedByYear)) {
-				arrayAreasGrouped.push({
-					year: key,
-					area_pastagem: areasGroupedByYear[key][0].hasOwnProperty('area_pastagem') ? areasGroupedByYear[key][0]['area_pastagem'] : areasGroupedByYear[key][1]['area_pastagem'],
-					area_queimada: areasGroupedByYear[key][0].hasOwnProperty('area_queimada') ? areasGroupedByYear[key][0]['area_queimada'] : null
-				})
-			}
+			// const areasGroupedByYear = groupByKey(queimadasByYear, 'year', { omitKey: true });
+			// // const areasGroupedByYear = groupBy(queimadasByYear, 'year');
+			// let arrayAreasGrouped = []
+			// for (let key of Object.keys(areasGroupedByYear)) {
+			// 	arrayAreasGrouped.push({
+			// 		year: key,
+			// 		area_pastagem: areasGroupedByYear[key][0].hasOwnProperty('area_pastagem') ? areasGroupedByYear[key][0]['area_pastagem'] : areasGroupedByYear[key][1]['area_pastagem'],
+			// 		area_queimada: areasGroupedByYear[key][0].hasOwnProperty('area_queimada') ? areasGroupedByYear[key][0]['area_queimada'] : null
+			// 	})
+			// }
 
-			let graphQueimadasPastagem = {
-				"title": "Dados",
-				"type": "line",
-				"pointStyle": 'rect',
-				"options": {
-					title: {
-						display: false,
-					},
-					legend: {
-						labels: {
-							usePointStyle: true,
-							fontColor: "#85560c"
-						},
-						position: "bottom"
-					},
-					tooltips: {}
-				},
-				"data": {
-					labels: arrayAreasGrouped.map(e => e.year),
-					datasets: [
-						{
-							data: arrayAreasGrouped.map(e => e.area_pastagem),
-							backgroundColor: 'rgb(231, 187, 2)',
-							hoverBackgroundColor: 'rgb(231, 187, 2)',
-							label: "Area de Pastagem"
-						},
-						{
-							data: arrayAreasGrouped.map(e => e.area_queimada),
-							backgroundColor: 'rgb(110, 101, 101)',
-							hoverBackgroundColor: 'rgb(110, 101, 101)',
-							label: "Area Queimada"
-						}
-					]
-				}
-			}
+			// let graphQueimadasPastagem = {
+			// 	"title": "Dados",
+			// 	"type": "line",
+			// 	"pointStyle": 'rect',
+			// 	"options": {
+			// 		title: {
+			// 			display: false,
+			// 		},
+			// 		legend: {
+			// 			labels: {
+			// 				usePointStyle: true,
+			// 				fontColor: "#85560c"
+			// 			},
+			// 			position: "bottom"
+			// 		},
+			// 		tooltips: {}
+			// 	},
+			// 	"data": {
+			// 		labels: arrayAreasGrouped.map(e => e.year),
+			// 		datasets: [
+			// 			{
+			// 				data: arrayAreasGrouped.map(e => e.area_pastagem),
+			// 				borderColor: 'rgb(231, 187, 2)',
+			//				fill: false,
+			// 				label: "Area de Pastagem"
+			// 			},
+			// 			{
+			// 				data: arrayAreasGrouped.map(e => e.area_queimada),
+			// 				borderColor: 'rgb(110, 101, 101)',
+			// 				fill: false,
+			// 				label: "Area Queimada"
+			// 			}
+			// 		]
+			// 	}
+			// }
 
 
 			queryResult = request.queryResult['terraclass']
@@ -520,8 +520,8 @@ module.exports = function (app) {
 			}
 
 			let res = {
-				chart_pastagem_queimadas_peryear: graphQueimadasPastagem,
-				table_pastagem_queimadas_peryear: arrayAreasGrouped,
+				// chart_pastagem_queimadas_peryear: graphQueimadasPastagem,
+				table_pastagem_queimadas_peryear: queimadasByYear,
 				terraclass: graphTerraclass,
 			}
 

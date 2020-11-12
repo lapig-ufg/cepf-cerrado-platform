@@ -30,7 +30,7 @@ module.exports = function (app) {
         }
 
         let anual_statistic = [];
-        for (let y = 1985; y <= 2018; y++) {
+        for (let y = 1985; y <= 2019; y++) {
             let box = queryBox[0]['bbox'].replace("BOX(", "")
                 .replace(")", "")
                 .split(" ")
@@ -40,7 +40,7 @@ module.exports = function (app) {
                 box: box,
                 year: ano,
                 imgLarge: app.config.ows_host + "/ows?SERVICE=WMS&REQUEST=GetMap&VERSION=1.1.1&layers=uso_solo_mapbiomas,regions_cepf_realce_maior&bbox=" + box + "&TRANSPARENT=TRUE&srs=EPSG:4674&width=" +
-                    sizeSrc + "&height=" + sizeSrc + "&format=image/png&styles=&ENHANCE=TRUE&MSFILTER=" + regionfilter.msfilter + " ilike '" + region + "' and year = " + ano + "&MSREGION=type='" + regionfilter.msregion + "' and text ilike '" + region + "'",
+                    sizeSrc + "&height=" + sizeSrc + "&format=image/png&styles=&ENHANCE=TRUE&MSFILTER=" + regionfilter.msfilter + " = " + region + " and year = " + ano + "&MSREGION=type='" + regionfilter.msregion + "' and text ilike '" + region + "'",
                 imgSmall: app.config.ows_host + "/ows?SERVICE=WMS&REQUEST=GetMap&VERSION=1.1.1&layers=uso_solo_mapbiomas,regions_cepf_realce_maior&bbox=" + box + "&TRANSPARENT=TRUE&srs=EPSG:4674&width=" +
                     sizeThumb + "&height=" + sizeThumb + "&format=image/png&styles=&ENHANCE=TRUE&MSFILTER=" + regionfilter.msfilter + " ilike '" + region + "' and year = " + ano + "&MSREGION=type='" + regionfilter.msregion + "' and text ilike '" + region + "'"
             });
@@ -130,15 +130,15 @@ module.exports = function (app) {
                 datasets: [
                     {
                         data: arrayAreasGrouped.map(e => e.area_pastagem),
-                        backgroundColor: 'rgb(231, 187, 2)',
-                        hoverBackgroundColor: 'rgb(231, 187, 2)',
-                        label: "Area de Pastagem"
+                        borderColor: 'rgb(231, 187, 2)',
+                        label: "Area de Pastagem",
+                        fill: false
                     },
                     {
                         data: arrayAreasGrouped.map(e => e.area_queimada),
-                        backgroundColor: 'rgb(110, 101, 101)',
-                        hoverBackgroundColor: 'rgb(110, 101, 101)',
-                        label: "Area Queimada"
+                        borderColor: 'rgb(110, 101, 101)',
+                        label: "Area Queimada",
+                        fill: false
                     }
                 ]
             }

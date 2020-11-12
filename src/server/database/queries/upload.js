@@ -37,10 +37,10 @@ module.exports = function (app) {
                 sql: "SELECT p.year, SUM((ST_AREA(ST_Intersection(p.geom,up.geom)::GEOGRAPHY) / 1000000.0)*100.0) as area_queimada FROM queimadas_lapig p INNER JOIN upload_shapes up on ST_INTERSECTS(p.geom, up.geom) where p.year IS NOT NULL and up.token= ${token} GROUP BY 1 order by 1 desc",
                 mantain: true
             },
-            {
-                id: 'pastagem',
-                sql: "SELECT p.year, SUM((ST_AREA(ST_Intersection(p.wkb_geometry,up.geom)::GEOGRAPHY) / 1000000.0)*100.0) as area_pastagem FROM pasture p INNER JOIN upload_shapes up on ST_INTERSECTS(p.wkb_geometry, up.geom) where p.year IS NOT NULL and up.token= ${token} GROUP BY 1 order by 1 desc"
-            },
+            // {
+            //     id: 'pastagem',
+            //     sql: "SELECT p.year, SUM((ST_AREA(ST_Intersection(p.wkb_geometry,up.geom)::GEOGRAPHY) / 1000000.0)*100.0) as area_pastagem FROM pasture p INNER JOIN upload_shapes up on ST_INTERSECTS(p.wkb_geometry, up.geom) where p.year IS NOT NULL and up.token= ${token} GROUP BY 1 order by 1 desc"
+            // },
             {
                 id: 'terraclass',
                 sql: "SELECT b.name as lulc, b.color as color, SUM((ST_AREA(safe_intersection(p.geom,up.geom)::GEOGRAPHY) / 1000000.0)*100.0) as area_lulc FROM uso_solo_terraclass p INNER JOIN graphic_colors b on unaccent(b.name) ilike unaccent(p.classe) AND b.table_rel = 'uso_solo_terraclass' " +
