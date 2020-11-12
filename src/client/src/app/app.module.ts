@@ -27,11 +27,13 @@ import { GoogleAnalyticsService } from './services/google-analytics.service'
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { LightboxModule } from 'ngx-lightbox';
 import { LOCALE_ID } from '@angular/core';
 import { registerLocaleData, LocationStrategy, HashLocationStrategy, DecimalPipe } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import { FileUploadComponent } from './uso_do_solo/file-upload/file-upload.component';
-
+import { RegionReportComponent } from './uso_do_solo/region-report/region-report.component';
+import { SpinnerImgComponent } from './uso_do_solo/spinner-img/spinner-img.component';
 import { ChartModule } from 'primeng/chart';
 import { DatePipe } from '@angular/common';
 
@@ -50,6 +52,7 @@ import { PanelModule } from 'primeng/panel';
 import { SidebarModule } from 'primeng/sidebar';
 import { TooltipModule } from 'primeng/tooltip';
 import { TableModule } from 'primeng/table';
+import { AccordionModule } from 'primeng/accordion';
 
 registerLocaleData(localePt);
 
@@ -63,7 +66,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     MapComponent,
     MapMobileComponent,
     UsoDoSoloMetadados,
-    FileUploadComponent
+    FileUploadComponent,
+    RegionReportComponent,
+    SpinnerImgComponent
   ],
   imports: [
     MatFormFieldModule,
@@ -72,6 +77,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     SidebarModule,
     TableModule,
     TooltipModule,
+    AccordionModule,
     MatSidenavModule,
     MatTooltipModule,
     MatToolbarModule,
@@ -100,6 +106,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     PaginasModule,
     ChartModule,
     NgbModule,
+    LightboxModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -108,7 +115,10 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     })
   ],
-  entryComponents: [UsoDoSoloMetadados],
+  entryComponents: [
+      UsoDoSoloMetadados,
+      RegionReportComponent
+  ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt-BR' },
     DatePipe,

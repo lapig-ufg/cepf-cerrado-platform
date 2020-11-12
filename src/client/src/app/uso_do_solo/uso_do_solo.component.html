@@ -493,10 +493,10 @@
 				<h5 class="title-section">{{'analysis' | translate}}</h5>
 				<div class="chart-region">
 					<h5>
-<!--						<button [matTooltip]="titlesLayerBox.region_tooltip" *ngIf="selectRegion.type != 'biome'"-->
-<!--								color="primary" style="font-size: 30px;" mat-icon-button>-->
-<!--							<mat-icon>text_snippet</mat-icon>-->
-<!--						</button>-->
+						<button [matTooltip]="'region_tooltip' | translate" *ngIf="selectRegion.type == 'municipio' || selectRegion.type == 'estado'"
+								color="primary" (click)="openRegionReport()" style="font-size: 30px;" mat-icon-button>
+							<mat-icon>text_snippet</mat-icon>
+						</button>
 						<strong> {{ selectRegion.text }} </strong>
 					</h5>
 				</div>
@@ -521,7 +521,7 @@
 				</div>
 				<div class="logos-cepf">
 					<a href="http://cepfcerrado.iieb.org.br/" target="_blank">
-						<img class="logo-cepf"  src="assets/logo/partners.jpg" />
+						<img class="logo-cepf"  src="assets/logo/partners.png" />
 					</a>
 				</div>
 				<div style="height: 20vh"></div>

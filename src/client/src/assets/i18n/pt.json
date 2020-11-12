@@ -24,7 +24,6 @@
   "analysis": "Análises",
   "zoom_in": "Mais Zoom",
   "zoom_out": "Menos Zoom",
-  "platform_title": "Plataforma de Conhecimento do Cerrado",
   "title_layers_infos": "Camadas de Informações",
   "title_tab_layers": "Camadas",
   "title_tab_basemap": "Mapas Base",
@@ -33,5 +32,22 @@
   "text_box_searching": "localizando...",
   "text_box_notsearch": "Desculpe, Região não encontrada.",
   "title_charts_main": "Análises",
-  "title_legends_main": "Legendas"
+  "title_legends_main": "Legendas",
+  "region_tooltip": "Relatório da região selecionada",
+  "estado": {
+    "title": "Relatório de Desmatamento do Estado - {{name}}",
+    "info": "Informações do Estado",
+    "region": "Estado"
+  },
+  "municipio": {
+    "title": "Relatório de desmatamento do município de {{name}}",
+    "info": "Informações do município",
+    "region": "Município"
+  },
+  "year": "Ano",
+  "area": "Área",
+  "metadata": "Metadados",
+  "title_chart_pasture": "Dados de pastagem e queimadas",
+  "title_table_pasture": "Tabela de pastagem e queimadas",
+  "label_images": "Histórico de Imagens Landsat"
 }
