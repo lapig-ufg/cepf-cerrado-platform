@@ -1267,14 +1267,14 @@ module.exports = function(app) {
               "opacity": 1
             },
             {
-              "value": "estados", 
+              "value": "bi_ce_estados_250_2013_ibge",
               "Viewvalue": languageJson["limits"]["estados"][language],
               "visible": false, 
               "layer_limits": true,
               "opacity": 1
             },
 						{
-              "value": "municipios_cerrado",
+              "value": "bi_ce_municipios_250_2019_ibge",
               "Viewvalue": languageJson["limits"]["municipios"][language],
               "visible": false, 
               "layer_limits": true,
