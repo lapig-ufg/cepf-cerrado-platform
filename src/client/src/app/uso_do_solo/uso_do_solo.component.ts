@@ -444,7 +444,6 @@ export class MapComponent implements OnInit {
 		dados['region'] = await this.http.get(url).toPromise();
 
 		dados['language'] = this.language;
-		console.log('Dados', dados)
 		if (window.innerWidth < this.breakpointMobile) {
 			// this.dialog.open(RegionReportMobileComponent, {
 			// 	width: '98%',
