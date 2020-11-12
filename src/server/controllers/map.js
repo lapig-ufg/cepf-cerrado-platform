@@ -493,12 +493,12 @@ module.exports = function(app) {
 							"id": "mapa_agricultura_censitaria",
 							"label": languageJson["title_layer_label"]["agricultura_censitaria"][language],
 							"visible": false,
-              "selectedType": 'area_plantada_algodao_censo',
+              "selectedType": 'bi_ce_algodao_area_municipio_250_ibge',
               "downloadSHP": false,
               "downloadCSV": true,
 							"types": [
                 {
-                  "value": "area_plantada_algodao_censo", 
+                  "value": "bi_ce_algodao_area_municipio_250_ibge", 
                   "Viewvalue": languageJson["type_layer_viewvalue"]["algodao"][language],
                   "visible": false, 
                   "opacity": 1,
@@ -506,7 +506,7 @@ module.exports = function(app) {
                   "order": 3,
                   "typeLabel": languageJson["typelabel_layer"]["area_planted"][language],
                   "timeLabel": languageJson["typelabel_layer"]["year"][language],
-                  "timeSelected": "year=2018",
+                  "timeSelected": "year=2019",
                   "timeHandler": "msfilter",
                   "times": [
                     {"value": "year=2000", "Viewvalue": 2000},
@@ -527,7 +527,8 @@ module.exports = function(app) {
                     {"value": "year=2015", "Viewvalue": 2015},
                     {"value": "year=2016", "Viewvalue": 2016},
                     {"value": "year=2017", "Viewvalue": 2017},
-                    {"value": "year=2018", "Viewvalue": 2018}
+                    {"value": "year=2018", "Viewvalue": 2018},
+                    {"value": "year=2019", "Viewvalue": 2019}
                   ],
                   "metadados": {
                     "title": languageJson["metadata"]["area_algodao"]["title"][language],
@@ -545,7 +546,7 @@ module.exports = function(app) {
                   "columnsCSV": "area_ha, year"
                 },
                 {
-                  "value": "area_plantada_cana_censo", 
+                  "value": "bi_ce_cana_area_municipio_250_ibge", 
                   "Viewvalue": languageJson["type_layer_viewvalue"]["cana"][language],
                   "visible": false, 
                   "opacity": 1,
@@ -553,7 +554,7 @@ module.exports = function(app) {
                   "order": 3,
                   "typeLabel": languageJson["typelabel_layer"]["area_planted"][language],
                   "timeLabel": languageJson["typelabel_layer"]["year"][language],
-                  "timeSelected": "year=2018",
+                  "timeSelected": "year=2019",
                   "timeHandler": "msfilter",
                   "times": [
                     {"value": "year=2000", "Viewvalue": 2000},
@@ -574,7 +575,8 @@ module.exports = function(app) {
                     {"value": "year=2015", "Viewvalue": 2015},
                     {"value": "year=2016", "Viewvalue": 2016},
                     {"value": "year=2017", "Viewvalue": 2017},
-                    {"value": "year=2018", "Viewvalue": 2018}
+                    {"value": "year=2018", "Viewvalue": 2018},
+                    {"value": "year=2019", "Viewvalue": 2019}
                   ],
                   "metadados": {
                     "title": languageJson["metadata"]["area_cana"]["title"][language],
@@ -592,7 +594,7 @@ module.exports = function(app) {
                   "columnsCSV": "area_ha, year"
                 },
                 {
-                  "value": "area_plantada_milho_censo", 
+                  "value": "bi_ce_milho_area_municipio_250_ibge",
                   "Viewvalue": languageJson["type_layer_viewvalue"]["milho"][language],
                   "visible": false, 
                   "opacity": 1,
@@ -600,7 +602,7 @@ module.exports = function(app) {
                   "order": 3,
                   "typeLabel": languageJson["typelabel_layer"]["area_planted"][language],
                   "timeLabel": languageJson["typelabel_layer"]["year"][language],
-                  "timeSelected": "year=2018",
+                  "timeSelected": "year=2019",
                   "timeHandler": "msfilter",
                   "times": [
                     {"value": "year=2000", "Viewvalue": 2000},
@@ -621,7 +623,8 @@ module.exports = function(app) {
                     {"value": "year=2015", "Viewvalue": 2015},
                     {"value": "year=2016", "Viewvalue": 2016},
                     {"value": "year=2017", "Viewvalue": 2017},
-                    {"value": "year=2018", "Viewvalue": 2018}
+                    {"value": "year=2018", "Viewvalue": 2018},
+                    {"value": "year=2019", "Viewvalue": 2019}
                   ],
                   "metadados": {
                     "title": languageJson["metadata"]["area_milho"]["title"][language],
@@ -639,7 +642,7 @@ module.exports = function(app) {
                   "columnsCSV": "area_ha, year"
                 },
                 {
-                  "value": "area_plantada_soja_censo", 
+                  "value": "bi_ce_soja_area_municipio_250_ibge",
                   "Viewvalue": languageJson["type_layer_viewvalue"]["soja"][language],
                   "visible": false, 
                   "opacity": 1,
@@ -647,7 +650,7 @@ module.exports = function(app) {
                   "order": 3,
                   "typeLabel": languageJson["typelabel_layer"]["area_planted"][language],
                   "timeLabel": languageJson["typelabel_layer"]["year"][language],
-                  "timeSelected": "year=2018",
+                  "timeSelected": "year=2019",
                   "timeHandler": "msfilter",
                   "times": [
                     {"value": "year=2000", "Viewvalue": 2000},
@@ -668,7 +671,8 @@ module.exports = function(app) {
                     {"value": "year=2015", "Viewvalue": 2015},
                     {"value": "year=2016", "Viewvalue": 2016},
                     {"value": "year=2017", "Viewvalue": 2017},
-                    {"value": "year=2018", "Viewvalue": 2018}
+                    {"value": "year=2018", "Viewvalue": 2018},
+                    {"value": "year=2019", "Viewvalue": 2019}
                   ],
                   "metadados": {
                     "title": languageJson["metadata"]["area_soja"]["title"][language],
@@ -686,7 +690,7 @@ module.exports = function(app) {
                   "columnsCSV": "area_ha, year"
                 },
                 {
-                  "value": "quantidade_produzida_carvao_censo",
+                  "value": "bi_ce_carvao_vegetal_quantidade_municipio_250_ibge",
                   "Viewvalue": languageJson["type_layer_viewvalue"]["carvao"][language],
                   "visible": false, 
                   "opacity": 1,
@@ -694,7 +698,7 @@ module.exports = function(app) {
                   "order": 3,
                   "typeLabel": languageJson["typelabel_layer"]["production"][language],
                   "timeLabel": languageJson["typelabel_layer"]["year"][language],
-                  "timeSelected": "year=2018",
+                  "timeSelected": "year=2019",
                   "timeHandler": "msfilter",
                   "times": [
                     {"value": "year=2000", "Viewvalue": 2000},
@@ -715,7 +719,8 @@ module.exports = function(app) {
                     {"value": "year=2015", "Viewvalue": 2015},
                     {"value": "year=2016", "Viewvalue": 2016},
                     {"value": "year=2017", "Viewvalue": 2017}, 
-                    {"value": "year=2018", "Viewvalue": 2018}
+                    {"value": "year=2018", "Viewvalue": 2018},
+                    {"value": "year=2019", "Viewvalue": 2019}
                   ],
                   "metadados": {
                     "title": languageJson["metadata"]["producao_carvao"]["title"][language],
@@ -733,7 +738,7 @@ module.exports = function(app) {
                   "columnsCSV": "qto_produz, year"
                 },
                 {
-                  "value": "quantidade_produzida_lenha_censo",
+                  "value": "bi_ce_lenha_quantidade_municipio_250_ibge",
                   "Viewvalue": languageJson["type_layer_viewvalue"]["lenha"][language],
                   "visible": false, 
                   "opacity": 1,
@@ -741,7 +746,7 @@ module.exports = function(app) {
                   "order": 3,
                   "typeLabel": languageJson["typelabel_layer"]["production"][language],
                   "timeLabel": languageJson["typelabel_layer"]["year"][language],
-                  "timeSelected": "year=2018",
+                  "timeSelected": "year=2019",
                   "timeHandler": "msfilter",
                   "times": [
                     {"value": "year=2000", "Viewvalue": 2000},
@@ -762,7 +767,8 @@ module.exports = function(app) {
                     {"value": "year=2015", "Viewvalue": 2015},
                     {"value": "year=2016", "Viewvalue": 2016},
                     {"value": "year=2017", "Viewvalue": 2017}, 
-                    {"value": "year=2018", "Viewvalue": 2018}
+                    {"value": "year=2018", "Viewvalue": 2018},
+                    {"value": "year=2018", "Viewvalue": 2019}
                   ],
                   "metadados": {
                     "title": languageJson["metadata"]["producao_lenha"]["title"][language],
@@ -780,7 +786,7 @@ module.exports = function(app) {
                   "columnsCSV": "qto_produz, year"
                 },
                 {
-                  "value": "quantidade_produzida_madeira_censo",
+                  "value": "bi_ce_madeira_quantidade_municipio_250_ibge",
                   "Viewvalue": languageJson["type_layer_viewvalue"]["madeira"][language],
                   "visible": false, 
                   "opacity": 1,
@@ -788,7 +794,7 @@ module.exports = function(app) {
                   "order": 3,
                   "typeLabel": languageJson["typelabel_layer"]["production"][language],
                   "timeLabel": languageJson["typelabel_layer"]["year"][language],
-                  "timeSelected": "year=2018",
+                  "timeSelected": "year=2019",
                   "timeHandler": "msfilter",
                   "times": [
                     {"value": "year=2000", "Viewvalue": 2000},
@@ -809,7 +815,8 @@ module.exports = function(app) {
                     {"value": "year=2015", "Viewvalue": 2015},
                     {"value": "year=2016", "Viewvalue": 2016},
                     {"value": "year=2017", "Viewvalue": 2017}, 
-                    {"value": "year=2018", "Viewvalue": 2018}
+                    {"value": "year=2018", "Viewvalue": 2018},
+                    {"value": "year=2019", "Viewvalue": 2019}
                   ],
                   "metadados": {
                     "title": languageJson["metadata"]["producao_madeira"]["title"][language],
