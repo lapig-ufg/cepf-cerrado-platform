@@ -34,5 +34,22 @@
   "text_box_notsearch": "Sorry, Region not found.",
   "title_charts_main": "Analysis",
   "title_legends_main": "Legend",
-  "typelabel_layer_type": "Type"
+  "typelabel_layer_type": "Type",
+  "region_tooltip": "Selected region report",
+  "estado": {
+    "title": "{{name}} State Deforestation Report",
+    "info": "State Information",
+    "region": "State"
+  },
+  "municipio": {
+    "title": "Deforestation Report in the municipality of {{name}}",
+    "info": "Municipality information",
+    "region": "Municipality"
+  },
+  "year": "Year",
+  "area": "Area",
+  "metadata": "Metadata",
+  "title_chart_pasture": "Pasture and burning data",
+  "title_table_pasture": "Pasture and burning table",
+  "label_images": "Landsat Images History"
 }

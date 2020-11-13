@@ -36,6 +36,7 @@ import { saveAs } from 'file-saver';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 import { GoogleAnalyticsService } from '../services/google-analytics.service';
+import {RegionReportComponent} from "./region-report/region-report.component";
 
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
@@ -203,6 +204,7 @@ export class MapComponent implements OnInit {
 
 	styleSelected: any;
 	styleDefault: any;
+	breakpointMobile: number;
 
 	constructor(
 		private http: HttpClient,
@@ -271,6 +273,7 @@ export class MapComponent implements OnInit {
 		this.showStatistics = false;
 		this.showLayers = false;
 		this.innerHeigth = window.innerHeight;
+		this.breakpointMobile = 1024;
 	}
 
 	search = (text$: Observable<string>) =>
@@ -423,6 +426,40 @@ export class MapComponent implements OnInit {
 		this.updateSourceAllLayer();
 		this.updateCharts();
 		this.addPoints();
+	}
+	async openRegionReport() {
+		let dados = {};
+		let url = '/service/analysis/regionreport?';
+
+		if (this.selectRegion.type === 'estado') {
+			url += 'type=estado&region=' + this.selectRegion.value.toLowerCase();
+			dados['type'] = 'estado';
+		} else if (this.selectRegion.type === 'municipio') {
+			url += 'type=municipio&region=' + this.selectRegion.value.toLowerCase();
+			dados['type'] = 'municipio';
+		} else {
+			return;
+		}
+
+		dados['region'] = await this.http.get(url).toPromise();
+
+		dados['language'] = this.language;
+		if (window.innerWidth < this.breakpointMobile) {
+			// this.dialog.open(RegionReportMobileComponent, {
+			// 	width: '98%',
+			// 	minWidth: '95%',
+			// 	height: 'calc(100% - 5vh)',
+			// 	panelClass: 'full-width-dialog',
+			// 	data: { dados }
+			// });
+		} else {
+			this.dialog.open(RegionReportComponent, {
+				width: 'calc(100% - 5vw)',
+				height: 'calc(100% - 5vh)',
+				data: { dados }
+			});
+		}
+
 	}
 
 	private updateCharts() {
