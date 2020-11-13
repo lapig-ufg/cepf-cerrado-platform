@@ -7,11 +7,11 @@
 	</div>
 	<div class="controls">
 		<div [matTooltip]="'btn_clear' | translate" *ngIf="this.selectRegion != this.defaultRegion"
-			 [class]="'btn-layers'" (click)="updateRegion(defaultRegion)">
+			[class]="'btn-layers'" (click)="updateRegion(defaultRegion)">
 			<img width="25" height="25" src="../../assets/img/close-button.svg" [alt]="'btn_clear' | translate">
 		</div>
 		<div [matTooltip]="'title_layers_infos' | translate"
-			 [class]="showLayers ? 'btn-layers btn-layers-active' : 'btn-layers'" (click)="showLayers = !showLayers">
+			[class]="showLayers ? 'btn-layers btn-layers-active' : 'btn-layers'" (click)="showLayers = !showLayers">
 			<img width="25" height="25" src="../../assets/img/btn_layers.svg" [alt]="'title_layers_infos' | translate">
 		</div>
 		<div [matTooltip]="'zoom_in' | translate" [class]="'btn-layers'" (click)="zoomIn()">
@@ -24,14 +24,14 @@
 
 	<div (click)="showStatistics = !showStatistics" class="control-sidebar">
 		<div [matTooltip]="'analysis' | translate"
-			 [class]="showStatistics ? 'btn-layers btn-sidebar btn-layers-active' : 'btn-layers btn-sidebar'"
-			 >
+			[class]="showStatistics ? 'btn-layers btn-sidebar btn-layers-active' : 'btn-layers btn-sidebar'">
 			<img width="25" height="25" src="../../assets/img/sidebar.svg" [alt]="'analysis' | translate">
 		</div>
 	</div>
 
 	<div #mapcontainer id="map" [style.height]="innerHeigth + 'px'">
-		<p-sidebar [id]="'sideBarLeft'" [modal]="false" [dismissible]="true" [autoZIndex]="true" [style]="{'width':'30rem'}" [(visible)]="showLayers" position="left">
+		<p-sidebar [id]="'sideBarLeft'" [modal]="false" [dismissible]="true" [autoZIndex]="true"
+			[style]="{'width':'30rem'}" [(visible)]="showLayers" position="left">
 			<div class="logo">
 				<a class="cepf-logo" routerLink="/">
 					<img [src]="'logo_img' | translate" alt="Logo CEPF" />
@@ -39,9 +39,9 @@
 			</div>
 			<div class="btn-languages">
 				<button (click)="changeLanguage('pt')" class="color-buttons" mat-raised-button
-						[ngStyle]="bntStylePOR">&nbsp;POR</button>
+					[ngStyle]="bntStylePOR">&nbsp;POR</button>
 				<button (click)="changeLanguage('en')" class="color-buttons" mat-raised-button
-						[ngStyle]="bntStyleENG">&nbsp;ENG</button>
+					[ngStyle]="bntStyleENG">&nbsp;ENG</button>
 			</div>
 			<div class="line"></div>
 			<div class="collapseLayer" [ngbCollapse]="collapseLayer">
@@ -57,63 +57,84 @@
 											</ng-template>
 											<input id="typeahead-http" type="text" class="form-control searchRegion"
 												[class.is-invalid]="searchFailed" [(ngModel)]="valueRegion"
-												[ngbTypeahead]="search" placeholder="{{'text_box_searching_input' | translate}}"
+												[ngbTypeahead]="search"
+												placeholder="{{'text_box_searching_input' | translate}}"
 												(selectItem)="updateRegion($event.item)" [resultTemplate]="rt"
 												[inputFormatter]="formatter" />
 											<img [hidden]="selectRegion == defaultRegion" class="clear-region-btn"
 												(click)="updateRegion(defaultRegion)" src="assets/clear_button.png" />
 											<span *ngIf="searching">{{'text_box_searching' | translate}}</span>
-											<div class="invalid-feedback" *ngIf="searchFailed">{{'text_box_notsearch' | translate}}</div>
+											<div class="invalid-feedback" *ngIf="searchFailed">
+												{{'text_box_notsearch' | translate}}</div>
 										</div>
 									</div>
 									<div *ngFor="let groups of descriptor.groups">
-										<mat-expansion-panel [expanded] = groups.group_expanded>
-											<mat-expansion-panel-header [collapsedHeight]="'40px'" [expandedHeight]="'40px'" class="expansion-header-layer">
+										<mat-expansion-panel [expanded]=groups.group_expanded>
+											<mat-expansion-panel-header [collapsedHeight]="'40px'"
+												[expandedHeight]="'40px'" class="expansion-header-layer">
 												<h5 class="expansion-layer"><b>{{groups.label}}</b></h5>
 											</mat-expansion-panel-header>
 											<div class="layersContent" *ngFor="let layer of groups.layers">
 												<div>
-													<mat-checkbox [id]=layer.id class="example-margin" (change)="changeVisibility(layer, $event)" [checked]=layer.visible>
+													<mat-checkbox [id]=layer.id class="example-margin"
+														(change)="changeVisibility(layer, $event)"
+														[checked]=layer.visible>
 														{{layer.label}}
 													</mat-checkbox>
-													<button class="button-row" (click)="openDialog(layer)" color="accent" mat-icon-button>
+													<button class="button-row" (click)="openDialog(layer)"
+														color="accent" mat-icon-button>
 														<mat-icon class="iconInfo">info</mat-icon>
 													</button>
 												</div>
 												<div style="padding-left: 8%" *ngIf="layer.times">
 													<mat-form-field>
 														<mat-label>{{layer.timeLabel}}</mat-label>
-														<mat-select (selectionChange)="updateSourceLayer(layer)" [(value)]="layer.timeSelected" [disabled]="!layer.visible">
-															<mat-option *ngFor="let times of layer.times" [value]="times.value">
+														<mat-select (selectionChange)="updateSourceLayer(layer)"
+															[(value)]="layer.timeSelected" [disabled]="!layer.visible">
+															<mat-option *ngFor="let times of layer.times"
+																[value]="times.value">
 																{{times.Viewvalue}}
 															</mat-option>
 														</mat-select>
 													</mat-form-field>
 												</div>
-												<div class="layer-selections" style="padding-left: 8%" *ngIf="layer.types">
+												<div class="layer-selections" style="padding-left: 8%"
+													*ngIf="layer.types">
 													<mat-form-field style="margin-right: 15%; width: 100%">
-														<mat-label *ngFor="let type of layer.types" [hidden]="type.value != layer.selectedType">{{type.typeLabel}}</mat-label>
-														<mat-select (selectionChange)="changeVisibility(layer)" [(value)]="layer.selectedType" [disabled]="!layer.visible">
-															<mat-option *ngFor="let type of layer.types" [value]="type.value">
+														<mat-label *ngFor="let type of layer.types"
+															[hidden]="type.value != layer.selectedType">
+															{{type.typeLabel}}</mat-label>
+														<mat-select (selectionChange)="changeVisibility(layer)"
+															[(value)]="layer.selectedType" [disabled]="!layer.visible">
+															<mat-option *ngFor="let type of layer.types"
+																[value]="type.value">
 																{{type.Viewvalue}}
 															</mat-option>
 														</mat-select>
 													</mat-form-field>
-													<span class="time-selection" *ngFor="let type of layer.types" [hidden]="type.value != layer.selectedType">
+													<span class="time-selection" *ngFor="let type of layer.types"
+														[hidden]="type.value != layer.selectedType">
 														<mat-form-field *ngIf="type.times">
-														  <mat-label>{{type.timeLabel}}</mat-label>
-															<mat-select (selectionChange)="updateSourceLayer(type)" [(value)]="type.timeSelected" [disabled]="!layer.visible">
-															  <mat-option *ngFor="let times of type.times" [value]="times.value">
-																{{times.Viewvalue}}
-															  </mat-option>
+															<mat-label>{{type.timeLabel}}</mat-label>
+															<mat-select (selectionChange)="updateSourceLayer(type)"
+																[(value)]="type.timeSelected"
+																[disabled]="!layer.visible">
+																<mat-option *ngFor="let times of type.times"
+																	[value]="times.value">
+																	{{times.Viewvalue}}
+																</mat-option>
 															</mat-select>
 														</mat-form-field>
 													</span>
 												</div>
 												<div *ngIf="layer.visible">
-													<div class="buttons-download-past" *ngIf="layer.downloadSHP || layer.downloadCSV">
-														<a style="margin-left: 10px;" *ngIf="layer.downloadCSV" href="{{ linkDownload }}">
-															<button mat-raised-button class="buttons_download" href (click)="buttonDownload('csv', layer, $event)" value='buttonCSV' [disabled]="!layer.visible">
+													<div class="buttons-download-past"
+														*ngIf="layer.downloadSHP || layer.downloadCSV">
+														<a style="margin-left: 10px;" *ngIf="layer.downloadCSV"
+															href="{{ linkDownload }}">
+															<button mat-raised-button class="buttons_download" href
+																(click)="buttonDownload('csv', layer, $event)"
+																value='buttonCSV' [disabled]="!layer.visible">
 																<mat-icon>cloud_download</mat-icon>&nbsp;CSV
 															</button>
 														</a>
@@ -130,32 +151,33 @@
 								</div>
 							</mat-accordion>
 						</mat-tab>
-						<mat-tab [label]="'upload_title' | translate" >
+						<mat-tab [label]="'upload_title' | translate">
 							<p-scrollPanel [style]="{width: '100%',  height: '70vh'}">
-								<mat-tab-group [(selectedIndex)]="selectedIndexUpload" class="layersConteudo container-upload" mat-stretch-tabs dynamicHeight>
+								<mat-tab-group [(selectedIndex)]="selectedIndexUpload"
+									class="layersConteudo container-upload" mat-stretch-tabs dynamicHeight>
 									<mat-tab [label]="'upload_submit' | translate">
 										<div class="info-header" [innerHTML]="'upload_msg' | translate"></div>
 										<app-file-upload [tooltip]="'upload_tooltip' | translate"
-														 [maxSizeMsg]="'upload_max_size_msg'  | translate"
-														 [loading]="layerFromUpload.loading" [language]="language"
-														 [ddarea]="layerFromUpload.dragArea" (complete)="onFileComplete($event)">
+											[maxSizeMsg]="'upload_max_size_msg'  | translate"
+											[loading]="layerFromUpload.loading" [language]="language"
+											[ddarea]="layerFromUpload.dragArea" (complete)="onFileComplete($event)">
 										</app-file-upload>
 										<mat-card *ngIf="layerFromUpload.visible"
-												  class="card-checkbox-upload mat-elevation-z8" color="primary">
+											class="card-checkbox-upload mat-elevation-z8" color="primary">
 											<div class="title-file-card">
 												{{'upload_title_file' | translate | uppercase }}</div>
 											<mat-card-subtitle>
 												<mat-progress-bar class="progress-analyse-up" color="accent"
-																  *ngIf="layerFromUpload.analyzedAreaLoading" mode="indeterminate">
+													*ngIf="layerFromUpload.analyzedAreaLoading" mode="indeterminate">
 												</mat-progress-bar>
-												<mat-checkbox class="example-margin" (change)="onChangeCheckUpload($event)"
-															  [checked]="layerFromUpload.checked">
+												<mat-checkbox class="example-margin"
+													(change)="onChangeCheckUpload($event)"
+													[checked]="layerFromUpload.checked">
 													{{layerFromUpload.label}}
 												</mat-checkbox>
 												<h5 class="upload-token">
 													{{'upload_token' | translate}}{{layerFromUpload.token}}
-													<button
-															color="primary" classs="btn-info " mat-icon-button>
+													<button color="primary" classs="btn-info " mat-icon-button>
 														<mat-icon>print</mat-icon>
 													</button>
 												</h5>
@@ -163,34 +185,33 @@
 										</mat-card>
 										<div class="buttons-analyze">
 											<button class="color-buttons" *ngIf="layerFromUpload.checked"
-													(click)="analyzeUploadShape()" mat-raised-button>
+												(click)="analyzeUploadShape()" mat-raised-button>
 												<div>{{'btn_analyze' | translate | uppercase}}</div>
 											</button>
 											<button class="color-buttons clear"
-													*ngIf="layerFromUpload.token != '' && layerFromUpload.visible && !layerFromUpload.analyzedArea.hasOwnProperty('regions_intersected')"
-													(click)="clearUpload()" mat-raised-button >
+												*ngIf="layerFromUpload.token != '' && layerFromUpload.visible && !layerFromUpload.analyzedArea.hasOwnProperty('regions_intersected')"
+												(click)="clearUpload()" mat-raised-button>
 												{{'btn_clear' | translate | uppercase}}
 											</button>
 											<button class="color-buttons"
-													*ngIf="layerFromUpload.analyzedArea.hasOwnProperty('shape_upload')"
-													(click)="clearUpload()" mat-raised-button>
+												*ngIf="layerFromUpload.analyzedArea.hasOwnProperty('shape_upload')"
+												(click)="clearUpload()" mat-raised-button>
 												<div>{{'btn_clear' | translate | uppercase}}</div>
 											</button>
 										</div>
 										<div *ngIf="layerFromUpload.analyzedAreaLoading" class="info-header"
-											 [innerHTML]="'upload_warning' | translate"></div>
+											[innerHTML]="'upload_warning' | translate"></div>
 										<div *ngIf="layerFromUpload.analyzedArea.hasOwnProperty('shape_upload')"
-											 class="card card-upload-analysed">
+											class="card card-upload-analysed">
 											<h5 class="title-file-card ">
 												{{'analyzed_area_title' | translate | uppercase}}</h5>
 											<div class="card-upload-analysed-content">
 												<div class="upload-token">
-													<button color="primary"
-															classs="btn-info " mat-icon-button>
+													<button color="primary" classs="btn-info " mat-icon-button>
 														<mat-icon>print</mat-icon>
 														<mat-spinner [strokeWidth]="2" [diameter]="18"
-																	 *ngIf="loadingPrintReport" color="primary" mode="indeterminate"
-																	 style="margin: 0 auto;"></mat-spinner>
+															*ngIf="loadingPrintReport" color="primary"
+															mode="indeterminate" style="margin: 0 auto;"></mat-spinner>
 													</button>
 													{{'analyzed_area_total_area' | translate }}
 													<strong>
@@ -199,7 +220,7 @@
 												</div>
 
 												<div *ngIf="layerFromUpload.analyzedArea.regions_intersected.hasOwnProperty('municipio')"
-													 class="card-upload-analysed-table">
+													class="card-upload-analysed-table">
 													<h6 class="card-upload-analysed-table-title">
 														{{'analyzed_area_table_city_title' | translate}}
 													</h6>
@@ -208,7 +229,7 @@
 													</p>
 												</div>
 												<div *ngIf="layerFromUpload.analyzedArea.regions_intersected.hasOwnProperty('estado')"
-													 class="card-upload-analysed-table">
+													class="card-upload-analysed-table">
 													<h6 class="card-upload-analysed-table-title">
 														{{'analyzed_area_table_state_title' | translate}}
 													</h6>
@@ -218,32 +239,32 @@
 												</div>
 
 												<div *ngIf="layerFromUpload.analyzedArea.hasOwnProperty('table_pastagem_queimadas_peryear')"
-													 class="card-upload-analysed-table">
+													class="card-upload-analysed-table">
 													<h6 *ngIf="layerFromUpload.analyzedArea.table_pastagem_queimadas_peryear.length > 0"
-														class="card-upload-analysed-table-title card"
-														>
+														class="card-upload-analysed-table-title card">
 														{{titlesLayerBox.car_title.replace('[count]', layerFromUpload.analyzedArea.car.length)}}
 													</h6>
 													<h6 *ngIf="layerFromUpload.analyzedArea.car.length == 0"
 														class="card-upload-analysed-table-title card">
 														<mat-progress-bar class="progress-analyse" color="accent"
-																		  *ngIf="layerFromUpload.analyzedArea.car.length == 0"
-																		  mode="indeterminate">
+															*ngIf="layerFromUpload.analyzedArea.car.length == 0"
+															mode="indeterminate">
 														</mat-progress-bar>
 														<i>{{titlesLayerBox.car_title_searching}}</i>
 													</h6>
 												</div>
 												<div *ngIf="layerFromUpload.analyzedArea.table_pastagem_queimadas_peryear.length > 0"
-													 class="card-upload-analysed-table">
+													class="card-upload-analysed-table">
 													<h5 class="card-upload-analysed-table-title">
 														{{titlesLayerBox.table_deter_title}}
 													</h5>
-													<p-table [value]="layerFromUpload.analyzedArea.table_pastagem_queimadas_peryear"
-															 selectionMode="single">
+													<p-table
+														[value]="layerFromUpload.analyzedArea.table_pastagem_queimadas_peryear"
+														selectionMode="single">
 														<ng-template pTemplate="header">
 															<tr align="center">
 																<th
-																		*ngFor="let header of titlesLayerBox.header_table_deforested">
+																	*ngFor="let header of titlesLayerBox.header_table_deforested">
 																	{{header}}
 																</th>
 															</tr>
@@ -264,62 +285,62 @@
 									</mat-tab>
 									<mat-tab [label]="'upload_search' | translate">
 										<mat-progress-bar class="progress-analyse" color="accent"
-														  *ngIf="layerFromConsulta.analyzedAreaLoading" mode="indeterminate">
+											*ngIf="layerFromConsulta.analyzedAreaLoading" mode="indeterminate">
 										</mat-progress-bar>
 										<mat-form-field class="example-full-width">
 											<mat-label>{{titlesLayerBox.label_upload_token}}</mat-label>
 											<input type="number" min="0" matInput [(ngModel)]="layerFromConsulta.token"
-												   (input)="changeTextUpload($event)">
+												(input)="changeTextUpload($event)">
 										</mat-form-field>
 										<mat-card *ngIf="layerFromConsulta.visible"
-												  class="card-checkbox-upload mat-elevation-z8" color="primary">
+											class="card-checkbox-upload mat-elevation-z8" color="primary">
 											<div class="title-file-card">
 												{{titlesLayerBox.label_upload_title_file.toUpperCase()}}</div>
 										</mat-card>
 										<div class="buttons-analyze">
 											<button class="color-buttons"
-													*ngIf="layerFromConsulta.token != ''  && !layerFromConsulta.analyzedArea.hasOwnProperty('geojson')"
-													(click)="searchUploadShape()" mat-raised-button color="primary">
+												*ngIf="layerFromConsulta.token != ''  && !layerFromConsulta.analyzedArea.hasOwnProperty('geojson')"
+												(click)="searchUploadShape()" mat-raised-button color="primary">
 												<div *ngIf="titlesLayerBox.hasOwnProperty('btn_analyze')">
 													{{titlesLayerBox.btn_search.toUpperCase()}}</div>
 											</button>
 											<button class="color-buttons"
-													*ngIf="layerFromConsulta.token != '' && layerFromConsulta.analyzedArea.hasOwnProperty('geojson')"
-													(click)="analyzeUploadShape(true)" mat-raised-button color="primary">
+												*ngIf="layerFromConsulta.token != '' && layerFromConsulta.analyzedArea.hasOwnProperty('geojson')"
+												(click)="analyzeUploadShape(true)" mat-raised-button color="primary">
 												<div *ngIf="titlesLayerBox.hasOwnProperty('btn_search')">
 													{{titlesLayerBox.btn_analyze.toUpperCase()}}</div>
 											</button>
 											<button class="color-buttons clear"
-													*ngIf="layerFromConsulta.token != '' && !layerFromConsulta.analyzedArea.hasOwnProperty('regions_intersected')"
-													(click)="clearUpload(true)" mat-raised-button color="warn">
+												*ngIf="layerFromConsulta.token != '' && !layerFromConsulta.analyzedArea.hasOwnProperty('regions_intersected')"
+												(click)="clearUpload(true)" mat-raised-button color="warn">
 												<div *ngIf="titlesLayerBox.hasOwnProperty('btn_clear')">
 													{{titlesLayerBox.btn_clear.toUpperCase()}}</div>
 											</button>
 											<button class="color-buttons clear"
-													*ngIf="layerFromConsulta.analyzedArea.hasOwnProperty('shape_upload')"
-													(click)="clearUpload(true)" mat-raised-button color="warn">
+												*ngIf="layerFromConsulta.analyzedArea.hasOwnProperty('shape_upload')"
+												(click)="clearUpload(true)" mat-raised-button color="warn">
 												<div *ngIf="titlesLayerBox.hasOwnProperty('btn_clear')">
 													{{titlesLayerBox.btn_clear.toUpperCase()}}</div>
 											</button>
 										</div>
 										<div *ngIf="layerFromConsulta.analyzedAreaLoading" class="info-header"
-											 [innerHTML]="titlesLayerBox.warning"></div>
+											[innerHTML]="titlesLayerBox.warning"></div>
 
 										<div *ngIf="layerFromConsulta.error" class="info-error"
-											 [innerHTML]="titlesLayerBox.not_found"></div>
+											[innerHTML]="titlesLayerBox.not_found"></div>
 
 										<div *ngIf="layerFromConsulta.analyzedArea.hasOwnProperty('shape_upload')"
-											 class="card card-upload-analysed">
+											class="card card-upload-analysed">
 											<h5 class="title-file-card ">
 												{{titlesLayerBox.label_analyzed_area_title.toUpperCase()}}</h5>
 											<div class="card-upload-analysed-content">
 												<div class="upload-token">
 													<button (click)="printAnalyzedAreaReport(true)" color="primary"
-															classs="btn-info " mat-icon-button>
+														classs="btn-info " mat-icon-button>
 														<mat-icon>print</mat-icon>
 														<mat-spinner [strokeWidth]="2" [diameter]="18"
-																	 *ngIf="loadingPrintReport" color="primary" mode="indeterminate"
-																	 style="margin: 0 auto;"></mat-spinner>
+															*ngIf="loadingPrintReport" color="primary"
+															mode="indeterminate" style="margin: 0 auto;"></mat-spinner>
 													</button>
 													{{titlesLayerBox.label_total_area}}
 													<strong>
@@ -328,7 +349,7 @@
 												</div>
 
 												<div *ngIf="layerFromConsulta.analyzedArea.regions_intersected.hasOwnProperty('city')"
-													 class="card-upload-analysed-table">
+													class="card-upload-analysed-table">
 													<h6 class="card-upload-analysed-table-title">
 														{{titlesLayerBox.table_city_title}}
 													</h6>
@@ -337,7 +358,7 @@
 													</p>
 												</div>
 												<div *ngIf="layerFromConsulta.analyzedArea.regions_intersected.hasOwnProperty('state')"
-													 class="card-upload-analysed-table">
+													class="card-upload-analysed-table">
 													<h6 class="card-upload-analysed-table-title">
 														{{titlesLayerBox.table_state_title}}
 													</h6>
@@ -347,7 +368,7 @@
 												</div>
 
 												<div *ngIf="layerFromConsulta.analyzedArea.hasOwnProperty('car')"
-													 class="card-upload-analysed-table">
+													class="card-upload-analysed-table">
 													<h6 *ngIf="layerFromConsulta.analyzedArea.car.length > 0"
 														class="card-upload-analysed-table-title card"
 														(click)="openCarReport(true)">
@@ -356,24 +377,24 @@
 													<h6 *ngIf="layerFromConsulta.analyzedArea.car.length == 0"
 														class="card-upload-analysed-table-title card">
 														<mat-progress-bar class="progress-analyse" color="accent"
-																		  *ngIf="layerFromConsulta.analyzedArea.car.length == 0"
-																		  mode="indeterminate">
+															*ngIf="layerFromConsulta.analyzedArea.car.length == 0"
+															mode="indeterminate">
 														</mat-progress-bar>
 														<i>{{titlesLayerBox.car_title_searching}}</i>
 													</h6>
 												</div>
 
 												<div *ngIf="layerFromConsulta.analyzedArea.deter.length > 0"
-													 class="card-upload-analysed-table">
+													class="card-upload-analysed-table">
 													<h5 class="card-upload-analysed-table-title">
 														{{titlesLayerBox.table_deter_title}}
 													</h5>
 													<p-table [value]="layerFromConsulta.analyzedArea.deter"
-															 selectionMode="single">
+														selectionMode="single">
 														<ng-template pTemplate="header">
 															<tr align="center">
 																<th
-																		*ngFor="let header of titlesLayerBox.header_table_deforested">
+																	*ngFor="let header of titlesLayerBox.header_table_deforested">
 																	{{header}}
 																</th>
 															</tr>
@@ -382,23 +403,24 @@
 															<tr [pSelectableRow]="region" tooltipPosition="bottom"
 																life="2000">
 																<td align="center">{{region.year}}</td>
-																<td align="center">{{region.area_desmat | number :'1.2-2' }}
+																<td align="center">
+																	{{region.area_desmat | number :'1.2-2' }}
 																	km²</td>
 															</tr>
 														</ng-template>
 													</p-table>
 												</div>
 												<div *ngIf="layerFromConsulta.analyzedArea.prodes.length > 0"
-													 class="card-upload-analysed-table">
+													class="card-upload-analysed-table">
 													<h5 class="card-upload-analysed-table-title">
 														{{titlesLayerBox.table_prodes_title}}
 													</h5>
 													<p-table [value]="layerFromConsulta.analyzedArea.prodes"
-															 selectionMode="single">
+														selectionMode="single">
 														<ng-template pTemplate="header">
 															<tr align="center">
 																<th
-																		*ngFor="let header of titlesLayerBox.header_table_deforested">
+																	*ngFor="let header of titlesLayerBox.header_table_deforested">
 																	{{header}}
 																</th>
 															</tr>
@@ -407,7 +429,8 @@
 															<tr [pSelectableRow]="region" tooltipPosition="bottom"
 																life="2000">
 																<td align="center">{{region.year}}</td>
-																<td align="center">{{region.area_desmat | number :'1.2-2' }}
+																<td align="center">
+																	{{region.area_desmat | number :'1.2-2' }}
 																	km²</td>
 															</tr>
 														</ng-template>
@@ -423,15 +446,17 @@
 						</mat-tab>
 						<mat-tab [label]="'base_maps' | translate">
 							<div class="baseMap" *ngFor="let basemap of basemapsNames">
-								<mat-slide-toggle (change)="baseLayerChecked(basemap, $event)" [(ngModel)]="basemap.visible">
+								<mat-slide-toggle (change)="baseLayerChecked(basemap, $event)"
+									[(ngModel)]="basemap.visible">
 									{{basemap.viewValue}}
 								</mat-slide-toggle>
 							</div>
 						</mat-tab>
-						<mat-tab [label]="'limits' | translate" >
+						<mat-tab [label]="'limits' | translate">
 							<div *ngFor="let limits of descriptor.limits">
 								<div class="baseMap" *ngFor="let name_limits of limits.types">
-									<mat-slide-toggle (change)="limitsLayersChecked(name_limits, $event)" [(ngModel)]="name_limits.visible" class="slideEstados" >
+									<mat-slide-toggle (change)="limitsLayersChecked(name_limits, $event)"
+										[(ngModel)]="name_limits.visible" class="slideEstados">
 										{{name_limits.Viewvalue}}
 									</mat-slide-toggle>
 								</div>
@@ -473,12 +498,14 @@
 				</p-scrollPanel>
 			</div>
 		</p-sidebar>
-		<p-sidebar [id]="'sideBarRight'" [appendTo]="mapcontainer" [modal]="false" [dismissible]="true" [autoZIndex]="true" [style]="{'width':'34vw'}" [(visible)]="showStatistics" position="right">
+		<p-sidebar [id]="'sideBarRight'" [appendTo]="mapcontainer" [modal]="false" [dismissible]="true"
+			[autoZIndex]="true" [style]="{'width':'34vw'}" [(visible)]="showStatistics" position="right">
 			<p-scrollPanel [style]="{height: '100%'}">
 				<div [ngbCollapse]="collapseLegends" class="legendasConteudo">
 					<h5 class="title-section">{{'legend' | translate}}</h5>
-					<mat-expansion-panel [expanded] = "layer.visible" *ngFor="let layer of layersNames">
-						<mat-expansion-panel-header [collapsedHeight]="'35px'" [expandedHeight]="'35px'" class="expansion-header-layer" *ngIf="layer.visible">
+					<mat-expansion-panel [expanded]="layer.visible" *ngFor="let layer of layersNames">
+						<mat-expansion-panel-header [collapsedHeight]="'35px'" [expandedHeight]="'35px'"
+							class="expansion-header-layer" *ngIf="layer.visible">
 							<div>
 								<h6 class="expansion-header-layer-legend">
 									<b>{{ layer.label }}</b>
@@ -486,21 +513,23 @@
 							</div>
 						</mat-expansion-panel-header>
 						<div *ngIf="layer.visible">
-							<img src='http://ows.lapig.iesa.ufg.br/ows?EXCEPTIONS=application%2Fvnd.ogc.se_xml&TRANSPARENT=TRUE&VERSION=1.1.1&SERVICE=WMS&REQUEST=GetLegendGraphic&layer={{ layer.selectedType }}&format=image%2Fpng'>
+							<img
+								src='http://ows.lapig.iesa.ufg.br/ows?EXCEPTIONS=application%2Fvnd.ogc.se_xml&TRANSPARENT=TRUE&VERSION=1.1.1&SERVICE=WMS&REQUEST=GetLegendGraphic&layer={{ layer.selectedType }}&format=image%2Fpng'>
 						</div>
 					</mat-expansion-panel>
 				</div>
 				<h5 class="title-section">{{'analysis' | translate}}</h5>
 				<div class="chart-region">
 					<h5>
-						<button [matTooltip]="'region_tooltip' | translate" *ngIf="selectRegion.type == 'municipio' || selectRegion.type == 'estado'"
-								color="primary" (click)="openRegionReport()" style="font-size: 30px;" mat-icon-button>
+						<button [matTooltip]="'region_tooltip' | translate"
+							*ngIf="selectRegion.type == 'municipio' || selectRegion.type == 'estado'" color="primary"
+							(click)="openRegionReport()" style="font-size: 30px;" mat-icon-button>
 							<mat-icon>text_snippet</mat-icon>
 						</button>
 						<strong> {{ selectRegion.text }} </strong>
 					</h5>
 				</div>
-				<div [ngbCollapse]="collapseCharts" id= "matgroup">
+				<div [ngbCollapse]="collapseCharts" id="matgroup">
 					<mat-tab-group class="charts" #matgroup>
 						<div *ngFor="let groups of descriptor.groups">
 							<mat-tab label={{groups.label}} *ngIf="groups.dataService">
@@ -510,7 +539,8 @@
 											<div class="graphicTexts">
 												<p style="font-weight: bold">{{graphic.title}}</p>
 												<div>{{graphic.text}}</div>
-												<p-chart *ngIf="graphic.type" [type]="graphic.type" [data]="graphic.data" [options]="graphic.options"></p-chart>
+												<p-chart *ngIf="graphic.type" [type]="graphic.type"
+													[data]="graphic.data" [options]="graphic.options"></p-chart>
 											</div>
 										</div>
 									</div>
@@ -521,11 +551,75 @@
 				</div>
 				<div class="logos-cepf">
 					<a href="http://cepfcerrado.iieb.org.br/" target="_blank">
-						<img class="logo-cepf"  src="assets/logo/partners.png" />
+						<img class="logo-cepf" src="assets/logo/partners.png" />
 					</a>
 				</div>
 				<div style="height: 20vh"></div>
 			</p-scrollPanel>
 		</p-sidebar>
+
+		<div id="map-info" class="card" [ngStyle]="showDialogUTFGrid()">
+			<div *ngIf="infodataPastagem" class="card-body">
+				<p class="card-text">{{infodataPastagem.municipio }} - {{infodataPastagem.uf }}</p>
+				<table>
+					<tbody>
+						<tr *ngIf="infodataPastagem.cd_geocmu != ''">
+							<th>{{titlesLayerBox.cd_geocmu}} </th>
+							<td>{{infodataPastagem.cd_geocmu}}</td>
+						</tr>
+						<tr *ngIf="infodataPastagem.mun_ha != ''">
+							<th>{{titlesLayerBox.area_mun}} </th>
+							<td>{{infodataPastagem.mun_ha | number:'1.2-3' }} ha</td>
+						</tr>
+						<tr *ngIf="infodataPastagem.past_ha != ''">
+							<th>{{titlesLayerBox.area_pastagem}} </th>
+							<td>{{infodataPastagem.past_ha | number:'1.2-3' }} ha</td>
+						</tr>
+						<tr *ngIf="infodataPastagem.n_kbcs != ''">
+							<th>{{titlesLayerBox.n_kbcs}} </th>
+							<td>{{infodataPastagem.n_kbcs | number:'1.0-0'}}</td>
+						</tr>
+						<tr *ngIf="infodataPastagem.ua != ''">
+							<th>{{titlesLayerBox.ua}} </th>
+							<td>{{infodataPastagem.ua | number:'1.0-0'}}</td>
+						</tr>
+						<tr *ngIf="infodataPastagem.year != ''">
+							<th>{{titlesLayerBox.year}} </th>
+							<td>{{infodataPastagem.year}}</td>
+						</tr>
+					</tbody>
+				</table>
+				<div style="text-align:center;color:#ff5b4f"> <strong>{{titlesLayerBox.click_more_text}}
+					</strong></div>
+			</div>
+			<div *ngIf="infodataMapbiomas" class="card-body">
+				<p class="card-text">{{infodataMapbiomas.municipio }} - {{infodataMapbiomas.uf }}</p>
+				<table>
+					<tbody>
+						<tr *ngIf="infodataMapbiomas.cd_geocmu != ''">
+							<th>{{titlesLayerBox.cd_geocmu}} </th>
+							<td>{{infodataMapbiomas.cd_geocmu}}</td>
+						</tr>
+						<tr *ngIf="infodataMapbiomas.mun_ha != ''">
+							<th>{{titlesLayerBox.area_mun}} </th>
+							<td>{{infodataMapbiomas.mun_ha | number:'1.2-3' }} ha</td>
+						</tr>
+
+						<tr *ngFor="let item of infodataMapbiomas.arrLulc" [style.background-color]="item.lulc_color">
+							<th>{{item.lulc_name}} </th>
+							<td>{{item.lulc_area | number:'1.2-2' }} ha</td>
+						</tr>
+
+						<tr *ngIf="infodataMapbiomas.year != ''">
+							<th>{{titlesLayerBox.year}} </th>
+							<td>{{infodataMapbiomas.year}}</td>
+						</tr>
+					</tbody>
+				</table>
+				<div style="text-align:center;color:#ff5b4f"> <strong>{{titlesLayerBox.click_more_text}}
+					</strong></div>
+			</div>
+		</div>
+
 	</div>
 </section>

@@ -1,4 +1,4 @@
-import { Component, Injectable,HostListener, OnInit, Inject } from '@angular/core';
+import { Component, Injectable, HostListener, OnInit, Inject } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { FormGroup, FormControl } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
@@ -36,7 +36,7 @@ import { saveAs } from 'file-saver';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 import { GoogleAnalyticsService } from '../services/google-analytics.service';
-import {RegionReportComponent} from "./region-report/region-report.component";
+import { RegionReportComponent } from "./region-report/region-report.component";
 
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
@@ -312,7 +312,7 @@ export class MapComponent implements OnInit {
 		}
 	}
 	private updateDescriptor() {
-		this.http.get('service/map/descriptor?lang='+this.language).subscribe(result => {
+		this.http.get('service/map/descriptor?lang=' + this.language).subscribe(result => {
 			this.descriptor = result
 			this.regionFilterDefault = this.descriptor.regionFilterDefault;
 			this.basemapsNames = [];
@@ -1011,21 +1011,17 @@ export class MapComponent implements OnInit {
 
 		let coordinate = this.map.getEventCoordinate(evt.originalEvent);
 		let viewResolution = this.map.getView().getResolution();
-
+		let isPastagem = false
 		if (pastagem.visible) {
 
-			let isPastagem = false
-			if (pastagem.selectedType === 'pasture') {
-				isPastagem = true;
-			}
-			// console.log(this.layersNames, isPastagem)
+			isPastagem = true;
+
 			if (isPastagem) {
 				if (this.utfgridsourcePastagem) {
 					this.utfgridsourcePastagem.forDataAtCoordinateAndResolution(coordinate, viewResolution, function (data) {
 						if (data) {
 							window.document.body.style.cursor = 'pointer';
 							this.infodataPastagem = data;
-							// console.log(this.infodataPastagem)
 							this.infoOverlay.setPosition(this.infodataPastagem ? coordinate : undefined);
 						}
 						else {
@@ -1109,29 +1105,38 @@ export class MapComponent implements OnInit {
 		let pastagem = this.layersNames.find(element => element.id === "mapa_pastagem");
 		let mapbiomas = this.layersNames.find(element => element.id === "mapa_uso_solo");
 
+		let isPastagem = false
 		if (pastagem.visible) {
-			if (this.utfgridsourcePastagem) {
-				this.utfgridsourcePastagem.forDataAtCoordinateAndResolution(coordinate, viewResolution, function (data) {
-					if (data) {
-						this.searchAndAppRegion(data)
-					}
-				}.bind(this)
-				);
+			isPastagem = true;
+			if (isPastagem) {
+				if (this.utfgridsourcePastagem) {
+					this.utfgridsourcePastagem.forDataAtCoordinateAndResolution(coordinate, viewResolution, function (data) {
+						if (data) {
+							this.searchAndAppRegion(data)
+						}
+					}.bind(this)
+					);
+				}
 			}
 		}
 
 		if (mapbiomas.visible) {
-			if (this.utfgridsourceMapbiomas) {
-				this.utfgridsourceMapbiomas.forDataAtCoordinateAndResolution(coordinate, viewResolution, function (data) {
-					if (data) {
-						this.searchAndAppRegion(data)
-					}
-				}.bind(this)
-				);
+			let isMapbiomas = false
+			if (mapbiomas.selectedType === 'uso_solo_mapbiomas') {
+				isMapbiomas = true;
+			}
+			// console.log(this.layersNames, isPastagem)
+			if (isMapbiomas) {
+				if (this.utfgridsourceMapbiomas) {
+					this.utfgridsourceMapbiomas.forDataAtCoordinateAndResolution(coordinate, viewResolution, function (data) {
+						if (data) {
+							this.searchAndAppRegion(data)
+						}
+					}.bind(this)
+					);
+				}
 			}
 		}
-
-
 
 	}
 
@@ -1248,9 +1253,9 @@ export class MapComponent implements OnInit {
 			source: this.utfgridsourcePastagem
 		});
 
-		// this.utfgridsourceMapbiomas = new UTFGrid({
-		// 	tileJSON: this.getTileJSONMapbiomas()
-		// });
+		this.utfgridsourceMapbiomas = new UTFGrid({
+			tileJSON: this.getTileJSONMapbiomas()
+		});
 
 		this.utfgridlayerMapbiomas = new OlTileLayer({
 			source: this.utfgridsourceMapbiomas
@@ -1268,7 +1273,12 @@ export class MapComponent implements OnInit {
 		let text = ""
 		if (pastagem != undefined) {
 			let res = this.selectedTimeFromLayerType(pastagem.selectedType);
-			text = res.value;
+			if (res == undefined) {
+				text = "year=2019"
+			}
+			else {
+				text = res.value;
+			}
 		}
 
 		return {
@@ -1279,24 +1289,24 @@ export class MapComponent implements OnInit {
 		};
 	}
 
-	// private getTileJSONMapbiomas() {
-	// 	let mapbiomas = this.layersNames.find(element => element.id === "mapa_uso_solo");
+	private getTileJSONMapbiomas() {
+		let mapbiomas = this.layersNames.find(element => element.id === "mapa_uso_solo");
 
-	// 	let text = ""
-	// 	if (mapbiomas != undefined) {
-	// 		let res = this.selectedTimeFromLayerType(mapbiomas.selectedType);
-	// 		text = res.value;
-	// 	}
+		let text = ""
+		if (mapbiomas != undefined) {
+			let res = this.selectedTimeFromLayerType(mapbiomas.selectedType);
+			text = res.value;
+		}
 
-	// 	// console.log(this.layersNames, mapbiomas)
+		// console.log(this.layersNames, mapbiomas)
 
-	// 	return {
-	// 		version: '2.2.0',
-	// 		grids: [
-	// 			this.returnUTFGRID('cepf_mapbiomas_regions_utfgrid', text, '{x}+{y}+{z}')
-	// 		]
-	// 	};
-	// }
+		return {
+			version: '2.2.0',
+			grids: [
+				this.returnUTFGRID('cepf_mapbiomas_regions_utfgrid', text, '{x}+{y}+{z}')
+			]
+		};
+	}
 
 	private returnUTFGRID(layername, filter, tile) {
 		return '/ows?layers=' + layername + '&MSFILTER=' + filter + '&mode=tile&tile=' + tile + '&tilemode=gmap&map.imagetype=utfgrid'
@@ -1322,7 +1332,7 @@ export class MapComponent implements OnInit {
 	private handleInteraction() {
 
 		let pastagem = this.layersNames.find(element => element.id === "mapa_pastagem");
-		 let mapbiomas = this.layersNames.find(element => element.id === "mapa_uso_solo");
+		let mapbiomas = this.layersNames.find(element => element.id === "mapa_uso_solo");
 
 		if (pastagem.visible || mapbiomas.visible) {
 			if (pastagem.visible) {
@@ -1340,13 +1350,13 @@ export class MapComponent implements OnInit {
 				this.infodataPastagem = null;
 			}
 
-			if (mapbiomas.visible) {
+			if (mapbiomas.visible && mapbiomas.selectedType == "uso_solo_mapbiomas") {
 
 				if (this.utfgridsourceMapbiomas) {
-					// let tileJSONmapbiomas = this.getTileJSONMapbiomas();
+					let tileJSONmapbiomas = this.getTileJSONMapbiomas();
 
-					// this.utfgridsourceMapbiomas.tileUrlFunction_ = _ol_TileUrlFunction_.createFromTemplates(tileJSONmapbiomas.grids, this.utfgridsourceMapbiomas.tileGrid);
-					// this.utfgridsourceMapbiomas.tileJSON = tileJSONmapbiomas;
+					this.utfgridsourceMapbiomas.tileUrlFunction_ = _ol_TileUrlFunction_.createFromTemplates(tileJSONmapbiomas.grids, this.utfgridsourceMapbiomas.tileGrid);
+					this.utfgridsourceMapbiomas.tileJSON = tileJSONmapbiomas;
 					this.utfgridsourceMapbiomas.refresh();
 
 					this.utfgridlayerMapbiomas.setVisible(true);
@@ -1681,7 +1691,7 @@ export class MapComponent implements OnInit {
 
 	ngOnInit() {
 
-		this.http.get('service/map/descriptor?lang='+this.language).subscribe(result => {
+		this.http.get('service/map/descriptor?lang=' + this.language).subscribe(result => {
 			this.descriptor = result
 			this.regionFilterDefault = this.descriptor.regionFilterDefault;
 
