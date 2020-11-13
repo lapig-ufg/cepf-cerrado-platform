@@ -36,7 +36,7 @@ module.exports = function (app) {
 		var layer = params['layer'];
 		var filterRegion = params['filterRegion'];
 		var year = params['year'];
-		var columnsCSV = "cd_geouf,cd_geocmu,regiao,uf,estado,municipio,bioma,arcodesmat,matopiba,mun_ha,pol_ha,pct_areapo, " + params['columnsCSV']
+		var columnsCSV = "cd_geouf,cd_geocmu,regiao,uf,estado,municipio,bioma,matopiba,mun_ha,pol_ha,pct_areapo, " + params['columnsCSV']
 		var filter = filterRegion;
 
 		if (year != undefined && year != '')
