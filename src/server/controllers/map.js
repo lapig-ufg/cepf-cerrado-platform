@@ -108,7 +108,7 @@ module.exports = function(app) {
                   "order": 1,
                   "typeLabel": languageJson["typelabel_layer"]["type"][language],
                   "timeLabel": languageJson["typelabel_layer"]["year"][language],
-                  "timeSelected": "year=2019",
+                  "timeSelected": "year=2018",
                   "timeHandler": "msfilter",
                   "times": [
                     {"value": "year=1985", "Viewvalue": 1985} ,
@@ -1616,6 +1616,13 @@ module.exports = function(app) {
             {
               "value": "limites_areas_chave_biodiversidade",
               "Viewvalue": languageJson["limits"]["chaves_kba"][language],
+              "visible": false,
+              "layer_limits": true,
+              "opacity": 1
+            },
+            {
+              "value": "bi_ce_iba_250_2009_savebrasil",
+              "Viewvalue": "Áreas Importantes para conservação das Aves",
               "visible": false,
               "layer_limits": true,
               "opacity": 1
