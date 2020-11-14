@@ -12,37 +12,6 @@
     z-index: 1000;
     box-shadow: 0 5px 5px -3px rgba(0,0,0,.2),0 8px 10px 1px rgba(0,0,0,.14),0 3px 14px 2px rgba(0,0,0,.12)!important;
   }
-  
-  #map-info {
-    .card table {
-      margin: 10px;
-      border-radius: 10px ;
-    }
-    
-    table tr th{
-      padding-left: 10px !important;
-      width: 8vw;
-      line-height: 15px;
-    }
-    table tr td{
-      padding-left: 10px !important;
-      width: 6vw;
-      line-height: 15px;
-    }
-    
-    .card-body {
-      color: #000 !important;
-      padding: 0px !important;
-    }
-    .card-body p.card-text {
-      background: #91880d !important;
-      color: #fff !important;
-      height: 24px;
-      border-top-left-radius: 10px;
-      border-top-right-radius: 10px;
-    }
-    }
-
   .container-logos img {
     vertical-align: middle !important;
     padding: 10px;
@@ -154,6 +123,7 @@
   }
   .mat-form-field{
     width: 100%;
+    margin-top: 15px;
   }
 
   .layersContent{
@@ -184,6 +154,7 @@
     @include fluid-type(14px, 17px);
   }
 
+
   .card-upload-analysed{
     margin: 10px;
     border-radius: 4px;
@@ -192,6 +163,9 @@
     .title-file-card{
       padding: 9px;
       font-size: 13px;
+    }
+    .btn-print{
+      color:  darken($primary, 40%) !important;
     }
     &-table{
       margin-bottom: 15px;
@@ -215,6 +189,7 @@
       font-size: 14px;
       margin: 10px;
       padding-top: 32px;
+
       .card{
         margin: 15px;
         color: rgba(0, 0, 0, 0.54);
@@ -224,7 +199,7 @@
         padding: 14px;
         border-radius: 6px;
         &:hover{
-          background-color: rgba(11, 78, 38, 0.87);
+          background-color: darken($primary, 40%) !important;
           color: white;
         }
       }
@@ -233,6 +208,11 @@
 
   .btn-analyze{
     display: block !important;
+  }
+
+  .btn-print-token{
+    margin-left: 8px !important;
+    color: darken($primary, 40%) !important;
   }
 
   .buttons-analyze{
@@ -395,6 +375,36 @@
     text-decoration: none;
     font-weight: 900;
     background-color: $primary;
+  }
+}
+
+#map-info {
+  .card table {
+    margin: 10px;
+    border-radius: 10px ;
+  }
+
+  table tr th{
+    padding-left: 10px !important;
+    width: 8vw;
+    line-height: 15px;
+  }
+  table tr td{
+    padding-left: 10px !important;
+    width: 6vw;
+    line-height: 15px;
+  }
+
+  .card-body {
+    color: #000 !important;
+    padding: 0px !important;
+  }
+  .card-body p.card-text {
+    background: darken($primary, 40%) !important;
+    color: #fff !important;
+    height: 24px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
   }
 }
 

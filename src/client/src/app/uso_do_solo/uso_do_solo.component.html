@@ -46,7 +46,7 @@
 			<div class="line"></div>
 			<div class="collapseLayer" [ngbCollapse]="collapseLayer">
 				<p-scrollPanel [style]="{height: innerHeigth - 200 + 'px'}">
-					<mat-tab-group class="layersConteudo" mat-stretch-tabs dynamicHeight>
+					<mat-tab-group class="layersConteudo" [(selectedIndex)]="selectedIndexConteudo" mat-stretch-tabs dynamicHeight>
 						<mat-tab [label]="'layers' | translate">
 							<mat-accordion>
 								<div id="layers_pastagens">
@@ -176,8 +176,8 @@
 													{{layerFromUpload.label}}
 												</mat-checkbox>
 												<h5 class="upload-token">
-													{{'upload_token' | translate}}{{layerFromUpload.token}}
-													<button color="primary" classs="btn-info " mat-icon-button>
+													{{'upload_token' | translate}}<strong>{{layerFromUpload.token}}</strong>
+													<button color="accent" (click)="printRegionsIdentification(layerFromUpload.token)" class="btn-print-token" mat-icon-button>
 														<mat-icon>print</mat-icon>
 													</button>
 												</h5>
@@ -204,10 +204,11 @@
 										<div *ngIf="layerFromUpload.analyzedArea.hasOwnProperty('shape_upload')"
 											class="card card-upload-analysed">
 											<h5 class="title-file-card ">
-												{{'analyzed_area_title' | translate | uppercase}}</h5>
+												{{'analyzed_area_title' | translate | uppercase}}
+											</h5>
 											<div class="card-upload-analysed-content">
 												<div class="upload-token">
-													<button color="primary" classs="btn-info " mat-icon-button>
+													<button color="primary" (click)="printAnalyzedAreaReport()"  class="btn-print" mat-icon-button>
 														<mat-icon>print</mat-icon>
 														<mat-spinner [strokeWidth]="2" [diameter]="18"
 															*ngIf="loadingPrintReport" color="primary"
@@ -238,46 +239,54 @@
 													</p>
 												</div>
 
-												<div *ngIf="layerFromUpload.analyzedArea.hasOwnProperty('table_pastagem_queimadas_peryear')"
-													class="card-upload-analysed-table">
-													<h6 *ngIf="layerFromUpload.analyzedArea.table_pastagem_queimadas_peryear.length > 0"
-														class="card-upload-analysed-table-title card">
-														{{titlesLayerBox.car_title.replace('[count]', layerFromUpload.analyzedArea.car.length)}}
+												<div class="card-upload-analysed-table">
+													<h6 *ngIf="layerFromUpload.heavyAnalysis.terraclass || !layerFromUpload.heavyAnalysisLoading"
+														class="card-upload-analysed-table-title card"
+														(click)="openCharts(
+															translate.instant('chart_terraclass_title'),
+														 false,
+														  	layerFromUpload.heavyAnalysis.terraclass.data,
+														  	layerFromUpload.heavyAnalysis.terraclass.type,
+														   	layerFromUpload.heavyAnalysis.terraclass.options
+														  )">
+														{{'terraclass_card' | translate}}
 													</h6>
-													<h6 *ngIf="layerFromUpload.analyzedArea.car.length == 0"
+													<h6 *ngIf="layerFromUpload.heavyAnalysisLoading"
 														class="card-upload-analysed-table-title card">
 														<mat-progress-bar class="progress-analyse" color="accent"
-															*ngIf="layerFromUpload.analyzedArea.car.length == 0"
+															*ngIf="layerFromUpload.heavyAnalysisLoading"
 															mode="indeterminate">
 														</mat-progress-bar>
-														<i>{{titlesLayerBox.car_title_searching}}</i>
+														<i>{{'terraclass_msg_searching' | translate}}</i>
 													</h6>
 												</div>
-												<div *ngIf="layerFromUpload.analyzedArea.table_pastagem_queimadas_peryear.length > 0"
-													class="card-upload-analysed-table">
-													<h5 class="card-upload-analysed-table-title">
-														{{titlesLayerBox.table_deter_title}}
-													</h5>
-													<p-table
-														[value]="layerFromUpload.analyzedArea.table_pastagem_queimadas_peryear"
-														selectionMode="single">
-														<ng-template pTemplate="header">
-															<tr align="center">
-																<th
-																	*ngFor="let header of titlesLayerBox.header_table_deforested">
-																	{{header}}
-																</th>
-															</tr>
-														</ng-template>
-														<ng-template pTemplate="body" let-region>
-															<tr [pSelectableRow]="dt" tooltipPosition="bottom"
-																life="2000">
-																<td align="center">{{dt.year}}</td>
-																<td align="center">{{dt.area_desmat | number :'1.2-2' }}
-																	km²</td>
-															</tr>
-														</ng-template>
-													</p-table>
+
+												<div *ngIf="layerFromUpload.heavyAnalysis.hasOwnProperty('table_pastagem_queimadas_peryear')"  class="card-upload-analysed-table">
+													<div *ngIf="layerFromUpload.heavyAnalysis.table_pastagem_queimadas_peryear.length > 0">
+														<h5 class="card-upload-analysed-table-title">
+															{{'burned_data_title' | translate}}
+														</h5>
+														<p-table
+															[value]="layerFromUpload.heavyAnalysis.table_pastagem_queimadas_peryear"
+															selectionMode="single">
+															<ng-template pTemplate="header">
+																<tr align="center">
+																	<th
+																		*ngFor="let header of translate.instant('burned_data_headers')">
+																		{{header}}
+																	</th>
+																</tr>
+															</ng-template>
+															<ng-template pTemplate="body" let-dt>
+																<tr [pSelectableRow]="dt" tooltipPosition="bottom"
+																	life="2000">
+																	<td align="center">{{dt.year}}</td>
+																	<td align="center">{{dt.area_queimada | number :'1.2-2' }}
+																		km²</td>
+																</tr>
+															</ng-template>
+														</p-table>
+													</div>
 												</div>
 											</div>
 										</div>
@@ -288,153 +297,133 @@
 											*ngIf="layerFromConsulta.analyzedAreaLoading" mode="indeterminate">
 										</mat-progress-bar>
 										<mat-form-field class="example-full-width">
-											<mat-label>{{titlesLayerBox.label_upload_token}}</mat-label>
+											<mat-label>{{'upload_token' | translate}}</mat-label>
 											<input type="number" min="0" matInput [(ngModel)]="layerFromConsulta.token"
 												(input)="changeTextUpload($event)">
 										</mat-form-field>
 										<mat-card *ngIf="layerFromConsulta.visible"
 											class="card-checkbox-upload mat-elevation-z8" color="primary">
 											<div class="title-file-card">
-												{{titlesLayerBox.label_upload_title_file.toUpperCase()}}</div>
+												{{'upload_title_file' | translate | uppercase}}</div>
 										</mat-card>
 										<div class="buttons-analyze">
 											<button class="color-buttons"
 												*ngIf="layerFromConsulta.token != ''  && !layerFromConsulta.analyzedArea.hasOwnProperty('geojson')"
 												(click)="searchUploadShape()" mat-raised-button color="primary">
-												<div *ngIf="titlesLayerBox.hasOwnProperty('btn_analyze')">
-													{{titlesLayerBox.btn_search.toUpperCase()}}</div>
+												<div >
+													{{'btn_search' | translate | uppercase}}</div>
 											</button>
 											<button class="color-buttons"
 												*ngIf="layerFromConsulta.token != '' && layerFromConsulta.analyzedArea.hasOwnProperty('geojson')"
 												(click)="analyzeUploadShape(true)" mat-raised-button color="primary">
-												<div *ngIf="titlesLayerBox.hasOwnProperty('btn_search')">
-													{{titlesLayerBox.btn_analyze.toUpperCase()}}</div>
+												<div >
+													{{'btn_analyze' | translate | uppercase}}</div>
 											</button>
 											<button class="color-buttons clear"
 												*ngIf="layerFromConsulta.token != '' && !layerFromConsulta.analyzedArea.hasOwnProperty('regions_intersected')"
 												(click)="clearUpload(true)" mat-raised-button color="warn">
-												<div *ngIf="titlesLayerBox.hasOwnProperty('btn_clear')">
-													{{titlesLayerBox.btn_clear.toUpperCase()}}</div>
+												<div >
+													{{'btn_clear' | translate | uppercase}}</div>
 											</button>
 											<button class="color-buttons clear"
 												*ngIf="layerFromConsulta.analyzedArea.hasOwnProperty('shape_upload')"
 												(click)="clearUpload(true)" mat-raised-button color="warn">
-												<div *ngIf="titlesLayerBox.hasOwnProperty('btn_clear')">
-													{{titlesLayerBox.btn_clear.toUpperCase()}}</div>
+												<div >
+													{{'btn_clear' | translate | uppercase}}</div>
 											</button>
 										</div>
 										<div *ngIf="layerFromConsulta.analyzedAreaLoading" class="info-header"
-											[innerHTML]="titlesLayerBox.warning"></div>
+											[innerHTML]="'upload_warning' | translate"></div>
 
 										<div *ngIf="layerFromConsulta.error" class="info-error"
-											[innerHTML]="titlesLayerBox.not_found"></div>
+											[innerHTML]="'upload_not_found' | translate"></div>
 
 										<div *ngIf="layerFromConsulta.analyzedArea.hasOwnProperty('shape_upload')"
 											class="card card-upload-analysed">
 											<h5 class="title-file-card ">
-												{{titlesLayerBox.label_analyzed_area_title.toUpperCase()}}</h5>
+												{{'analyzed_area_title' | translate | uppercase}}</h5>
 											<div class="card-upload-analysed-content">
 												<div class="upload-token">
-													<button (click)="printAnalyzedAreaReport(true)" color="primary"
-														classs="btn-info " mat-icon-button>
+													<button (click)="printAnalyzedAreaReport(true)"
+														class="btn-print" mat-icon-button>
 														<mat-icon>print</mat-icon>
 														<mat-spinner [strokeWidth]="2" [diameter]="18"
 															*ngIf="loadingPrintReport" color="primary"
 															mode="indeterminate" style="margin: 0 auto;"></mat-spinner>
 													</button>
-													{{titlesLayerBox.label_total_area}}
+													{{'analyzed_area_total_area' | translate }}
 													<strong>
 														{{layerFromConsulta.analyzedArea.shape_upload.area_upload | number:'1.2-2' }}
 														km² </strong>
 												</div>
 
-												<div *ngIf="layerFromConsulta.analyzedArea.regions_intersected.hasOwnProperty('city')"
+												<div *ngIf="layerFromConsulta.analyzedArea.regions_intersected.hasOwnProperty('municipio')"
 													class="card-upload-analysed-table">
 													<h6 class="card-upload-analysed-table-title">
-														{{titlesLayerBox.table_city_title}}
+														{{'analyzed_area_table_city_title' | translate}}
 													</h6>
 													<p>
 														{{getCitiesAnalyzedArea(true)}}
 													</p>
 												</div>
-												<div *ngIf="layerFromConsulta.analyzedArea.regions_intersected.hasOwnProperty('state')"
-													class="card-upload-analysed-table">
+												<div *ngIf="layerFromConsulta.analyzedArea.regions_intersected.hasOwnProperty('estado')"
+													 class="card-upload-analysed-table">
 													<h6 class="card-upload-analysed-table-title">
-														{{titlesLayerBox.table_state_title}}
+														{{'analyzed_area_table_state_title' | translate}}
 													</h6>
 													<p>
 														{{getStatesAnalyzedArea(true)}}
 													</p>
 												</div>
 
-												<div *ngIf="layerFromConsulta.analyzedArea.hasOwnProperty('car')"
-													class="card-upload-analysed-table">
-													<h6 *ngIf="layerFromConsulta.analyzedArea.car.length > 0"
+												<div class="card-upload-analysed-table">
+													<h6 *ngIf="layerFromConsulta.heavyAnalysis.terraclass || !layerFromConsulta.heavyAnalysisLoading"
 														class="card-upload-analysed-table-title card"
-														(click)="openCarReport(true)">
-														{{titlesLayerBox.car_title.replace('[count]', layerFromConsulta.analyzedArea.car.length)}}
+														(click)="openCharts(
+															translate.instant('chart_terraclass_title'),
+														 false,
+														  	layerFromConsulta.heavyAnalysis.terraclass.data,
+														  	layerFromConsulta.heavyAnalysis.terraclass.type,
+														   	layerFromConsulta.heavyAnalysis.terraclass.options
+														  )">
+														{{'terraclass_card' | translate}}
 													</h6>
-													<h6 *ngIf="layerFromConsulta.analyzedArea.car.length == 0"
+													<h6 *ngIf="layerFromConsulta.heavyAnalysisLoading"
 														class="card-upload-analysed-table-title card">
 														<mat-progress-bar class="progress-analyse" color="accent"
-															*ngIf="layerFromConsulta.analyzedArea.car.length == 0"
+															*ngIf="layerFromConsulta.heavyAnalysisLoading"
 															mode="indeterminate">
 														</mat-progress-bar>
-														<i>{{titlesLayerBox.car_title_searching}}</i>
+														<i>{{'terraclass_msg_searching' | translate}}</i>
 													</h6>
 												</div>
 
-												<div *ngIf="layerFromConsulta.analyzedArea.deter.length > 0"
-													class="card-upload-analysed-table">
-													<h5 class="card-upload-analysed-table-title">
-														{{titlesLayerBox.table_deter_title}}
-													</h5>
-													<p-table [value]="layerFromConsulta.analyzedArea.deter"
-														selectionMode="single">
-														<ng-template pTemplate="header">
-															<tr align="center">
-																<th
-																	*ngFor="let header of titlesLayerBox.header_table_deforested">
-																	{{header}}
-																</th>
-															</tr>
-														</ng-template>
-														<ng-template pTemplate="body" let-region>
-															<tr [pSelectableRow]="region" tooltipPosition="bottom"
-																life="2000">
-																<td align="center">{{region.year}}</td>
-																<td align="center">
-																	{{region.area_desmat | number :'1.2-2' }}
-																	km²</td>
-															</tr>
-														</ng-template>
-													</p-table>
-												</div>
-												<div *ngIf="layerFromConsulta.analyzedArea.prodes.length > 0"
-													class="card-upload-analysed-table">
-													<h5 class="card-upload-analysed-table-title">
-														{{titlesLayerBox.table_prodes_title}}
-													</h5>
-													<p-table [value]="layerFromConsulta.analyzedArea.prodes"
-														selectionMode="single">
-														<ng-template pTemplate="header">
-															<tr align="center">
-																<th
-																	*ngFor="let header of titlesLayerBox.header_table_deforested">
-																	{{header}}
-																</th>
-															</tr>
-														</ng-template>
-														<ng-template pTemplate="body" let-region>
-															<tr [pSelectableRow]="region" tooltipPosition="bottom"
-																life="2000">
-																<td align="center">{{region.year}}</td>
-																<td align="center">
-																	{{region.area_desmat | number :'1.2-2' }}
-																	km²</td>
-															</tr>
-														</ng-template>
-													</p-table>
+												<div *ngIf="layerFromConsulta.heavyAnalysis.hasOwnProperty('table_pastagem_queimadas_peryear')"  class="card-upload-analysed-table">
+													<div *ngIf="layerFromConsulta.heavyAnalysis.table_pastagem_queimadas_peryear.length > 0">
+														<h5 class="card-upload-analysed-table-title">
+															{{'burned_data_title' | translate}}
+														</h5>
+														<p-table
+																[value]="layerFromConsulta.heavyAnalysis.table_pastagem_queimadas_peryear"
+																selectionMode="single">
+															<ng-template pTemplate="header">
+																<tr align="center">
+																	<th
+																			*ngFor="let header of translate.instant('burned_data_headers')">
+																		{{header}}
+																	</th>
+																</tr>
+															</ng-template>
+															<ng-template pTemplate="body" let-dt>
+																<tr [pSelectableRow]="dt" tooltipPosition="bottom"
+																	life="2000">
+																	<td align="center">{{dt.year}}</td>
+																	<td align="center">{{dt.area_queimada | number :'1.2-2' }}
+																		km²</td>
+																</tr>
+															</ng-template>
+														</p-table>
+													</div>
 												</div>
 											</div>
 										</div>

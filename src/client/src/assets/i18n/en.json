@@ -13,6 +13,7 @@
   "upload_token": "Access Token (numbers only): ",
   "upload_warning": "Area under analysis. This process may take a while due to the geometry area and the amount of space crossings being performed.",
   "upload_search": "Load Area",
+  "upload_not_found": "Token not found. Please inform a valid token.",
   "btn_analyze": "Analyze",
   "btn_clear": "Clear",
   "analyzed_area_title": "Report of the submitted area",
@@ -51,5 +52,13 @@
   "metadata": "Metadata",
   "title_chart_pasture": "Pasture and burning data",
   "title_table_pasture": "Pasture and burning table",
-  "label_images": "Landsat Images History"
+  "burned_data_title": "History of Burned Areas",
+  "burned_data_headers": ["Year", "Burnt Area"],
+  "label_images": "Landsat Images History",
+  "terraclass_card": "View the Terraclass classes that intersect with the submitted area.",
+  "terraclass_msg_searching": "Searching for the Terraclass classes that intersect with this area. Please wait.",
+  "chart_terraclass_title": "Terraclass classes that intersect with the submitted area",
+  "report_analyzed_area_title": "Report of the submitted area",
+  "upload_token": "Access Token (numbers only): ",
+  "btn_search": "Search"
 }

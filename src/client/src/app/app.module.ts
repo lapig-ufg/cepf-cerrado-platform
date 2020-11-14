@@ -34,6 +34,7 @@ import localePt from '@angular/common/locales/pt';
 import { FileUploadComponent } from './uso_do_solo/file-upload/file-upload.component';
 import { RegionReportComponent } from './uso_do_solo/region-report/region-report.component';
 import { SpinnerImgComponent } from './uso_do_solo/spinner-img/spinner-img.component';
+import { ChartsComponent } from './uso_do_solo/charts/charts.component';
 import { ChartModule } from 'primeng/chart';
 import { DatePipe } from '@angular/common';
 
@@ -68,7 +69,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     UsoDoSoloMetadados,
     FileUploadComponent,
     RegionReportComponent,
-    SpinnerImgComponent
+    SpinnerImgComponent,
+    ChartsComponent
   ],
   imports: [
     MatFormFieldModule,
@@ -117,7 +119,8 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   entryComponents: [
       UsoDoSoloMetadados,
-      RegionReportComponent
+      RegionReportComponent,
+      ChartsComponent
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt-BR' },

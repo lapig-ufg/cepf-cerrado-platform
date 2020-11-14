@@ -1,6 +1,6 @@
 {
   "platform_title": "Plataforma de Conhecimento do Cerrado - Uso do Solo",
-  "logo_img": "../../assets/logo/cepf_en.png",
+  "logo_img": "../../assets/logo/cepf_pt.png",
   "layers": "Camadas",
   "base_maps": "Mapas Base",
   "upload_title": "Upload",
@@ -13,12 +13,13 @@
   "upload_token": "Token de acesso (apenas números): ",
   "upload_warning": "Área sob análise. Este processamento pode demorar um pouco devido ao tamanho da área submetida e a quantidade de intersecções espaciais sendo realizada.",
   "upload_search": "Consultar Área",
+  "upload_not_found": "Token não encontrado. Por favor informe um token válido.",
   "btn_analyze": "Analisar",
   "btn_clear": "Limpar",
   "analyzed_area_title": "Relatório da área submetida",
   "analyzed_area_total_area": "Área total submetida: ",
   "analyzed_area_table_city_title": "Municípios que intersectam com a área submetida",
-  "analyzed_area_table_state_title": "Estados que cruzam com a área submetida",
+  "analyzed_area_table_state_title": "Estados que intersectam com a área submetida",
   "analyzed_area_pasture_per_year": ["Ano", "Área Pastagem", "Área Queimada"],
   "legend": "Legendas",
   "analysis": "Análises",
@@ -49,5 +50,13 @@
   "metadata": "Metadados",
   "title_chart_pasture": "Dados de pastagem e queimadas",
   "title_table_pasture": "Tabela de pastagem e queimadas",
-  "label_images": "Histórico de Imagens Landsat"
+  "burned_data_title": "Histórico de Áreas Queimadas",
+  "burned_data_headers": ["Ano", "Área Queimada"],
+  "label_images": "Histórico de Imagens Landsat",
+  "terraclass_card": "Visualizar as classes Terraclass que intersectam com a área submetida.",
+  "terraclass_msg_searching": "Buscando as classes Terraclass que intersectam com esta área. Por favor aguarde.",
+  "chart_terraclass_title": "Classes Terraclass que intersectam com a área submetida.",
+  "report_analyzed_area_title": "Relatório da área submetida",
+  "upload_token": "Token de acesso (apenas números): ",
+  "btn_search": "Consultar"
 }

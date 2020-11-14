@@ -1,0 +1,18 @@
+<section id="charts-dialog">
+    <h4 *ngIf="title">{{title}}</h4>
+    <p *ngIf="description">
+        {{ description }}
+    </p>
+    <p-chart
+            [height]="'100%'"
+            [type]="type"
+            [responsive]="true"
+            [data]="data"
+            [options]="options">
+    </p-chart>
+    <div class="container-buttons">
+        <button (click)="dialogRef.close()" color="primary" classs="btn-info " mat-icon-button>
+            <mat-icon>highlight_off</mat-icon>
+        </button>
+    </div>
+</section>

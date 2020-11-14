@@ -18,6 +18,9 @@ const routes: Routes = [
   { path: 'salva_guarda', component: SalvaGuardaPageComponent},
   { path: 'usodosolo', component: MapComponent},
   { path: 'covidgoias', component: CovidgoiasComponent },
+  { path: 'usodosolo/:token', component: MapComponent },
+  { path: 'regions/:token', component: MapComponent },
+  { path: '**', redirectTo: '/'}
 ];
 
 @NgModule({

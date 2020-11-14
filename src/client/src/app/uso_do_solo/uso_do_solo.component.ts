@@ -1,5 +1,7 @@
 import { Component, Injectable, HostListener, OnInit, Inject } from '@angular/core';
+import { DatePipe, DecimalPipe } from '@angular/common';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import * as ol from 'openlayers';
@@ -36,7 +38,10 @@ import { saveAs } from 'file-saver';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 import { GoogleAnalyticsService } from '../services/google-analytics.service';
-import { RegionReportComponent } from "./region-report/region-report.component";
+import { RegionReportComponent } from './region-report/region-report.component';
+import logos from './logos';
+import * as moment from 'moment';
+import {ChartsComponent} from './charts/charts.component';
 
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
@@ -139,6 +144,8 @@ export class MapComponent implements OnInit {
 		token: '',
 		analyzedAreaLoading: false,
 		analyzedArea: {},
+		heavyAnalysis: {},
+		heavyAnalysisLoading: false
 	};
 
 	loadingPrintReport: boolean;
@@ -155,6 +162,8 @@ export class MapComponent implements OnInit {
 		token: '',
 		analyzedAreaLoading: false,
 		analyzedArea: {},
+		heavyAnalysis: {},
+		heavyAnalysisLoading: false
 	};
 
 	selectedIndexConteudo: number;
@@ -212,6 +221,9 @@ export class MapComponent implements OnInit {
 		public dialog: MatDialog,
 		public googleAnalyticsService: GoogleAnalyticsService,
 		public translate: TranslateService,
+		private decimalPipe: DecimalPipe,
+		public router: Router,
+		public route: ActivatedRoute
 	) {
 		// this.languages['pt'] = 'pt-br';
 		// this.languages['en'] = 'en-us';
@@ -602,86 +614,266 @@ export class MapComponent implements OnInit {
 		return states;
 	}
 
-	// async printRegionsIdentification(token) {
-	// 	let language = this.language;
-	// 	let self = this;
+	async printRegionsIdentification(token) {
+		let language = this.language;
+		let self = this;
+		console.log(language)
+		let dd = {
+			pageSize: { width: 400, height: 400 },
 
-	// 	let dd = {
-	// 	  pageSize: { width: 400, height: 400 },
+			// by default we use portrait, you can change it to landscape if you wish
+			pageOrientation: 'portrait',
 
-	// 	  // by default we use portrait, you can change it to landscape if you wish
-	// 	  pageOrientation: 'portrait',
+			content: [],
+			styles: {
+				titleReport: {
+					fontSize: 16,
+					bold: true
+				},
+				textFooter: {
+					fontSize: 9
+				},
+				textImglegend: {
+					fontSize: 9
+				},
+				header: {
+					fontSize: 18,
+					bold: true,
+					margin: [0, 0, 0, 10]
+				},
+				data: {
+					bold: true,
+				},
+				subheader: {
+					fontSize: 16,
+					bold: true,
+					margin: [0, 10, 0, 5]
+				},
+				codCar: {
+					fontSize: 11,
+					bold: true,
+				},
+				textObs: {
+					fontSize: 11,
+				},
+				tableDpat: {
+					margin: [0, 5, 0, 15],
+					fontSize: 11,
+				},
+				tableHeader: {
+					bold: true,
+					fontSize: 13,
+					color: 'black'
+				},
+				token: {
+					bold: true,
+					fontSize: 16,
+				},
+				metadata: {
+					background: '#0b4e26',
+					color: '#fff'
+				}
+			}
+		}
 
-	// 	  content: [],
-	// 	  styles: {
-	// 		titleReport: {
-	// 		  fontSize: 16,
-	// 		  bold: true
-	// 		},
-	// 		textFooter: {
-	// 		  fontSize: 9
-	// 		},
-	// 		textImglegend: {
-	// 		  fontSize: 9
-	// 		},
-	// 		header: {
-	// 		  fontSize: 18,
-	// 		  bold: true,
-	// 		  margin: [0, 0, 0, 10]
-	// 		},
-	// 		data: {
-	// 		  bold: true,
-	// 		},
-	// 		subheader: {
-	// 		  fontSize: 16,
-	// 		  bold: true,
-	// 		  margin: [0, 10, 0, 5]
-	// 		},
-	// 		codCar: {
-	// 		  fontSize: 11,
-	// 		  bold: true,
-	// 		},
-	// 		textObs: {
-	// 		  fontSize: 11,
-	// 		},
-	// 		tableDpat: {
-	// 		  margin: [0, 5, 0, 15],
-	// 		  fontSize: 11,
-	// 		},
-	// 		tableHeader: {
-	// 		  bold: true,
-	// 		  fontSize: 13,
-	// 		  color: 'black'
-	// 		},
-	// 		token: {
-	// 		  bold: true,
-	// 		  fontSize: 16,
-	// 		},
-	// 		metadata: {
-	// 		  background: '#0b4e26',
-	// 		  color: '#fff'
-	// 		}
-	// 	  }
-	// 	}
+		// @ts-ignore
+		dd.content.push({
+			image: logos.logoCEPF[this.language],
+			width: 80,
+			alignment: 'center'
+		});
+		dd.content.push({ text: logos.upload.description[language], alignment: 'center', margin: [10, 10, 20, 0] });
 
-	// 	// @ts-ignore
-	// 	dd.content.push({
-	// 	  image: logos.logoDPAT,
-	// 	  width: 130,
-	// 	  alignment: 'center'
-	// 	});
-	// 	dd.content.push({ text: logos.upload.description[language], alignment: 'center', margin: [10, 10, 20, 0] });
+		dd.content.push({ text: token, alignment: 'center', style: 'token', margin: [20, 20, 20, 0] });
 
-	// 	dd.content.push({ text: token, alignment: 'center', style: 'token', margin: [20, 20, 20, 0] });
+		// @ts-ignore
+		dd.content.push({ qr: 'https://cepf.lapig.iesa.ufg.br/#/regions/' + token, fit: '150', alignment: 'center' });
+		// @ts-ignore
+		dd.content.push({ text: 'https://cepf.lapig.iesa.ufg.br/#/regions/' + token, alignment: 'center', style: 'textFooter', margin: [20, 10, 20, 60] });
 
-	// 	// @ts-ignore
-	// 	dd.content.push({ qr: 'https://www.cerradodpat.org/#/regions/' + token, fit: '150', alignment: 'center' });
-	// 	// @ts-ignore
-	// 	dd.content.push({ text: 'https://www.cerradodpat.org/#/regions/' + token, alignment: 'center', style: 'textFooter', margin: [20, 10, 20, 60] });
+		const filename = logos.upload.title[language] + ' - ' + token + '.pdf'
+		pdfMake.createPdf(dd).download(filename);
+	}
 
-	// 	const filename = logos.upload.title[language] + ' - ' + token + '.pdf'
-	// 	pdfMake.createPdf(dd).download(filename);
-	//   }
+	async printAnalyzedAreaReport(fromConsulta = false) {
+
+		this.googleAnalyticsService.eventEmitter("printAnalyzedAreaReport", "Print_Report", this.layerFromConsulta.token, 10);
+
+		let language = this.language;
+		let self = this;
+		let layer = null;
+		let isFromConsulta = false;
+		if (fromConsulta) {
+			isFromConsulta = true;
+			layer = this.layerFromConsulta;
+		} else {
+			layer = this.layerFromUpload;
+		}
+
+		this.loadingPrintReport = true;
+
+		let dd = {
+			pageSize: 'A4',
+
+			// by default we use portrait, you can change it to landscape if you wish
+			pageOrientation: 'portrait',
+
+			// [left, top, right, bottom]
+			pageMargins: [40, 70, 40, 80],
+
+			header: {
+				margin: [24, 10, 24, 30],
+				columns: [
+					{
+						image: logos.logoCEPF[this.language],
+						width: 80
+					},
+					{
+						// [left, top, right, bottom]
+						margin: [65, 15, 10, 10],
+						text: this.translate.instant('report_analyzed_area_title').toUpperCase(),
+						style: 'titleReport',
+					},
+
+				]
+			},
+			footer: function (currentPage, pageCount) {
+				return {
+					table: {
+						widths: '*',
+						body: [
+							[
+								{ image: logos.signature, colSpan: 3, alignment: 'center', fit: [400, 45] },
+								{},
+								{},
+							],
+							[
+								{ text: 'https://cepf.lapig.iesa.ufg.br', alignment: 'left', style: 'textFooter', margin: [60, 0, 0, 0] },
+								{ text: moment().format('DD/MM/YYYY HH:mm:ss'), alignment: 'center', style: 'textFooter', margin: [0, 0, 0, 0] },
+								{ text: logos.page.title[language] + currentPage.toString() + logos.page.of[language] + '' + pageCount, alignment: 'right', style: 'textFooter', margin: [0, 0, 60, 0] },
+							],
+						]
+					},
+					layout: 'noBorders'
+				};
+			},
+			content: [],
+			styles: {
+				titleReport: {
+					fontSize: 16,
+					bold: true
+				},
+				textFooter: {
+					fontSize: 9
+				},
+				textImglegend: {
+					fontSize: 9
+				},
+				header: {
+					fontSize: 18,
+					bold: true,
+					margin: [0, 0, 0, 10]
+				},
+				data: {
+					bold: true,
+				},
+				subheader: {
+					fontSize: 14,
+					bold: true,
+					margin: [0, 10, 0, 5]
+				},
+				codCar: {
+					fontSize: 11,
+					bold: true,
+				},
+				textObs: {
+					fontSize: 11,
+				},
+				tableDpat: {
+					margin: [0, 5, 0, 15],
+					fontSize: 11,
+				},
+				tableHeader: {
+					bold: true,
+					fontSize: 13,
+					color: 'black'
+				},
+				tableCar: {
+					fontSize: 12,
+				},
+				metadata: {
+					background: '#0b4e26',
+					color: '#fff'
+				},
+				bold: {
+					bold: true,
+				}
+			}
+		}
+		dd.content.push({ text: this.translate.instant('analyzed_area_total_area') + this.decimalPipe.transform(layer.analyzedArea.shape_upload.area_upload, '1.2-2') + '  km²', style: 'subheader' });
+
+		if (layer.heavyAnalysis.table_pastagem_queimadas_peryear.length > 0) {
+			dd.content.push({ text: self.translate.instant('burned_data_title'), style: 'subheader', alignment: 'center' });
+			let table = {
+				style: 'tableCar',
+				layout: 'lightHorizontalLines',
+				table: {
+					headerRows: 1,
+					widths: [52, '*'],
+					body: [],
+					margin: 10
+				}
+			};
+			let headers = []
+			for (let [index, header] of self.translate.instant('burned_data_headers').entries()) {
+				headers.push(
+					{ text: header, alignment: 'center' }
+				);
+			}
+			table.table.body.push(headers);
+
+			for (let [index, item] of layer.heavyAnalysis.table_pastagem_queimadas_peryear.entries()) {
+				table.table.body.push([
+					{ text: item.year, alignment: 'center', style: 'bold' },
+					{ text: self.decimalPipe.transform(item.area_queimada, '1.2-2') + ' km²', alignment: 'center' },
+				]);
+			}
+			dd.content.push(table);
+		}
+		if (layer.analyzedArea.regions_intersected.hasOwnProperty('municipio')) {
+			dd.content.push({ text: self.translate.instant('analyzed_area_table_city_title'), style: 'subheader', alignment: 'center' });
+			dd.content.push({ text: self.getCitiesAnalyzedArea(isFromConsulta), alignment: 'center' });
+		}
+		if (layer.analyzedArea.regions_intersected.hasOwnProperty('estado')) {
+			dd.content.push({ text: self.translate.instant('analyzed_area_table_state_title'), style: 'subheader', alignment: 'center' });
+			dd.content.push({ text: self.getStatesAnalyzedArea(isFromConsulta), alignment: 'center' });
+		}
+
+		// @ts-ignore
+		dd.content.push({ text: layer.token, alignment: 'center', style: 'textFooter', margin: [25, 20, 20, 10], pageBreak: false });
+		// @ts-ignore
+		dd.content.push({ qr: 'https://cepf.lapig.iesa.ufg.br/#/regions/' + layer.token, fit: '100', alignment: 'center' });
+		// @ts-ignore
+		dd.content.push({ text: 'https://cepf.lapig.iesa.ufg.br/#/regions/' + layer.token, alignment: 'center', margin: [0, 5, 10, 0], style: 'textFooter' });
+		let filename = this.translate.instant('report_analyzed_area_title') + ' - ' + layer.token + '.pdf'
+		pdfMake.createPdf(dd).download(filename);
+		this.loadingPrintReport = false;
+	}
+
+	async openCharts(title, description = false, data, type, options) {
+		let ob = {
+			title: title,
+			description: description,
+			type: type,
+			data: data,
+			options: options,
+		}
+		this.dialog.open(ChartsComponent, {
+			width: 'calc(100% - 5vw)',
+			height: 'calc(100% - 5vh)',
+			data: { ob }
+		});
+	}
 
 	async analyzeUploadShape(fromConsulta = false) {
 		let params = [];
@@ -707,11 +899,12 @@ export class MapComponent implements OnInit {
 				self.layerFromConsulta.error = true;
 			}
 
+			this.layerFromConsulta.heavyAnalysisLoading = true;
 			urlParamsHeavyAnalysis = '/service/upload/analysisarea?' + params.join('&');
 			let resultHeavyAnalysis = await this.http.get(urlParamsHeavyAnalysis).toPromise();
-
-			this.layerFromConsulta.heavyAnalysis = resultHeavyAnalysis
-
+			console.log(resultHeavyAnalysis);
+			this.layerFromConsulta.heavyAnalysis = resultHeavyAnalysis;
+			this.layerFromConsulta.heavyAnalysisLoading = false;
 
 			// //   this.googleAnalyticsService.eventEmitter("analyzeConsultaUploadLayer", "Analyze-Consulta-Upload", this.layerFromConsulta.token, 5);
 		} else {
@@ -728,11 +921,11 @@ export class MapComponent implements OnInit {
 				self.layerFromUpload.analyzedAreaLoading = false;
 				self.layerFromUpload.error = true;
 			}
-
+			this.layerFromUpload.heavyAnalysisLoading = true;
 			urlParamsHeavyAnalysis = '/service/upload/analysisarea?' + params.join('&');
 			let resultHeavyAnalysis = await this.http.get(urlParamsHeavyAnalysis).toPromise();
 			this.layerFromUpload.heavyAnalysis = resultHeavyAnalysis
-
+			this.layerFromUpload.heavyAnalysisLoading = false;
 			// //   this.googleAnalyticsService.eventEmitter("analyzeUploadLayer", "Analyze-Upload", this.layerFromUpload.token, 6);
 		}
 
@@ -898,6 +1091,7 @@ export class MapComponent implements OnInit {
 			this.layerFromConsulta.visible = false;
 			this.layerFromConsulta.checked = false;
 			this.layerFromConsulta.token = '';
+			this.layerFromConsulta.error = false;
 		} else {
 			this.layerFromUpload.analyzedArea = {}
 			this.map.removeLayer(this.layerFromUpload.layer);
@@ -1730,6 +1924,32 @@ export class MapComponent implements OnInit {
 			this.addPoints();
 		});
 		this.setStylesLangButton();
+
+		const self = this;
+		self.route.paramMap.subscribe(function (params) {
+			// if (self.router.url.includes('usodosolo')) {
+			// 	if (params.keys.includes('token')) {
+			// 		if (window.innerWidth < self.breakpointMobile) {
+			// 			self.router.navigate(['usodosolo/' + params.get('token')]);
+			// 		} else {
+			// 			self.openReport(params);
+			// 		}
+			// 	}
+			// }
+
+			if (self.router.url.includes('regions')) {
+				if (window.innerWidth < self.breakpointMobile) {
+					self.router.navigate(['regions/' + params.get('token')]);
+				} else {
+					self.selectedIndexConteudo = 1;
+					self.selectedIndexUpload = 1;
+					self.layerFromConsulta.token = params.get('token');
+					self.searchUploadShape();
+					self.analyzeUploadShape(true);
+					self.showLayers = !self.showLayers;
+				}
+			}
+		});
 
 	}
 
