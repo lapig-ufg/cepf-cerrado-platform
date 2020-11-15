@@ -860,6 +860,84 @@ module.exports = function(app) {
           "dataService": "/service/charts/farming"
         },
         {
+          "id": "biodiversidade",
+          "label": "Biodiversiddade",
+          "group_expanded": false,
+          "layers": [
+            {
+              "id": "bi_ce_fauna_na_na_sibbr",
+              "label": "Fauna",
+              "visible": false,
+              "selectedType": 'bi_ce_fauna_na_na_sibbr',
+              "value": "bi_ce_fauna_na_na_sibbr",
+              "opacity": 1,
+              "regionFilter": true,
+              "order": 2,
+              // "typeLabel": languageJson["typelabel_layer"]["type"][language],
+              // "timeLabel": languageJson["typelabel_layer"]["year"][language],
+              // "timeSelected": "year=2014",
+              "timeHandler": "msfilter",
+              // "times": [
+              //   {"value": "year=2001", "Viewvalue": 2001},
+              //   {"value": "year=2007", "Viewvalue": 2007},
+              //   {"value": "year=2014", "Viewvalue": 2014}
+              // ],
+              "metadados": {
+                "title": "Fauna",
+                "description": "Compilação de dados e informações sobre a biodiversidade no Cerrado desenvolvida sob a coordenação do Ministério da Ciência e Tecnologia (MCTI)",
+                "format": "",
+                "region": "Cerrado",
+                "period": "",
+                "scale": "",
+                "system_coordinator": "",
+                "cartographic_projection": "",
+                "cod_caracter": "",
+                "fonte": "",
+                "contato": "lapig.cepf@gmail.com"
+              },
+              "columnsCSV": "scientific, reino, filo, classe, ordem, familia, genero, especies, year",
+              "downloadSHP": true,
+              "downloadCSV": true
+            },
+            {
+              "id": "or_vp_pato_mergulhao_2019_na_iat",
+              "label": "Avistamento de Pato Mergulhão",
+              "visible": false,
+              "selectedType": 'or_vp_pato_mergulhao_2019_na_iat',
+              "value": "or_vp_pato_mergulhao_2019_na_iat",
+              "opacity": 1,
+              "regionFilter": true,
+              "order": 2,
+              // "typeLabel": languageJson["typelabel_layer"]["type"][language],
+              // "timeLabel": languageJson["typelabel_layer"]["year"][language],
+              // "timeSelected": "year=2014",
+              "timeHandler": "msfilter",
+              // "times": [
+              //   {"value": "year=2001", "Viewvalue": 2001},
+              //   {"value": "year=2007", "Viewvalue": 2007},
+              //   {"value": "year=2014", "Viewvalue": 2014}
+              // ],
+              "metadados": {
+                "title": "Avistamento de Pato Mergulhão",
+                "description": "Pontos de avistamento da espécie endêmica ameaçada de extinção Pato Mergulhão.",
+                "format": "",
+                "region": "Cerrado",
+                "period": "2019",
+                "scale": "",
+                "system_coordinator": "",
+                "cartographic_projection": "",
+                "cod_caracter": "",
+                "fonte": "",
+                "contato": "lapig.cepf@gmail.com"
+              },
+              "columnsCSV": "ano, mês, rio, local, adultos, filhotes, ppch, agro, boi, desmata, dtur, fogo, altitude, risco1, risco2, risco3, risco4, impactos_o",
+              "downloadSHP": true,
+              "downloadCSV": true
+            }
+          ]
+          // "dataService": "/service/charts/farming"
+        },
+        {
           "id": "desmatamento_queimadas",
           "label": languageJson["title_group_label"]["desmatamentos_queimadas"][language],
           "group_expanded": false,
