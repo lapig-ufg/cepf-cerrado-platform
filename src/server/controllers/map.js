@@ -866,7 +866,7 @@ module.exports = function(app) {
           "layers": [
             {
               "id": "bi_ce_fauna_na_na_sibbr",
-              "label": "Fauna",
+              "label": "Fauna - SIBBR",
               "visible": false,
               "selectedType": 'bi_ce_fauna_na_na_sibbr',
               "value": "bi_ce_fauna_na_na_sibbr",
@@ -883,7 +883,7 @@ module.exports = function(app) {
               //   {"value": "year=2014", "Viewvalue": 2014}
               // ],
               "metadados": {
-                "title": "Fauna",
+                "title": "Fauna- SIBBR",
                 "description": "Compilação de dados e informações sobre a biodiversidade no Cerrado desenvolvida sob a coordenação do Ministério da Ciência e Tecnologia (MCTI)",
                 "format": "",
                 "region": "Cerrado",
@@ -896,6 +896,76 @@ module.exports = function(app) {
                 "contato": "lapig.cepf@gmail.com"
               },
               "columnsCSV": "scientific, reino, filo, classe, ordem, familia, genero, especies, year",
+              "downloadSHP": true,
+              "downloadCSV": true
+            },
+            {
+              "id": "bi_ce_flora_na_na_sibbr",
+              "label": "Flora - SIBBR",
+              "visible": false,
+              "selectedType": 'bi_ce_flora_na_na_sibbr',
+              "value": "bi_ce_flora_na_na_sibbr",
+              "opacity": 1,
+              "regionFilter": true,
+              "order": 2,
+              // "typeLabel": languageJson["typelabel_layer"]["type"][language],
+              // "timeLabel": languageJson["typelabel_layer"]["year"][language],
+              // "timeSelected": "year=2014",
+              "timeHandler": "msfilter",
+              // "times": [
+              //   {"value": "year=2001", "Viewvalue": 2001},
+              //   {"value": "year=2007", "Viewvalue": 2007},
+              //   {"value": "year=2014", "Viewvalue": 2014}
+              // ],
+              "metadados": {
+                "title": "Flora - SIBBR",
+                "description": "Compilação de dados e informações sobre a biodiversidade no Cerrado desenvolvida sob a coordenação do Ministério da Ciência e Tecnologia (MCTI)",
+                "format": "",
+                "region": "Cerrado",
+                "period": "",
+                "scale": "",
+                "system_coordinator": "",
+                "cartographic_projection": "",
+                "cod_caracter": "",
+                "fonte": "",
+                "contato": "lapig.cepf@gmail.com"
+              },
+              "columnsCSV": "n_cientifi, reino, filo, classe, ordem, familia, genero, especie, year",
+              "downloadSHP": true,
+              "downloadCSV": true
+            },
+            {
+              "id": "bi_ce_reserva_biosfera_2018_1000_greentec",
+              "label": "Reserva da Biosfera",
+              "visible": false,
+              "selectedType": 'bi_ce_reserva_biosfera_2018_1000_greentec',
+              "value": "bi_ce_reserva_biosfera_2018_1000_greentec",
+              "opacity": 1,
+              "regionFilter": true,
+              "order": 2,
+              // "typeLabel": languageJson["typelabel_layer"]["type"][language],
+              // "timeLabel": languageJson["typelabel_layer"]["year"][language],
+              // "timeSelected": "year=2014",
+              "timeHandler": "msfilter",
+              // "times": [
+              //   {"value": "year=2001", "Viewvalue": 2001},
+              //   {"value": "year=2007", "Viewvalue": 2007},
+              //   {"value": "year=2014", "Viewvalue": 2014}
+              // ],
+              "metadados": {
+                "title": "Reserva da Biosfera",
+                "description": "Revisão dos Limites da Reserva da Biosfera do Cerrado, verificando sobreposições, conflitos e prioridades, promovendo ajustes e incorporações necessárias para melhor contemplar a conservação do Bioma Cerrado.",
+                "format": "",
+                "region": "Cerrado",
+                "period": "2018",
+                "scale": "",
+                "system_coordinator": "",
+                "cartographic_projection": "",
+                "cod_caracter": "",
+                "fonte": "Greentec",
+                "contato": "lapig.cepf@gmail.com"
+              },
+              "columnsCSV": "area_ha, area_km2, nome_uc, categoria, ano_cria, grupo, ato_legal, status, esfera, classe",
               "downloadSHP": true,
               "downloadCSV": true
             },
