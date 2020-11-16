@@ -18,9 +18,9 @@ module.exports = function (app) {
 
 		if (typeRegion == 'municipio' || typeRegion == 'estado') {
 			if (typeRegion == 'municipio')
-				typeRegionTranslate = language == 'pt-br' ? 'municipio' : 'municipality';
+				typeRegionTranslate = language == 'pt' ? 'municipio' : 'municipality';
 			else if (typeRegion == 'estado')
-				typeRegionTranslate = language == 'pt-br' ? 'estado' : 'state';
+				typeRegionTranslate = language == 'pt' ? 'estado' : 'state';
 
 			region = languageJson["charts_regions"]["o_municipio_estado"][language] + typeRegionTranslate + languageJson["charts_regions"]["de_municipio_estado"][language] + textRegion
 		} else if (typeRegion == 'região de fronteira') {
@@ -125,9 +125,9 @@ module.exports = function (app) {
 
 		if (typeRegion == 'municipio' || typeRegion == 'estado') {
 			if (typeRegion == 'municipio') 
-				typeRegionTranslate = language == 'pt-br' ? 'municipio' : 'municipality';
+				typeRegionTranslate = language == 'pt' ? 'municipio' : 'municipality';
 			else if (typeRegion == 'estado') 
-				typeRegionTranslate = language == 'pt-br' ? 'estado' : 'state';
+				typeRegionTranslate = language == 'pt' ? 'estado' : 'state';
 			
 			region = languageJson["charts_regions"]["do_municipio_estado"][language] + typeRegionTranslate + languageJson["charts_regions"]["de_municipio_estado"][language] + textRegion
 		} else if (typeRegion == 'região de fronteira') {

@@ -470,7 +470,6 @@ export class MapComponent implements OnInit {
 	}
 
 	private updateCharts() {
-
 		for (let group of this.descriptor.groups) {
 			if (group.dataService != undefined) {
 				this.http.get(group.dataService + "?typeRegion=" + this.selectRegion.type + "&textRegion=" + this.selectRegion.text + "&filterRegion=" + this.msFilterRegion + "&year=" + this.year + "&lang=" + this.language).subscribe(result => {
@@ -1615,9 +1614,11 @@ export class MapComponent implements OnInit {
 
 		var layername = layer.value
 
-		if (layer.timeSelected) {
-			this.year = layer.timeSelected
-		}
+		// if (layer.timeSelected) {
+			if (layer.value == "uso_solo_mapbiomas") {
+				this.year = layer.timeSelected
+			}
+		// }
 
 		if (layer.timeHandler == 'layername')
 			layername = layer.timeSelected

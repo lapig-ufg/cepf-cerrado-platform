@@ -39,8 +39,16 @@
 			"en": "Deforestation / Burning"
 		},
 		"pontos_validacao": {
-			"pt": "Pontos de Validação",
-			"en": "Validation Points"
+			"pt": "Pontos de Validação (LAPIG)",
+			"en": "Validation Points (LAPIG)"
+		},
+		"social": {
+			"pt": "Social",
+			"en": "Social"
+		},
+		"biodiversidade": {
+			"pt": "Biodiversidade",
+			"en": "Biodiversity"
 		}
 	},
 	"title_layer_label": {
@@ -65,7 +73,7 @@
 			"en": "Agriculture Census - IBGE"
 		},
 		"desmatamentos_queimadas": {
-			"pt": "Áreas Desmatamento",
+			"pt": "Áreas de Desmatamento",
 			"en": "Deforestation areas"
 		},
 		"alertas_desmatamentos": {
@@ -80,9 +88,49 @@
 			"pt": "Pontos Coletados em Campo",
 			"en": "Field Collected Points"
 		},
+		"areas_conflitos": {
+			"pt": "Conflitos por terra (área)",
+			"en": "Area of conflict over land"
+		},
+		"conflitos_agua": {
+			"pt": "Conflitos por água",
+			"en": "Conflicts over water"
+		},
+		"conflitos_terra": {
+			"pt": "Conflitos por terra (registros)",
+			"en": "Conflicts over land"
+		},
+		"trabalho_escravo": {
+			"pt": "Trabalho escravo",
+			"en": "Slavery"
+		},
+		"idhm": {
+			"pt": "Índice de Desenvolvimento Humano",
+			"en": "Human development index"
+		},
 		"pontos_inspecionados": {
 			"pt": "Pontos Inspecionados Visualmente",
 			"en": "Visually Inspected Points"
+		},
+		"fauna": {
+			"pt": "Fauna - SIBBR",
+			"en": "Fauna - SIBBR"
+		},
+		"flora": {
+			"pt": "Flora - SIBBR",
+			"en": "Flora - SIBBR"
+		},
+		"reserva_biosfera": {
+			"pt": "Reserva da Biosfera",
+			"en": "Biosphere reserve"
+		},
+		"pato_mergulhao": {
+			"pt": "Avistamento de Pato Mergulhão",
+			"en": "Sighting of Brazilian Merganser"
+		},
+		"ecorregioes": {
+			"pt": "Ecorregiões do Cerrado",
+			"en": "Cerrado Ecoregions"
 		}
 	},
 	"type_layer_viewvalue": {
@@ -177,6 +225,14 @@
 		"validacao": {
 			"pt": "Validação",
 			"en": "Validation"
+		},
+		"ocorrencias": {
+			"pt": "N° Ocorrências",
+			"en": "Number of ocurrences"
+		},
+		"pessoas": {
+			"pt": "N° Pessoas",
+			"en": "Number of people"
 		}
 	},
 	"metadata": {
@@ -1191,6 +1247,510 @@
 				"pt": "Laboratório de Processamento de Imagens e Geoprocessamento – Lapig (geração do dado). Projeto financiador: Spatial metrics and baselines of degradation patterns and provision of ecosystem services by pastures in Brazil.",
 				"en": "Laboratory of Image Processing and Geoprocessing - Lapig (data generation). Project 'Spatial metrics and baselines of degradation patterns and provision of ecosystem services by pastures in Brazil' (funder)."
 			}
+		},
+		"bi_ce_fauna_na_na_sibbr": {
+			"title": {
+				"pt": "Fauna - SIBBR",
+				"en": "Fauna - SIBBR"
+			},
+			"description": {
+				"pt": "Compilação de dados e informações sobre a biodiversidade no Cerrado desenvolvida sob a coordenação do Ministério da Ciência e Tecnologia (MCTI)",
+				"en": "Compilation of data and information on biodiversity in the Cerrado, under coordination of the Ministry of Science, Technology and Innovation (MCTI)."
+			},
+			"format": {
+				"pt": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+				"en": "Shapefile (* .SHP), with complementary files (* .PRJ, * DBF, * .SHX, * .SBX, * MAP). Comma-separated values (* .CSV)."
+			},
+			"region": {
+				"pt": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+				"en": "Cerrado biome, allowing to analyze the classes of land use by other regions of interest such as: states and municipalities."
+			},
+			"period": {
+				"pt": "Não se aplica",
+				"en": "Not applicable"
+			},
+			"scale": {
+				"pt": "Não se aplica",
+				"en": "Not applicable"
+			},
+			"system_coordinator": {
+				"pt": "Superfície de referência SIRGAS 2000, Sistema de Coordenada Geográfica (em graus).",
+				"en": "SIRGAS 2000 reference surface, Geographic Coordinate System (in degrees)."
+			},
+			"cartographic_projection": {
+				"pt": "Universal de Mercator.",
+				"en": "Universal Transverse Mercator (UTM)."
+			},
+			"cod_caracter": {
+				"pt": "Latin 1.",
+				"en": "Latin 1."
+			},
+			"fonte": {
+				"pt": "Sistema de Informação sobre a Biodiversidade Brasileira (SIBBR)",
+				"en": "Information System on Brazilian Biodiversity (SIBBR)"
+			}
+		},
+		"bi_ce_flora_na_na_sibbr": {
+			"title": {
+				"pt": "Flora - SIBBR",
+				"en": "Flora - SIBBR"
+			},
+			"description": {
+				"pt": "Compilação de dados e informações sobre a biodiversidade no Cerrado desenvolvida sob a coordenação do Ministério da Ciência e Tecnologia (MCTI)",
+				"en": "Compilation of data and information on biodiversity in the Cerrado, under coordination of the Ministry of Science, Technology and Innovation (MCTI)."
+			},
+			"format": {
+				"pt": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+				"en": "Shapefile (* .SHP), with complementary files (* .PRJ, * DBF, * .SHX, * .SBX, * MAP). Comma-separated values (* .CSV)."
+			},
+			"region": {
+				"pt": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+				"en": "Cerrado biome, allowing to analyze the classes of land use by other regions of interest such as: states and municipalities."
+			},
+			"period": {
+				"pt": "Não se aplica",
+				"en": "Not applicable"
+			},
+			"scale": {
+				"pt": "Não se aplica",
+				"en": "Not applicable"
+			},
+			"system_coordinator": {
+				"pt": "Superfície de referência SIRGAS 2000, Sistema de Coordenada Geográfica (em graus).",
+				"en": "SIRGAS 2000 reference surface, Geographic Coordinate System (in degrees)."
+			},
+			"cartographic_projection": {
+				"pt": "Universal de Mercator.",
+				"en": "Universal Transverse Mercator (UTM)."
+			},
+			"cod_caracter": {
+				"pt": "Latin 1.",
+				"en": "Latin 1."
+			},
+			"fonte": {
+				"pt": "Sistema de Informação sobre a Biodiversidade Brasileira (SIBBR)",
+				"en": "Information System on Brazilian Biodiversity (SIBBR)"
+			}
+		},
+		"bi_ce_reserva_biosfera_2018_1000_greentec": {
+			"title": {
+				"pt": "Reserva da Biosfera",
+				"en": "Biosphere reserve"
+			},
+			"description": {
+				"pt": "Revisão dos Limites da Reserva da Biosfera do Cerrado, verificando sobreposições, conflitos e prioridades, promovendo ajustes e incorporações necessárias para melhor contemplar a conservação do Bioma Cerrado.",
+				"en": "Review of the Limits of the Cerrado Biosphere Reserve, verifying overlaps, conflicts and priorities, promoting adjustments and incorporations necessary to better comtemplate the conservation of the Cerrado Biome."
+			},
+			"format": {
+				"pt": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+				"en": "Shapefile (* .SHP), with complementary files (* .PRJ, * DBF, * .SHX, * .SBX, * MAP). Comma-separated values (* .CSV)."
+			},
+			"region": {
+				"pt": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+				"en": "Cerrado biome, allowing to analyze the classes of land use by other regions of interest such as: states and municipalities."
+			},
+			"period": {
+				"pt": "2018",
+				"en": "2018"
+			},
+			"scale": {
+				"pt": "1:10.000",
+				"en": "1:10.000"
+			},
+			"system_coordinator": {
+				"pt": "Superfície de referência SIRGAS 2000, Sistema de Coordenada Geográfica (em graus).",
+				"en": "SIRGAS 2000 reference surface, Geographic Coordinate System (in degrees)."
+			},
+			"cartographic_projection": {
+				"pt": "Universal de Mercator.",
+				"en": "Universal Transverse Mercator (UTM)."
+			},
+			"cod_caracter": {
+				"pt": "Latin 1.",
+				"en": "Latin 1."
+			},
+			"fonte": {
+				"pt": "Greentec Tecnologia Ambiental",
+				"en": "Greentec Environmental Technology"
+			}
+		},
+		"or_vp_pato_mergulhao_2019_na_iat": {
+			"title": {
+				"pt": "Avistamento de Pato Mergulhão",
+				"en": "Grebe Duck Sighting"
+			},
+			"description": {
+				"pt": "Pontos de avistamento da espécie endêmica ameaçada de extinção Pato Mergulhão.",
+				"en": "Sight points of endemic species threatened with extinction Pato Mergulhão."
+			},
+			"format": {
+				"pt": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+				"en": "Shapefile (* .SHP), with complementary files (* .PRJ, * DBF, * .SHX, * .SBX, * MAP). Comma-separated values (* .CSV)."
+			},
+			"region": {
+				"pt": "Vão do Paranã",
+				"en": "Vão do Paranã"
+			},
+			"period": {
+				"pt": "2019",
+				"en": "2019"
+			},
+			"scale": {
+				"pt": "Não se aplica",
+				"en": "Not applicable"
+			},
+			"system_coordinator": {
+				"pt": "Superfície de referência SIRGAS 2000, Sistema de Coordenada Geográfica (em graus).",
+				"en": "SIRGAS 2000 reference surface, Geographic Coordinate System (in degrees)."
+			},
+			"cartographic_projection": {
+				"pt": "Universal de Mercator.",
+				"en": "Universal Transverse Mercator (UTM)."
+			},
+			"cod_caracter": {
+				"pt": "Latin 1.",
+				"en": "Latin 1."
+			},
+			"fonte": {
+				"pt": "Instituto Amada Terra",
+				"en": "Institute Amada Terra"
+			}
+		},
+		"bi_ce_ecorregioes_2019_5000_diversas": {
+			"title": {
+				"pt": "Ecorregiões do Cerrado",
+				"en": "Cerrado Ecoregions"
+			},
+			"description": {
+				"pt": "Divisão do bioma Cerrado em regiões ecológicas distintas.",
+				"en": "Division of the Cerrado biome in ecological regions."
+			},
+			"format": {
+				"pt": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+				"en": "Shapefile (* .SHP), with complementary files (* .PRJ, * DBF, * .SHX, * .SBX, * MAP). Comma-separated values (* .CSV)."
+			},
+			"region": {
+				"pt": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+				"en": "Cerrado biome, allowing to analyze the classes of land use by other regions of interest such as: states and municipalities."
+			},
+			"period": {
+				"pt": "2019",
+				"en": "2019"
+			},
+			"scale": {
+				"pt": "1:5000.000",
+				"en": "1:5000.000"
+			},
+			"system_coordinator": {
+				"pt": "Superfície de referência SIRGAS 2000, Sistema de Coordenada Geográfica (em graus).",
+				"en": "SIRGAS 2000 reference surface, Geographic Coordinate System (in degrees)."
+			},
+			"cartographic_projection": {
+				"pt": "Universal de Mercator.",
+				"en": "Universal Transverse Mercator (UTM)."
+			},
+			"cod_caracter": {
+				"pt": "Latin 1.",
+				"en": "Latin 1."
+			},
+			"fonte": {
+				"pt": "Sano, E. E., Rodrigues, A. A., Martins, E. S., Bettiol, G. M., Bustamante, M. M., Bezerra, A. S., Couto Jr., A. F., Vasconcelos, V., Schüler, J., Bolfe, E. L. 2019. Cerrado ecorregions: A spatial framework to assess and prioritize Brazilian savanna environmentak diversity for conservation. Journal of environmental management, 232, 818-828.",
+				"en": "Sano, E. E., Rodrigues, A. A., Martins, E. S., Bettiol, G. M., Bustamante, M. M., Bezerra, A. S., Couto Jr., A. F., Vasconcelos, V., Schüler, J., Bolfe, E. L. 2019. Cerrado ecorregions: A spatial framework to assess and prioritize Brazilian savanna environmentak diversity for conservation. Journal of environmental management, 232, 818-828."
+			}
+		}, 
+		"bi_ce_area_conflito_250_cpt": {
+			"title": {
+				"pt": "Áreas em conflitos por terra",
+				"en": "Area of conflict over land"
+			},
+			"description": {
+				"pt": "Número de áreas em situações de conflitos por terra, por municípios do Cerrado, no período de 2006 á 2016, produzidos pela CPT - Comissão Pastoral da Terra -  espacializados pelo Lapig.",
+				"en": "Number of areas in conflict situations over land, by Cerrado municipalities, from 2006 to 2016, produced by CPT - Pastoral Land Commission - spatialized by Lapig."
+			},
+			"format": {
+				"pt": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+				"en": "Shapefile (* .SHP), with complementary files (* .PRJ, * DBF, * .SHX, * .SBX, * MAP). Comma-separated values (* .CSV)."
+			},
+			"region": {
+				"pt": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+				"en": "Cerrado biome, allowing to analyze the classes of land use by other regions of interest such as: states and municipalities."
+			},
+			"period": {
+				"pt": "2006 á 2016",
+				"en": "2006 to 2016"
+			},
+			"scale": {
+				"pt": "1:250.000",
+				"en": "1:250.000"
+			},
+			"system_coordinator": {
+				"pt": "Superfície de referência SIRGAS 2000, Sistema de Coordenada Geográfica (em graus).",
+				"en": "SIRGAS 2000 reference surface, Geographic Coordinate System (in degrees)."
+			},
+			"cartographic_projection": {
+				"pt": "Universal de Mercator.",
+				"en": "Universal Transverse Mercator (UTM)."
+			},
+			"cod_caracter": {
+				"pt": "Latin 1.",
+				"en": "Latin 1."
+			},
+			"fonte": {
+				"pt": "Comissão Pastoral da Terra",
+				"en": "Pastoral Land Commission"
+			}
+		},
+		"bi_ce_conflito_agua_250_cpt": {
+			"title": {
+				"pt": "Conflitos por água - Ocorrências",
+				"en": "Conflitos por água - Ocorrências"
+			},
+			"description": {
+				"pt": "Número de ocorrências de ações de resistência por municípios do Cerrado, em geral coletivas, que visam garantir o uso e a preservação das águas, no período de 2006 á 2017, produzidos pela CPT - Comissão Pastoral da Terra -  espacializados pelo Lapig.",
+				"en": "Number of occurrences of resistance actions by Cerrado municipalities, generally collective, which aim to guarantee the use of waters, in the period from 2006 to 2017, produced by CPT - Pastoral Land Commission - spatialized by Lapig."
+			},
+			"format": {
+				"pt": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+				"en": "Shapefile (* .SHP), with complementary files (* .PRJ, * DBF, * .SHX, * .SBX, * MAP). Comma-separated values (* .CSV)."
+			},
+			"region": {
+				"pt": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+				"en": "Cerrado biome, allowing to analyze the classes of land use by other regions of interest such as: states and municipalities."
+			},
+			"period": {
+				"pt": "2006 á 2017",
+				"en": "2006 to 2017"
+			},
+			"scale": {
+				"pt": "1:250.000",
+				"en": "1:250.000"
+			},
+			"system_coordinator": {
+				"pt": "Superfície de referência SIRGAS 2000, Sistema de Coordenada Geográfica (em graus).",
+				"en": "SIRGAS 2000 reference surface, Geographic Coordinate System (in degrees)."
+			},
+			"cartographic_projection": {
+				"pt": "Universal de Mercator.",
+				"en": "Universal Transverse Mercator (UTM)."
+			},
+			"cod_caracter": {
+				"pt": "Latin 1.",
+				"en": "Latin 1."
+			},
+			"fonte": {
+				"pt": "Comissão Pastoral da Terra",
+				"en": "Pastoral Land Commission"
+			}
+		},
+		"bi_ce_conflito_agua_pessoas_250_cpt": {
+			"title": {
+				"pt": "Pessoas envolvidas em conflitos por Água",
+				"en": "People involved in water conflicts"
+			},
+			"description": {
+				"pt": "Número de pessoas envolvidas em conflitos por água ocorridos  por município, em ações de resistência e enfrentamento pela posse, uso e propriedade da terra e pelo acesso aos recursos naturais, na região do Matopiba,  no período de 2006 á 2016, produzidos pela CPT - Comissão Pastoral da Terra -  espacializados pelo Lapig.",
+				"en": "Number od people involved in water conflicts per municipality, in actions of resistence and confratation for the possesion, use and ownership of land and access to natural resources, in the Matopiba region, from 2006 to 2016, produced by the CPT - Pastoral Land Commission - spatialized by Lapig."
+			},
+			"format": {
+				"pt": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+				"en": "Shapefile (* .SHP), with complementary files (* .PRJ, * DBF, * .SHX, * .SBX, * MAP). Comma-separated values (* .CSV)."
+			},
+			"region": {
+				"pt": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+				"en": "Cerrado biome, allowing to analyze the classes of land use by other regions of interest such as: states and municipalities."
+			},
+			"period": {
+				"pt": "2006 á 2016",
+				"en": "2006 to 2016"
+			},
+			"scale": {
+				"pt": "1:250.000",
+				"en": "1:250.000"
+			},
+			"system_coordinator": {
+				"pt": "Superfície de referência SIRGAS 2000, Sistema de Coordenada Geográfica (em graus).",
+				"en": "SIRGAS 2000 reference surface, Geographic Coordinate System (in degrees)."
+			},
+			"cartographic_projection": {
+				"pt": "Universal de Mercator.",
+				"en": "Universal Transverse Mercator (UTM)."
+			},
+			"cod_caracter": {
+				"pt": "Latin 1.",
+				"en": "Latin 1."
+			},
+			"fonte": {
+				"pt": "Comissão Pastoral da Terra",
+				"en": "Pastoral Land Commission"
+			}
+		},
+		"bi_ce_conflito_terra_250_cpt": {
+			"title": {
+				"pt": "Conflitos por terra - Ocorrências",
+				"en": "Land conflicts - Occurrences"
+			},
+			"description": {
+				"pt": "Número de conflitos por municípios do Cerrado, em ações de resistência e enfrentamento pela posse, uso e propriedade da terra e pelo acesso aos recursos naturais, no período de 2006 á 2016, produzidos pela CPT - Comissão Pastoral da Terra -  espacializados pelo Lapig.",
+				"en": "Number of conflicts by municipalities in the Cerrado, in actions of resistance and confrontation for the possession, use and ownership of land and for accesse to natural resources, from 2006 to 2016, produced by CPT - Pastoral Land Commisson - spatialized by Lapig."
+			},
+			"format": {
+				"pt": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+				"en": "Shapefile (* .SHP), with complementary files (* .PRJ, * DBF, * .SHX, * .SBX, * MAP). Comma-separated values (* .CSV)."
+			},
+			"region": {
+				"pt": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+				"en": "Cerrado biome, allowing to analyze the classes of land use by other regions of interest such as: states and municipalities."
+			},
+			"period": {
+				"pt": "2006 á 2016",
+				"en": "2006 to 2016"
+			},
+			"scale": {
+				"pt": "1:250.000",
+				"en": "1:250.000"
+			},
+			"system_coordinator": {
+				"pt": "Superfície de referência SIRGAS 2000, Sistema de Coordenada Geográfica (em graus).",
+				"en": "SIRGAS 2000 reference surface, Geographic Coordinate System (in degrees)."
+			},
+			"cartographic_projection": {
+				"pt": "Universal de Mercator.",
+				"en": "Universal Transverse Mercator (UTM)."
+			},
+			"cod_caracter": {
+				"pt": "Latin 1.",
+				"en": "Latin 1."
+			},
+			"fonte": {
+				"pt": "Comissão Pastoral da Terra",
+				"en": "Pastoral Land Commission"
+			}
+		},
+		"bi_ce_conflito_terra_pessoas_250_cpt": {
+			"title": {
+				"pt": "Pessoas envolvidas em conflitos por Terra",
+				"en": "People involved in land conflicts"
+			},
+			"description": {
+				"pt": "Número de pessoas envolvidas em conflitos por terra ocorridos por município, em ações de resistência e enfrentamento pela posse, uso e propriedade da terra e pelo acesso aos recursos naturais, na região do Matopiba,  no período de 2006 á 2016, produzidos pela CPT - Comissão Pastoral da Terra -  espacializados pelo Lapig.",
+				"en": "Number of people involved in land conflicts occurring by municipality, in actions of resistance and confrontation for the possession, use and ownership of land and for access to natural resources, in the Matopiba region, in the period 2006 to 2016, produced by the CPT - Pastoral Land Commission - spatialized by Lapig."
+			},
+			"format": {
+				"pt": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+				"en": "Shapefile (* .SHP), with complementary files (* .PRJ, * DBF, * .SHX, * .SBX, * MAP). Comma-separated values (* .CSV)."
+			},
+			"region": {
+				"pt": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+				"en": "Cerrado biome, allowing to analyze the classes of land use by other regions of interest such as: states and municipalities."
+			},
+			"period": {
+				"pt": "2006 á 2016",
+				"en": "2006 to 2016"
+			},
+			"scale": {
+				"pt": "1:250.000",
+				"en": "1:250.000"
+			},
+			"system_coordinator": {
+				"pt": "Superfície de referência SIRGAS 2000, Sistema de Coordenada Geográfica (em graus).",
+				"en": "SIRGAS 2000 reference surface, Geographic Coordinate System (in degrees)."
+			},
+			"cartographic_projection": {
+				"pt": "Universal de Mercator.",
+				"en": "Universal Transverse Mercator (UTM)."
+			},
+			"cod_caracter": {
+				"pt": "Latin 1.",
+				"en": "Latin 1."
+			},
+			"fonte": {
+				"pt": "Comissão Pastoral da Terra",
+				"en": "Pastoral Land Commission"
+			}
+		},
+		"bi_ce_trabalho_escravo_250_cpt": {
+			"title": {
+				"pt": "Trabalho escravo",
+				"en": "Slave work"
+			},
+			"description": {
+				"pt": "Número de pessoas envolvidas por municípios do Cerrado, em ações de trabalhos forçados, jornada exaustiva, ou por sujeitá-lo a condições degradantes de trabalho, no período de de 2008 á 2017, produzidos pela CPT - Comissão Pastoral da Terra -  espacializados pelo Lapig.",
+				"en": "Number of people involved by Cerrado municipalities, in forced labor actions, exhaustive work hours, or by subjecting it to degrading work conditions, in the period from 2008 to 2017, produced by CPT - Pastoral Land Commission - spatialized by Lapig."
+			},
+			"format": {
+				"pt": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+				"en": "Shapefile (* .SHP), with complementary files (* .PRJ, * DBF, * .SHX, * .SBX, * MAP). Comma-separated values (* .CSV)."
+			},
+			"region": {
+				"pt": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+				"en": "Cerrado biome, allowing to analyze the classes of land use by other regions of interest such as: states and municipalities."
+			},
+			"period": {
+				"pt": "2008 á 2017",
+				"en": "2008 to 2017"
+			},
+			"scale": {
+				"pt": "1:250.000",
+				"en": "1:250.000"
+			},
+			"system_coordinator": {
+				"pt": "Superfície de referência SIRGAS 2000, Sistema de Coordenada Geográfica (em graus).",
+				"en": "SIRGAS 2000 reference surface, Geographic Coordinate System (in degrees)."
+			},
+			"cartographic_projection": {
+				"pt": "Universal de Mercator.",
+				"en": "Universal Transverse Mercator (UTM)."
+			},
+			"cod_caracter": {
+				"pt": "Latin 1.",
+				"en": "Latin 1."
+			},
+			"fonte": {
+				"pt": "Comissão Pastoral da Terra",
+				"en": "Pastoral Land Commission"
+			}
+		},
+		"bi_ce_idhm_250_pnud": {
+			"title": {
+				"pt": "Índice de Desenvolvimento Humano",
+				"en": "Human development index"
+			},
+			"description": {
+				"pt": "Índice de Desenvolvimento Humano Municipal, calculado pela média geométrica dos índices das dimensões de Renda, Educação e Longevidade. Esse cálculo foi realizado a partir das informações dos 3 últimos Censos Demográficos do IBGE – 1991, 2000 e 2010.",
+				"en": "Municipal Human Development Index, calculated by the geometric average of indices of the dimensions of income, education and longevity. This calculation was based on information from the last 3 IBGE Demographic Censuses - 1991, 2000 and 2010."
+			},
+			"format": {
+				"pt": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+				"en": "Shapefile (* .SHP), with complementary files (* .PRJ, * DBF, * .SHX, * .SBX, * MAP). Comma-separated values (* .CSV)."
+			},
+			"region": {
+				"pt": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+				"en": "Cerrado biome, allowing to analyze the classes of land use by other regions of interest such as: states and municipalities."
+			},
+			"period": {
+				"pt": "1991, 2000 e 2010",
+				"en": "1991, 2000 and 2010"
+			},
+			"scale": {
+				"pt": "1:250.000",
+				"en": "1:250.000"
+			},
+			"system_coordinator": {
+				"pt": "Superfície de referência SIRGAS 2000, Sistema de Coordenada Geográfica (em graus).",
+				"en": "SIRGAS 2000 reference surface, Geographic Coordinate System (in degrees)."
+			},
+			"cartographic_projection": {
+				"pt": "Universal de Mercator.",
+				"en": "Universal Transverse Mercator (UTM)."
+			},
+			"cod_caracter": {
+				"pt": "Latin 1.",
+				"en": "Latin 1."
+			},
+			"fonte": {
+				"pt": "Programa das Nações Unidas para o Desenvolvimento",
+				"en": "United Nations Development Programme"
+			}
 		}
 	},
 	"basemap": {
@@ -1217,8 +1777,8 @@
 	},
 	"limits": {
 		"bioma": {
-			"pt": "Biomas",
-			"en": "Biomes"
+			"pt": "Bioma Cerrado",
+			"en": "Cerrado Biome"
 		},
 		"estados": {
 			"pt": "Estados",
@@ -1263,6 +1823,10 @@
 		"planejamento_hidrico": {
 			"pt": "Unidades de Planejamento Hídrico",
 			"en": "Water Planning"
+		},
+		"ibas": {
+			"pt": "Áreas Importantes para Conservação das Aves",
+			"en": "Important areas for bird conservation"
 		}
 	},
 	"charts_regions": {
