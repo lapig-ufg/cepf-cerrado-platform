@@ -433,6 +433,10 @@ export class MapComponent implements OnInit {
 		this.updateSourceAllLayer();
 		this.updateCharts();
 		this.addPoints();
+
+		let register_event = this.selectRegion.type + "_" + this.selectRegion.text
+		this.googleAnalyticsService.eventEmitter("changeRegion", "Select-Region", register_event, 7);
+
 	}
 	async openRegionReport() {
 		let dados = {};
@@ -1652,6 +1656,18 @@ export class MapComponent implements OnInit {
 			this.handleInteraction();
 		}
 		this.handleInteraction();
+
+		if (layer.visible) {
+			let layerTested = layer.value;
+			let time_selected = layer.timeSelected
+
+			let register_event = layerTested
+			if (time_selected != undefined) {
+				register_event += "_" + time_selected
+			}
+
+			this.googleAnalyticsService.eventEmitter("changeSourceLayer", "UpdateSourceLayer", register_event, 2);
+		}
 	}
 
 	baseLayerChecked(base, e) {
@@ -1731,6 +1747,25 @@ export class MapComponent implements OnInit {
 		this.handleInteraction();
 
 		this.LayersTMS[layer.selectedType].setVisible(layer.visible)
+
+		if (layer.visible) {
+			let register_event = ''
+
+			if (layer.id != 'satelite') {
+				let layerTested = this.layersNames.find(element => element.id === layer.id);
+				let time_selected = this.selectedTimeFromLayerType(layerTested.selectedType)
+				register_event = layerTested.selectedType
+				if (time_selected != undefined) {
+					register_event += "_" + time_selected.value
+				}
+			}
+			else {
+				register_event = layer.selectedType + "_" + (layer.selectedType === 'landsat' ? layer.types[0].timeSelected : layer.types[1].timeSelected)
+			}
+
+			this.googleAnalyticsService.eventEmitter("changeLayer", "VisibilityLayer", register_event, 1);
+		}
+
 	}
 
 	legendchecked(layer, e) {
