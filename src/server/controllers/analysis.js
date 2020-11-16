@@ -1,3 +1,5 @@
+var languageJson = require('../assets/lang/language.json');
+
 module.exports = function (app) {
     var Controller = {}
     var Internal = {}
@@ -6,6 +8,7 @@ module.exports = function (app) {
 
         var type = request.param('type')
         var region = request.param('region')
+        var language = request.param('lang')
 
         let sizeSrc = 768;
         let sizeThumb = 400;
@@ -22,11 +25,12 @@ module.exports = function (app) {
                 msregion: "municipio"
             }
         }
-        else if (type = 'estado') {
+        else if (type == 'estado') {
             regionfilter = {
                 msfilter: "uf",
                 msregion: "uf"
             }
+
         }
 
         let anual_statistic = [];
@@ -40,9 +44,9 @@ module.exports = function (app) {
                 box: box,
                 year: ano,
                 imgLarge: app.config.ows_host + "/ows?SERVICE=WMS&REQUEST=GetMap&VERSION=1.1.1&layers=uso_solo_mapbiomas,regions_cepf_realce_maior&bbox=" + box + "&TRANSPARENT=TRUE&srs=EPSG:4674&width=" +
-                    sizeSrc + "&height=" + sizeSrc + "&format=image/png&styles=&ENHANCE=TRUE&MSFILTER=" + regionfilter.msfilter + " ilike '" + region + "' and year = " + ano + "&MSREGION=type='" + regionfilter.msregion + "' and text ilike '" + region + "'",
+                    sizeSrc + "&height=" + sizeSrc + "&format=image/png&styles=&ENHANCE=TRUE&MSFILTER=" + regionfilter.msfilter + ((type == 'estado') ? (" ilike '" + region + "'") : (" = " + region)) + " and year = " + ano + "&MSREGION=type='" + regionfilter.msregion + "' and text ilike '" + region + "'",
                 imgSmall: app.config.ows_host + "/ows?SERVICE=WMS&REQUEST=GetMap&VERSION=1.1.1&layers=uso_solo_mapbiomas,regions_cepf_realce_maior&bbox=" + box + "&TRANSPARENT=TRUE&srs=EPSG:4674&width=" +
-                    sizeThumb + "&height=" + sizeThumb + "&format=image/png&styles=&ENHANCE=TRUE&MSFILTER=" + regionfilter.msfilter + " ilike '" + region + "' and year = " + ano + "&MSREGION=type='" + regionfilter.msregion + "' and text ilike '" + region + "'"
+                    sizeThumb + "&height=" + sizeThumb + "&format=image/png&styles=&ENHANCE=TRUE&MSFILTER=" + regionfilter.msfilter + (type == 'estado' ? " ilike '" + region + "'" : " = " + region) + " and year = " + ano + "&MSREGION=type='" + regionfilter.msregion + "' and text ilike '" + region + "'"
             });
         }
 
@@ -131,13 +135,13 @@ module.exports = function (app) {
                     {
                         data: arrayAreasGrouped.map(e => e.area_pastagem),
                         borderColor: 'rgb(231, 187, 2)',
-                        label: "Area de Pastagem",
+                        label: languageJson["region_report"]["pastagem"][language],
                         fill: false
                     },
                     {
                         data: arrayAreasGrouped.map(e => e.area_queimada),
                         borderColor: 'rgb(110, 101, 101)',
-                        label: "Area Queimada",
+                        label: languageJson["region_report"]["queimada"][language],
                         fill: false
                     }
                 ]
