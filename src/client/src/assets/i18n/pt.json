@@ -36,12 +36,12 @@
   "title_legends_main": "Legendas",
   "region_tooltip": "Relatório da região selecionada",
   "estado": {
-    "title": "Relatório de Desmatamento do Estado - {{name}}",
+    "title": "Relatório do Estado - {{name}}",
     "info": "Informações do Estado",
     "region": "Estado"
   },
   "municipio": {
-    "title": "Relatório de desmatamento do município de {{name}}",
+    "title": "Relatório do município de {{name}}",
     "info": "Informações do município",
     "region": "Município"
   },
@@ -52,7 +52,7 @@
   "title_table_pasture": "Tabela de pastagem e queimadas",
   "burned_data_title": "Histórico de Áreas Queimadas",
   "burned_data_headers": ["Ano", "Área Queimada"],
-  "label_images": "Histórico de Imagens Landsat",
+  "label_images": "Histórico do Uso do Solo - Mapbiomas",
   "terraclass_card": "Visualizar as classes Terraclass que intersectam com a área submetida.",
   "terraclass_msg_searching": "Buscando as classes Terraclass que intersectam com esta área. Por favor aguarde.",
   "chart_terraclass_title": "Classes Terraclass que intersectam com a área submetida.",

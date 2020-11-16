@@ -37,12 +37,12 @@
   "typelabel_layer_type": "Type",
   "region_tooltip": "Selected region report",
   "estado": {
-    "title": "{{name}} State Deforestation Report",
+    "title": "{{name}} State Report",
     "info": "State Information",
     "region": "State"
   },
   "municipio": {
-    "title": "Deforestation Report in the municipality of {{name}}",
+    "title": "Report in the municipality of {{name}}",
     "info": "Municipality information",
     "region": "Municipality"
   },
@@ -53,7 +53,7 @@
   "title_table_pasture": "Pasture and burning table",
   "burned_data_title": "History of Burned Areas",
   "burned_data_headers": ["Year", "Burnt Area"],
-  "label_images": "Landsat Images History",
+  "label_images": "Land Use History - Mapbiomas",
   "terraclass_card": "View the Terraclass classes that intersect with the submitted area.",
   "terraclass_msg_searching": "Searching for the Terraclass classes that intersect with this area. Please wait.",
   "chart_terraclass_title": "Terraclass classes that intersect with the submitted area",
