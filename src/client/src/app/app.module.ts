@@ -35,6 +35,9 @@ import { FileUploadComponent } from './uso_do_solo/file-upload/file-upload.compo
 import { RegionReportComponent } from './uso_do_solo/region-report/region-report.component';
 import { SpinnerImgComponent } from './uso_do_solo/spinner-img/spinner-img.component';
 import { ChartsComponent } from './uso_do_solo/charts/charts.component';
+import { TutorialsComponent} from './paginas/tutorials/tutorials.component';
+import { GalleryComponent } from './paginas/gallery/gallery.component';
+import { LibraryComponent } from './paginas/library/library.component';
 import { ChartModule } from 'primeng/chart';
 import { DatePipe } from '@angular/common';
 
@@ -48,12 +51,12 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { DropdownModule } from 'primeng/dropdown';
 import { MatFormFieldModule, MatInputModule } from '@angular/material';
-
 import { PanelModule } from 'primeng/panel';
 import { SidebarModule } from 'primeng/sidebar';
 import { TooltipModule } from 'primeng/tooltip';
 import { TableModule } from 'primeng/table';
 import { AccordionModule } from 'primeng/accordion';
+import { GalleriaModule } from 'primeng/galleria';
 
 registerLocaleData(localePt);
 
@@ -70,7 +73,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     FileUploadComponent,
     RegionReportComponent,
     SpinnerImgComponent,
-    ChartsComponent
+    ChartsComponent,
+    TutorialsComponent,
+    GalleryComponent,
+    LibraryComponent
   ],
   imports: [
     MatFormFieldModule,
@@ -109,6 +115,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ChartModule,
     NgbModule,
     LightboxModule,
+    GalleriaModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -120,7 +127,10 @@ export function HttpLoaderFactory(http: HttpClient) {
   entryComponents: [
       UsoDoSoloMetadados,
       RegionReportComponent,
-      ChartsComponent
+      ChartsComponent,
+      TutorialsComponent,
+      GalleryComponent,
+      LibraryComponent
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt-BR' },

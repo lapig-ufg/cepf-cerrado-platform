@@ -58,5 +58,15 @@
   "chart_terraclass_title": "Classes Terraclass que intersectam com a área submetida.",
   "report_analyzed_area_title": "Relatório da área submetida",
   "upload_token": "Token de acesso (apenas números): ",
-  "btn_search": "Consultar"
+  "btn_search": "Consultar",
+  "pdfs": "Documentos em PDF",
+  "tutorials": "Tutoriais",
+  "gee_title": "Tutoriais Google Earth Engine",
+  "aerial_images": "Imagens Aéreas",
+  "deflorestantion": "Dematamento",
+  "playlist_msg" : "Clique no botão ao lado de <strong>Copiar Link</strong> para visualizar outros tutoriais.",
+  "title_articles": "Artigos Científicos",
+  "title_publications": "Publicações",
+  "title_literature": "Literatura diversa",
+  "socioambiental": "Socioambiental"
 }

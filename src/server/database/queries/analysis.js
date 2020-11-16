@@ -24,7 +24,7 @@ module.exports = function (app) {
         }
         else if (type.toLowerCase() == "estado") {
             regionfilter = {
-                box_region: "uf",
+                box_region: "estado",
                 other: "uf"
             }
         }

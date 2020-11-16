@@ -60,5 +60,14 @@
   "chart_terraclass_title": "Terraclass classes that intersect with the submitted area",
   "report_analyzed_area_title": "Report of the submitted area",
   "upload_token": "Access Token (numbers only): ",
-  "btn_search": "Search"
+  "btn_search": "Search",
+  "pdfs": "PDF Documents",
+  "tutorials": "Tutorials",
+  "aerial_images": "Aerial images",
+  "deflorestantion": "Deflorestantion",
+  "playlist_msg" : "Click the button next to <strong>Copy Link</strong> to view other tutorials.",
+  "title_articles": "Scientific articles",
+  "title_publications": "Publications",
+  "title_literature": "Diverse literature",
+  "socioambiental": "Socio-environmental"
 }

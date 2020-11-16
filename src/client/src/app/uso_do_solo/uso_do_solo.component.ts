@@ -225,11 +225,6 @@ export class MapComponent implements OnInit {
 		public router: Router,
 		public route: ActivatedRoute
 	) {
-		// this.languages['pt'] = 'pt-br';
-		// this.languages['en'] = 'en-us';
-		// this.languages['pt-br'] = 'pt-br';
-		// this.languages['en-us'] = 'en';
-
 		translate.addLangs(['en', 'pt']);
 		translate.setDefaultLang('pt');
 		const browserLang = translate.getBrowserLang();
@@ -902,11 +897,10 @@ export class MapComponent implements OnInit {
 			this.layerFromConsulta.heavyAnalysisLoading = true;
 			urlParamsHeavyAnalysis = '/service/upload/analysisarea?' + params.join('&');
 			let resultHeavyAnalysis = await this.http.get(urlParamsHeavyAnalysis).toPromise();
-			console.log(resultHeavyAnalysis);
 			this.layerFromConsulta.heavyAnalysis = resultHeavyAnalysis;
 			this.layerFromConsulta.heavyAnalysisLoading = false;
 
-			// //   this.googleAnalyticsService.eventEmitter("analyzeConsultaUploadLayer", "Analyze-Consulta-Upload", this.layerFromConsulta.token, 5);
+			this.googleAnalyticsService.eventEmitter("analyzeConsultaUploadLayer", "Analyze-Consulta-Upload", this.layerFromConsulta.token, 5);
 		} else {
 			this.layerFromUpload.analyzedAreaLoading = true;
 			params.push('token=' + this.layerFromUpload.token)
@@ -926,7 +920,7 @@ export class MapComponent implements OnInit {
 			let resultHeavyAnalysis = await this.http.get(urlParamsHeavyAnalysis).toPromise();
 			this.layerFromUpload.heavyAnalysis = resultHeavyAnalysis
 			this.layerFromUpload.heavyAnalysisLoading = false;
-			// //   this.googleAnalyticsService.eventEmitter("analyzeUploadLayer", "Analyze-Upload", this.layerFromUpload.token, 6);
+			this.googleAnalyticsService.eventEmitter("analyzeUploadLayer", "Analyze-Upload", this.layerFromUpload.token, 6);
 		}
 
 	}
@@ -1000,9 +994,7 @@ export class MapComponent implements OnInit {
 			]
 		});
 
-
-		// this.googleAnalyticsService.eventEmitter("uploadLayer", "Upload", "uploadLayer", 4);
-
+		this.googleAnalyticsService.eventEmitter("uploadLayer", "Upload", "uploadLayer", 4);
 	}
 
 	loadLayerFromConsultaToMap() {
@@ -1491,8 +1483,6 @@ export class MapComponent implements OnInit {
 			let res = this.selectedTimeFromLayerType(mapbiomas.selectedType);
 			text = res.value;
 		}
-
-		// console.log(this.layersNames, mapbiomas)
 
 		return {
 			version: '2.2.0',
