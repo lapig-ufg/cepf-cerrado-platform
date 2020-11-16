@@ -41,7 +41,7 @@ import { GoogleAnalyticsService } from '../services/google-analytics.service';
 import { RegionReportComponent } from './region-report/region-report.component';
 import logos from './logos';
 import * as moment from 'moment';
-import {ChartsComponent} from './charts/charts.component';
+import { ChartsComponent } from './charts/charts.component';
 
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
@@ -447,6 +447,8 @@ export class MapComponent implements OnInit {
 		} else {
 			return;
 		}
+
+		url += '&lang=' + this.language
 
 		dados['region'] = await this.http.get(url).toPromise();
 

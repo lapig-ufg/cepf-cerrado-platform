@@ -10,7 +10,7 @@ module.exports = function (app) {
     Query.regionreport = function (params) {
 
         var type = params['type']
-        var region = params['region']
+        var region = params['region'].toUpperCase()
 
         let regionfilter = {
             box_region: "",
@@ -30,7 +30,6 @@ module.exports = function (app) {
         }
         else
             return ''
-
 
         return [
             {

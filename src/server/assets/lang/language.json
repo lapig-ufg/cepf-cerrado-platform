@@ -743,7 +743,7 @@
 				"pt": "SIDRA / IBGE",
 				"en": "SIDRA / IBGE"
 			}
-		}, 
+		},
 		"producao_carvao": {
 			"title": {
 				"pt": "Produção de Carvão vegetal por Municípios do Brasil",
@@ -785,7 +785,7 @@
 				"pt": "SIDRA / IBGE",
 				"en": "SIDRA / IBGE"
 			}
-		}, 
+		},
 		"producao_lenha": {
 			"title": {
 				"pt": "Produção de Lenha por Municípios do Brasil",
@@ -827,7 +827,7 @@
 				"pt": "SIDRA / IBGE",
 				"en": "SIDRA / IBGE"
 			}
-		}, 
+		},
 		"producao_madeira": {
 			"title": {
 				"pt": "Produção de Madeira por Municípios do Brasil",
@@ -869,7 +869,7 @@
 				"pt": "SIDRA / IBGE",
 				"en": "SIDRA / IBGE"
 			}
-		}, 
+		},
 		"desmatamento_prodes": {
 			"title": {
 				"pt": "Monitoramento do Desmatamento no Cerrado Brasileiro por Satélite",
@@ -911,7 +911,7 @@
 				"pt": "Programa conduzido pelo Ministério de Meio Ambiente (MMA) e o Ministério da Ciência, Tecnologia e Inovação (MCTI), with recursos financeiros oriundos do Banco Mundial (World Bank – IBRD-IDA), além das instituições alemães KfW e GIZ.",
 				"en": "Program conducted by Ministry by Environment (MMA) and the Ministry of Science, Tecnology and Innovation (MCTI), with financial resources from the World Bank (World Bank - IBRD-IDA), in addition to the German institutions KfW and GIZ."
 			}
-		}, 
+		},
 		"desmatamento_siad": {
 			"title": {
 				"pt": "Áreas de Desmatamento no Cerrado",
@@ -953,7 +953,7 @@
 				"pt": "Lapig/UFG",
 				"en": "Lapig/UFG"
 			}
-		}, 
+		},
 		"desmatamento_glad": {
 			"title": {
 				"pt": "Perda de Cobertura Árborea",
@@ -995,7 +995,7 @@
 				"pt": "Hansen/UMD/Google/USGS/NASA, Global Forest Watch.",
 				"en": "Hansen/UMD/Google/USGS/NASA, Global Forest Watch."
 			}
-		}, 
+		},
 		"desmatamento_deter": {
 			"title": {
 				"pt": "Alertas de Desmatamento no Cerrado",
@@ -1037,7 +1037,7 @@
 				"pt": "Programa conduzido pelo Ministério de Meio Ambiente (MMA) e o Ministério da Ciência, Tecnologia e Inovação (MCTI) contando com recursos financeiros oriundos do Banco Mundial (World Bank – IBRD-IDA), além das instituições alemães KfW e GIZ.",
 				"en": "Program conducted by the Ministry of Environment (MMA) and the Ministry of Science, Technology and Innovation (MCTI) with financial resources from the World Bank (World Bank - IBRD-IDA), in addition to the German institutions KfW and GIZ."
 			}
-		}, 
+		},
 		"queimadas_lapig": {
 			"title": {
 				"pt": "Áreas de Queimadas do Cerrado",
@@ -1079,7 +1079,7 @@
 				"pt": "LAPIG / UFG.",
 				"en": "LAPIG / UFG."
 			}
-		}, 
+		},
 		"pontos_campo_parada": {
 			"title": {
 				"pt": "Pontos de Campo",
@@ -1121,7 +1121,7 @@
 				"pt": "Laboratório de Processamento de Imagens e Geoprocessamento – Lapig (geração do dado). Projeto financiador: Spatial metrics and baselines of degradation patterns and provision of ecosystem services by pastures in Brazil.",
 				"en": "Laboratory of Image Processing and Geoprocessing - Lapig (data generation). Project 'Spatial metrics and baselines of degradation patterns and provision of ecosystem services by pastures in Brazil' (funder)."
 			}
-		}, 
+		},
 		"pontos_campo_sem_parada": {
 			"title": {
 				"pt": "Pontos de Campo",
@@ -1163,7 +1163,7 @@
 				"pt": "Laboratório de Processamento de Imagens e Geoprocessamento – Lapig (geração do dado). Projeto Spatial metrics and baselines of degradation patterns and provision of ecosystem services by pastures in Brazil. (viabilizador).",
 				"en": "Image Processing and Geoprocessing Laboratory - Lapig (data generation). Project Spatial metrics and baselines of degradation patterns and provision of ecosystem services by pastures in Brazil. (enabler)."
 			}
-		}, 
+		},
 		"pontos_inspecionados_treinamento": {
 			"title": {
 				"pt": "Pontos Visualmente Inspecionados",
@@ -1205,7 +1205,7 @@
 				"pt": "Laboratório de Processamento de Imagens e Geoprocessamento – Lapig (geração do dado). Projeto financiador: Spatial metrics and baselines of degradation patterns and provision of ecosystem services by pastures in Brazil.",
 				"en": "Laboratory of Image Processing and Geoprocessing - Lapig (data generation). Project 'Spatial metrics and baselines of degradation patterns and provision of ecosystem services by pastures in Brazil ' (funder)."
 			}
-		}, 
+		},
 		"pontos_inspecionados_validacao": {
 			"title": {
 				"pt": "Pontos Visualmente Inspecionados",
@@ -2333,6 +2333,16 @@
 		"upload_search": {
 			"pt": "Consultar Área",
 			"en": "Load Area"
+		}
+	},
+	"region_report": {
+		"pastagem": {
+			"pt": "Area de Pastagem",
+			"en": "Pasture Area"
+		},
+		"queimada": {
+			"pt": "Area Queimada",
+			"en": "Burnt Area"
 		}
 	},
 	"descriptor": {
