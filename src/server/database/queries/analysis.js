@@ -31,8 +31,6 @@ module.exports = function (app) {
         else
             return ''
 
-        console.log("SELECT p.year, SUM(p.area_km2)*100.0 as area_queimada FROM queimadas_lapig p where p.year IS NOT NULL AND " + regionfilter.other + "='" + region + "' GROUP BY 1 order by 1 desc")
-
         return [
             {
                 id: 'box_region',
