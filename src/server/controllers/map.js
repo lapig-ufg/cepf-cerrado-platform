@@ -860,6 +860,121 @@ module.exports = function(app) {
           "dataService": "/service/charts/farming"
         },
         {
+          "id": "areas_especiais",
+          "label": languageJson["title_group_label"]["areas_especiais"][language],
+          "group_expanded": false,
+          "layers": [
+            {
+              "id": "assentamentos",
+              "label": languageJson["title_layer_label"]["assentamentos"][language],
+              "visible": false,
+              "selectedType": 'assentamentos',
+              "value": "assentamentos",
+              "opacity": 1,
+              "regionFilter": true,
+              "order": 2,
+              "timeHandler": "msfilter",
+              "metadados": {
+                "title": languageJson["metadata"]["assentamentos"]["title"][language],
+                "description": languageJson["metadata"]["assentamentos"]["description"][language],
+                "format": languageJson["metadata"]["assentamentos"]["format"][language],
+                "region": languageJson["metadata"]["assentamentos"]["region"][language],
+                "period": languageJson["metadata"]["assentamentos"]["period"][language],
+                "scale": languageJson["metadata"]["assentamentos"]["scale"][language],
+                "system_coordinator": languageJson["metadata"]["assentamentos"]["system_coordinator"][language],
+                "cartographic_projection": languageJson["metadata"]["assentamentos"]["cartographic_projection"][language],
+                "cod_caracter": languageJson["metadata"]["assentamentos"]["cod_caracter"][language],
+                "fonte": languageJson["metadata"]["assentamentos"]["fonte"][language],
+                "contato": "lapig.cepf@gmail.com"
+              },
+              "columnsCSV": "cd_sipra, uf, nome_proje, municipio, area_hecta, capacidade, num_famili, fase, data_de_cr, forma_obte, data_obten, area_calc_, sr, descricao_",
+              "downloadSHP": true,
+              "downloadCSV": true
+            },
+            {
+              "id": "limites_terras_indigenas",
+              "label": languageJson["title_layer_label"]["terras_indigenas"][language],
+              "visible": false,
+              "selectedType": 'limites_terras_indigenas',
+              "value": "limites_terras_indigenas",
+              "opacity": 1,
+              "regionFilter": true,
+              "order": 2,
+              "timeHandler": "msfilter",
+              "metadados": {
+                "title": languageJson["metadata"]["terras_indigenas"]["title"][language],
+                "description": languageJson["metadata"]["terras_indigenas"]["description"][language],
+                "format": languageJson["metadata"]["terras_indigenas"]["format"][language],
+                "region": languageJson["metadata"]["terras_indigenas"]["region"][language],
+                "period": languageJson["metadata"]["terras_indigenas"]["period"][language],
+                "scale": languageJson["metadata"]["terras_indigenas"]["scale"][language],
+                "system_coordinator": languageJson["metadata"]["terras_indigenas"]["system_coordinator"][language],
+                "cartographic_projection": languageJson["metadata"]["terras_indigenas"]["cartographic_projection"][language],
+                "cod_caracter": languageJson["metadata"]["terras_indigenas"]["cod_caracter"][language],
+                "fonte": languageJson["metadata"]["terras_indigenas"]["fonte"][language],
+                "contato": "lapig.cepf@gmail.com"
+              },
+              "columnsCSV": "codigo, nome, etnia, municipio, uf, superficie, fase, modalidade, cr",
+              "downloadSHP": true,
+              "downloadCSV": true
+            },
+            {
+              "id": "geo_car_imovel",
+              "label": languageJson["title_layer_label"]["terras_privadas"][language],
+              "visible": false,
+              "selectedType": 'geo_car_imovel',
+              "value": "geo_car_imovel",
+              "opacity": 1,
+              "regionFilter": true,
+              "order": 2,
+              "timeHandler": "msfilter",
+              "metadados": {
+                "title": languageJson["metadata"]["terras_privadas"]["title"][language],
+                "description": languageJson["metadata"]["terras_privadas"]["description"][language],
+                "format": languageJson["metadata"]["terras_privadas"]["format"][language],
+                "region": languageJson["metadata"]["terras_privadas"]["region"][language],
+                "period": languageJson["metadata"]["terras_privadas"]["period"][language],
+                "scale": languageJson["metadata"]["terras_privadas"]["scale"][language],
+                "system_coordinator": languageJson["metadata"]["terras_privadas"]["system_coordinator"][language],
+                "cartographic_projection": languageJson["metadata"]["terras_privadas"]["cartographic_projection"][language],
+                "cod_caracter": languageJson["metadata"]["terras_privadas"]["cod_caracter"][language],
+                "fonte": languageJson["metadata"]["terras_privadas"]["fonte"][language],
+                "contato": "lapig.cepf@gmail.com"
+              },
+              "columnsCSV": "idt_rel_te, idt_imovel, area_ha, cod_car, cod_estado, modulo, data_ref, tipo_imove",
+              "downloadSHP": true,
+              "downloadCSV": true
+            },
+            {
+              "id": "unidades_planejamento_hidrico",
+              "label": languageJson["title_layer_label"]["unidades_planejamento_hidrico"][language],
+              "visible": false,
+              "selectedType": 'unidades_planejamento_hidrico',
+              "value": "unidades_planejamento_hidrico",
+              "opacity": 1,
+              "regionFilter": true,
+              "order": 2,
+              "timeHandler": "msfilter",
+              "metadados": {
+                "title": languageJson["metadata"]["unidades_planejamento_hidrico"]["title"][language],
+                "description": languageJson["metadata"]["unidades_planejamento_hidrico"]["description"][language],
+                "format": languageJson["metadata"]["unidades_planejamento_hidrico"]["format"][language],
+                "region": languageJson["metadata"]["unidades_planejamento_hidrico"]["region"][language],
+                "period": languageJson["metadata"]["unidades_planejamento_hidrico"]["period"][language],
+                "scale": languageJson["metadata"]["unidades_planejamento_hidrico"]["scale"][language],
+                "system_coordinator": languageJson["metadata"]["unidades_planejamento_hidrico"]["system_coordinator"][language],
+                "cartographic_projection": languageJson["metadata"]["unidades_planejamento_hidrico"]["cartographic_projection"][language],
+                "cod_caracter": languageJson["metadata"]["unidades_planejamento_hidrico"]["cod_caracter"][language],
+                "fonte": languageJson["metadata"]["unidades_planejamento_hidrico"]["fonte"][language],
+                "contato": "lapig.cepf@gmail.com"
+              },
+              "columnsCSV": "uph_sg, uf, uph_nm, uph_rhi_cd, uph_cd",
+              "downloadSHP": true,
+              "downloadCSV": true
+            }
+          ]
+        },
+        {
           "id": "biodiversidade",
           "label": languageJson["title_group_label"]["biodiversidade"][language],
           "group_expanded": false,
@@ -1000,6 +1115,110 @@ module.exports = function(app) {
                 "fonte": languageJson["metadata"]["or_vp_pato_mergulhao_2019_na_iat"]["fonte"][language],
               },
               "columnsCSV": "ano, mês, rio, local, adultos, filhotes, ppch, agro, boi, desmata, dtur, fogo, altitude, risco1, risco2, risco3, risco4, impactos_o",
+              "downloadSHP": true,
+              "downloadCSV": true
+            },
+            {
+              "id": "areas_chave_biodiversidade",
+              "label": languageJson["title_layer_label"]["chaves_kba"][language],
+              "visible": false,
+              "selectedType": 'areas_chave_biodiversidade',
+              "value": "areas_chave_biodiversidade",
+              "opacity": 1,
+              "regionFilter": true,
+              "order": 2,
+              "timeHandler": "msfilter",
+              "metadados": {
+                "title": languageJson["metadata"]["areas_chave_biodiversidade"]["title"][language],
+                "description": languageJson["metadata"]["areas_chave_biodiversidade"]["description"][language],
+                "format": languageJson["metadata"]["areas_chave_biodiversidade"]["format"][language],
+                "region": languageJson["metadata"]["areas_chave_biodiversidade"]["region"][language],
+                "period": languageJson["metadata"]["areas_chave_biodiversidade"]["period"][language],
+                "scale": languageJson["metadata"]["areas_chave_biodiversidade"]["scale"][language],
+                "system_coordinator": languageJson["metadata"]["areas_chave_biodiversidade"]["system_coordinator"][language],
+                "cartographic_projection": languageJson["metadata"]["areas_chave_biodiversidade"]["cartographic_projection"][language],
+                "cod_caracter": languageJson["metadata"]["areas_chave_biodiversidade"]["cod_caracter"][language],
+                "fonte": languageJson["metadata"]["areas_chave_biodiversidade"]["fonte"][language],
+              },
+              "columnsCSV": "otto, cod, p_p_ra, p_pe_ra, fa_vu, fa_en, fa_cr, fa_i_vu, fa_i_en, fa_i_cr, flo_vu, flo_en, flo_cr, irre_tt, flo_i_vu, flo_i_en, flo_i_cr, pc_p_ra, pc_pe_ra, pc_fa_vu, pc_fa_cr, pc_fa_en, g_fa_mma, pc_g_fa_mm, pc_i_fa_vu, pc_i_fa_cr, pc_i_fa_en, g_fa_iucn, pc_g_fa_iu, g_fa_mm_iu, pc_g_mm_iu, pc_fl_vu, pc_fl_en, pc_fl_cr, g_fl_cnc, pc_g_fl_cn, pc_i_fl_vu, pc_i_fl_en, pc_i_fl_cr, g_fl_iucn, pc_g_fl_iu, g_fl_cn_iu, pc_g_cn_iu, pc_irre, biologico, p_biologic, fid_1, otto_1, cod_1, shape_le_2, shape_ar_1, a_kba_ha, reman, ipa, csc, agua, pc_reman, pc_ipa, pc_csc, pc_agua, g_pro_pri, pc_pro_pri, paisagem, p_paisagem, g_bio_pais, fim_bio_pa, class, area, shape_leng, kba, uf, nome, codigo, shape_le_1, shape_area",
+              "downloadSHP": true,
+              "downloadCSV": true
+            },
+            {
+              "id": "bi_ce_iba_250_2009_savebrasil",
+              "label": languageJson["title_layer_label"]["ibas"][language],
+              "visible": false,
+              "selectedType": 'bi_ce_iba_250_2009_savebrasil',
+              "value": "bi_ce_iba_250_2009_savebrasil",
+              "opacity": 1,
+              "regionFilter": true,
+              "order": 2,
+              "timeHandler": "msfilter",
+              "metadados": {
+                "title": languageJson["metadata"]["bi_ce_iba_250_2009_savebrasil"]["title"][language],
+                "description": languageJson["metadata"]["bi_ce_iba_250_2009_savebrasil"]["description"][language],
+                "format": languageJson["metadata"]["bi_ce_iba_250_2009_savebrasil"]["format"][language],
+                "region": languageJson["metadata"]["bi_ce_iba_250_2009_savebrasil"]["region"][language],
+                "period": languageJson["metadata"]["bi_ce_iba_250_2009_savebrasil"]["period"][language],
+                "scale": languageJson["metadata"]["bi_ce_iba_250_2009_savebrasil"]["scale"][language],
+                "system_coordinator": languageJson["metadata"]["bi_ce_iba_250_2009_savebrasil"]["system_coordinator"][language],
+                "cartographic_projection": languageJson["metadata"]["bi_ce_iba_250_2009_savebrasil"]["cartographic_projection"][language],
+                "cod_caracter": languageJson["metadata"]["bi_ce_iba_250_2009_savebrasil"]["cod_caracter"][language],
+                "fonte": languageJson["metadata"]["bi_ce_iba_250_2009_savebrasil"]["fonte"][language],
+              },
+              "columnsCSV": "codigo, nome, area",
+              "downloadSHP": true,
+              "downloadCSV": true
+            },
+            {
+              "id": "corredores_prioritarios_cepf",
+              "label": languageJson["title_layer_label"]["corredores_prioritarios_cepf"][language],
+              "visible": false,
+              "selectedType": 'corredores_prioritarios_cepf',
+              "value": "corredores_prioritarios_cepf",
+              "opacity": 1,
+              "regionFilter": true,
+              "order": 2,
+              "timeHandler": "msfilter",
+              "metadados": {
+                "title": languageJson["metadata"]["corredores_prioritarios_cepf"]["title"][language],
+                "description": languageJson["metadata"]["corredores_prioritarios_cepf"]["description"][language],
+                "format": languageJson["metadata"]["corredores_prioritarios_cepf"]["format"][language],
+                "region": languageJson["metadata"]["corredores_prioritarios_cepf"]["region"][language],
+                "period": languageJson["metadata"]["corredores_prioritarios_cepf"]["period"][language],
+                "scale": languageJson["metadata"]["corredores_prioritarios_cepf"]["scale"][language],
+                "system_coordinator": languageJson["metadata"]["corredores_prioritarios_cepf"]["system_coordinator"][language],
+                "cartographic_projection": languageJson["metadata"]["corredores_prioritarios_cepf"]["cartographic_projection"][language],
+                "cod_caracter": languageJson["metadata"]["corredores_prioritarios_cepf"]["cod_caracter"][language],
+                "fonte": languageJson["metadata"]["corredores_prioritarios_cepf"]["fonte"][language],
+              },
+              "columnsCSV": "nom_corred, priority",
+              "downloadSHP": true,
+              "downloadCSV": true
+            },
+            {
+              "id": "unidades_protecao_integral",
+              "label": languageJson["title_layer_label"]["unidades_protecao_integral"][language],
+              "visible": false,
+              "selectedType": 'unidades_protecao_integral',
+              "value": "unidades_protecao_integral",
+              "opacity": 1,
+              "regionFilter": true,
+              "order": 2,
+              "timeHandler": "msfilter",
+              "metadados": {
+                "title": languageJson["metadata"]["unidades_protecao_integral"]["title"][language],
+                "description": languageJson["metadata"]["unidades_protecao_integral"]["description"][language],
+                "format": languageJson["metadata"]["unidades_protecao_integral"]["format"][language],
+                "region": languageJson["metadata"]["unidades_protecao_integral"]["region"][language],
+                "period": languageJson["metadata"]["unidades_protecao_integral"]["period"][language],
+                "scale": languageJson["metadata"]["unidades_protecao_integral"]["scale"][language],
+                "system_coordinator": languageJson["metadata"]["unidades_protecao_integral"]["system_coordinator"][language],
+                "cartographic_projection": languageJson["metadata"]["unidades_protecao_integral"]["cartographic_projection"][language],
+                "cod_caracter": languageJson["metadata"]["unidades_protecao_integral"]["cod_caracter"][language],
+                "fonte": languageJson["metadata"]["unidades_protecao_integral"]["fonte"][language],
+              },
+              "columnsCSV": "nome, categoria, administra, ano_criaca, atolegal",
               "downloadSHP": true,
               "downloadCSV": true
             }
@@ -1239,6 +1458,40 @@ module.exports = function(app) {
                  }
 							]
             }
+          ]
+        },
+        {
+          "id": "geofisico",
+          "label": languageJson["title_group_label"]["geofisico"][language],
+          "group_expanded": false,
+          "layers": [
+            {
+              "id": "regioes_hidrograficas",
+              "label": languageJson["title_layer_label"]["regioes_hidrograficas"][language],
+              "visible": false,
+              "selectedType": 'regioes_hidrograficas',
+              "value": "regioes_hidrograficas",
+              "opacity": 1,
+              "regionFilter": true,
+              "order": 2,
+              "timeHandler": "msfilter",
+              "metadados": {
+                "title": languageJson["metadata"]["regioes_hidrograficas"]["title"][language],
+                "description": languageJson["metadata"]["regioes_hidrograficas"]["description"][language],
+                "format": languageJson["metadata"]["regioes_hidrograficas"]["format"][language],
+                "region": languageJson["metadata"]["regioes_hidrograficas"]["region"][language],
+                "period": languageJson["metadata"]["regioes_hidrograficas"]["period"][language],
+                "scale": languageJson["metadata"]["regioes_hidrograficas"]["scale"][language],
+                "system_coordinator": languageJson["metadata"]["regioes_hidrograficas"]["system_coordinator"][language],
+                "cartographic_projection": languageJson["metadata"]["regioes_hidrograficas"]["cartographic_projection"][language],
+                "cod_caracter": languageJson["metadata"]["regioes_hidrograficas"]["cod_caracter"][language],
+                "fonte": languageJson["metadata"]["regioes_hidrograficas"]["fonte"][language],
+                "contato": "lapig.cepf@gmail.com"
+              },
+              "columnsCSV": "rhi_sg, rhi_cd, rhi_nm, rhi_ar_km2, rhi_ar_ha, rhi_gm_are, rhi_gm_per, rhi_ve, rhi_cheia2, rhi_seca20",
+              "downloadSHP": true,
+              "downloadCSV": true
+            },
           ]
         },
         {
@@ -1761,71 +2014,8 @@ module.exports = function(app) {
               "opacity": 1
             },
             {
-              "value": "limites_areas_chave_biodiversidade",
-              "Viewvalue": languageJson["limits"]["chaves_kba"][language],
-              "visible": false,
-              "layer_limits": true,
-              "opacity": 1
-            },
-            {
-              "value": "bi_ce_iba_250_2009_savebrasil",
-              "Viewvalue": languageJson["limits"]["ibas"][language],
-              "visible": false,
-              "layer_limits": true,
-              "opacity": 1
-            },
-            {
-              "value": "limites_assentamentos",
-              "Viewvalue": languageJson["limits"]["assentamentos"][language],
-              "visible": false,
-              "layer_limits": true,
-              "opacity": 1
-            },
-            {
               "value": "limites_cartas_ibge",
               "Viewvalue": languageJson["limits"]["cartas_ibge"][language],
-              "visible": false,
-              "layer_limits": true,
-              "opacity": 1
-            },
-            {
-              "value": "limites_corredores_prioritarios_cepf",
-              "Viewvalue": languageJson["limits"]["corredores_cepf"][language],
-              "visible": false,
-              "layer_limits": true,
-              "opacity": 1
-            },
-            {
-              "value": "limites_regioes_hidrograficas",
-              "Viewvalue": languageJson["limits"]["regioes_hidrograficas"][language],
-              "visible": false,
-              "layer_limits": true,
-              "opacity": 1
-            },
-            {
-              "value": "limites_terras_indigenas",
-              "Viewvalue": languageJson["limits"]["terras_indigenas"][language],
-              "visible": false,
-              "layer_limits": true,
-              "opacity": 1
-            },
-            {
-              "value": "geo_car_imovel",
-              "Viewvalue": languageJson["limits"]["terras_privadas"][language],
-              "visible": false,
-              "layer_limits": true,
-              "opacity": 1
-            },
-            {
-              "value": "limites_unidades_protecao_integral",
-              "Viewvalue": languageJson["limits"]["conservacao_integral"][language],
-              "visible": false,
-              "layer_limits": true,
-              "opacity": 1
-            },
-            {
-              "value": "limites_unidades_planejamento_hidrico",
-              "Viewvalue": languageJson["limits"]["planejamento_hidrico"][language],
               "visible": false,
               "layer_limits": true,
               "opacity": 1

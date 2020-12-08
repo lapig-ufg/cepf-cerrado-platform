@@ -34,9 +34,17 @@
 			"pt": "Agropecuária",
 			"en": "Agriculture"
 		},
+		"areas_especiais": {
+			"pt": "Áreas Especiais",
+			"en": "Special Areas"
+		},
 		"desmatamentos_queimadas": {
 			"pt": "Desmatamentos / Queimadas",
 			"en": "Deforestation / Burning"
+		},
+		"geofisico": {
+			"pt": "Geofísico",
+			"en": "Geophysical"
 		},
 		"pontos_validacao": {
 			"pt": "Pontos de Validação (LAPIG)",
@@ -131,6 +139,42 @@
 		"ecorregioes": {
 			"pt": "Ecorregiões do Cerrado",
 			"en": "Cerrado Ecoregions"
+		},
+		"chaves_kba": {
+			"pt": "Áreas-chave de Biodiversidade - KBAs",
+			"en": "Key Biodiversity Areas - KBAs"
+		},
+		"ibas": {
+			"pt": "Áreas Importantes para Conservação das Aves",
+			"en": "Important areas for bird conservation"
+		},
+		"corredores_prioritarios_cepf": {
+			"pt": "Corredores Prioritários CEPF",
+			"en": "CEPF Priority Corridors"
+		},
+		"unidades_protecao_integral": {
+			"pt": "Unidades de Conservação Integral",
+			"en": "Integral Conservation Units"
+		},
+		"assentamentos": {
+			"pt": "Assentamentos",
+			"en": "Settlements"
+		},
+		"regioes_hidrograficas": {
+			"pt": "Regiões Hidrográficas",
+			"en": "Hydrographic Regions"
+		},
+		"terras_indigenas": {
+			"pt": "Terras Indígenas",
+			"en": "Indigenous Lands"
+		},
+		"terras_privadas": {
+			"pt": "Terras Privadas CAR",
+			"en": "Private Lands CAR"
+		},
+		"unidades_planejamento_hidrico": {
+			"pt": "Unidades de Planejamento Hídrico",
+			"en": "Water Planning"
 		}
 	},
 	"type_layer_viewvalue": {
@@ -1751,6 +1795,384 @@
 				"pt": "Programa das Nações Unidas para o Desenvolvimento",
 				"en": "United Nations Development Programme"
 			}
+		},
+		"areas_chave_biodiversidade": {
+			"title": {
+				"pt": "Áreas-chave de Biodiversidade - KBAs",
+				"en": "Key Biodiversity Areas - KBAs"
+			},
+			"description": {
+				"pt": "",
+				"en": ""
+			},
+			"format": {
+				"pt": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+				"en": "Shapefile (* .SHP), with complementary files (* .PRJ, * DBF, * .SHX, * .SBX, * MAP). Comma-separated values (* .CSV)."
+			},
+			"region": {
+				"pt": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+				"en": "Cerrado biome, allowing to analyze the classes of land use by other regions of interest such as: states and municipalities."
+			},
+			"period": {
+				"pt": "",
+				"en": ""
+			},
+			"scale": {
+				"pt": "",
+				"en": ""
+			},
+			"system_coordinator": {
+				"pt": "Superfície de referência SIRGAS 2000, Sistema de Coordenada Geográfica (em graus).",
+				"en": "SIRGAS 2000 reference surface, Geographic Coordinate System (in degrees)."
+			},
+			"cartographic_projection": {
+				"pt": "Universal de Mercator.",
+				"en": "Universal Transverse Mercator (UTM)."
+			},
+			"cod_caracter": {
+				"pt": "Latin 1.",
+				"en": "Latin 1."
+			},
+			"fonte": {
+				"pt": "",
+				"en": ""
+			}
+		},
+		"bi_ce_iba_250_2009_savebrasil": {
+			"title": {
+				"pt": "Áreas Importantes para Conservação das Aves",
+				"en": "Important areas for bird conservation"
+			},
+			"description": {
+				"pt": "Áreas críticas para as aves e a biodiversidade em geral. Faz parte da estratégia mundial da BirdLife International.",
+				"en": ""
+			},
+			"format": {
+				"pt": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+				"en": "Shapefile (* .SHP), with complementary files (* .PRJ, * DBF, * .SHX, * .SBX, * MAP). Comma-separated values (* .CSV)."
+			},
+			"region": {
+				"pt": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+				"en": "Cerrado biome, allowing to analyze the classes of land use by other regions of interest such as: states and municipalities."
+			},
+			"period": {
+				"pt": "",
+				"en": ""
+			},
+			"scale": {
+				"pt": "",
+				"en": ""
+			},
+			"system_coordinator": {
+				"pt": "Superfície de referência SIRGAS 2000, Sistema de Coordenada Geográfica (em graus).",
+				"en": "SIRGAS 2000 reference surface, Geographic Coordinate System (in degrees)."
+			},
+			"cartographic_projection": {
+				"pt": "Universal de Mercator.",
+				"en": "Universal Transverse Mercator (UTM)."
+			},
+			"cod_caracter": {
+				"pt": "Latin 1.",
+				"en": "Latin 1."
+			},
+			"fonte": {
+				"pt": "",
+				"en": ""
+			}
+		},
+		"corredores_prioritarios_cepf": {
+			"title": {
+				"pt": "Corredores Prioritários CEPF",
+				"en": "CEPF Priority Corridors"
+			},
+			"description": {
+				"pt": "",
+				"en": ""
+			},
+			"format": {
+				"pt": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+				"en": "Shapefile (* .SHP), with complementary files (* .PRJ, * DBF, * .SHX, * .SBX, * MAP). Comma-separated values (* .CSV)."
+			},
+			"region": {
+				"pt": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+				"en": "Cerrado biome, allowing to analyze the classes of land use by other regions of interest such as: states and municipalities."
+			},
+			"period": {
+				"pt": "",
+				"en": ""
+			},
+			"scale": {
+				"pt": "",
+				"en": ""
+			},
+			"system_coordinator": {
+				"pt": "Superfície de referência SIRGAS 2000, Sistema de Coordenada Geográfica (em graus).",
+				"en": "SIRGAS 2000 reference surface, Geographic Coordinate System (in degrees)."
+			},
+			"cartographic_projection": {
+				"pt": "Universal de Mercator.",
+				"en": "Universal Transverse Mercator (UTM)."
+			},
+			"cod_caracter": {
+				"pt": "Latin 1.",
+				"en": "Latin 1."
+			},
+			"fonte": {
+				"pt": "",
+				"en": ""
+			}
+		},
+		"unidades_protecao_integral": {
+			"title": {
+				"pt": "Unidades de Conservação Integral",
+				"en": "Integral Conservation Units"
+			},
+			"description": {
+				"pt": "",
+				"en": ""
+			},
+			"format": {
+				"pt": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+				"en": "Shapefile (* .SHP), with complementary files (* .PRJ, * DBF, * .SHX, * .SBX, * MAP). Comma-separated values (* .CSV)."
+			},
+			"region": {
+				"pt": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+				"en": "Cerrado biome, allowing to analyze the classes of land use by other regions of interest such as: states and municipalities."
+			},
+			"period": {
+				"pt": "",
+				"en": ""
+			},
+			"scale": {
+				"pt": "",
+				"en": ""
+			},
+			"system_coordinator": {
+				"pt": "Superfície de referência SIRGAS 2000, Sistema de Coordenada Geográfica (em graus).",
+				"en": "SIRGAS 2000 reference surface, Geographic Coordinate System (in degrees)."
+			},
+			"cartographic_projection": {
+				"pt": "Universal de Mercator.",
+				"en": "Universal Transverse Mercator (UTM)."
+			},
+			"cod_caracter": {
+				"pt": "Latin 1.",
+				"en": "Latin 1."
+			},
+			"fonte": {
+				"pt": "",
+				"en": ""
+			}
+		},
+		"assentamentos": {
+			"title": {
+				"pt": "Assentamentos",
+				"en": "Settlements"
+			},
+			"description": {
+				"pt": "",
+				"en": ""
+			},
+			"format": {
+				"pt": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+				"en": "Shapefile (* .SHP), with complementary files (* .PRJ, * DBF, * .SHX, * .SBX, * MAP). Comma-separated values (* .CSV)."
+			},
+			"region": {
+				"pt": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+				"en": "Cerrado biome, allowing to analyze the classes of land use by other regions of interest such as: states and municipalities."
+			},
+			"period": {
+				"pt": "",
+				"en": ""
+			},
+			"scale": {
+				"pt": "",
+				"en": ""
+			},
+			"system_coordinator": {
+				"pt": "Superfície de referência SIRGAS 2000, Sistema de Coordenada Geográfica (em graus).",
+				"en": "SIRGAS 2000 reference surface, Geographic Coordinate System (in degrees)."
+			},
+			"cartographic_projection": {
+				"pt": "Universal de Mercator.",
+				"en": "Universal Transverse Mercator (UTM)."
+			},
+			"cod_caracter": {
+				"pt": "Latin 1.",
+				"en": "Latin 1."
+			},
+			"fonte": {
+				"pt": "",
+				"en": ""
+			}
+		},
+		"regioes_hidrograficas": {
+			"title": {
+				"pt": "Regiões Hidrográficas",
+				"en": "Hydrographic Regions"
+			},
+			"description": {
+				"pt": "",
+				"en": ""
+			},
+			"format": {
+				"pt": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+				"en": "Shapefile (* .SHP), with complementary files (* .PRJ, * DBF, * .SHX, * .SBX, * MAP). Comma-separated values (* .CSV)."
+			},
+			"region": {
+				"pt": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+				"en": "Cerrado biome, allowing to analyze the classes of land use by other regions of interest such as: states and municipalities."
+			},
+			"period": {
+				"pt": "",
+				"en": ""
+			},
+			"scale": {
+				"pt": "",
+				"en": ""
+			},
+			"system_coordinator": {
+				"pt": "Superfície de referência SIRGAS 2000, Sistema de Coordenada Geográfica (em graus).",
+				"en": "SIRGAS 2000 reference surface, Geographic Coordinate System (in degrees)."
+			},
+			"cartographic_projection": {
+				"pt": "Universal de Mercator.",
+				"en": "Universal Transverse Mercator (UTM)."
+			},
+			"cod_caracter": {
+				"pt": "Latin 1.",
+				"en": "Latin 1."
+			},
+			"fonte": {
+				"pt": "",
+				"en": ""
+			}
+		},
+		"terras_indigenas": {
+			"title": {
+				"pt": "Terras Indígenas",
+				"en": "Indigenous Lands"
+			},
+			"description": {
+				"pt": "",
+				"en": ""
+			},
+			"format": {
+				"pt": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+				"en": "Shapefile (* .SHP), with complementary files (* .PRJ, * DBF, * .SHX, * .SBX, * MAP). Comma-separated values (* .CSV)."
+			},
+			"region": {
+				"pt": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+				"en": "Cerrado biome, allowing to analyze the classes of land use by other regions of interest such as: states and municipalities."
+			},
+			"period": {
+				"pt": "",
+				"en": ""
+			},
+			"scale": {
+				"pt": "",
+				"en": ""
+			},
+			"system_coordinator": {
+				"pt": "Superfície de referência SIRGAS 2000, Sistema de Coordenada Geográfica (em graus).",
+				"en": "SIRGAS 2000 reference surface, Geographic Coordinate System (in degrees)."
+			},
+			"cartographic_projection": {
+				"pt": "Universal de Mercator.",
+				"en": "Universal Transverse Mercator (UTM)."
+			},
+			"cod_caracter": {
+				"pt": "Latin 1.",
+				"en": "Latin 1."
+			},
+			"fonte": {
+				"pt": "",
+				"en": ""
+			}
+		},
+		"terras_privadas": {
+			"title": {
+				"pt": "Terras Privadas CAR",
+				"en": "Private Lands CAR"
+			},
+			"description": {
+				"pt": "",
+				"en": ""
+			},
+			"format": {
+				"pt": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+				"en": "Shapefile (* .SHP), with complementary files (* .PRJ, * DBF, * .SHX, * .SBX, * MAP). Comma-separated values (* .CSV)."
+			},
+			"region": {
+				"pt": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+				"en": "Cerrado biome, allowing to analyze the classes of land use by other regions of interest such as: states and municipalities."
+			},
+			"period": {
+				"pt": "",
+				"en": ""
+			},
+			"scale": {
+				"pt": "",
+				"en": ""
+			},
+			"system_coordinator": {
+				"pt": "Superfície de referência SIRGAS 2000, Sistema de Coordenada Geográfica (em graus).",
+				"en": "SIRGAS 2000 reference surface, Geographic Coordinate System (in degrees)."
+			},
+			"cartographic_projection": {
+				"pt": "Universal de Mercator.",
+				"en": "Universal Transverse Mercator (UTM)."
+			},
+			"cod_caracter": {
+				"pt": "Latin 1.",
+				"en": "Latin 1."
+			},
+			"fonte": {
+				"pt": "",
+				"en": ""
+			}
+		},
+		"unidades_planejamento_hidrico": {
+			"title": {
+				"pt": "Unidades de Planejamento Hídrico",
+				"en": "Water Planning"
+			},
+			"description": {
+				"pt": "",
+				"en": ""
+			},
+			"format": {
+				"pt": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+				"en": "Shapefile (* .SHP), with complementary files (* .PRJ, * DBF, * .SHX, * .SBX, * MAP). Comma-separated values (* .CSV)."
+			},
+			"region": {
+				"pt": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+				"en": "Cerrado biome, allowing to analyze the classes of land use by other regions of interest such as: states and municipalities."
+			},
+			"period": {
+				"pt": "",
+				"en": ""
+			},
+			"scale": {
+				"pt": "",
+				"en": ""
+			},
+			"system_coordinator": {
+				"pt": "Superfície de referência SIRGAS 2000, Sistema de Coordenada Geográfica (em graus).",
+				"en": "SIRGAS 2000 reference surface, Geographic Coordinate System (in degrees)."
+			},
+			"cartographic_projection": {
+				"pt": "Universal de Mercator.",
+				"en": "Universal Transverse Mercator (UTM)."
+			},
+			"cod_caracter": {
+				"pt": "Latin 1.",
+				"en": "Latin 1."
+			},
+			"fonte": {
+				"pt": "",
+				"en": ""
+			}
 		}
 	},
 	"basemap": {
@@ -1788,45 +2210,9 @@
 			"pt": "Municípios",
 			"en": "Municipalities"
 		},
-		"chaves_kba": {
-			"pt": "Áreas-chave de Biodiversidade - KBAs",
-			"en": "Key Biodiversity Areas - KBAs"
-		},
-		"assentamentos": {
-			"pt": "Assentamentos",
-			"en": "Settlements"
-		},
 		"cartas_ibge": {
 			"pt": "Cartas IBGE",
 			"en": "Chart's IBGE"
-		},
-		"corredores_cepf": {
-			"pt": "Corredores Prioritários CEPF",
-			"en": "CEPF Priority Corridors"
-		},
-		"regioes_hidrograficas": {
-			"pt": "Regiões Hidrográficas",
-			"en": "Hydrographic Regions"
-		},
-		"terras_indigenas": {
-			"pt": "Terras Indígenas",
-			"en": "Indigenous Lands"
-		},
-		"terras_privadas": {
-			"pt": "Terras Privadas CAR",
-			"en": "Private Lands CAR"
-		},
-		"conservacao_integral": {
-			"pt": "Unidades de Conservação Integral",
-			"en": "Integral Conservation Units"
-		},
-		"planejamento_hidrico": {
-			"pt": "Unidades de Planejamento Hídrico",
-			"en": "Water Planning"
-		},
-		"ibas": {
-			"pt": "Áreas Importantes para Conservação das Aves",
-			"en": "Important areas for bird conservation"
 		}
 	},
 	"charts_regions": {
