@@ -1798,6 +1798,7 @@ export class MapComponent implements OnInit {
 		var columnsCSV = '';
 		var regionType = this.selectRegion.type;
 		var filterRegion;
+		console.log(layer.columnsCSV)
 		if (layer.types) {
 			for (let layerSelected of layer.types) {
 				if (layerSelected.value == layer.selectedType) {
@@ -1808,6 +1809,8 @@ export class MapComponent implements OnInit {
 			}
 		} else if (layer.timeSelected) {
 			yearDownload = '&' + layer.timeSelected;
+			columnsCSV = '&columnsCSV=' + layer.columnsCSV;
+		} else {
 			columnsCSV = '&columnsCSV=' + layer.columnsCSV;
 		}
 

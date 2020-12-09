@@ -36,18 +36,24 @@ module.exports = function (app) {
 		var layer = params['layer'];
 		var filterRegion = params['filterRegion'];
 		var year = params['year'];
-		var columnsCSV = "cd_geouf,cd_geocmu,regiao,uf,estado,municipio,bioma,matopiba,mun_ha,pol_ha,pct_areapo, " + params['columnsCSV']
-		var filter = filterRegion;
+		var columnsCSV = "cd_geouf,cd_geocmu,regiao,uf,estado,municipio,bioma, " + params['columnsCSV']
+		var filter = ' WHERE ' + filterRegion;
 
 		if (year != undefined && year != '')
-			filter = filterRegion + ' AND year=' + year;
+			filter = ' WHERE ' + filterRegion + ' AND year=' + year;
 
 		if (layer == 'pontos_campo_parada' || layer == 'pontos_campo_sem_parada' || layer == 'pontos_tvi_treinamento' || layer == 'pontos_tvi_validacao') {
 			columnsCSV = '*'
-			filter = filterRegion;
+			filter = ' WHERE ' + filterRegion;
 		}
 
-		return "SELECT " + columnsCSV + " FROM " + layer + " WHERE " + filter;
+		if (params['columnsCSV'] == '') {
+			console.log('vaziooooo')
+			columnsCSV = '*'
+			filter='';
+		}
+		console.log('_____query______: ', "SELECT " + columnsCSV + " FROM " + layer + filter)
+		return "SELECT " + columnsCSV + " FROM " + layer + filter;
 
 	}
 

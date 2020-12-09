@@ -887,7 +887,7 @@ module.exports = function(app) {
                 "fonte": languageJson["metadata"]["assentamentos"]["fonte"][language],
                 "contato": "lapig.cepf@gmail.com"
               },
-              "columnsCSV": "cd_sipra, uf, nome_proje, municipio, area_hecta, capacidade, num_famili, fase, data_de_cr, forma_obte, data_obten, area_calc_, sr, descricao_",
+              "columnsCSV": "",
               "downloadSHP": true,
               "downloadCSV": true
             },
@@ -914,7 +914,7 @@ module.exports = function(app) {
                 "fonte": languageJson["metadata"]["terras_indigenas"]["fonte"][language],
                 "contato": "lapig.cepf@gmail.com"
               },
-              "columnsCSV": "codigo, nome, etnia, municipio, uf, superficie, fase, modalidade, cr",
+              "columnsCSV": "",
               "downloadSHP": true,
               "downloadCSV": true
             },
@@ -941,9 +941,9 @@ module.exports = function(app) {
                 "fonte": languageJson["metadata"]["terras_privadas"]["fonte"][language],
                 "contato": "lapig.cepf@gmail.com"
               },
-              "columnsCSV": "idt_rel_te, idt_imovel, area_ha, cod_car, cod_estado, modulo, data_ref, tipo_imove",
-              "downloadSHP": true,
-              "downloadCSV": true
+              "columnsCSV": "",
+              "downloadSHP": false,
+              "downloadCSV": false
             },
             {
               "id": "unidades_planejamento_hidrico",
@@ -968,7 +968,7 @@ module.exports = function(app) {
                 "fonte": languageJson["metadata"]["unidades_planejamento_hidrico"]["fonte"][language],
                 "contato": "lapig.cepf@gmail.com"
               },
-              "columnsCSV": "uph_sg, uf, uph_nm, uph_rhi_cd, uph_cd",
+              "columnsCSV": "",
               "downloadSHP": true,
               "downloadCSV": true
             }
@@ -2037,8 +2037,10 @@ module.exports = function(app) {
     var result = []
 
     queryResult.forEach(function (row) {
+      // console.log(row.bioma)
       if (row) {
-				result.push(row);
+        result.push(row);
+        // result.delete(row.geom);
 			}
     })
 
