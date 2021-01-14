@@ -72,6 +72,12 @@
             </ul>
           </div>
         </div>
+        <!-- <div class="btn-languages">
+          <button (click)="changeLanguage('pt')" class="color-buttons" mat-raised-button
+            [ngStyle]="bntStylePOR">&nbsp;POR</button>
+          <button (click)="changeLanguage('en')" class="color-buttons" mat-raised-button
+            [ngStyle]="bntStyleENG">&nbsp;ENG</button>
+        </div> -->
       </div>
     </div>
   </nav>
@@ -82,7 +88,7 @@
       <div class="row">
         <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
           <div class="contents">
-            <h2 class="head-title">Plataforma de Conhecimento do<br>Cerrado</h2>
+            <h2 class="head-title">{{ 'platform_title' | translate }}<br>Cerrado</h2>
             <p style="padding-bottom:5px; text-align:justify"><b>Esta é uma iniciativa do Critical Ecosystem Partnership
                 Fund (CEPF - Cerrado), Instituto Internacional de Educação do Brasil (IEB) e do Laboratório de Processamento de Imagens e Geoprocessamento (LAPIG) da
                 Universidade Federal de Goiás (UFG).</b></p>
@@ -170,22 +176,30 @@
 <section id="inscreva" class="about-area" style="padding: 20px">
   <div class="container" style="margin-top: 50px;">
     <div class="section-header text-center" style="margin-bottom: 20px;">
-      <h2 class="section-title wow fadeInDown" data-wow-delay="0.3s">II Capacitação Técnica na Plataforma de
+      <h2 class="section-title wow fadeInDown" data-wow-delay="0.3s">Capacitações Técnicas na Plataforma de
         Conhecimento do Cerrado</h2>
       <div class="shape wow fadeInDown" data-wow-delay="0.3s"></div>
     </div>
     <div style="text-align: center">
-      <p>Participe da nossa segunda capacitação, no dia 10 de dezembro de 2020 das 14h as 18h, via
+      <p>Participe das nossas capacitações via
         transmissão ao vivo por nosso canal do YouTube: <a
           href="https://www.youtube.com/channel/UCMaMNxB4bgo6CSV2oETvTqg/featured" target="_blank" style="color:
             #f63854">Plataforma de Conhecimento do
-          Cerrado.</a></p>
-      <p style="font-size: 12px">*O preenchimento do formulário dará direito a um certificado de participação.</p>
+          Cerrado.</a> Confira as datas:</p>
+          <ul>
+            <li><b>26/01/2021</b> - Análises Socioambientais</li>
+            <li><b>08/02/2021</b> - Análises de Relevo</li>
+            <li><b>22/02/2021</b> - Índices de Vegetação e Operações com Imagens Aéreas</li>
+            <li><b>08/03/2021</b> - Classificação de Imagens</li>
+            <li><b>30/03/2021</b> - Análises Ambientais no Google Earth Engine</li>
+          </ul>
+      <p>Todas as capacitações ocorrerão das <b>14 ás 17h</b></p>
       <div style="padding: 10px">
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScLZdo9e88P_lxuMO1BUP2wuuuFZweemGeHWzf06eatziph2w/viewform?usp=sf_link"
+        <a href="https://forms.gle/xAenGr61k2YQAM8K8"
           target="_blank"><button class="btn btn-common" id="form-submit">Inscreva-se
             Gratuitamente</button> </a>
       </div>
+      <p style="font-size: 12px">*O preenchimento do formulário dará direito a um certificado de participação.</p>
     </div>
   </div>
 </section>

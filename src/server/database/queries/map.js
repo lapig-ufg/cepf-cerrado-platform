@@ -48,10 +48,10 @@ module.exports = function (app) {
 		}
 
 		if (params['columnsCSV'] == '') {
-			console.log('vaziooooo')
 			columnsCSV = '*'
 			filter='';
 		}
+		
 		console.log('_____query______: ', "SELECT " + columnsCSV + " FROM " + layer + filter)
 		return "SELECT " + columnsCSV + " FROM " + layer + filter;
 

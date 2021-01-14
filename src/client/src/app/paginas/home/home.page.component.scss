@@ -75,3 +75,18 @@
 .cardAcervo:hover{
 	cursor: pointer;
 }
+
+.btn-languages {
+	display: flex;
+	justify-content: space-evenly;
+	margin: 15px;
+
+	button {
+		color: white !important;
+	}
+}
+
+.color-buttons {
+	background-color: #707070;
+	font-weight: 900;
+}

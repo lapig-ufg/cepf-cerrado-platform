@@ -2037,10 +2037,10 @@ module.exports = function(app) {
     var result = []
 
     queryResult.forEach(function (row) {
-      // console.log(row.bioma)
+      console.log(row.bioma)
       if (row) {
         result.push(row);
-        // result.delete(row.geom);
+        console.log(result)
 			}
     })
 
