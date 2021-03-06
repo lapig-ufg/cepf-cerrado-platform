@@ -72,6 +72,7 @@ export class HomePageComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.setStylesLangButton();
   }
   openTutorials() {
     this.dialog.open(TutorialsComponent, {
