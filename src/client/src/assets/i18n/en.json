@@ -103,6 +103,40 @@
   "title_footer_link_ouvidoria": "Ombudsman mechanisms",
   "title_footer_link_salvaguardas": "Safeguards policies",
   "title_footer_contatos": "Contacts",
+  "text_o_projeto": {
+    "geral": {
+      "paragrafo1": "This project is based on the extensive experience of LAPIG, with regard to the generation, compilation and dissemination of data and geographical information, aimed at better territorial and environmental governance in the Cerrado.",
+      "paragrafo2": "The main objectives of this project are:",
+      "paragrafo3": "Promote the sharing of data, information and knowledge about the Cerrado biome, related or not to CEPF.",
+      "paragrafo4": "Engage and empower organized civil society through reliable information and tools for monitoring Cerrado ecosystems. To achieve them, our actions are structured in three basic components:",
+      "paragrafo5": "Compilation of geographic databases;",
+      "paragrafo6": "Implementation of computational tools, gathered in an online consultation platform, which bears the name of this project;",
+      "paragrafo7": "Training of partner institutions, policy makers and decision makers, with a view to making the best use of this service, as well as its long-term maintenance.",
+      "paragrafo8": "In other words, a unified and organized view of the knowledge accumulated about the Cerrado biome, promoted by a computational environment of easy use and collaboration, will allow a more assertive targeting of public and private resources in conservation and governance initiatives, at the same time as overlapping efforts are avoided. In addition, it is expected that this awareness-raising process promotes the engagement of members of civil society in actions related to CEPF initiatives in Brazil.",
+      "paragrafo9": "Enjoy the experience! If you want to contribute to this project, any person or institution can send geospatial information obtained in the Cerrado region, of any format, theme or nature, just using our upload tool (see option in the main menu, clicking on Contribute)."
+    },
+    "cepf": {
+      "paragrafo1": "The Critical Ecosystem Partnership Fund (CEPF) has been working since the 2000s to ensure civil society's participation and contribution to the conservation of some of the world's richest ecosystems from the point of view of biological, but intensely impacted by human transformations.",
+      "paragrafo2": "The objective is to promote conservation in high priority biological areas and on a landscape scale. From this perspective, CEPF identifies and supports a regional approach, involving a wide range of public and private institutions to address conservation needs through coordinated efforts.",
+      "paragrafo3": "CEPF is a joint program of the French Agency for Development, Conservation International, European Union, Global Environment Facility (GEF), Government of Japan and the World Bank, with a view to offering financing to protect unique and threatened ecosystems - known also as biodiversity hotspots.",
+      "paragrafo4": "In 2013, the CEPF Donor Council selected the Cerrado biome as one of the priority hotspots, allocating US$ 8 million for investments in projects in the period from 2016 to 2021. Between the years 2016 and 2019, CEPF Cerrado has already made three calls to support projects in the Cerrado. Currently, the Fund has more than 50 projects, divided into Large and Small Grants. Learn more at: "
+    },
+    "ieb": {
+      "paragrafo1": "In Brazil, CEPF is supported by the International Education Institute of Brazil (IEB), a Brazilian third sector institution dedicated to training and training human resources, as well as strengthening organizations in the areas of natural resource management, environmental and territorial management, in addition to other topics related to sustainability. The IEB operates in a network, seeks partnerships and promotes situations of interaction and exchange between civil society organizations, community associations, government bodies and the private sector. To learn more about the IEB's performance, visit: "
+    }
+  },
+  "title_cepf": "CEPF",
+  "title_ieb": "IEB",
+  "text_fonte": "Source",
+  "text_bioma_cerrado": "The Cerrado biome",
+  "text_arquivo_pessoal": "Source: Personal archive",
+  "text_o_bioma": {
+    "paragrafo1": "The Cerrado is the second largest biome in South America, occupying an area of ​​2,007,865 km2, about 23% of the national territory. Its continuous area focuses on the states of Goiás, Tocantins, Mato Grosso, Mato Grosso do Sul, Minas Gerais, Bahia, Maranhão, Piauí, Rondônia, Paraná, São Paulo and the Federal District, in addition to the entrances in Amapá, Roraima and Amazonas. In this territorial space are the springs of the three largest hydrographic basins in South America (Amazon / Tocantins, São Francisco, and Prata), which results in a high aquifer potential, favoring its biodiversity.",
+    "paragrafo2": "Considered as one of the world's biodiversity hotspots, the Cerrado has an abundance of endemic species, currently with intense habitat loss. From the point of view of biological diversity, the Cerrado is recognized as the richest savanna in the world, housing approximately 12 thousand species of native plants (cataloged so far), about 200 species of mammals, in addition to a rich avifauna with about 837 species. The numbers of fish (1200 species), reptiles (180 species), and amphibians (150 species) are also considered high. The number of endemic fish is not known, but the values ​​are quite high for amphibians and reptiles: 28% and 17%, respectively. According to recent estimates, the Cerrado is home to 13% of butterflies, 35% of bees, and 23% of termites in the tropics.",
+    "paragrafo3": "In addition to the environmental aspects, the Cerrado has great social importance. Many populations survive on their natural resources, including indigenous ethnicities, quilombola communities, gerazeiros, riverside dwellers, babaçueiras, vazanteiros, that, together, are part of the Brazilian historical and cultural heritage, and have traditional knowledge of their biodiversity. More than 220 species of plants have medicinal uses, while more than 416 can be used in the recovery of degraded soils, as barriers against the wind, protection against erosion, or to create habitats for natural pest predators. More than 10 types of edible fruits are regularly consumed by the local population and sold in urban centers, such as the Pequi fruits (Caryocar brasiliense), Buriti (Mauritia flexuosa), Mangaba (Hancornia speciosa), Cagaita (Eugenia dysenterica), Bacupari (Salacia crassifolia), Cajuzinho do cerrado (Anacardium humile), Araticum (Annona crassifolia) and Barú nuts (Dipteryx alata).",
+    "paragrafo4": "However, countless species of plants and animals are at risk of extinction. It is estimated that 20% of native and endemic species no longer occur in protected areas, with at least 137 species of animals threatened with extinction. After the Atlantic Forest, the Cerrado is the Brazilian biome that has changed the most with human occupation. With the increasing pressure to open new areas, aiming at increasing the production of meat and grains, there has been a progressive depletion of natural resources in this region. In the last four decades, the Cerrado has been degraded by the expansion of the Brazilian agricultural frontier, currently with an original area reduced to less than 50%. In addition to this area demand, other impacting activities, such as mining, removal of wood material for the production of charcoal, creation of dams, and urban expansion.",
+    "paragrafo5": "Despite the recognition of its biological importance, among all hotspots worldwide, the Cerrado is the one with the lowest percentage of areas under full protection. Currently, it presents only 8.21% of its territory legally protected by conservation units; of this total, 2.85% are fully protected conservation units and 5.36% are sustainable use conservation units, including RPPNs (0.07%)."
+  },
   "logo_img": "../../assets/logo/cepf_en.png",
   "layers": "Layers",
   "base_maps": "Base-maps",
