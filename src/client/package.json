@@ -50,6 +50,7 @@
     "primeng": "^8.1.1",
     "rxjs": "^6.5.2",
     "rxjs-compat": "^6.5.2",
+    "serialize-javascript": "^5.0.1",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
   },
