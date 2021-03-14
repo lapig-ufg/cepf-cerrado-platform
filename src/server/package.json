@@ -31,6 +31,7 @@
     "geojson-validation": "^1.0.2",
     "hawk": "^7.0.10",
     "hoek": "^5.0.4",
+    "ini": "^2.0.0",
     "json2csv": "^4.5.1",
     "lodash": "^4.17.21",
     "merge": "^1.2.1",
@@ -58,6 +59,7 @@
     "unidecode": "^0.1.8",
     "unzipper": "^0.10.9",
     "xml2js": "~0.4.1",
+    "minimist": ">=0.2.1",
     "zlib": "^1.0.5"
   },
   "devDependencies": {},
