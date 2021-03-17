@@ -147,6 +147,54 @@
     "paragrafo6": "If there is an interest on the part of researchers, legislators, non-governmental organizations and society in general, belonging and / or working in this geographic region, our team will be able to aggregate other layers of information, always seeking greater clarification.",
     "paragrafo7": "The researchers involved with the application belong to the faculty of UFG, in addition to scholarships for research projects and graduate students. The team includes web platform developers, geographers, cartographers, statisticians and computer professionals, from the Institute of Socioenvironmental Studies (Iesa), Institute of Mathematics and Statistics (IME), Institute of Tropical Pathology and Public Health (IPTSP) and School Civil and Environmental Engineering (EECA), in addition to external collaborators, from the Municipal Health Department of Goiânia, Goiás State Secretariats and Fiocruz (Ministry of Health). Access "
   },
+  "text_ouvidoria": {
+    "title": "Ombudsman mechanisms",
+    "bem_vindo": "Welcome to the Cerrado Knowledge Platform Ombudsman",
+    "instituicao": {
+      "label": "Executing institution: ",
+      "text": "Laboratory of Image Processing and Geoprocessing (LAPIG)"
+    },
+    "responsavel": {
+      "label": "Responsible: ",
+      "text": "Prof. Manuel Eduardo Ferreira"
+    },
+    "reclamacoes": {
+      "label": "Complaints, criticisms, and suggestions about this project should be sent to: ",
+      "text": "<lapig.cepf@gmail.com>. These will be shared with CEPF's Donations Directorate. We will answer your questions within 15 days."
+    },
+    "outros": "If the response has not been satisfactory, the complaint can be sent directly to the CEPF Executive Director, at <cepfexecutive@conservation.org>. If the complainant is still not satisfied with the response, he can formalize a complaint with the World Bank by e-mail <grievances@worldbank.org>. Partners may also formalize complaints to the address below: ",
+    "endereco": {
+      "name": "Laboratory of Image Processing and Geoprocessing (LAPIG)",
+      "campus": "CAMPUS II, Samambaia",
+      "city": "POSTAL Box 131 - Goiânia - GO, Brazil",
+      "cep": "CEP: 74001-970",
+      "fone": "Phone: +55 (62) 3521-1360"
+    }
+  },
+  "text_salva_guarda": {
+    "title": "Safeguards policies",
+    "paragrafo1": "We understand that the project led by LAPIG (Cerrado Knowledge Platform) does not have environmental or social safeguards, as it is dealing with the availability, via the online platform, of geographical information provided by partners with environmental and social projects in the Cerrado, many of these supported by CEPF itself or provided by public institutions (in the three governmental spheres), which already have their respective safeguards.",
+    "paragrafo2": "The problems expected in our project concern two points: 1) Feeding the database, as we depend on the support of partners, whether or not related to CEPF; 2) Accessibility to this information, through viewing on the platform itself, or by direct download from our data server, due to the following reasons:",
+    "paragrafo3": "1) Instability of the data server, due to technical problems with power or internet network, with consequent temporary interruption of platform services.",
+    "paragrafo4": "2) Outdated and/or cartographically inconsistent data, produced by partners or other collaborating institutions.",
+    "paragrafo5": "3) Data without the correct identification and/or appropriate category may lead users to mistaken downloads.",
+    "paragrafo6": "4) Misuse of information by third parties, exceeding our responsibilities.",
+    "paragrafo7": "5) Discontinuity of the platform in the long term, by institutional policies of the hosting company (in this case, and for now, federal government / MEC / UFG).",
+    "paragrafo8": "6) Technical problems in general, especially due to many simultaneous accesses, causing instability in the platform.",
+    "paragrafo9": "7) Restriction of access or use for some layers of information, provided by direct partners of CEPF / LAPIG or by other public / private institutions.",
+    "paragrafo10": "To mitigate these impacts, we list the respective actions below:",
+    "paragrafo11": "1) The data server is stored in the UFG Data Center. We are taking advantage of the university's nobreaks and generators' redundancy structure. As for the internet network, the university has redundancy of links, provided by the National Research Network - RNP.",
+    "paragrafo12": "2) Create a schedule of releases and updates, make corrections for inconsistencies, or ask the partner (source) to consistently resend the data.",
+    "paragrafo13": "3) Lapig has a specific methodology, in which the data goes through some phases before being inserted in the Platform. In this methodology, we have the chance to identify possible errors.",
+    "paragrafo14": "4) A term of use will be created for the user to accept before downloading the data. In this way, the user will be aware that outside the established conditions will be his sole responsibility.",
+    "paragrafo15": "5) Government agencies have a great interest in maintaining platforms like this one, according to the Funape / UFG contract, via Lapig / CEPF. In situations that compromise Lapig's performance in agreement with CEPF, the former may suggest new partners for this function.",
+    "paragrafo16": "6) Optimization of the Database to support a high number of requests. Automation of data caches makes requests lighter and faster without overloading the Lapig data server.",
+    "paragrafo17": "7) If there is a restriction of use for some layers of information, provided by direct partners to CEPF / Lapig or by public/private institutions, we have the possibility to establish login access to the platform, allowing, if necessary, to restrict viewing and download them.",
+    "download": "To download the complete document, click ",
+    "download_aqui": "here!",
+    "download_link": "https://www.lapig.iesa.ufg.br/drive/index.php/s/HgtXqaVy9BMrr0F"
+  },
+  "title_ouvidoria": "Ombudsman",
   "logo_img": "../../assets/logo/cepf_en.png",
   "layers": "Layers",
   "base_maps": "Base-maps",
