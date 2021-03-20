@@ -11,6 +11,8 @@
 src/client/node_modules/*
 src/server/node_modules/*
 
+src/server/downloads-cepf
+
 # profiling files
 chrome-profiler-events.json
 speed-measure-plugin.json

@@ -10,6 +10,7 @@ const { parsed: env } = result;
 module.exports = function (app) {
 
 	var appProducao = env.APP_PRODUCAO;
+	var appProducaocepf = env.APP_PRODUCAO_CEPF;
 
 	var config = {
 		"appRoot": appRoot,
@@ -19,6 +20,7 @@ module.exports = function (app) {
 		"logDir": appRoot + env.LOG_DIR,
 		"fieldDataDir": appRoot + env.FIELD_DATA_DIR,
 		"uploadDataDir": appRoot + env.UPLOAD_DATA_DIR,
+		"downloadDataDir": appRoot + env.DOWNLOAD_DATA_DIR,
 		"pg": {
 			"user": env.PG_USER,
 			"host": env.PG_HOST,
@@ -53,7 +55,8 @@ module.exports = function (app) {
 		config["ows_host"] = env.OWS_HOST;
 		config["fieldDataDir"] = appProducao + env.FIELD_DATA_DIR;
 		config["uploadDataDir"] = appProducao + env.UPLOAD_DATA_DIR;
-		config["downloadDir"] = env.DOWNLOAD_DATA_DIR;
+		config["downloadDir"] = env.DOWNLOAD_DIR;
+		config["downloadDataDir"] = appProducaocepf + env.DOWNLOAD_DATA_DIR;
 	}
 
 	return config;

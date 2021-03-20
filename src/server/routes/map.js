@@ -9,5 +9,6 @@ module.exports = function (app) {
 	app.get('/service/map/fieldPoints', dataInjector, map.fieldPoints);
 	app.get('/service/map/downloadCSV', dataInjector, map.downloadCSV);
 	app.get('/service/map/downloadSHP', map.downloadSHP);
+	app.post('/service/map/downloadSHPAuto', map.downloadSHPAuto);
 	app.get('/service/map/searchregion', dataInjector);
 }
