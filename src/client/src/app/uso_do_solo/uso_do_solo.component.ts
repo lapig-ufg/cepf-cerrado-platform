@@ -1858,7 +1858,9 @@ export class MapComponent implements OnInit {
       .then(blob => {
         saveAs(blob, name + '.zip');
         this.loadingsDownload = false;
-      }).catch(err => this.loadingsDownload = false);
+      }).catch(err => { 
+				alert('Download Indisponível!');
+			 	this.loadingsDownload = false});
   }
 
 	// downloadCSV(layer) {

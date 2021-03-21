@@ -2140,10 +2140,6 @@ module.exports = function(app) {
     let time = request.body.times;
     let typeShape = request.body.typeshape;
 
-    console.log(region);
-    console.log(time);
-    console.log(typeShape);
-
     let owsRequest = new Ows(typeShape);
     owsRequest.setTypeName(layer);
 
@@ -2162,6 +2158,8 @@ module.exports = function(app) {
         owsRequest.addFilter('cd_geocmu', "'" + region.value + "'");
       } else if (region.type == 'estado') {
         owsRequest.addFilter('uf', "'" + region.value + "'");
+      }else {
+        owsRequest.addFilter('bioma', "'CERRADO'");
       }
 
       if (time != undefined) {
@@ -2179,10 +2177,6 @@ module.exports = function(app) {
     }
 
     pathFile = diretorio + fileParam;
-
-    console.log("SHP - ", pathFile)
-    console.log(owsRequest)
-
 
     if (!fs.existsSync(diretorio)) {
       fs.mkdirSync(diretorio, {
