@@ -274,6 +274,7 @@ export class MapComponent implements OnInit {
 		this.updateCharts();
 		this.loadingSHP = false;
 		this.loadingCSV = false;
+		this.loadingsDownload = false;
 
 		this.httpOptions = {
 			headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -1845,10 +1846,10 @@ export class MapComponent implements OnInit {
 
     let name = ""
     if (parameters.times != undefined) {
-      name = parameters.layer + "_" + parameters.times.Viewvalue
+      name = parameters.layer + "_" + parameters.selectedRegion.value+ "_" + parameters.times.Viewvalue
     }
     else {
-      name = parameters.layer
+      name = parameters.layer + "_" + parameters.selectedRegion.value
 		}
 
 

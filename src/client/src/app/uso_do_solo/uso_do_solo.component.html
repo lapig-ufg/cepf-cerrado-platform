@@ -45,6 +45,8 @@
 			</div>
 			<div class="line"></div>
 			<div class="collapseLayer" [ngbCollapse]="collapseLayer">
+				<mat-progress-bar *ngIf="loadingsDownload" mode="indeterminate">
+				</mat-progress-bar>
 				<p-scrollPanel [style]="{height: innerHeigth - 200 + 'px'}">
 					<mat-tab-group class="layersConteudo" [(selectedIndex)]="selectedIndexConteudo" mat-stretch-tabs dynamicHeight>
 						<mat-tab [label]="'layers' | translate">
