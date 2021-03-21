@@ -42,7 +42,6 @@ import { RegionReportComponent } from './region-report/region-report.component';
 import logos from './logos';
 import * as moment from 'moment';
 import { ChartsComponent } from './charts/charts.component';
-import { type } from 'os';
 
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
