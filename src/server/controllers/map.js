@@ -16,7 +16,6 @@ module.exports = function(app) {
   }
 
   self.requestFileFromMapServ = async function (url, pathFile, response) {
-    console.log('request:', url, pathFile)
     let file = fs.createWriteStream(pathFile + ".zip");
 
     await new Promise((resolve, reject) => {
@@ -277,7 +276,7 @@ module.exports = function(app) {
                 "contato":"lapig.cepf@gmail.com"
               },
               "columnsCSV": "area_ha, sequencia, nome",
-              "downloadSHP": false,
+              "downloadSHP": true,
               "downloadCSV": true
 						}
           ],
@@ -1044,7 +1043,7 @@ module.exports = function(app) {
                 "contato": "lapig.cepf@gmail.com"
               },
               "columnsCSV": "scientific, reino, filo, classe, ordem, familia, genero, especies, year",
-              "downloadSHP": false,
+              "downloadSHP": true,
               "downloadCSV": true
             },
             {
@@ -1079,7 +1078,7 @@ module.exports = function(app) {
                 "contato": "lapig.cepf@gmail.com"
               },
               "columnsCSV": "n_cientifi, reino, filo, classe, ordem, familia, genero, especie, year",
-              "downloadSHP": false,
+              "downloadSHP": true,
               "downloadCSV": true
             },
             {
@@ -1114,7 +1113,7 @@ module.exports = function(app) {
                 "contato": "lapig.cepf@gmail.com"
               },
               "columnsCSV": "area_ha, area_km2, nome_uc, categoria, ano_cria, grupo, ato_legal, status, esfera, classe",
-              "downloadSHP": false,
+              "downloadSHP": true,
               "downloadCSV": true
             },
             {
@@ -1148,7 +1147,7 @@ module.exports = function(app) {
                 "fonte": languageJson["metadata"]["or_vp_pato_mergulhao_2019_na_iat"]["fonte"][language],
               },
               "columnsCSV": "ano, mês, rio, local, adultos, filhotes, ppch, agro, boi, desmata, dtur, fogo, altitude, risco1, risco2, risco3, risco4, impactos_o",
-              "downloadSHP": false,
+              "downloadSHP": true,
               "downloadCSV": true
             },
             {
@@ -1174,7 +1173,7 @@ module.exports = function(app) {
                 "fonte": languageJson["metadata"]["areas_chave_biodiversidade"]["fonte"][language],
               },
               "columnsCSV": "otto, cod, p_p_ra, p_pe_ra, fa_vu, fa_en, fa_cr, fa_i_vu, fa_i_en, fa_i_cr, flo_vu, flo_en, flo_cr, irre_tt, flo_i_vu, flo_i_en, flo_i_cr, pc_p_ra, pc_pe_ra, pc_fa_vu, pc_fa_cr, pc_fa_en, g_fa_mma, pc_g_fa_mm, pc_i_fa_vu, pc_i_fa_cr, pc_i_fa_en, g_fa_iucn, pc_g_fa_iu, g_fa_mm_iu, pc_g_mm_iu, pc_fl_vu, pc_fl_en, pc_fl_cr, g_fl_cnc, pc_g_fl_cn, pc_i_fl_vu, pc_i_fl_en, pc_i_fl_cr, g_fl_iucn, pc_g_fl_iu, g_fl_cn_iu, pc_g_cn_iu, pc_irre, biologico, p_biologic, fid_1, otto_1, cod_1, shape_le_2, shape_ar_1, a_kba_ha, reman, ipa, csc, agua, pc_reman, pc_ipa, pc_csc, pc_agua, g_pro_pri, pc_pro_pri, paisagem, p_paisagem, g_bio_pais, fim_bio_pa, class, area, shape_leng, kba, uf, nome, codigo, shape_le_1, shape_area",
-              "downloadSHP": false,
+              "downloadSHP": true,
               "downloadCSV": true
             },
             {
@@ -1200,7 +1199,7 @@ module.exports = function(app) {
                 "fonte": languageJson["metadata"]["bi_ce_iba_250_2009_savebrasil"]["fonte"][language],
               },
               "columnsCSV": "codigo, nome, area",
-              "downloadSHP": false,
+              "downloadSHP": true,
               "downloadCSV": true
             },
             {
@@ -1226,7 +1225,7 @@ module.exports = function(app) {
                 "fonte": languageJson["metadata"]["corredores_prioritarios_cepf"]["fonte"][language],
               },
               "columnsCSV": "nom_corred, priority",
-              "downloadSHP": false,
+              "downloadSHP": true,
               "downloadCSV": true
             },
             {
@@ -1252,7 +1251,7 @@ module.exports = function(app) {
                 "fonte": languageJson["metadata"]["unidades_protecao_integral"]["fonte"][language],
               },
               "columnsCSV": "nome, categoria, administra, ano_criaca, atolegal",
-              "downloadSHP": false,
+              "downloadSHP": true,
               "downloadCSV": true
             }
           ]
@@ -1522,7 +1521,7 @@ module.exports = function(app) {
                 "contato": "lapig.cepf@gmail.com"
               },
               "columnsCSV": "rhi_sg, rhi_cd, rhi_nm, rhi_ar_km2, rhi_ar_ha, rhi_gm_are, rhi_gm_per, rhi_ve, rhi_cheia2, rhi_seca20",
-              "downloadSHP": false,
+              "downloadSHP": true,
               "downloadCSV": true
             },
           ]
@@ -1580,7 +1579,7 @@ module.exports = function(app) {
 							"label": languageJson["title_layer_label"]["conflitos_agua"][language],
 							"visible": false,
               "selectedType": 'bi_ce_conflito_agua_250_cpt',
-              "downloadSHP": false,
+              "downloadSHP": true,
               "downloadCSV": true,
 							"types": [
                 {
@@ -1669,7 +1668,7 @@ module.exports = function(app) {
 							"label": languageJson["title_layer_label"]["conflitos_terra"][language],
 							"visible": false,
               "selectedType": 'bi_ce_conflito_terra_250_cpt',
-              "downloadSHP": false,
+              "downloadSHP": true,
               "downloadCSV": true,
 							"types": [
                 {
@@ -1791,7 +1790,7 @@ module.exports = function(app) {
                 "contato":"lapig.cepf@gmail.com"
               },
               "columnsCSV": "pessoas, year",
-              "downloadSHP": false,
+              "downloadSHP": true,
               "downloadCSV": true
 						},
             {
@@ -1826,7 +1825,7 @@ module.exports = function(app) {
                 "contato":"lapig.cepf@gmail.com"
               },
               "columnsCSV": "idhm, year",
-              "downloadSHP": false,
+              "downloadSHP": true,
               "downloadCSV": true
 						}
           ]
@@ -2070,10 +2069,8 @@ module.exports = function(app) {
     var result = []
 
     queryResult.forEach(function (row) {
-      console.log(row.bioma)
       if (row) {
         result.push(row);
-        console.log(result)
 			}
     })
 
@@ -2152,7 +2149,7 @@ module.exports = function(app) {
     // let layersSkipFilters = ['terra_indigena', 'quilombola', 'ucs']
 
     if (typeShape == 'shp') {
-      owsRequest.addFilter('1', '1');
+      // owsRequest.addFilter('1', '1');
 
       if (region.type == 'municipio') {
         owsRequest.addFilter('cd_geocmu', "'" + region.value + "'");
@@ -2187,7 +2184,6 @@ module.exports = function(app) {
     if (fs.existsSync(pathFile + '.zip')) {
       response.download(pathFile + '.zip');
     } else {
-      console.log(owsRequest.get())
       self.requestFileFromMapServ(owsRequest.get(), pathFile, response);
     }
   };
