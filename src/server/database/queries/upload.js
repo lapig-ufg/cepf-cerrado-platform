@@ -27,6 +27,96 @@ module.exports = function (app) {
     }
 
 
+    Query.queimadas = function (params) {
+
+        var token = params['token']
+        console.log(token)
+        return [
+            {
+                id: 'queimadas',
+                sql: "SELECT p.year, SUM((ST_AREA(ST_Intersection(ST_MAKEVALID(p.geom),up.geom)::GEOGRAPHY) / 1000000.0)*100.0) as area_queimada FROM queimadas_lapig p " +
+                    " INNER JOIN upload_shapes up on ST_INTERSECTS(p.geom, up.geom) where p.year IS NOT NULL and up.token= ${token} GROUP BY 1 order by 1 desc",
+                mantain: true
+            },
+            {
+                id: 'next',
+                sql: "select true",
+                mantain: true
+            },
+        ]
+    }
+
+    Query.pastagem = function (params) {
+
+        var token = params['token']
+        console.log(token)
+        return [
+            {
+                id: 'pastagem',
+                sql: "SELECT p.year, SUM((ST_AREA(ST_Intersection(st_multi(st_collectionextract(ST_MAKEVALID(p.wkb_geometry),3)),up.geom)::GEOGRAPHY) / 1000000.0)*100.0) as area_pastagem " +
+                    "FROM pasture p INNER JOIN upload_shapes up on ST_INTERSECTS(p.wkb_geometry, up.geom) where p.year IS NOT NULL " +
+                    "and up.token= ${token} GROUP BY 1 order by 1 desc",
+                mantain: true
+            },
+            {
+                id: 'next',
+                sql: "select true",
+                mantain: true
+            },
+        ]
+    }
+
+    Query.desmatperyear = function (params) {
+
+        return [{
+
+
+        }]
+    }
+
+    Query.terraclass = function (params) {
+
+        var token = params['token']
+        console.log(token)
+        return [
+            {
+                id: 'terraclass',
+                sql: "SELECT b.name as lulc, b.color as color, SUM((ST_AREA(safe_intersection(ST_MAKEVALID(p.geom),up.geom)::GEOGRAPHY) / 1000000.0)*100.0) as area_lulc FROM uso_solo_terraclass p INNER JOIN graphic_colors b on unaccent(b.name) ilike unaccent(p.classe) AND b.table_rel = 'uso_solo_terraclass' " +
+                    " INNER JOIN upload_shapes up on ST_INTERSECTS(p.geom, up.geom) " +
+                    " where up.token= ${token}" +
+                    " GROUP BY 1,2 ORDER BY 3 DESC",
+                mantain: true
+            },
+            {
+                id: 'next',
+                sql: "select true",
+                mantain: true
+            },
+        ]
+    }
+
+    Query.mapbiomas = function (params) {
+
+        var token = params['token']
+        console.log(token)
+        return [
+            {
+                id: 'mapbiomas',
+                sql: "SELECT b.name as lulc, b.color as color, SUM((ST_AREA(safe_intersection(st_multi(st_collectionextract(ST_MAKEVALID(ST_TRANSFORM(p.wkb_geometry,4674)),3)),up.geom)::GEOGRAPHY) / 1000000.0)*100.0) as area_lulc FROM uso_solo_mapbiomas p INNER JOIN graphic_colors b on unaccent(b.name) ilike unaccent(p.classe) AND b.table_rel = 'uso_solo_mapbiomas' " +
+                    " INNER JOIN upload_shapes up on ST_INTERSECTS(ST_TRANSFORM(p.wkb_geometry,4674), up.geom) " +
+                    " where p.year = 2018 and up.token= ${token} and ST_ISVALID(p.wkb_geometry) = false " +
+                    " GROUP BY 1,2 ORDER BY 3 DESC",
+                mantain: true
+            },
+            {
+                id: 'next',
+                sql: "select true",
+                mantain: true
+            },
+        ]
+    }
+
+
     Query.analysisarea = function (params) {
 
         var token = params['token']
@@ -34,18 +124,18 @@ module.exports = function (app) {
         return [
             {
                 id: 'queimadas',
-                sql: "SELECT p.year, SUM((ST_AREA(ST_Intersection(p.geom,up.geom)::GEOGRAPHY) / 1000000.0)*100.0) as area_queimada FROM queimadas_lapig p INNER JOIN upload_shapes up on ST_INTERSECTS(p.geom, up.geom) where p.year IS NOT NULL and up.token= ${token} GROUP BY 1 order by 1 desc",
+                sql: "SELECT p.year, SUM((ST_AREA(ST_Intersection(ST_MAKEVALID(p.geom),up.geom)::GEOGRAPHY) / 1000000.0)*100.0) as area_queimada FROM queimadas_lapig p INNER JOIN upload_shapes up on ST_INTERSECTS(p.geom, up.geom) where p.year IS NOT NULL and ST_ISVALID(p.geom) = false and up.token= ${token} GROUP BY 1 order by 1 desc",
                 mantain: true
             },
-            // {
-            //     id: 'pastagem',
-            //     sql: "SELECT p.year, SUM((ST_AREA(ST_Intersection(p.wkb_geometry,up.geom)::GEOGRAPHY) / 1000000.0)*100.0) as area_pastagem FROM pasture p INNER JOIN upload_shapes up on ST_INTERSECTS(p.wkb_geometry, up.geom) where p.year IS NOT NULL and up.token= ${token} GROUP BY 1 order by 1 desc"
-            // },
+            {
+                id: 'pastagem',
+                sql: "SELECT p.year, SUM((ST_AREA(ST_Intersection(ST_MAKEVALID(p.wkb_geometry),up.geom)::GEOGRAPHY) / 1000000.0)*100.0) as area_pastagem FROM pasture p INNER JOIN upload_shapes up on ST_INTERSECTS(p.wkb_geometry, up.geom) where p.year IS NOT NULL and ST_ISVALID(p.geom) = false and up.token= ${token} GROUP BY 1 order by 1 desc"
+            },
             {
                 id: 'terraclass',
-                sql: "SELECT b.name as lulc, b.color as color, SUM((ST_AREA(safe_intersection(p.geom,up.geom)::GEOGRAPHY) / 1000000.0)*100.0) as area_lulc FROM uso_solo_terraclass p INNER JOIN graphic_colors b on unaccent(b.name) ilike unaccent(p.classe) AND b.table_rel = 'uso_solo_terraclass' " +
+                sql: "SELECT b.name as lulc, b.color as color, SUM((ST_AREA(safe_intersection(ST_MAKEVALID(p.geom),up.geom)::GEOGRAPHY) / 1000000.0)*100.0) as area_lulc FROM uso_solo_terraclass p INNER JOIN graphic_colors b on unaccent(b.name) ilike unaccent(p.classe) AND b.table_rel = 'uso_solo_terraclass' " +
                     " INNER JOIN upload_shapes up on ST_INTERSECTS(p.geom, up.geom) " +
-                    " where up.token= ${token} and ST_ISVALID(p.geom) " +
+                    " where up.token= ${token} and ST_ISVALID(p.geom) = false " +
                     " GROUP BY 1,2 ORDER BY 3 DESC",
                 mantain: true
             }

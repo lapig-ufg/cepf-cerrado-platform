@@ -8,4 +8,8 @@ module.exports = function (app) {
 	app.get('/service/upload/initialanalysis', dataInjector, uploader.initialanalysis);
 	app.get('/service/upload/analysisarea', dataInjector, uploader.analysisarea);
 	app.get('/service/upload/findgeojsonbytoken', dataInjector, uploader.findGeoJsonByToken);
+	app.get('/service/upload/queimadas', dataInjector, uploader.queimadas);
+	app.get('/service/upload/pastagem', dataInjector, uploader.pastagem);
+	app.get('/service/upload/terraclass', dataInjector, uploader.terraclass);
+	app.get('/service/upload/mapbiomas', dataInjector, uploader.mapbiomas);
 }
