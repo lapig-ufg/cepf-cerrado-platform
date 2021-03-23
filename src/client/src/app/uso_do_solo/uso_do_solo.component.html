@@ -45,6 +45,8 @@
 			</div>
 			<div class="line"></div>
 			<div class="collapseLayer" [ngbCollapse]="collapseLayer">
+				<mat-progress-bar *ngIf="loadingsDownload" mode="indeterminate">
+				</mat-progress-bar>
 				<p-scrollPanel [style]="{height: innerHeigth - 200 + 'px'}">
 					<mat-tab-group class="layersConteudo" [(selectedIndex)]="selectedIndexConteudo" mat-stretch-tabs dynamicHeight>
 						<mat-tab [label]="'layers' | translate">
@@ -138,11 +140,11 @@
 																<mat-icon>cloud_download</mat-icon>&nbsp;CSV
 															</button>
 														</a>
-														<!-- <a style="margin-left: 10px;" *ngIf="layer.downloadSHP"  href="{{ linkDownload }}">
+														<a style="margin-left: 10px;" *ngIf="layer.downloadSHP">
 															<button mat-raised-button class="buttons_download" (click)="buttonDownload('shp', layer, $event)" [disabled]="!layer.visible">
 																<mat-icon>cloud_download</mat-icon>&nbsp;SHP
 															</button>
-														</a> -->
+														</a>
 													</div>
 												</div>
 											</div>

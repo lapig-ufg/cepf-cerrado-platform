@@ -1,60 +1,82 @@
 <header id="header-wrap">
     <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-md bg-inverse fixed-top scrolling-navbar">
+    <nav class="navbar navbar-expand-md bg-inverse fixed-top scrolling-navbar" style="background-color: white;">
       <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="row">
-          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-mb-3 padding-logos">
-            <a href="https://www.cepf.net/" target="_blank" class="navbar-brand"><img src="assets/img/logo-cepf.svg" alt=""></a>       
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-mb-4">
+            <div class="row">
+              <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-mb-4 padding-logos">
+                <a href="https://www.cepf.net/" target="_blank" class="navbar-brand"><img src="assets/img/logo-cepf.svg"
+                    alt=""></a>
+              </div>
+              <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-mb-4 padding-logos">
+                <a href="http://cepfcerrado.iieb.org.br" target="_blank" class="navbar-brand"><img
+                    src="assets/img/logo-ieb.png" alt=""></a>
+              </div>
+              <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-mb-4 padding-logos">
+                <a href="https://www.lapig.iesa.ufg.br" target="_blank" class="navbar-brand"><img
+                    src="assets/img/logo_lapig.png" alt=""></a>
+              </div>
+            </div>
           </div>
-          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-mb-3 padding-logos">
-            <a href="http://cepfcerrado.iieb.org.br" target="_blank" class="navbar-brand"><img src="assets/img/logo-ieb.png" alt=""></a>       
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="lni-menu"></i>
+          </button>
+          <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 col-mb-8">
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+              <ul class="navbar-nav mr-auto w-100 justify-content-end clearfix">
+                <li class="nav-item active" style="padding-left: 0px">
+                  <a class="nav-link" href="#">
+                    {{ 'title_aba_home' | translate }}
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#services">
+                    {{ 'title_aba_subplataforms' | translate }}
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#graphics">
+                    {{ 'title_aba_statistics' | translate }}
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#features">
+                    {{ 'title_aba_collections' | translate }}
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#news">
+                    {{ 'title_aba_news' | translate }}
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#contribua">
+                    {{ 'title_aba_contribute' | translate }}
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#team">
+                    {{ 'title_aba_team' | translate }}
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#testimonial">
+                    {{ 'title_aba_partners' | translate }}
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
-          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-mb-3 padding-logos">
-            <a href="https://www.lapig.iesa.ufg.br" target="_blank" class="navbar-brand"><img src="assets/img/logo_lapig.png" alt=""></a>       
+          <div class="btn-languages">
+            <button (click)="changeLanguage('pt')" class="color-buttons" mat-raised-button
+              [ngStyle]="bntStylePOR">&nbsp;POR</button>
+            <button (click)="changeLanguage('en')" class="color-buttons" mat-raised-button
+              [ngStyle]="bntStyleENG">&nbsp;ENG</button>
           </div>
-        </div>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-          <i class="lni-menu"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-          <ul class="navbar-nav mr-auto w-100 justify-content-end clearfix">
-      <li class="nav-item">
-              <a class="nav-link" href="">
-                Home
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#services">
-                Plataformas
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#graphics">
-                Estatísticas
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#features">
-                Tutorias
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#team">
-                Notícias
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#testimonial">
-                Parceiros
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#contact">
-                Contato
-              </a>
-            </li>
-          </ul>
         </div>
       </div>
     </nav>
@@ -64,7 +86,7 @@
         <div class="row">
           <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
             <div class="contents">
-              <h2 class="head-title">Plataforma de Conhecimento do<br>Cerrado</h2>
+              <h2 class="head-title">{{ 'platform_title' | translate }}</h2>
             </div>
           </div>
           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">

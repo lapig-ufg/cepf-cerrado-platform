@@ -124,10 +124,12 @@ export class MapComponent implements OnInit {
 
 	downloadLayer: string;
 	downloadLimit: string;
+	loadingsDownload: boolean;
 	layerCheckedDow: any;
 
 	layerofDowloads = [];
 	linkDownload: any;
+	linkDownloadAuto: any;
 	loadingSHP: boolean;
 	loadingCSV: boolean;
 
@@ -272,6 +274,7 @@ export class MapComponent implements OnInit {
 		this.updateCharts();
 		this.loadingSHP = false;
 		this.loadingCSV = false;
+		this.loadingsDownload = false;
 
 		this.httpOptions = {
 			headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -1824,12 +1827,41 @@ export class MapComponent implements OnInit {
 			regionType = "uf"
 
 		if (tipo == 'shp') {
-			this.linkDownload = "/service/map/downloadSHP?layer=" + layer.selectedType + yearDownload + '&regionType=' + regionType + '&region=' + this.selectRegion.value;
+			this.downloadSHPAuto(layer, tipo)
+			// this.linkDownload = "/service/map/downloadSHP?layer=" + layer.selectedType + yearDownload + '&regionType=' + regionType + '&region=' + this.selectRegion.value;
 		} else {
 			// console.log("/service/map/downloadCSV?layer=" + layer.selectedType + yearDownload + '&filterRegion=' + filterRegion + columnsCSV + '&regionName=' + this.selectRegion.value)
 			this.linkDownload = "/service/map/downloadCSV?layer=" + layer.selectedType + yearDownload + '&filterRegion=' + filterRegion + columnsCSV + '&regionName=' + this.selectRegion.value;
 		}
 	}
+
+	downloadSHPAuto(layer, format) {
+    this.loadingsDownload = true;
+    let parameters = {
+      "layer": layer.selectedType,
+      "selectedRegion": this.selectRegion,
+      "times": this.selectedTimeFromLayerType(layer.selectedType),
+      "typeshape": format
+    };
+
+    let name = ""
+    if (parameters.times != undefined) {
+      name = parameters.layer + "_" + parameters.selectedRegion.value+ "_" + parameters.times.Viewvalue
+    }
+    else {
+      name = parameters.layer + "_" + parameters.selectedRegion.value
+		}
+
+
+    this.http.post("/service/map/downloadSHPAuto", parameters, { responseType: 'blob' })
+      .toPromise()
+      .then(blob => {
+        saveAs(blob, name + '.zip');
+        this.loadingsDownload = false;
+      }).catch(err => { 
+				alert('Download Indisponível!');
+			 	this.loadingsDownload = false});
+  }
 
 	// downloadCSV(layer) {
 

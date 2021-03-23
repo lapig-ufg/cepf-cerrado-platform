@@ -1,11 +1,43 @@
 var fs = require('fs')
     , archiver = require('archiver')
     , json2csv = require('json2csv').parse
-    , languageJson = require('../assets/lang/language.json');
+    , languageJson = require('../assets/lang/language.json')
+    , request = require('request')
+    , Ows = require('../utils/ows');
 
 module.exports = function(app) {
   var Controller = {}
   var config = app.config;
+
+  var self = {};
+
+  if (!fs.existsSync(config.downloadDataDir)) {
+    fs.mkdirSync(config.downloadDataDir);
+  }
+
+  self.requestFileFromMapServ = async function (url, pathFile, response) {
+    let file = fs.createWriteStream(pathFile + ".zip");
+
+    await new Promise((resolve, reject) => {
+        let stream = request({
+            uri: url,
+            gzip: true
+          })
+          .pipe(file)
+          .on('finish', () => {
+            response.download(pathFile + '.zip');
+            resolve();
+          })
+          .on('error', (error) => {
+            response.send(error)
+            response.end();
+            reject(error);
+          })
+      })
+      .catch(error => {
+        console.log(`Something happened: ${error}`);
+      });
+  };
 
 	Controller.extent = function(request, response) {
     var queryResult = request.queryResult
@@ -96,7 +128,7 @@ module.exports = function(app) {
 							"label": languageJson["title_layer_label"]["usodosolo"][language],
 							"visible": true,
               "selectedType": 'uso_solo_mapbiomas',
-              "downloadSHP": true,
+              "downloadSHP": false,
               "downloadCSV": true,
               "types": [
 								{
@@ -287,7 +319,7 @@ module.exports = function(app) {
                 "contato":"lapig.cepf@gmail.com"
               },
               "columnsCSV": "area_ha, classe, year",
-              "downloadSHP": true,
+              "downloadSHP": false,
               "downloadCSV": true
 						},
 						{
@@ -295,7 +327,7 @@ module.exports = function(app) {
 							"label": languageJson["title_layer_label"]["pasture"][language],
 							"visible": false,
               "selectedType": 'pasture',
-              "downloadSHP": true,
+              "downloadSHP": false,
               "downloadCSV": true,
 							"types": [
 								{
@@ -888,7 +920,7 @@ module.exports = function(app) {
                 "contato": "lapig.cepf@gmail.com"
               },
               "columnsCSV": "",
-              "downloadSHP": true,
+              "downloadSHP": false,
               "downloadCSV": true
             },
             {
@@ -915,7 +947,7 @@ module.exports = function(app) {
                 "contato": "lapig.cepf@gmail.com"
               },
               "columnsCSV": "",
-              "downloadSHP": true,
+              "downloadSHP": false,
               "downloadCSV": true
             },
             {
@@ -969,7 +1001,7 @@ module.exports = function(app) {
                 "contato": "lapig.cepf@gmail.com"
               },
               "columnsCSV": "",
-              "downloadSHP": true,
+              "downloadSHP": false,
               "downloadCSV": true
             }
           ]
@@ -1547,7 +1579,7 @@ module.exports = function(app) {
 							"label": languageJson["title_layer_label"]["conflitos_agua"][language],
 							"visible": false,
               "selectedType": 'bi_ce_conflito_agua_250_cpt',
-              "downloadSHP": false,
+              "downloadSHP": true,
               "downloadCSV": true,
 							"types": [
                 {
@@ -1636,7 +1668,7 @@ module.exports = function(app) {
 							"label": languageJson["title_layer_label"]["conflitos_terra"][language],
 							"visible": false,
               "selectedType": 'bi_ce_conflito_terra_250_cpt',
-              "downloadSHP": false,
+              "downloadSHP": true,
               "downloadCSV": true,
 							"types": [
                 {
@@ -1793,7 +1825,7 @@ module.exports = function(app) {
                 "contato":"lapig.cepf@gmail.com"
               },
               "columnsCSV": "idhm, year",
-              "downloadSHP": false,
+              "downloadSHP": true,
               "downloadCSV": true
 						}
           ]
@@ -1809,7 +1841,7 @@ module.exports = function(app) {
 							"label": languageJson["title_layer_label"]["pontos_campo"][language],
 							"visible": false,
               "selectedType": 'pontos_campo_sem_parada',
-              "downloadSHP": true,
+              "downloadSHP": false,
               "downloadCSV": true, 
 							"types": [
 								{
@@ -1901,7 +1933,7 @@ module.exports = function(app) {
 							"label": languageJson["title_layer_label"]["pontos_inspecionados"][language],
 							"visible": false,
               "selectedType": 'pontos_tvi_treinamento',
-              "downloadSHP": true,
+              "downloadSHP": false,
               "downloadCSV": true,
 							"types": [
 								{
@@ -2037,10 +2069,8 @@ module.exports = function(app) {
     var result = []
 
     queryResult.forEach(function (row) {
-      console.log(row.bioma)
       if (row) {
         result.push(row);
-        console.log(result)
 			}
     })
 
@@ -2099,6 +2129,64 @@ module.exports = function(app) {
   		response.end();
 		}
   }
+
+  Controller.downloadSHPAuto = function (request, response) {
+
+    let layer = request.body.layer;
+    let region = request.body.selectedRegion;
+    let time = request.body.times;
+    let typeShape = request.body.typeshape;
+
+    let owsRequest = new Ows(typeShape);
+    owsRequest.setTypeName(layer);
+
+    let diretorio = '';
+    let fileParam = '';
+    let pathFile = '';
+
+    // console.log(layer, owsRequest)
+
+    // let layersSkipFilters = ['terra_indigena', 'quilombola', 'ucs']
+
+    if (typeShape == 'shp') {
+      // owsRequest.addFilter('1', '1');
+
+      if (region.type == 'municipio') {
+        owsRequest.addFilter('cd_geocmu', "'" + region.value + "'");
+      } else if (region.type == 'estado') {
+        owsRequest.addFilter('uf', "'" + region.value + "'");
+      }else {
+        owsRequest.addFilter('bioma', "'CERRADO'");
+      }
+
+      if (time != undefined) {
+        owsRequest.addFilterDirect(time.value);
+        fileParam = layer + "_" + time.Viewvalue;
+      } else {
+        fileParam = layer;
+      }
+
+      diretorio = config.downloadDataDir + region.type + '/' + region.value + '/' + typeShape + '/' + layer + '/';
+
+    } else {
+      diretorio = config.downloadDataDir + '/' + typeShape + '/' + layer + '/';
+      fileParam = layer;
+    }
+
+    pathFile = diretorio + fileParam;
+
+    if (!fs.existsSync(diretorio)) {
+      fs.mkdirSync(diretorio, {
+        recursive: true
+      });
+    }
+
+    if (fs.existsSync(pathFile + '.zip')) {
+      response.download(pathFile + '.zip');
+    } else {
+      self.requestFileFromMapServ(owsRequest.get(), pathFile, response);
+    }
+  };
 
 	return Controller;
 

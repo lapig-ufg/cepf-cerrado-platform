@@ -1,115 +1,94 @@
 <app-header-pages></app-header-pages>
 
 <div class="container">
-	<h1 class="title_pages">Políticas de salvaguardas</h1>
+	<h1 class="title_pages">{{ 'text_salva_guarda.title' | translate }}</h1>
 	<div class="col-md-12">
 		<br />
 		<p>
-			Temos o entendimento de que o projeto liderado pelo LAPIG (Plataforma de Conhecimento do Cerrado) não possui
-			salvaguardas ambientais ou sociais, por estar lidando com a disponibilização, via plataforma web - online, de
-			informações geográficas cedidas por parceiros com projetos ambientais e sociais no Cerrado, muitos destes apoiados
-			pelo próprio CEPF, ou cedidas por instituições públicas (nas três esferas governamentais ), os quais já possuem suas
-			respectivas salvaguardas.
+			{{ 'text_salva_guarda.paragrafo1' | translate }}
 		</p>
 		<p>
-			Os problemas esperados em nosso projeto dizem respeito a dois pontos: 1) Alimentação do banco de dados, pois
-			dependemos do apoio de parceiros, relacionados ou não ao CEPF; 2) Acessibilidade a estas informações, por meio de
-			visualização na própria plataforma, ou por download direto de nosso servidor de dados, devido aos seguintes motivos:
+			{{ 'text_salva_guarda.paragrafo2' | translate }}
 		</p>
 		<div class="paddind_lista">
 			<p>
-				1) Instabilidade do servidor de dados, devido à problemas técnicos com energia ou rede de internet, com consequente
-				interrupção temporária dos serviços da plataforma.
+				{{ 'text_salva_guarda.paragrafo3' | translate }}
 			</p>
 			<p>
-				2) Dados desatualizados e/ou cartograficamente inconsistentes, produzidos por parceiros ou demais instituições
-				colaboradoras.
+				{{ 'text_salva_guarda.paragrafo4' | translate }}
 			</p>
 			<p>
-				3) Dados sem a correta identificação e/ou categoria adequada, podendo levar os usuários a downloads equivocados.
+				{{ 'text_salva_guarda.paragrafo5' | translate }}
 			</p>
 			<p>
-				4) Uso indevido das informações por terceiros, extrapolando nossas responsabilidades.
+				{{ 'text_salva_guarda.paragrafo6' | translate }}
 			</p>
 			<p>
-				5) Descontinuidade da plataforma a longo prazo, por políticas institucionais da empresa de hospedagem (neste caso, e
-				por enquanto, governo federal/MEC/UFG).
+				{{ 'text_salva_guarda.paragrafo7' | translate }}
 			</p>
 			<p>
-				6) Problemas técnicos em geral, devido especialmente a um número elevado de acessos simultâneos, causando
-				instabilidade na plataforma.
+				{{ 'text_salva_guarda.paragrafo8' | translate }}
 			</p>
 			<p>
-				7) Restrição de acesso ou uso para algumas camadas de informações, cedidas por parceiros diretos do CEPF/LAPIG, ou
-				por outras instituições públicas/privadas.
+				{{ 'text_salva_guarda.paragrafo9' | translate }}
 			</p>
 		</div>
 		<br />
 		<h5>
-			Para mitigar estes impactos listamos abaixo a forma de mitigá-los:
+			{{ 'text_salva_guarda.paragrafo10' | translate }}
 		</h5>
 		<div class="paddind_lista">
 			<p>
-				1) O servidor de dados está armazenado no Data Center da UFG. Estamos aproveitando a estrutura de redundância de
-				nobreaks e geradores da universidade. Quanto à rede de internet, a universidade possui redundância de links,
-				fornecidos pela Rede Nacional de Pesquisa - RNP.
+				{{ 'text_salva_guarda.paragrafo11' | translate }}
 			</p>
 			<p>
-				2) Criar um cronograma de lançamentos e atualizações, fazer as correções de inconsistências ou pedir ao parceiro
-				(fonte) que reenvie os dados de forma consistente.
+				{{ 'text_salva_guarda.paragrafo12' | translate }}
 			</p>
 			<p>
-				3) O Lapig possui uma metodologia específica, na qual os dados passam por algumas fases antes de serem inseridos na
-				Plataforma. Nesta metodologia, temos a chance de identificar possíveis erros.
+				{{ 'text_salva_guarda.paragrafo13' | translate }}
 			</p>
 			<p>
-				4) Será criado um termo de uso para que o usuário aceite antes de fazer o download do dado. Desta forma, o usuário
-				estará ciente de que o uso fora das condições estabelecidas será de sua inteira responsabilidade.
+				{{ 'text_salva_guarda.paragrafo14' | translate }}
 			</p>
 			<p>
-				5) As instâncias governamentais possuem grande interesse para manutenção de plataformas como a deste projeto,
-				conforme contrato Funape/UFG, via Lapig/CEPF. Caso venha acontecer situações que comprometam a atuação o Lapig em
-				acordo com o CEPF, o primeiro poderá sugerir novos parceiros para esta função.
+				{{ 'text_salva_guarda.paragrafo15' | translate }}
 			</p>
 			<p>
-				6) Otimização do Banco de Dados para que ele suporte um número elevado de requisições. Automatização de cachês dos
-				dados, para que as requisições se tornem mais leves e rápidas, não sobrecarregando o servidor de dados do Lapig.
+				{{ 'text_salva_guarda.paragrafo16' | translate }}
 			</p>
 			<p>
-				7) Havendo a restrição de uso para algumas camadas de informações, cedidas por parceiros diretos ao CEPF/Lapig, ou
-				por instituições públicas/privadas, temos a possibilidade de estabelecer login de acesso à plataforma, permitindo,
-				se for o caso, restringir a visualização e download dos mesmos.
+				{{ 'text_salva_guarda.paragrafo17' | translate }}
 			</p>
 		</div>
-		<p style="text-align: right">Para Download do documento por completo click <a
-				href="https://www.lapig.iesa.ufg.br/drive/index.php/s/7h10Fgf8oXlAb51" target="_blank">aqui!</a></p>
+		<p style="text-align: right">{{ 'text_salva_guarda.download' | translate }}<a
+				href="{{ 'text_salva_guarda.download_link' | translate }}"
+				target="_blank">{{ 'text_salva_guarda.download_aqui' | translate }}</a></p>
 		<br />
 		<h5>
-			Ouvidoria
+			{{ 'title_ouvidoria' | translate }}
 		</h5>
 		<p>
-			<b>Instituição executora:</b> Laboratório de Processamento de Imagens e Geoprocessamento (LAPIG)
+			<b>{{ 'text_ouvidoria.instituicao.label' | translate }}</b>
+			{{ 'text_ouvidoria.instituicao.text' | translate }}
 		</p>
 		<p>
-			<b>Responsável:</b> Professor Manuel Eduardo Ferreira
+			<b>{{ 'text_ouvidoria.responsavel.label' | translate }}</b>
+			{{ 'text_ouvidoria.responsavel.text' | translate }}
 		</p>
 		<p>
-			<b>Reclamações, críticas e sugestões sobre este projeto devem ser enviadas para: </b> <u>lapig.cepf@gmail.com</u>
-			Estas serão compartilhadas com a Diretoria de Doações do CEPF. Responderemos suas questões no prazo de até 15 dias.
+			<b>{{ 'text_ouvidoria.reclamacoes.label' | translate }}</b>
+			{{ 'text_ouvidoria.reclamacoes.text' | translate }}
 		</p>
 		<p>
-			Caso a resposta não tenha sido satisfatória, a reclamação pode ser enviada diretamente ao Diretor Executivo do CEPF
-			no e-mail <u>cepfexecutive@conservation.org</u>. Se o reclamante ainda não estiver satisfeito com a resposta, poderá
-			formalizar uma reclamação junto ao Banco Mundial <u>grievances@worldbank.org</u>. As reclamações poderão ser
-			formalizadas também por parceiros, para o endereço abaixo:
+			{{ 'text_ouvidoria.outros' | translate }}
 		</p>
 		<br />
 		<p class="palign_center">
-			<b>Laboratório de Processamento de Imagens e Geoprocessamento (LAPIG)</b> <br />
-			CAMPUS II Samambaia<br />
-			Cx. POSTAL 131 - Goiânia - GO<br />
-			CEP: 74001-970<br />
-			Fone: (62) 3521-1360<br />
+			<b>{{ 'text_ouvidoria.endereco.name' | translate }}</b> <br />
+			{{ 'text_ouvidoria.endereco.campus' | translate }}<br />
+			{{ 'text_ouvidoria.endereco.city' | translate }}<br />
+			{{ 'text_ouvidoria.endereco.cep' | translate }}<br />
+			{{ 'text_ouvidoria.endereco.fone' | translate }}<br />
 		</p>
 	</div>
 </div>
