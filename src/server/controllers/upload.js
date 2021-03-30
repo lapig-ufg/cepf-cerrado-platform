@@ -821,26 +821,7 @@ module.exports = function (app) {
 				}
 			}
 
-			let res = {
-				chart_pastagem_queimadas_peryear: graphQueimadasPastagem,
-				table_pastagem_queimadas_peryear: arrayAreasGrouped,
-				terraclass: graphTerraclass,
-			}
-
-			response.status(200).send(res);
-			response.end()
-
-		}
-		catch (err) {
-			response.status(400).send(languageJson['upload_messages']['spatial_relation_error'][Internal.language]);
-			response.end()
-		}
-	};
-
-	Uploader.desmatperyear = function (request, response) {
-
-		try {
-			var queryResult = request.queryResult['desmat_per_year_prodes']
+			var queryResult = request.queryResult['prodes']
 
 			var resultByYear = []
 			queryResult.forEach(function (row) {
@@ -854,15 +835,35 @@ module.exports = function (app) {
 				})
 			});
 
-			queryResult = request.queryResult['desmat_per_year_deter']
-			var resultByYearDeter = []
+			let res = {
+				chart_pastagem_queimadas_peryear: graphQueimadasPastagem,
+				table_pastagem_queimadas_peryear: arrayAreasGrouped,
+				terraclass: graphTerraclass,
+				prodes: resultByYear
+			}
 
+			response.status(200).send(res);
+			response.end()
+
+		}
+		catch (err) {
+			response.status(400).send(languageJson['upload_messages']['spatial_relation_error'][Internal.language]);
+			response.end()
+		}
+	};
+
+	Uploader.prodes = function (request, response) {
+
+		try {
+			var queryResult = request.queryResult['prodes']
+
+			var resultByYear = []
 			queryResult.forEach(function (row) {
 
 				var year = Number(row['year'])
 				var area = Number(row['area_desmat'])
 
-				resultByYearDeter.push({
+				resultByYear.push({
 					'area_desmat': area,
 					'year': year
 				})
@@ -881,12 +882,7 @@ module.exports = function (app) {
 				}, {}); // empty object is the initial value for result object
 			};
 
-			let res = {
-				prodes: resultByYear,
-				deter: resultByYearDeter,
-			}
-
-			response.status(200).send(res);
+			response.status(200).send(resultByYear);
 			response.end()
 
 		}

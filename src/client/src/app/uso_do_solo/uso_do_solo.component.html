@@ -48,7 +48,8 @@
 				<mat-progress-bar *ngIf="loadingsDownload" mode="indeterminate">
 				</mat-progress-bar>
 				<p-scrollPanel [style]="{height: innerHeigth - 200 + 'px'}">
-					<mat-tab-group class="layersConteudo" [(selectedIndex)]="selectedIndexConteudo" mat-stretch-tabs dynamicHeight>
+					<mat-tab-group class="layersConteudo" [(selectedIndex)]="selectedIndexConteudo" mat-stretch-tabs
+						dynamicHeight>
 						<mat-tab [label]="'layers' | translate">
 							<mat-accordion>
 								<div id="layers_pastagens">
@@ -141,7 +142,9 @@
 															</button>
 														</a>
 														<a style="margin-left: 10px;" *ngIf="layer.downloadSHP">
-															<button mat-raised-button class="buttons_download" (click)="buttonDownload('shp', layer, $event)" [disabled]="!layer.visible">
+															<button mat-raised-button class="buttons_download"
+																(click)="buttonDownload('shp', layer, $event)"
+																[disabled]="!layer.visible">
 																<mat-icon>cloud_download</mat-icon>&nbsp;SHP
 															</button>
 														</a>
@@ -179,7 +182,9 @@
 												</mat-checkbox>
 												<h5 class="upload-token">
 													{{'upload_token' | translate}}<strong>{{layerFromUpload.token}}</strong>
-													<button color="accent" (click)="printRegionsIdentification(layerFromUpload.token)" class="btn-print-token" mat-icon-button>
+													<button color="accent"
+														(click)="printRegionsIdentification(layerFromUpload.token)"
+														class="btn-print-token" mat-icon-button>
 														<mat-icon>print</mat-icon>
 													</button>
 												</h5>
@@ -210,7 +215,8 @@
 											</h5>
 											<div class="card-upload-analysed-content">
 												<div class="upload-token">
-													<button color="primary" (click)="printAnalyzedAreaReport()"  class="btn-print" mat-icon-button>
+													<button color="primary" (click)="printAnalyzedAreaReport()"
+														class="btn-print" mat-icon-button>
 														<mat-icon>print</mat-icon>
 														<mat-spinner [strokeWidth]="2" [diameter]="18"
 															*ngIf="loadingPrintReport" color="primary"
@@ -219,7 +225,7 @@
 													{{'analyzed_area_total_area' | translate }}
 													<strong>
 														{{layerFromUpload.analyzedArea.shape_upload.area_upload | number:'1.2-2' }}
-														km² </strong>
+														ha </strong>
 												</div>
 
 												<div *ngIf="layerFromUpload.analyzedArea.regions_intersected.hasOwnProperty('municipio')"
@@ -243,8 +249,7 @@
 
 												<div class="card-upload-analysed-table">
 													<h6 *ngIf="layerFromUpload.heavyAnalysis.terraclass || !layerFromUpload.heavyAnalysisLoading"
-														class="card-upload-analysed-table-title card"
-														(click)="openCharts(
+														class="card-upload-analysed-table-title card" (click)="openCharts(
 															translate.instant('chart_terraclass_title'),
 														 false,
 														  	layerFromUpload.heavyAnalysis.terraclass.data,
@@ -263,8 +268,10 @@
 													</h6>
 												</div>
 
-												<div *ngIf="layerFromUpload.heavyAnalysis.hasOwnProperty('table_pastagem_queimadas_peryear')"  class="card-upload-analysed-table">
-													<div *ngIf="layerFromUpload.heavyAnalysis.table_pastagem_queimadas_peryear.length > 0">
+												<div *ngIf="layerFromUpload.heavyAnalysis.hasOwnProperty('table_pastagem_queimadas_peryear')"
+													class="card-upload-analysed-table">
+													<div
+														*ngIf="layerFromUpload.heavyAnalysis.table_pastagem_queimadas_peryear.length > 0">
 														<h5 class="card-upload-analysed-table-title">
 															{{'burned_data_title' | translate}}
 														</h5>
@@ -283,8 +290,9 @@
 																<tr [pSelectableRow]="dt" tooltipPosition="bottom"
 																	life="2000">
 																	<td align="center">{{dt.year}}</td>
-																	<td align="center">{{dt.area_queimada | number :'1.2-2' }}
-																		km²</td>
+																	<td align="center">
+																		{{dt.area_queimada | number :'1.2-2' }}
+																		ha</td>
 																</tr>
 															</ng-template>
 														</p-table>
@@ -312,25 +320,25 @@
 											<button class="color-buttons"
 												*ngIf="layerFromConsulta.token != ''  && !layerFromConsulta.analyzedArea.hasOwnProperty('geojson')"
 												(click)="searchUploadShape()" mat-raised-button color="primary">
-												<div >
+												<div>
 													{{'btn_search' | translate | uppercase}}</div>
 											</button>
 											<button class="color-buttons"
 												*ngIf="layerFromConsulta.token != '' && layerFromConsulta.analyzedArea.hasOwnProperty('geojson')"
 												(click)="analyzeUploadShape(true)" mat-raised-button color="primary">
-												<div >
+												<div>
 													{{'btn_analyze' | translate | uppercase}}</div>
 											</button>
 											<button class="color-buttons clear"
 												*ngIf="layerFromConsulta.token != '' && !layerFromConsulta.analyzedArea.hasOwnProperty('regions_intersected')"
 												(click)="clearUpload(true)" mat-raised-button color="warn">
-												<div >
+												<div>
 													{{'btn_clear' | translate | uppercase}}</div>
 											</button>
 											<button class="color-buttons clear"
 												*ngIf="layerFromConsulta.analyzedArea.hasOwnProperty('shape_upload')"
 												(click)="clearUpload(true)" mat-raised-button color="warn">
-												<div >
+												<div>
 													{{'btn_clear' | translate | uppercase}}</div>
 											</button>
 										</div>
@@ -346,8 +354,8 @@
 												{{'analyzed_area_title' | translate | uppercase}}</h5>
 											<div class="card-upload-analysed-content">
 												<div class="upload-token">
-													<button (click)="printAnalyzedAreaReport(true)"
-														class="btn-print" mat-icon-button>
+													<button (click)="printAnalyzedAreaReport(true)" class="btn-print"
+														mat-icon-button>
 														<mat-icon>print</mat-icon>
 														<mat-spinner [strokeWidth]="2" [diameter]="18"
 															*ngIf="loadingPrintReport" color="primary"
@@ -356,7 +364,7 @@
 													{{'analyzed_area_total_area' | translate }}
 													<strong>
 														{{layerFromConsulta.analyzedArea.shape_upload.area_upload | number:'1.2-2' }}
-														km² </strong>
+														ha </strong>
 												</div>
 
 												<div *ngIf="layerFromConsulta.analyzedArea.regions_intersected.hasOwnProperty('municipio')"
@@ -369,7 +377,7 @@
 													</p>
 												</div>
 												<div *ngIf="layerFromConsulta.analyzedArea.regions_intersected.hasOwnProperty('estado')"
-													 class="card-upload-analysed-table">
+													class="card-upload-analysed-table">
 													<h6 class="card-upload-analysed-table-title">
 														{{'analyzed_area_table_state_title' | translate}}
 													</h6>
@@ -380,8 +388,7 @@
 
 												<div class="card-upload-analysed-table">
 													<h6 *ngIf="layerFromConsulta.heavyAnalysis.terraclass || !layerFromConsulta.heavyAnalysisLoading"
-														class="card-upload-analysed-table-title card"
-														(click)="openCharts(
+														class="card-upload-analysed-table-title card" (click)="openCharts(
 															translate.instant('chart_terraclass_title'),
 														 false,
 														  	layerFromConsulta.heavyAnalysis.terraclass.data,
@@ -400,18 +407,20 @@
 													</h6>
 												</div>
 
-												<div *ngIf="layerFromConsulta.heavyAnalysis.hasOwnProperty('table_pastagem_queimadas_peryear')"  class="card-upload-analysed-table">
-													<div *ngIf="layerFromConsulta.heavyAnalysis.table_pastagem_queimadas_peryear.length > 0">
+												<div *ngIf="layerFromConsulta.heavyAnalysis.hasOwnProperty('table_pastagem_queimadas_peryear')"
+													class="card-upload-analysed-table">
+													<div
+														*ngIf="layerFromConsulta.heavyAnalysis.table_pastagem_queimadas_peryear.length > 0">
 														<h5 class="card-upload-analysed-table-title">
 															{{'burned_data_title' | translate}}
 														</h5>
 														<p-table
-																[value]="layerFromConsulta.heavyAnalysis.table_pastagem_queimadas_peryear"
-																selectionMode="single">
+															[value]="layerFromConsulta.heavyAnalysis.table_pastagem_queimadas_peryear"
+															selectionMode="single">
 															<ng-template pTemplate="header">
 																<tr align="center">
 																	<th
-																			*ngFor="let header of translate.instant('burned_data_headers')">
+																		*ngFor="let header of translate.instant('burned_data_headers')">
 																		{{header}}
 																	</th>
 																</tr>
@@ -420,8 +429,9 @@
 																<tr [pSelectableRow]="dt" tooltipPosition="bottom"
 																	life="2000">
 																	<td align="center">{{dt.year}}</td>
-																	<td align="center">{{dt.area_queimada | number :'1.2-2' }}
-																		km²</td>
+																	<td align="center">
+																		{{dt.area_queimada | number :'1.2-2' }}
+																		ha</td>
 																</tr>
 															</ng-template>
 														</p-table>
