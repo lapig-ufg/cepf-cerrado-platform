@@ -128,7 +128,7 @@ module.exports = function(app) {
 							"label": languageJson["title_layer_label"]["usodosolo"][language],
 							"visible": true,
               "selectedType": 'uso_solo_mapbiomas',
-              "downloadSHP": false,
+              "downloadSHP": true,
               "downloadCSV": true,
               "types": [
 								{
@@ -1841,7 +1841,7 @@ module.exports = function(app) {
 							"label": languageJson["title_layer_label"]["pontos_campo"][language],
 							"visible": false,
               "selectedType": 'pontos_campo_sem_parada',
-              "downloadSHP": false,
+              "downloadSHP": true,
               "downloadCSV": true, 
 							"types": [
 								{
@@ -1933,7 +1933,7 @@ module.exports = function(app) {
 							"label": languageJson["title_layer_label"]["pontos_inspecionados"][language],
 							"visible": false,
               "selectedType": 'pontos_tvi_treinamento',
-              "downloadSHP": false,
+              "downloadSHP": true,
               "downloadCSV": true,
 							"types": [
 								{

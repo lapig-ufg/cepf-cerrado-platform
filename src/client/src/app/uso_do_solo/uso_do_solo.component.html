@@ -141,7 +141,7 @@
 																<mat-icon>cloud_download</mat-icon>&nbsp;CSV
 															</button>
 														</a>
-														<a style="margin-left: 10px;" *ngIf="layer.downloadSHP">
+														<a style="margin-left: 10px;" *ngIf="layer.downloadSHP && layer.selectedType != 'uso_solo_mapbiomas'">
 															<button mat-raised-button class="buttons_download"
 																(click)="buttonDownload('shp', layer, $event)"
 																[disabled]="!layer.visible">
