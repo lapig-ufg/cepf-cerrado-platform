@@ -319,7 +319,7 @@ module.exports = function(app) {
                 "contato":"lapig.cepf@gmail.com"
               },
               "columnsCSV": "area_ha, classe, year",
-              "downloadSHP": false,
+              "downloadSHP": true,
               "downloadCSV": true
 						},
 						{
@@ -327,7 +327,7 @@ module.exports = function(app) {
 							"label": languageJson["title_layer_label"]["pasture"][language],
 							"visible": false,
               "selectedType": 'pasture',
-              "downloadSHP": false,
+              "downloadSHP": true,
               "downloadCSV": true,
 							"types": [
 								{
@@ -426,7 +426,7 @@ module.exports = function(app) {
 							"label": languageJson["title_layer_label"]["pecuaria_censitaria"][language],
 							"visible": false,
               "selectedType": 'lotacao_bovina_regions',
-              "downloadSHP": false,
+              "downloadSHP": true,
               "downloadCSV": true,
 							"types": [
                 {
@@ -547,7 +547,7 @@ module.exports = function(app) {
 							"label": languageJson["title_layer_label"]["agricultura_censitaria"][language],
 							"visible": false,
               "selectedType": 'bi_ce_algodao_area_municipio_250_ibge',
-              "downloadSHP": false,
+              "downloadSHP": true,
               "downloadCSV": true,
 							"types": [
                 {
@@ -920,7 +920,7 @@ module.exports = function(app) {
                 "contato": "lapig.cepf@gmail.com"
               },
               "columnsCSV": "",
-              "downloadSHP": false,
+              "downloadSHP": true,
               "downloadCSV": true
             },
             {
@@ -947,7 +947,7 @@ module.exports = function(app) {
                 "contato": "lapig.cepf@gmail.com"
               },
               "columnsCSV": "",
-              "downloadSHP": false,
+              "downloadSHP": true,
               "downloadCSV": true
             },
             {
@@ -1001,7 +1001,7 @@ module.exports = function(app) {
                 "contato": "lapig.cepf@gmail.com"
               },
               "columnsCSV": "",
-              "downloadSHP": false,
+              "downloadSHP": true,
               "downloadCSV": true
             }
           ]
@@ -1267,7 +1267,7 @@ module.exports = function(app) {
 							"label": languageJson["title_layer_label"]["desmatamentos_queimadas"][language],
 							"visible": false,
               "selectedType": 'desmatamento_prodes',
-              "downloadSHP": false,
+              "downloadSHP": true,
               "downloadCSV": true,
 							"types": [
 								{
@@ -1405,7 +1405,7 @@ module.exports = function(app) {
 							"label": languageJson["title_layer_label"]["alertas_desmatamentos"][language],
 							"visible": false,
               "selectedType": 'alertas_desmatamento_deter',
-              "downloadSHP": false,
+              "downloadSHP": true,
               "downloadCSV": true, 
 							"types": [
 								{
@@ -1438,7 +1438,7 @@ module.exports = function(app) {
 							"label": languageJson["title_layer_label"]["areas_queimadas"][language],
 							"visible": false,
               "selectedType": 'queimadas_lapig',
-              "downloadSHP": false,
+              "downloadSHP": true,
               "downloadCSV": true,
 							"types": [
                  {
