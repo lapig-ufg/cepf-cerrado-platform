@@ -255,10 +255,10 @@ export class MapComponent implements OnInit {
 
 		this.urls = [
 			/* 'http://localhost:5501/ows' */
-			'http://o1.lapig.iesa.ufg.br/ows',
-			'http://o2.lapig.iesa.ufg.br/ows',
-			'http://o3.lapig.iesa.ufg.br/ows',
-			'http://o4.lapig.iesa.ufg.br/ows'
+			'https://o1.lapig.iesa.ufg.br/ows',
+			'https://o2.lapig.iesa.ufg.br/ows',
+			'https://o3.lapig.iesa.ufg.br/ows',
+			'https://o4.lapig.iesa.ufg.br/ows'
 		];
 
 		this.tileGrid = new TileGrid({
@@ -1447,9 +1447,9 @@ export class MapComponent implements OnInit {
 			source: this.utfgridsourcePastagem
 		});
 
-		this.utfgridsourceMapbiomas = new UTFGrid({
-			tileJSON: this.getTileJSONMapbiomas()
-		});
+		// this.utfgridsourceMapbiomas = new UTFGrid({
+		// 	tileJSON: this.getTileJSONMapbiomas()
+		// });
 
 		this.utfgridlayerMapbiomas = new OlTileLayer({
 			source: this.utfgridsourceMapbiomas

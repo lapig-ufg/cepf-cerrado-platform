@@ -134,7 +134,7 @@ module.exports = function(app) {
 								{
                   "value": "uso_solo_mapbiomas", 
                   "Viewvalue": languageJson["type_layer_viewvalue"]["usodosolo_mapbiomas"][language],
-                  "visible": false, 
+                  "visible": false,
                   "opacity": 1,
                   "regionFilter": true,
                   "order": 1,
@@ -199,7 +199,7 @@ module.exports = function(app) {
                   "value": "uso_solo_terraclass", 
                   "Viewvalue": languageJson["type_layer_viewvalue"]["usodosolo_terraclass"][language],
                   "typeLabel": languageJson["typelabel_layer"]["type"][language],
-                  "visible": false, 
+                  "visible": true, 
                   "opacity": 1,
                   "regionFilter": true,
                   "order": 1,
