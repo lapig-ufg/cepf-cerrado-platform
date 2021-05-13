@@ -127,14 +127,14 @@ module.exports = function(app) {
 							"id": "mapa_uso_solo",
 							"label": languageJson["title_layer_label"]["usodosolo"][language],
 							"visible": true,
-              "selectedType": 'uso_solo_mapbiomas',
+              "selectedType": 'uso_solo_terraclass',
               "downloadSHP": true,
               "downloadCSV": true,
               "types": [
 								{
                   "value": "uso_solo_mapbiomas", 
                   "Viewvalue": languageJson["type_layer_viewvalue"]["usodosolo_mapbiomas"][language],
-                  "visible": true, 
+                  "visible": false, 
                   "opacity": 1,
                   "regionFilter": true,
                   "order": 1,
