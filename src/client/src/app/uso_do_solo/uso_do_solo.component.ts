@@ -1447,9 +1447,9 @@ export class MapComponent implements OnInit {
 			source: this.utfgridsourcePastagem
 		});
 
-		// this.utfgridsourceMapbiomas = new UTFGrid({
-		// 	tileJSON: this.getTileJSONMapbiomas()
-		// });
+		this.utfgridsourceMapbiomas = new UTFGrid({
+			tileJSON: this.getTileJSONMapbiomas()
+		});
 
 		this.utfgridlayerMapbiomas = new OlTileLayer({
 			source: this.utfgridsourceMapbiomas
