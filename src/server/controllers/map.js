@@ -1437,12 +1437,12 @@ module.exports = function(app) {
 							"id": "mapa_queimadas",
 							"label": languageJson["title_layer_label"]["areas_queimadas"][language],
 							"visible": false,
-              "selectedType": 'queimadas_lapig',
+              "selectedType": 'bi_ce_queimadas_250_lapig',
               "downloadSHP": true,
               "downloadCSV": true,
 							"types": [
                  {
-                  "value": "queimadas_lapig", 
+                  "value": "bi_ce_queimadas_250_lapig",
                   "Viewvalue": languageJson["type_layer_viewvalue"]["lapig"][language],
                   "visible": false, 
                   "opacity": 1,
@@ -1450,7 +1450,7 @@ module.exports = function(app) {
                   "order": 5,
                   "typeLabel": languageJson["typelabel_layer"]["fonte"][language],
                   "timeLabel": languageJson["typelabel_layer"]["year"][language],
-                  "timeSelected": "year=2018",
+                  "timeSelected": "year=2019",
                   "timeHandler": "msfilter",
                   "times": [
                     {"value": "year=2000", "Viewvalue": 2000},
@@ -1471,19 +1471,20 @@ module.exports = function(app) {
                     {"value": "year=2015", "Viewvalue": 2015},
                     {"value": "year=2016", "Viewvalue": 2016},
                     {"value": "year=2017", "Viewvalue": 2017},
-                    {"value": "year=2018", "Viewvalue": 2018}
+                    {"value": "year=2018", "Viewvalue": 2018},
+                    {"value": "year=2019", "Viewvalue": 2019}
                   ],
                   "metadados": {
-                    "title": languageJson["metadata"]["queimadas_lapig"]["title"][language],
-                    "description": languageJson["metadata"]["queimadas_lapig"]["description"][language],
-                    "format": languageJson["metadata"]["queimadas_lapig"]["format"][language],
-                    "region": languageJson["metadata"]["queimadas_lapig"]["region"][language],
-                    "period": languageJson["metadata"]["queimadas_lapig"]["period"][language],
-                    "scale": languageJson["metadata"]["queimadas_lapig"]["scale"][language],
-                    "system_coordinator": languageJson["metadata"]["queimadas_lapig"]["system_coordinator"][language],
-                    "cartographic_projection": languageJson["metadata"]["queimadas_lapig"]["cartographic_projection"][language],
-                    "cod_caracter": languageJson["metadata"]["queimadas_lapig"]["cod_caracter"][language],
-                    "fonte": languageJson["metadata"]["queimadas_lapig"]["fonte"][language],
+                    "title": languageJson["metadata"]["bi_ce_queimadas_250_lapig"]["title"][language],
+                    "description": languageJson["metadata"]["bi_ce_queimadas_250_lapig"]["description"][language],
+                    "format": languageJson["metadata"]["bi_ce_queimadas_250_lapig"]["format"][language],
+                    "region": languageJson["metadata"]["bi_ce_queimadas_250_lapig"]["region"][language],
+                    "period": languageJson["metadata"]["bi_ce_queimadas_250_lapig"]["period"][language],
+                    "scale": languageJson["metadata"]["bi_ce_queimadas_250_lapig"]["scale"][language],
+                    "system_coordinator": languageJson["metadata"]["bi_ce_queimadas_250_lapig"]["system_coordinator"][language],
+                    "cartographic_projection": languageJson["metadata"]["bi_ce_queimadas_250_lapig"]["cartographic_projection"][language],
+                    "cod_caracter": languageJson["metadata"]["bi_ce_queimadas_250_lapig"]["cod_caracter"][language],
+                    "fonte": languageJson["metadata"]["bi_ce_queimadas_250_lapig"]["fonte"][language],
                     "contato":"lapig.cepf@gmail.com"
                   },
                   "columnsCSV": "area_km2, burndate, year"
@@ -1680,7 +1681,7 @@ module.exports = function(app) {
                   "order": 4,
                   "typeLabel": languageJson["typelabel_layer"]["type"][language],
                   "timeLabel": languageJson["typelabel_layer"]["year"][language],
-                  "timeSelected": "year=2016",
+                  "timeSelected": "year=2019",
                   "timeHandler": "msfilter",
                   "times": [
                     {"value": "year=2006", "Viewvalue": 2006},
@@ -1693,7 +1694,10 @@ module.exports = function(app) {
                     {"value": "year=2013", "Viewvalue": 2013},
                     {"value": "year=2014", "Viewvalue": 2014},
                     {"value": "year=2015", "Viewvalue": 2015},
-                    {"value": "year=2016", "Viewvalue": 2016}
+                    {"value": "year=2016", "Viewvalue": 2016},
+                    {"value": "year=2017", "Viewvalue": 2017},
+                    {"value": "year=2018", "Viewvalue": 2018},
+                    {"value": "year=2019", "Viewvalue": 2019}
                   ],
                   "metadados": {
                     "title": languageJson["metadata"]["bi_ce_conflito_terra_250_cpt"]["title"][language],
@@ -1719,7 +1723,7 @@ module.exports = function(app) {
                   "order": 4,
                   "typeLabel": languageJson["typelabel_layer"]["type"][language],
                   "timeLabel": languageJson["typelabel_layer"]["year"][language],
-                  "timeSelected": "year=2016",
+                  "timeSelected": "year=2019",
                   "timeHandler": "msfilter",
                   "times": [
                     {"value": "year=2006", "Viewvalue": 2006},
@@ -1732,7 +1736,10 @@ module.exports = function(app) {
                     {"value": "year=2013", "Viewvalue": 2013},
                     {"value": "year=2014", "Viewvalue": 2014},
                     {"value": "year=2015", "Viewvalue": 2015},
-                    {"value": "year=2016", "Viewvalue": 2016}
+                    {"value": "year=2016", "Viewvalue": 2016},
+                    {"value": "year=2017", "Viewvalue": 2017},
+                    {"value": "year=2018", "Viewvalue": 2018},
+                    {"value": "year=2019", "Viewvalue": 2019}
                   ],
                   "metadados": {
                     "title": languageJson["metadata"]["bi_ce_conflito_terra_pessoas_250_cpt"]["title"][language],

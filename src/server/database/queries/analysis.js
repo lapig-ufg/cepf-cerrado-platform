@@ -39,7 +39,7 @@ module.exports = function (app) {
             },
             {
                 id: 'queimadas',
-                sql: "SELECT p.year, SUM(p.area_km2)*100.0 as area_queimada FROM queimadas_lapig p where p.year IS NOT NULL AND " + regionfilter.other + "='" + region + "' GROUP BY 1 order by 1 desc",
+                sql: "SELECT p.year, SUM(p.area_km2)*100.0 as area_queimada FROM bi_ce_queimadas_250_lapig p where p.year IS NOT NULL AND " + regionfilter.other + "='" + region + "' GROUP BY 1 order by 1 desc",
                 mantain: true
             },
             {
