@@ -156,6 +156,18 @@
 			"pt": "Unidades de Conservação Integral",
 			"en": "Integral Conservation Units"
 		},
+		"es_mg_faveiro_wilson_na_2014_pcfw": {
+			"pt": "Faveiro de Wilson",
+			"en": "Wilson's Faveiro"
+		},
+		"atrativos_turisticos": {
+			"pt": "Atrativos Turísticos",
+			"en": "Tourist Attractions"
+		},
+		"riscos_ecologicos": {
+			"pt": "Riscos Ecológicos - DF",
+			"en": "Ecological Risks - FD"
+		},
 		"assentamentos": {
 			"pt": "Assentamentos",
 			"en": "Settlements"
@@ -277,6 +289,26 @@
 		"pessoas": {
 			"pt": "N° Pessoas",
 			"en": "Number of people"
+		},
+		"or_ka_atrativos_turisticos_2020_100_aqk": {
+			"pt": "Kalunga",
+			"en": "Kalunga"
+		},
+		"or_vp_atrativos_turisticos_2019_ni_iat": {
+			"pt": "Vão do Paranã",
+			"en": "Vão do Paranã"
+		},
+		"es_df_risco_contaminacao_subsolos_2017_ni_sema": {
+			"pt": "Contaminação de aquíferos",
+			"en": "Contamination of aquifers"
+		},
+		"es_df_risco_perca_cerrado_nativo_2017_ni_sema": {
+			"pt": "Perda de cerrado nativo",
+			"en": "Loss of native savannah"
+		},
+		"es_df_risco_perca_recarga_aquifero_2017_ni_sema": {
+			"pt": "Perda de capacidade de recarga dos aquíferos",
+			"en": "loss of aquifer recharge capacity"
 		}
 	},
 	"metadata": {
@@ -2172,6 +2204,258 @@
 			"fonte": {
 				"pt": "",
 				"en": ""
+			}
+		},
+		"es_mg_faveiro_wilson_na_2014_pcfw": {
+			"title": {
+				"pt": "Faveiro de Wilson",
+				"en": "Wilson's Faveiro"
+			},
+			"description": {
+				"pt": "Registros de ocorrência do faveiro-de-wilson na região central de Minas Gerais. Ela é endêmica desta região e há 16 anos o PROGRAMA DE CONSERVAÇÃO DO FAVEIRO-DE-WILSON trabalha para a conservação desta espécie. Estes pontos foram registrados nos trabalhos de campo, usando um GPS Garmin GPSMap posicionado junto ao tronco da árvore, se tratando de dados bem precisos. ",
+				"en": "Records of occurrence of faveiro-de-wilson in the central region of Minas Gerais. It is endemic to this region and the FAVEIRO-DE-WILSON CONSERVATION PROGRAM has been working for the conservation of this species for 16 years. These points were recorded in the field work, using a Garmin GPSMap positioned next to the tree trunk, in the case of very accurate data."
+			},
+			"format": {
+				"pt": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+				"en": "Shapefile (* .SHP), with complementary files (* .PRJ, * DBF, * .SHX, * .SBX, * MAP). Comma-separated values (* .CSV)."
+			},
+			"region": {
+				"pt": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+				"en": "Cerrado biome, allowing to analyze the classes of land use by other regions of interest such as: states and municipalities."
+			},
+			"period": {
+				"pt": "2014",
+				"en": "2014"
+			},
+			"scale": {
+				"pt": "Não se aplica",
+				"en": "Not applicable"
+			},
+			"system_coordinator": {
+				"pt": "Superfície de referência SIRGAS 2000, Sistema de Coordenada Geográfica (em graus).",
+				"en": "SIRGAS 2000 reference surface, Geographic Coordinate System (in degrees)."
+			},
+			"cartographic_projection": {
+				"pt": "Universal de Mercator.",
+				"en": "Universal Transverse Mercator (UTM)."
+			},
+			"cod_caracter": {
+				"pt": "Latin 1.",
+				"en": "Latin 1."
+			},
+			"fonte": {
+				"pt": "PROGRAMA DE CONSERVAÇÃO DO FAVEIRO-DE-WILSON",
+				"en": "WILSON FAVEIRO CONSERVATION PROGRAM"
+			}
+		},
+		"or_ka_atrativos_turisticos_2020_100_aqk": {
+			"title": {
+				"pt": "Atrativos Turísticos Kalunga",
+				"en": "Kalunga Tourist Attractions"
+			},
+			"description": {
+				"pt": "Localização dos atrativos turísticos no Sítio Histórico e Patrimônio Cultural Kalunga.",
+				"en": "Location of tourist attractions at the Kalunga Historical and Cultural Heritage Site."
+			},
+			"format": {
+				"pt": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+				"en": "Shapefile (* .SHP), with complementary files (* .PRJ, * DBF, * .SHX, * .SBX, * MAP). Comma-separated values (* .CSV)."
+			},
+			"region": {
+				"pt": "Território Kalunga",
+				"en": "Kalunga Territory"
+			},
+			"period": {
+				"pt": "2020",
+				"en": "2020"
+			},
+			"scale": {
+				"pt": "100m",
+				"en": "100m"
+			},
+			"system_coordinator": {
+				"pt": "Superfície de referência SIRGAS 2000, Sistema de Coordenada Geográfica (em graus).",
+				"en": "SIRGAS 2000 reference surface, Geographic Coordinate System (in degrees)."
+			},
+			"cartographic_projection": {
+				"pt": "Universal de Mercator.",
+				"en": "Universal Transverse Mercator (UTM)."
+			},
+			"cod_caracter": {
+				"pt": "Latin 1.",
+				"en": "Latin 1."
+			},
+			"fonte": {
+				"pt": "Associação Quilombo Kalunga",
+				"en": "Quilombo Kalunga Association"
+			}
+		},
+		"or_vp_atrativos_turisticos_2019_ni_iat": {
+			"title": {
+				"pt": "Atrativos Turísticos do Vão do Paranã",
+				"en": "Tourist Attractions of Vão do Paranã"
+			},
+			"description": {
+				"pt": "Localização dos atrativos turísticos na região do Vão do Paranã no nordeste de Goiás.",
+				"en": "Location of tourist attractions in the Vão do Paranã region in northeastern Goiás."
+			},
+			"format": {
+				"pt": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+				"en": "Shapefile (* .SHP), with complementary files (* .PRJ, * DBF, * .SHX, * .SBX, * MAP). Comma-separated values (* .CSV)."
+			},
+			"region": {
+				"pt": "Vão do Paranã",
+				"en": "Vão do Paranã"
+			},
+			"period": {
+				"pt": "2019",
+				"en": "2019"
+			},
+			"scale": {
+				"pt": "Não se aplica",
+				"en": "Not applicable"
+			},
+			"system_coordinator": {
+				"pt": "Superfície de referência SIRGAS 2000, Sistema de Coordenada Geográfica (em graus).",
+				"en": "SIRGAS 2000 reference surface, Geographic Coordinate System (in degrees)."
+			},
+			"cartographic_projection": {
+				"pt": "Universal de Mercator.",
+				"en": "Universal Transverse Mercator (UTM)."
+			},
+			"cod_caracter": {
+				"pt": "Latin 1.",
+				"en": "Latin 1."
+			},
+			"fonte": {
+				"pt": "Instituto Água e Terra",
+				"en": "Instituto Água e Terra"
+			}
+		},
+		"es_df_risco_contaminacao_subsolos_2017_ni_sema": {
+			"title": {
+				"pt": "Risco Ecológico de contaminação de aquíferos",
+				"en": "Ecological risk of aquifer contamination"
+			},
+			"description": {
+				"pt": "Dados relativos ao risco ecológico de contaminação de aquíferos do Zoneamento Ecológico-Econômico do Distrito Federal para a gestão de risco sobre contaminação de aquíferos. O risco de contaminação de um aquífero diz respeito ao seu grau de proteção natural a ameaças potenciais de contaminação (Foster & Hirata, 1988). Este risco é próprio de cada aquífero e depende de dois fatores principais: a profundidade das águas subterrâneas e do tipo de aquífero no tocante ao confinamento e litologia.",
+				"en": "Data on the ecological risk of contamination of aquifers from the Ecological-Economic Zoning of the Federal District for risk management on aquifer contamination. The risk of contamination of an aquifer concerns its degree of natural protection against potential threats of contamination (Foster & Hirata, 1988). This risk is specific to each aquifer and depends on two main factors: the depth of groundwater and the type of aquifer with regard to confinement and lithology."
+			},
+			"format": {
+				"pt": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+				"en": "Shapefile (* .SHP), with complementary files (* .PRJ, * DBF, * .SHX, * .SBX, * MAP). Comma-separated values (* .CSV)."
+			},
+			"region": {
+				"pt": "Distrito Federal",
+				"en": "Federal District"
+			},
+			"period": {
+				"pt": "2017",
+				"en": "2017"
+			},
+			"scale": {
+				"pt": "Não se aplica",
+				"en": "Not applicable"
+			},
+			"system_coordinator": {
+				"pt": "Superfície de referência SIRGAS 2000, Sistema de Coordenada Geográfica (em graus).",
+				"en": "SIRGAS 2000 reference surface, Geographic Coordinate System (in degrees)."
+			},
+			"cartographic_projection": {
+				"pt": "Universal de Mercator.",
+				"en": "Universal Transverse Mercator (UTM)."
+			},
+			"cod_caracter": {
+				"pt": "Latin 1.",
+				"en": "Latin 1."
+			},
+			"fonte": {
+				"pt": "Secretaria de Estado do Meio Ambiente do Distrito Federal",
+				"en": "State Secretariat for the Environment of the Federal District"
+			}
+		},
+		"es_df_risco_perca_cerrado_nativo_2017_ni_sema": {
+			"title": {
+				"pt": "Risco ecológico de perda de cerrado nativo",
+				"en": "Ecological risk of loss of native savannah"
+			},
+			"description": {
+				"pt": "Dados relativos ao risco de perda de remanescentes de cerrado nativo no Distrito Federal para a gestão de risco sobre os fragmentos de vegetação nativa. O mapa é baseado no mapeamento de uso e cobertura vegetal de 2009, com atualizações em 2014 pelo Instituto Brasília Ambiental (IBRAM) e em 2016 pela Coordenação Geral Técnica do ZEE-DF.",
+				"en": "Data on the risk of loss of remnants of native cerrado in the Federal District for risk management on fragments of native vegetation. The map is based on the mapping of use and vegetation cover in 2009, with updates in 2014 by the Brasília Environmental Institute (IBRAM) and in 2016 by the General Technical Coordination of ZEE-DF."
+			},
+			"format": {
+				"pt": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+				"en": "Shapefile (* .SHP), with complementary files (* .PRJ, * DBF, * .SHX, * .SBX, * MAP). Comma-separated values (* .CSV)."
+			},
+			"region": {
+				"pt": "Distrito Federal",
+				"en": "Federal District"
+			},
+			"period": {
+				"pt": "2017",
+				"en": "2017"
+			},
+			"scale": {
+				"pt": "Não se aplica",
+				"en": "Not applicable"
+			},
+			"system_coordinator": {
+				"pt": "Superfície de referência SIRGAS 2000, Sistema de Coordenada Geográfica (em graus).",
+				"en": "SIRGAS 2000 reference surface, Geographic Coordinate System (in degrees)."
+			},
+			"cartographic_projection": {
+				"pt": "Universal de Mercator.",
+				"en": "Universal Transverse Mercator (UTM)."
+			},
+			"cod_caracter": {
+				"pt": "Latin 1.",
+				"en": "Latin 1."
+			},
+			"fonte": {
+				"pt": "Secretaria de Estado do Meio Ambiente do Distrito Federal",
+				"en": "State Secretariat for the Environment of the Federal District"
+			}
+		},
+		"es_df_risco_perca_recarga_aquifero_2017_ni_sema": {
+			"title": {
+				"pt": "Risco ecológico de perda de capacidade de recarga dos aquíferos",
+				"en": "Ecological risk of loss of aquifer recharge capacity"
+			},
+			"description": {
+				"pt": "Dados relativos à taxa de infiltração de água nos aquíferos do Distrito Federal para a gestão de riscos sobre a perda da capacidade de recarga de aquíferos.",
+				"en": "Data on the rate of water infiltration in the aquifers of the Federal District for risk management on the loss of aquifer recharge capacity."
+			},
+			"format": {
+				"pt": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP). Comma-separated values (*.CSV).",
+				"en": "Shapefile (* .SHP), with complementary files (* .PRJ, * DBF, * .SHX, * .SBX, * MAP). Comma-separated values (* .CSV)."
+			},
+			"region": {
+				"pt": "Distrito Federal",
+				"en": "Federal District"
+			},
+			"period": {
+				"pt": "2017",
+				"en": "2017"
+			},
+			"scale": {
+				"pt": "Não se aplica",
+				"en": "Not applicable"
+			},
+			"system_coordinator": {
+				"pt": "Superfície de referência SIRGAS 2000, Sistema de Coordenada Geográfica (em graus).",
+				"en": "SIRGAS 2000 reference surface, Geographic Coordinate System (in degrees)."
+			},
+			"cartographic_projection": {
+				"pt": "Universal de Mercator.",
+				"en": "Universal Transverse Mercator (UTM)."
+			},
+			"cod_caracter": {
+				"pt": "Latin 1.",
+				"en": "Latin 1."
+			},
+			"fonte": {
+				"pt": "Secretaria de Estado do Meio Ambiente do Distrito Federal",
+				"en": "State Secretariat for the Environment of the Federal District"
 			}
 		}
 	},
