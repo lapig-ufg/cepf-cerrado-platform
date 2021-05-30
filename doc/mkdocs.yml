@@ -1,0 +1,20 @@
+site_name: Documentação - Plataforma de Conhecimento CEPF
+site_author: Equipe
+
+theme: 'readthedocs'
+
+nav:
+  - 'HOME': 'index.md'
+  - 'Guia do usuário':
+    - 'Dados Geográficos': '01-guia_dados_geograficos.md'
+    - 'Funcionalidades': '01-guia_funcionalidades.md'
+    - 'Relatórios': '01-guia_relatorios.md'
+
+  - 'Dados':
+    - 'Vetoriais': '03-dad_vetoriais.md'
+
+  - 'Arquitetura de Software':
+    - 'Visão geral': '02-arq_geral.md'
+    - 'Servidor de mapas': '02-arq_servidor_de_mapas.md'
+    - 'Servidor de aplicação': '02-arq_servidor_de_aplicacao.md'
+    - 'Deployment da arquitetura do Cerrado DPAT': '02-arq_execucao_dpat.md'
