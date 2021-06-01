@@ -6,7 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { MapComponent, UsoDoSoloMetadados } from './uso_do_solo/uso_do_solo.component';
-import { MapMobileComponent } from './uso_do_solo/uso_do_solo-mobile.component';
+import { MapMobileComponent } from './uso_do_solo/mobile/uso_do_solo-mobile.component';
 import { AppRoutingModule } from './app-routing.module';
 import { PaginasModule } from './paginas/paginas.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -130,7 +130,8 @@ export function HttpLoaderFactory(http: HttpClient) {
       ChartsComponent,
       TutorialsComponent,
       GalleryComponent,
-      LibraryComponent
+      LibraryComponent,
+      MapMobileComponent
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt-BR' },

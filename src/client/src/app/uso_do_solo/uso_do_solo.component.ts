@@ -42,6 +42,7 @@ import { RegionReportComponent } from './region-report/region-report.component';
 import logos from './logos';
 import * as moment from 'moment';
 import { ChartsComponent } from './charts/charts.component';
+import { MapMobileComponent }  from './mobile/uso_do_solo-mobile.component'
 
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
@@ -204,7 +205,7 @@ export class MapComponent implements OnInit {
 	keyForClick: any;
 	keyForPointer: any;
 	showStatistics: boolean;
-	innerHeigth: number;
+	innerHeigth: any;
 	showLayers: boolean;
 
 	languages: any = [];
@@ -216,6 +217,8 @@ export class MapComponent implements OnInit {
 	styleSelected: any;
 	styleDefault: any;
 	breakpointMobile: number;
+
+	viewWidthMobile = 350;
 
 	constructor(
 		private http: HttpClient,
@@ -282,7 +285,7 @@ export class MapComponent implements OnInit {
 
 		this.showStatistics = false;
 		this.showLayers = false;
-		this.innerHeigth = window.innerHeight;
+		//this.innerHeigth = window.innerHeight;
 		this.breakpointMobile = 1024;
 	}
 
@@ -414,8 +417,22 @@ export class MapComponent implements OnInit {
 	@HostListener('window:resize', ['$event'])
 	onResize(event) {
 		this.innerHeigth = window.innerHeight;
+		if (window.innerWidth < this.breakpointMobile) {
+      this.collapseLegends = false;
+      this.collapseLayer = true;
+      this.collapseCharts = true;
+      this.currentZoom = 4;
+    } else {
+      this.collapseLayer = false;
+      this.collapseCharts = false;
+      this.currentZoom = 6;
+    }
 
 	}
+
+	handleDrawer() {
+    this.showLayers = !this.showLayers;
+  }
 
 	updateRegion(region) {
 		if (region == this.defaultRegion) {
@@ -1987,6 +2004,16 @@ export class MapComponent implements OnInit {
 			this.addPoints();
 		});
 		this.setStylesLangButton();
+		this.innerHeigth = window.innerHeight;
+
+		if (window.innerWidth < 1600) {
+      this.collapseLegends = false;
+      this.collapseLayer = true;
+      this.collapseCharts = true;
+      this.currentZoom = 5.3;
+    } else {
+      this.currentZoom = 5.8;
+    }
 
 		const self = this;
 		self.route.paramMap.subscribe(function (params) {

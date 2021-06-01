@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, Router, NavigationEnd } from '@angular/router';
 import { HomePageComponent } from './paginas/home/home.page.component';
 import { ProjectPageComponent } from './paginas/project/project.page.component';
 import { BiomaPageComponent } from './paginas/bioma/bioma.page.component';
@@ -7,6 +7,11 @@ import { OuvidoriaPageComponent } from './paginas/ouvidoria/ouvidoria.page.compo
 import { SalvaGuardaPageComponent } from './paginas/salva_guarda/salva_guarda.page.component';
 import { CovidgoiasComponent } from './paginas/covidgoias/covidgoias/covidgoias.component';
 import { MapComponent } from './uso_do_solo/uso_do_solo.component';
+import { MapMobileComponent } from './uso_do_solo/mobile/uso_do_solo-mobile.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+
+
+declare let gtag: Function;
 
 const routes: Routes = [
 /* ROTA RAIZ */ 
@@ -23,8 +28,39 @@ const routes: Routes = [
   { path: '**', redirectTo: '/'}
 ];
 
+const routesMobile: Routes = [
+  { path: '', component: HomePageComponent },
+  //{ path: 'mobile', component: MapMobileComponent },
+  { path: 'project', component: ProjectPageComponent },
+  { path: 'cerrado', component: BiomaPageComponent},
+  { path: 'ouvidoria', component: OuvidoriaPageComponent},
+  { path: 'salva_guarda', component: SalvaGuardaPageComponent},
+  { path: 'usodosolo', component: MapMobileComponent },
+  { path: 'covidgoias', component: CovidgoiasComponent },
+  { path: 'usodosolo/:token', component: MapComponent },
+  { path: 'regions/:token', component: MapComponent },
+  { path: '**', redirectTo: '/'}
+]
+
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+  constructor(public router: Router) {
+
+    if (window.innerWidth < 1025) {
+      router.resetConfig(routesMobile);
+    }
+
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        gtag('config', 'UA-168214071-1',
+          {
+            'page_path': event.urlAfterRedirects
+          }
+        );
+      }
+    })
+  }
+}

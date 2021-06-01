@@ -199,6 +199,7 @@
   "title_ouvidoria": "Ombudsman",
   "logo_img": "../../assets/logo/cepf_en.png",
   "layers": "Layers",
+  "layers_map": "Map",
   "base_maps": "Base-maps",
   "upload_title": "Upload",
   "limits": "Bounderies",

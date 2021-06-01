@@ -199,6 +199,7 @@
   "title_ouvidoria": "Ouvidoria",
   "logo_img": "../../assets/logo/cepf_pt.png",
   "layers": "Camadas",
+  "layers_map": "Mapa",
   "base_maps": "Mapas-base",
   "upload_title": "Upload",
   "limits": "Limites",
