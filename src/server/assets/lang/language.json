@@ -43,8 +43,8 @@
 			"en": "Deforestation / Burning"
 		},
 		"geofisico": {
-			"pt": "Geofísico",
-			"en": "Geophysical"
+			"pt": "Geofísico / Edafoclimático",
+			"en": "Geophysical / Edaphoclimatic"
 		},
 		"pontos_validacao": {
 			"pt": "Pontos de Validação (LAPIG)",
@@ -5248,8 +5248,8 @@
 		},
 		"geofisico": {
 			"label": {
-				"pt": "Geofísico",
-				"en": "Geophysical"
+				"pt": "Geofísico / Edafoclimático",
+				"en": "Geophysical / Edaphoclimatic"
 			},
 			"layers": {
 				"altitude": {

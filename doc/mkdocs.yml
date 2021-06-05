@@ -1,5 +1,5 @@
 site_name: Documentação - Plataforma de Conhecimento CEPF
-site_author: Equipe
+site_author: Equipe Lapig CEPF
 
 theme: 'readthedocs'
 
@@ -8,7 +8,6 @@ nav:
   - 'Guia do usuário':
     - 'Dados Geográficos': '01-guia_dados_geograficos.md'
     - 'Funcionalidades': '01-guia_funcionalidades.md'
-    - 'Relatórios': '01-guia_relatorios.md'
 
   - 'Dados':
     - 'Vetoriais': '03-dad_vetoriais.md'
