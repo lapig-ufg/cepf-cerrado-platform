@@ -38,7 +38,7 @@ Desta forma, uma representação visual da interoperabilidade entre serviços po
 
 ![Interoperabilidade entre serviços.](imgs/02/interoperabilidade.png)
 
-Por fim, a tabela abaixo apresenta os tipos de serviços fornecidos pelo Cerrado DPAT bem como suas URLs de acesso, onde `<ows_host>` representa o domínio onde o OWS Server está hospedado e `<layername>` representa a camada configurada no Mapfile:
+Por fim, a tabela abaixo apresenta os tipos de serviços fornecidos pela plataforma de conhecimento do cerrado bem como suas URLs de acesso, onde `<ows_host>` representa o domínio onde o OWS Server está hospedado e `<layername>` representa a camada configurada no Mapfile:
 
 | Tipo de Requisição | Fonte               | Descrição                                                                                                                                                                                                                                                                                                                                                                                                 | URL                                                                                                                                                                                                                                                       |
 | ------------------ | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -62,159 +62,84 @@ O Mapserver utiliza um arquivo de configuração para renderização de dados ge
 + Qual o formato gráfico de saída;
 + Configuração da legenda e a escala utilizada;
 
-A figura abaixo apresenta o Mapfile da camada dos desmatamentos PRODES-Cerrado presente no Cerrado DPAT. Esta mesma figura pode representar um exemplo prático para criação de um Mapfile com conexão com Banco de Dados e assim obter dados em formato vetorial. Portanto, segue a especificação de cada item destacado na imagem:
+A figura abaixo apresenta o Mapfile da camada de Agricultura da Agrosatélite presente na plataforma de conhecimento do cerrado. Esta mesma figura pode representar um exemplo prático para criação de um Mapfile com conexão com Banco de Dados e assim obter dados em formato vetorial. Portanto, segue a especificação de cada item destacado na imagem:
 
-![Exemplo de Mapfile para dados Vetoriais.](imgs/02/mapfile.png)
+![Exemplo de Mapfile para dados Vetoriais.](imgs/02/mapfile_cepf.png)
 
 1. Apresenta o nome da camada, bem como a fonte de onde este dado será carregado. No exemplo este dado é acessado pela comunicação com Postgis devidamente autenticado;
 
 2. Determina o foco do dado para a extensão do Cerrado;
 
 3. Apresenta os metadados da camada;
-
-4. Cria uma variável para validação e filtragem dos dados por meio do [runtime substitution](https://mapserver.gis.umn.edu/pl/cgi/runsub.html);
    
-5. Define a projeção do dado apresentado;
+4. Define a projeção do dado apresentado;
 
-6. Define o tipo do dado apresentado;
+5. Define o tipo do dado apresentado;
+
+6. Cria uma variável para validação e filtragem dos dados por meio do [runtime substitution](https://mapserver.gis.umn.edu/pl/cgi/runsub.html);
 
 7. Define a estrutura dos dados que são enviados via UTFGrid. Para tal é importante definir um identificador único (UTFITEM) e os dados a serem enviados através da tupla {"chave_acesso" : "coluna_banco_dados"} em UTFDATA que irão compor o JSON gerado.
 
 8. Define uma classificação para os dados a fim de customizar a coloração de acordo com um critério. A classificação estabelecida também irá compor a legenda.
 
-Um segundo tipo de camada de dados presente no Cerrado DPAT é oriundo de dados matriciais, ou seja, imagens TIF. Portanto, para criação de um Mapfile para um TIF é necessário alterar as sessões (1) - onde deve-se apresentar a localização do arquivo TIF no sistema de arquivos através da diretiva 'DATA'; (6) - alterar para o tipo de dados Raster e (8), onde o critério para classificação se dá de acordo com o valor do pixel em um ponto. Portanto, o Mapfile para arquivos matriciais se dá conforme imagem abaixo.
-
-![Exemplo de Mapfile para dados Matriciais.](imgs/02/mapfile2.png)
-
-Por fim, o Mapfile utilizado para disponibilizar todas as camadas presentes no Cerrado DPAT está na pasta compartilhada do projeto no [link](https://drive.google.com/file/d/1gO9dMdxy15wIK5gIIdlkBKlgy-D7JNHH/view?usp=sharing).
+Por fim, o Mapfile utilizado para disponibilizar todas as camadas presentes na plataforma de conhecimento do cerrado está na pasta compartilhada do projeto no [COLOCAR LINK AQUI]().
 
 ## Disponibilização da camada no Application Server
 
-Após a criação da camada no OWS Server, para que esta camada seja apresentada na interface Web do Cerrado DPAT é necessária a sua inserção no *Application Server*. A fim de facilitar a disponibilização de diversas camadas, foi criada uma estrutura nomeada de `descriptor` que descreve as principais configurações de uma camada a ser apresentada no Cerrado DPAT, tais como: filtros de dados, tipos diferentes de camadas e outros. A estrutura completa do **descriptor** encontra-se no repositório do projeto no Github, especificamente no arquivo [map.js](https://github.com/lapig-ufg/d-pat/blob/master/src/server/controllers/map.js).
+Após a criação da camada no OWS Server, para que esta camada seja apresentada na interface Web da plataforma de conhecimento do cerrado é necessária a sua inserção no *Application Server*. A fim de facilitar a disponibilização de diversas camadas, foi criada uma estrutura nomeada de `descriptor` que descreve as principais configurações de uma camada a ser apresentada na plataforma de conhecimento do cerrado, tais como: filtros de dados, tipos diferentes de camadas e outros. A estrutura completa do **descriptor** encontra-se no repositório do projeto no Github, especificamente no arquivo [map.js](https://github.com/lapig-ufg/cepf-cerrado-platform/blob/master/src/server/controllers/map.js).
 
-Segue abaixo as configurações das camadas apresentadas acima dentro da estrutura do descriptor. Primeiramente, iremos disponibilizar a camada `bi_ce_prodes_desmatamento_100_fip` que representa um dado vetorial no qual é possível aplicar diversos filtros. A variável `languageJson` representa o acesso ao arquivo .json responsável pela internacionalização da aplicação, ou seja, apresenta textos em diferentes idiomas de acordo com o valor recebido como parâmetro `language`.  
+Segue abaixo as configurações da camada apresentada acima dentro da estrutura do descriptor. A camada `agricultura_agrosatelite` representa um dado vetorial no qual é possível aplicar diversos filtros. A variável `languageJson` representa o acesso ao arquivo .json responsável pela internacionalização da aplicação, ou seja, apresenta textos em diferentes idiomas de acordo com o valor recebido como parâmetro `language`.  
 
 
 
 ``` js
-Controller.descriptor = function (request, response) {
-
+Controller.descriptor = function(request, response) {
     var language = request.param('lang')
 
-    var result = {
-      regionFilterDefault: "",
-      type: languageJson["descriptor"]["type_of_information_label"][language],
-      groups: [{
-        id: "desmatamento",
-        label: languageJson["descriptor"]["desmatamento"]["label"][language],
-        group_expanded: true,
-        layers: [{
-		  id: "desmatamento_prodes",
-          label: languageJson["descriptor"]["desmatamento"]["layers"]["desmatamento_prodes"]["label"][language],
-          visible: true,
-          selectedType: "bi_ce_prodes_desmatamento_100_fip",
-          metadata: languageJson["descriptor"]["desmatamento"]["layers"]["desmatamento_prodes"]['metadata'],
-          types: [
-            {
-              value: "bi_ce_prodes_desmatamento_100_fip",
-              Viewvalue: languageJson["descriptor"]["desmatamento"]["layers"]["desmatamento_prodes"]["types"]["bi_ce_prodes_desmatamento_100_fip"]["view_value"][language],
-              opacity: 1,
-              order: 1,
-              download: ['csv', 'shp'],
-              regionFilter: true,
-              timeLabel: languageJson["descriptor"]["desmatamento"]["layers"]["desmatamento_prodes"]["types"]["bi_ce_prodes_desmatamento_100_fip"]["timelabel"][language],
-              timeSelected: "year=2019",
-              timeHandler: "msfilter",
-              times: [{
-                value: "year=2002",
-                Viewvalue: "2000/2002",
-                year: 2002
-              },
-              {
-                value: "year=2004",
-                Viewvalue: "2002/2004",
-                year: 2004
-              },
-              {
-                value: "year=2006",
-                Viewvalue: "2004/2006",
-                year: 2006
-              },
-              {
-                value: "year=2008",
-                Viewvalue: "2006/2008",
-                year: 2008
-              },
-              {
-                value: "year=2010",
-                Viewvalue: "2008/2010",
-                year: 2010
-              },
-              {
-                value: "year=2012",
-                Viewvalue: "2010/2012",
-                year: 2012
-              },
-              {
-                value: "year=2013",
-                Viewvalue: "2012/2013",
-                year: 2013
-              },
-              {
-                value: "year=2014",
-                Viewvalue: "2013/2014",
-                year: 2014
-              },
-              {
-                value: "year=2015",
-                Viewvalue: "2014/2015",
-                year: 2015
-              },
-              {
-                value: "year=2016",
-                Viewvalue: "2015/2016",
-                year: 2016
-              },
-              {
-                value: "year=2017",
-                Viewvalue: "2016/2017",
-                year: 2017
-              },
-              {
-                value: "year=2018",
-                Viewvalue: "2017/2018",
-                year: 2018
-              },
-              {
-                value: "year=2019",
-                Viewvalue: "2018/2019",
-                year: 2019
-			  }
-			}]
-       },
-       {
-          id: "susceptibilidade",
-          label: languageJson["descriptor"]["desmatamento"]["layers"]["susceptibilidade"]["label"][language],
-          visible: false,
-          selectedType: "bi_ce_susceptibilidade_desmatamento_menores_100_na_lapig",
-          metadata: languageJson["descriptor"]["desmatamento"]["layers"]["susceptibilidade"]['metadata'],
-          types: [{
-            value: "bi_ce_susceptibilidade_desmatamento_menores_100_na_lapig",
-            Viewvalue: languageJson["descriptor"]["desmatamento"]["layers"]["susceptibilidade"]["types"]["bi_ce_susceptibilidade_desmatamento_menores_100_na_lapig"]["view_value"][language],
-            order: 5,
-            download: ['tif'],
-            opacity: 1
-          },
-          {
-            value: "bi_ce_susceptibilidade_desmatamento_maiores_100_na_lapig",
-            Viewvalue: languageJson["descriptor"]["desmatamento"]["layers"]["susceptibilidade"]["types"]["bi_ce_susceptibilidade_desmatamento_maiores_100_na_lapig"]["view_value"][language],
-            order: 5,
-            download: ['tif'],
-            opacity: 1
-          }
-          ]
-        }
-			}]
+		var result = {
+      "regionFilterDefault": "bioma='CERRADO'",
+			"groups": [{
+                  "id": "agropecuaria",
+                  "label": languageJson["title_group_label"]["agropecuaria"][language],
+                  "group_expanded": false,
+                  "layers": [{
+                      "id": "mapa_agricultura_agrosatelite",
+                      "label": languageJson["title_layer_label"]["agrosatelite"][language],
+                      "visible": false,
+                      "selectedType": 'agricultura_agrosatelite',
+                      "value": "agricultura_agrosatelite",
+                      "opacity": 1,
+                      "regionFilter": true,
+                      "order": 2,
+                      "typeLabel": languageJson["typelabel_layer"]["type"][language],
+                      "timeLabel": languageJson["typelabel_layer"]["year"][language],
+                      "timeSelected": "year=2014",
+                      "timeHandler": "msfilter",
+                      "times": [
+                        {"value": "year=2001", "Viewvalue": 2001},
+                        {"value": "year=2007", "Viewvalue": 2007},
+                        {"value": "year=2014", "Viewvalue": 2014}
+                      ],
+                      "metadados": {
+                        "title": languageJson["metadata"]["agricultura_agrosatelite"]["title"][language],
+                        "description": languageJson["metadata"]["agricultura_agrosatelite"]["description"][language],
+                        "format": languageJson["metadata"]["agricultura_agrosatelite"]["format"][language],
+                        "region": languageJson["metadata"]["agricultura_agrosatelite"]["region"][language],
+                        "period": languageJson["metadata"]["agricultura_agrosatelite"]["period"][language],
+                        "scale": languageJson["metadata"]["agricultura_agrosatelite"]["scale"][language],
+                        "system_coordinator": languageJson["metadata"]["agricultura_agrosatelite"]["system_coordinator"][language],
+                        "cartographic_projection": languageJson["metadata"]["agricultura_agrosatelite"]["cartographic_projection"][language],
+                        "cod_caracter": languageJson["metadata"]["agricultura_agrosatelite"]["cod_caracter"][language],
+                        "fonte": languageJson["metadata"]["agricultura_agrosatelite"]["fonte"][language],
+                        "contato":"lapig.cepf@gmail.com"
+                      },
+                      "columnsCSV": "area_ha, classe, year",
+                      "downloadSHP": true,
+                      "downloadCSV": true
+                    }
+                  ],
+                  "dataService": "/service/charts/farming"
+        }]
    		}]
 	};
 
@@ -223,10 +148,6 @@ Controller.descriptor = function (request, response) {
 };
 ```
 
-Os diversos parâmetros setados na variável `result` são interpretados pela aplicação Front-end em Angular, de modo a criar a interface apresentada na imagem abaixo. Dentre estes parâmetros, destaca-se o `layers` que irão indicar quais camadas estarão no card **Desmatamento PRODES-Cerrado**. No exemplo acima, está selecionada a camada `bi_ce_prodes_desmatamento_100_fip` através da variável *selectedType*, e logo abaixo apresenta-se o vetor `types` que apresenta os tipos de camadas PRODES-Cerrado estão disponíveis. Por fim, destaca-se o vetor do parâmetro `times`, que apresenta diversos filtros que podem ser aplicados em um tipo de layer específico. No exemplo acima, ele é utilizado para filtrar os polígonos por ano, aplicando a query apresentada em `value` (de cada filtro) como parâmetro **MSFILTER** na camada descrita no Mapserver.
+Os diversos parâmetros setados na variável `result` são interpretados pela aplicação Front-end em Angular, de modo a criar a interface apresentada na imagem abaixo. Dentre estes parâmetros, destaca-se o `layers` que irão indicar quais camadas estarão no card **Agropecuária**. No exemplo acima, está selecionada a camada `agricultura_agrosatelite` através da variável *selectedType*. Por fim, destaca-se o vetor do parâmetro `times`, que apresenta diversos filtros que podem ser aplicados em um tipo de layer específico. No exemplo acima, ele é utilizado para filtrar o dado por ano, aplicando a query apresentada em `value` (de cada filtro) como parâmetro **MSFILTER** na camada descrita no Mapserver.
 
-![Exemplo descriptor para PRODES-Cerrado.](imgs/02/telaCamada.png)
-
-Por fim, o segundo exemplo apresenta a disponibilização da camada `bi_ce_susceptibilidade_desmatamento_menores_100_na_lapig` criada acima a partir de uma imagem Raster no formato TIF. O grande diferencial desta é a impossibilidade de aplicar quaisquer filtro na imagem por se tratar de um dado matricial estático, logo o parâmetro `times` não é utilizado. Portanto, de acordo com a imagem abaixo, que apresenta a estrutura criada no Front-end para esta representação no *descriptor*.
-
-![Exemplo descriptor para PRODES-Cerrado.](imgs/02/telaCamadas2.png)
+![Exemplo descriptor para Agropecuária.](imgs/02/telaCamada.png)

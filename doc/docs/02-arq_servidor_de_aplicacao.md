@@ -1,9 +1,9 @@
 # Servidor de Aplicação
 
-Basicamente o Cerrado DPAT é dividido em duas partes: o *WebMap Client* e o *Application Server*, conforme descrito anteriormente. O código-fonte para estas duas partes está hospedado no [respositório Github](https://github.com/lapig-ufg/d-pat) do projeto.
+Basicamente a plataforma de conhecimento do cerrado é dividida em duas partes: o *WebMap Client* e o *Application Server*, conforme descrito anteriormente. O código-fonte para estas duas partes está hospedado no [respositório Github](https://github.com/lapig-ufg/cepf-cerrado-platform) do projeto.
 
 
-Dentro do repositório do projeto, o código-fonte do *Application Server* está em [src/server](https://github.com/lapig-ufg/d-pat/tree/master/src/server). Por ser construído em NodeJS, ao clonar o projeto o usuário deverá navegar até a pasta server e instalar as dependências gerenciadas pelo [Node Package Manager (NPM)](https://www.npmjs.com/) através do comando:
+Dentro do repositório do projeto, o código-fonte do *Application Server* está em [src/server](https://github.com/lapig-ufg/cepf-cerrado-platform/tree/master/src/server). Por ser construído em NodeJS, ao clonar o projeto o usuário deverá navegar até a pasta server e instalar as dependências gerenciadas pelo [Node Package Manager (NPM)](https://www.npmjs.com/) através do comando:
 
 ```
 npm install
@@ -33,7 +33,7 @@ $ ./src/server/start.sh
 
 ## Middleware para manipulação do banco de dados
 
-Para facilitar a criação de serviços que fazem uso de consultas ao banco de dados foi criado um *middleware* nomeado [`dataInjector.js`](https://github.com/lapig-ufg/d-pat/blob/master/src/server/middleware/data-injector.js) que cria um *pool* de conexões para execução de diversas *queries* simultâneas. 
+Para facilitar a criação de serviços que fazem uso de consultas ao banco de dados foi criado um *middleware* nomeado [`dataInjector.js`](https://github.com/lapig-ufg/cepf-cerrado-platform/blob/master/src/server/middleware/data-injector.js) que cria um *pool* de conexões para execução de diversas *queries* simultâneas. 
 
 O `dataInjector.js` analisa a URL da requisição HTTP de modo a associar a função que especifica a query (por meio da tupla {id, sql}) com o controlador que irá devolver a resposta da requisição.
 
@@ -45,7 +45,7 @@ Portanto, todas as URLs deverão ser criadas no seguinte padrão:
 
 ## Como criar um novo serviço
 
-O *Application Server* possui três pastas que armazenam os principais arquivos que permitem a disponibilização de um novo serviço ao Cerrado DPAT: 
+O *Application Server* possui três pastas que armazenam os principais arquivos que permitem a disponibilização de um novo serviço aa plataforma de conhecimento do cerrado: 
 
 1. **Controller:**: Os arquivos nesta pasta são responsáveis por processar implementar a lógica da tarefa passada pela requisição HTTP.
 2. **Database**: Os arquivos nesta pasta são responsáveis por implementar os métodos com as *queries* a serem executadas no banco de dados. Devido a estrutura do `dataInjector.js`, mais de uma *query* poderá ser executada durante uma mesma requisição.
@@ -112,9 +112,7 @@ Por fim, este por se tratar de uma requisição HTTP do tipo `GET`, a mesma pode
 http://localhost:3000/service/examplequery/largest?year=2019&amount=15
 ```
 
-A visualização do JSON resultado da requisição acima pode ser observado no [link](https://cerradodpat.org/service/deforestation/largest?year=2019&amount=15).
-
-Além de requisitar pelo navegador, o serviço também poderá ser requisitado pelo *WebMap Client* a fim de disponibilizar este dado na plataforma Cerrado DPAT. Para tal, o mesmo poderá ser feito via biblioteca [HttpClient](https://angular.io/api/common/http/HttpClient) do Angular e assim obter o arquivo JSON com os dados processados. Considerando que a variável `http` foi devidadmente injetada no construtor da classe do Angular, o método `getLargest()` abaixo deverá realizar a requisição e armazenar seu resultado na variável `dados_largest`:
+Além de requisitar pelo navegador, o serviço também poderá ser requisitado pelo *WebMap Client* a fim de disponibilizar este dado na plataforma de conhecimento do cerrado. Para tal, o mesmo poderá ser feito via biblioteca [HttpClient](https://angular.io/api/common/http/HttpClient) do Angular e assim obter o arquivo JSON com os dados processados. Considerando que a variável `http` foi devidadmente injetada no construtor da classe do Angular, o método `getLargest()` abaixo deverá realizar a requisição e armazenar seu resultado na variável `dados_largest`:
 
 
 

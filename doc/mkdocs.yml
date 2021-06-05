@@ -10,7 +10,7 @@ nav:
     - 'Funcionalidades': '01-guia_funcionalidades.md'
 
   - 'Dados':
-    - 'Vetoriais': '03-dad_vetoriais.md'
+    - 'Banco de Dados': '03-dad_vetoriais.md'
 
   - 'Arquitetura de Software':
     - 'Visão geral': '02-arq_geral.md'
