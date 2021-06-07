@@ -16,4 +16,4 @@ nav:
     - 'Visão geral': '02-arq_geral.md'
     - 'Servidor de mapas': '02-arq_servidor_de_mapas.md'
     - 'Servidor de aplicação': '02-arq_servidor_de_aplicacao.md'
-    - 'Deployment da arquitetura do Cerrado DPAT': '02-arq_execucao_dpat.md'
+    - 'Deployment da arquitetura do CEPF': '02-arq_execucao_dpat.md'
