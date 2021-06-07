@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Equipe Lapig CEPF">
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Dados Geográficos - Documentação - Plataforma de Conhecimento CEPF</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Dados Geogr\u00e1ficos";
+    var mkdocs_page_input_path = "01-guia_dados_geograficos.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Documentação - Plataforma de Conhecimento CEPF</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">HOME</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Guia do usuário</span></p>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Dados Geográficos</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#uso-do-solo">Uso do Solo</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#agropecuaria">Agropecuária</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#areas-especiais">Áreas Especiais</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#biodiversidade">Biodiversidade</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#desmatamentos-queimadas">Desmatamentos / Queimadas</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#geofisico-edafoclimatico">Geofísico / Edafoclimático</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#social">Social</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#pontos-de-validacao-lapig">Pontos de Validação (LAPIG)</a>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../01-guia_funcionalidades/">Funcionalidades</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Dados</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../03-dad_vetoriais/">Banco de Dados</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Arquitetura de Software</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../02-arq_geral/">Visão geral</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../02-arq_servidor_de_mapas/">Servidor de mapas</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../02-arq_servidor_de_aplicacao/">Servidor de aplicação</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../02-arq_execucao_dpat/">Deployment da arquitetura do Cerrado DPAT</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Documentação - Plataforma de Conhecimento CEPF</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Guia do usuário &raquo;</li>
+        
+      
+    
+    <li>Dados Geográficos</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="dados-geograficos">Dados Geográficos</h1>
+<h2 id="uso-do-solo">Uso do Solo</h2>
+<table>
+<thead>
+<tr>
+<th align="center">Dado</th>
+<th align="center">Descrição</th>
+<th align="center">Data</th>
+<th align="center">Escala</th>
+<th align="center">Fonte</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Mapa de Cobertura e Uso do Solo do Brasil - Mapbiomas</td>
+<td align="center">O Projeto de Mapeamento Anual da Cobertura e Uso do Solo do Brasil é uma iniciativa que envolve uma rede colaborativa com especialistas nos biomas, usos da terra, sensoriamento remoto, SIG e ciência da computação. São utilizadas tecnicas envolvendo processamento em nuvem e classificadores automatizados desenvolvidos e operados a partir da plataforma Google Earth Engine para gerar uma série histórica de mapas anuais de cobertura e uso da terra do Brasil.</td>
+<td align="center">1985 à 2019, Coleção 5.</td>
+<td align="center">30 metros</td>
+<td align="center">Laboratório de Processamento de Imagens e Geoprocessamento – Lapig (geração do dado). Projeto financiador: Spatial metrics and baselines of degradation patterns and provision of ecosystem services by pastures in Brazil.</td>
+</tr>
+<tr>
+<td align="center">Mapeamento do Uso e Cobertura Vegetal do Cerrado – TerraClass Cerrado</td>
+<td align="center">Mapeamento do Uso e Cobertura Vegetal do Cerrado - TerraClass Cerrado, utiliza como base de mapeamento 118 cenas do satélite Landsat 8, sensor Operational Land Imager ( OLI), ano de 2013, que recobrem todo o bioma. A área mínima mapeável é de 6,25 hectares.</td>
+<td align="center">2013</td>
+<td align="center">1:250.000</td>
+<td align="center">UFG, IBAMA CSR, INPE OBT e CRA, EMBRAPA MONITORAMENTO POR SATÉLITE, EMBRAPA INFORMÁTICA AGROPECUÁRIA, UFU. Programa conduzido pelo Ministério de Meio Ambiente (MMA), com recursos financeiros oriundos do Global Environment Facility (GEF) por meio do Banco Mundial e do Fundo Brasileiro para a Biodiversidade (Funbio). Para acessar a publicação completa do projeto, clique aqui!</td>
+</tr>
+<tr>
+<td align="center">Mapeamento do Uso e Cobertura Vegetal do Cerrado - PROBIO</td>
+<td align="center">Mapeamento da cobertura vegetal do bioma Cerrado - PROBIO utiliza como base de mapeamento 121 cenas do satélite Landsat ETM+, da estação seca do ano de 2002.</td>
+<td align="center">2002</td>
+<td align="center">1:250.000</td>
+<td align="center">Projeto de Conservação e Utilização Sustentável da Diversidade Biológica Brasileira - PROBIO-MMA</td>
+</tr>
+<tr>
+<td align="center">Ecorregiões do Cerrado</td>
+<td align="center">Divisão do bioma Cerrado em regiões ecológicas distintas.</td>
+<td align="center">2019</td>
+<td align="center">1:5000.000</td>
+<td align="center">Sano, E. E., Rodrigues, A. A., Martins, E. S., Bettiol, G. M., Bustamante, M. M., Bezerra, A. S., Couto Jr., A. F., Vasconcelos, V., Schüler, J., Bolfe, E. L. 2019. Cerrado ecorregions: A spatial framework to assess and prioritize Brazilian savanna environmentak diversity for conservation. Journal of environmental management, 232, 818-828.</td>
+</tr>
+<tr>
+<td align="center">Atrativos Turísticos Kalunga</td>
+<td align="center">Localização dos atrativos turísticos no Sítio Histórico e Patrimônio Cultural Kalunga.</td>
+<td align="center">2020</td>
+<td align="center">100m</td>
+<td align="center">Associação Quilombo Kalunga</td>
+</tr>
+<tr>
+<td align="center">Atrativos Turísticos do Vão do Paranã</td>
+<td align="center">Localização dos atrativos turísticos na região do Vão do Paranã no nordeste de Goiás.</td>
+<td align="center">2019</td>
+<td align="center">Não se aplica</td>
+<td align="center">Instituto Água e Terra</td>
+</tr>
+<tr>
+<td align="center">Risco Ecológico de contaminação de aquíferos</td>
+<td align="center">Dados relativos ao risco ecológico de contaminação de aquíferos do Zoneamento Ecológico-Econômico do Distrito Federal para a gestão de risco sobre contaminação de aquíferos. O risco de contaminação de um aquífero diz respeito ao seu grau de proteção natural a ameaças potenciais de contaminação (Foster &amp; Hirata, 1988). Este risco é próprio de cada aquífero e depende de dois fatores principais: a profundidade das águas subterrâneas e do tipo de aquífero no tocante ao confinamento e litologia.</td>
+<td align="center">2017</td>
+<td align="center">Não se aplica</td>
+<td align="center">Secretaria de Estado do Meio Ambiente do Distrito Federal</td>
+</tr>
+<tr>
+<td align="center">Risco ecológico de perda de cerrado nativo</td>
+<td align="center">Dados relativos ao risco de perda de remanescentes de cerrado nativo no Distrito Federal para a gestão de risco sobre os fragmentos de vegetação nativa. O mapa é baseado no mapeamento de uso e cobertura vegetal de 2009, com atualizações em 2014 pelo Instituto Brasília Ambiental (IBRAM) e em 2016 pela Coordenação Geral Técnica do ZEE-DF.</td>
+<td align="center">2017</td>
+<td align="center">Não se aplica</td>
+<td align="center">Secretaria de Estado do Meio Ambiente do Distrito Federal</td>
+</tr>
+<tr>
+<td align="center">Risco ecológico de perda de capacidade de recarga dos aquíferos</td>
+<td align="center">Dados relativos à taxa de infiltração de água nos aquíferos do Distrito Federal para a gestão de riscos sobre a perda da capacidade de recarga de aquíferos.</td>
+<td align="center">2017</td>
+<td align="center">Não se aplica</td>
+<td align="center">Secretaria de Estado do Meio Ambiente do Distrito Federal</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h2 id="agropecuaria">Agropecuária</h2>
+<table>
+<thead>
+<tr>
+<th align="center">Dado</th>
+<th align="center">Descrição</th>
+<th align="center">Data</th>
+<th align="center">Escala</th>
+<th align="center">Fonte</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Agricultura - Agrosatélite</td>
+<td align="center">Dinâmica da expansão da área plantada com culturas anuais no Bioma Cerrado.</td>
+<td align="center">2001; 2007; 2014</td>
+<td align="center">1:250.000</td>
+<td align="center">Agrosatélite Geotecnologia Aplicada, Fundação Gordon and Betty Moore (Financiadores)</td>
+</tr>
+<tr>
+<td align="center">Áreas de Pastagens do Brasil</td>
+<td align="center">Mapeamento anual das pastagens brasileiras, realizado através do uso de séries de dados Landsat de 1985 a 2018. Utilizando abordagens de classificação supervisionada (Random Forest) através da plataforma Earth Engine da Google.</td>
+<td align="center">De 1985 a 2018.</td>
+<td align="center">30 metros.</td>
+<td align="center">Laboratório de Processamento de Imagens e Geoprocessamento - Lapig (geração do dado). Projeto de Mapeamento Anual da Cobertura e Uso do Solo do Brasil - MapBiomas (viabilizador).</td>
+</tr>
+<tr>
+<td align="center">Indícios de degradação das pastagens brasileiras</td>
+<td align="center">Mapeamento da qualidade de pastagens, gerado pelo Lapig, onde foram analisados os dados de pastagens pixel a pixel para o período de 2011 a 2016, por meio de análise de tendências em anomalias acumuladas. A análise foi baseado em dados satelitários (NDVI/MOD13Q1), e avalia perdas ou ganho em produtividade. As áreas com tendência significativas de perda em produtividade (p &lt; 0.05) foram consideradas áreas com indícios de degradação.</td>
+<td align="center">2017</td>
+<td align="center">1:250.000</td>
+<td align="center">Laboratório de Processamento de Imagens e Geoprocessamento - Lapig</td>
+</tr>
+<tr>
+<td align="center">Rebanho Bovino em Unidades Animal (UA)</td>
+<td align="center">Cálculo realizado considerando a composição do rebanho para o censo agropecuário. Para os anos de 1986 a 1999, utilizou-se os dados do censo agropecuário de 1996. Para os anos de 2000 a 2018. utilizou-se os dados do censo agropecuário de 2006. Sendo que uma Unidade Animal (UA), equivale a um animal de 450 kg vivo.</td>
+<td align="center">1985 á 2018</td>
+<td align="center">1:250.000</td>
+<td align="center">Laboratório de Processamento de Imagens e Geoprocessamento - Lapig (geração do dado).</td>
+</tr>
+<tr>
+<td align="center">Produção de Leite por Municípios do Brasil</td>
+<td align="center">Quantidade de Leite produzido por municípios do Brasil, em Litros, no período de 2000 a 2019, conforme dados da Pesquisa da Pecuária Municipal.</td>
+<td align="center">2000 a 2019</td>
+<td align="center">1:250.000</td>
+<td align="center">SIDRA / IBGE</td>
+</tr>
+<tr>
+<td align="center">Áreas de Plantação de Algodão por Municípios do Brasil</td>
+<td align="center">Áreas de plantação de algodão em caroço por municípios do Brasil, por hectares, no período de 2000 a 2019, conforme dados da Pesquisa Agrícola Municipal</td>
+<td align="center">2000 a 2019</td>
+<td align="center">1:250.000</td>
+<td align="center">SIDRA / IBGE</td>
+</tr>
+<tr>
+<td align="center">Áreas de Plantação de Cana-de-açúcar por Municípios do Brasil</td>
+<td align="center">Áreas de plantação de cana-de-açúcar por municípios do Brasil, por hectares, no período de 2000 a 2019, conforme dados da Pesquisa Agrícola Municipal.</td>
+<td align="center">2000 a 2019</td>
+<td align="center">1:250.000</td>
+<td align="center">SIDRA / IBGE</td>
+</tr>
+<tr>
+<td align="center">Áreas de Plantação de Milho por Municípios do Brasil</td>
+<td align="center">Áreas de plantação de milho por municípios do Brasil, por hectares, no período de 2000 a 2019, conforme dados da Pesquisa Agrícola Municipal.</td>
+<td align="center">2000 a 2019</td>
+<td align="center">1:250.000</td>
+<td align="center">SIDRA / IBGE</td>
+</tr>
+<tr>
+<td align="center">Áreas de Plantação de Soja por Municípios do Brasil</td>
+<td align="center">Áreas de plantação de soja por municípios do Brasil, por hectares, no período de 2000 a 2019, conforme dados da Pesquisa Agrícola Municipal.</td>
+<td align="center">2000 a 2019</td>
+<td align="center">1:250.000</td>
+<td align="center">SIDRA / IBGE</td>
+</tr>
+<tr>
+<td align="center">Produção de Carvão vegetal por Municípios do Brasil</td>
+<td align="center">Quantidade de carvão vegetal produzido por municípios do brasil, em Toneladas, no período de 2000 a 2019, conforme dados da Produção de Extração Vegetal e da Silvicultura.</td>
+<td align="center">2000 a 2019</td>
+<td align="center">1:250.000</td>
+<td align="center">SIDRA / IBGE</td>
+</tr>
+<tr>
+<td align="center">Produção de Lenha por Municípios do Brasil</td>
+<td align="center">Quantidade de Lenha produzida por municípios do brasil, em Metros Cúbicos, no período de 2000 a 2019, conforme dados da Produção de Extração Vegetal e da Silvicultura.</td>
+<td align="center">2000 a 2019</td>
+<td align="center">1:250.000</td>
+<td align="center">SIDRA / IBGE</td>
+</tr>
+<tr>
+<td align="center">Produção de Madeira por Municípios do Brasil</td>
+<td align="center">Quantidade de Madeira produzida por municípios do brasil, em Metros Cúbicos, no período de 2000 a 2019, conforme dados da Produção de Extração Vegetal e da Silvicultura.</td>
+<td align="center">2000 a 2019</td>
+<td align="center">1:250.000</td>
+<td align="center">SIDRA / IBGE</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h2 id="areas-especiais">Áreas Especiais</h2>
+<table>
+<thead>
+<tr>
+<th align="center">Dado</th>
+<th align="center">Descrição</th>
+<th align="center">Data</th>
+<th align="center">Escala</th>
+<th align="center">Fonte</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Assentamentos</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">Terras Indígenas</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">Terras Privadas CAR</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">Unidades de Planejamento Hídrico</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h2 id="biodiversidade">Biodiversidade</h2>
+<table>
+<thead>
+<tr>
+<th align="center">Dado</th>
+<th align="center">Descrição</th>
+<th align="center">Data</th>
+<th align="center">Escala</th>
+<th align="center">Fonte</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Áreas-chave de Biodiversidade - KBAs</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">Áreas Importantes para Conservação das Aves</td>
+<td align="center">Áreas críticas para as aves e a biodiversidade em geral. Faz parte da estratégia mundial da BirdLife International.</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">Corredores Prioritários CEPF</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">Unidades de Conservação Integral</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">Faveiro de Wilson</td>
+<td align="center">Registros de ocorrência do faveiro-de-wilson na região central de Minas Gerais. Ela é endêmica desta região e há 16 anos o PROGRAMA DE CONSERVAÇÃO DO FAVEIRO-DE-WILSON trabalha para a conservação desta espécie. Estes pontos foram registrados nos trabalhos de campo, usando um GPS Garmin GPSMap posicionado junto ao tronco da árvore, se tratando de dados bem precisos.</td>
+<td align="center">2014</td>
+<td align="center">Não se aplica</td>
+<td align="center">PROGRAMA DE CONSERVAÇÃO DO FAVEIRO-DE-WILSON</td>
+</tr>
+<tr>
+<td align="center">Fauna - SIBBR</td>
+<td align="center">Compilação de dados e informações sobre a biodiversidade no Cerrado desenvolvida sob a coordenação do Ministério da Ciência e Tecnologia (MCTI)</td>
+<td align="center">Não se aplica</td>
+<td align="center">Não se aplica</td>
+<td align="center">Sistema de Informação sobre a Biodiversidade Brasileira (SIBBR)</td>
+</tr>
+<tr>
+<td align="center">Flora - SIBBR</td>
+<td align="center">Compilação de dados e informações sobre a biodiversidade no Cerrado desenvolvida sob a coordenação do Ministério da Ciência e Tecnologia (MCTI)</td>
+<td align="center">Não se aplica</td>
+<td align="center">Não se aplica</td>
+<td align="center">Sistema de Informação sobre a Biodiversidade Brasileira (SIBBR)</td>
+</tr>
+<tr>
+<td align="center">Reserva da Biosfera</td>
+<td align="center">Revisão dos Limites da Reserva da Biosfera do Cerrado, verificando sobreposições, conflitos e prioridades, promovendo ajustes e incorporações necessárias para melhor contemplar a conservação do Bioma Cerrado.</td>
+<td align="center">2018</td>
+<td align="center">1:10.000</td>
+<td align="center">Greentec Tecnologia Ambiental</td>
+</tr>
+<tr>
+<td align="center">Avistamento de Pato Mergulhão</td>
+<td align="center">Pontos de avistamento da espécie endêmica ameaçada de extinção Pato Mergulhão.</td>
+<td align="center">2019</td>
+<td align="center">Não se aplica</td>
+<td align="center">Instituto Amada Terra</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h2 id="desmatamentos-queimadas">Desmatamentos / Queimadas</h2>
+<table>
+<thead>
+<tr>
+<th align="center">Dado</th>
+<th align="center">Descrição</th>
+<th align="center">Data</th>
+<th align="center">Escala</th>
+<th align="center">Fonte</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Monitoramento do Desmatamento no Cerrado Brasileiro por Satélite</td>
+<td align="center">Área desmatada a partir de 2000 discretizadas em uma séria histórica bienal para o período de 2000 a 2012, e anual para os anos de 2013 a 2018. O mapeamento utiliza imagens do satélite Landsat ou similares para registrar e quantificar as áreas desmatadas maiores que 1 hectare. O PRODES considera como desmatamento a remoção completa da cobertura florestal primária por corte raso, independentemente da futura utilização destas áreas</td>
+<td align="center">Bienal de 2000 a 2012, e anual de 2013 a 2018.</td>
+<td align="center">1:250.000</td>
+<td align="center">Programa conduzido pelo Ministério de Meio Ambiente (MMA) e o Ministério da Ciência, Tecnologia e Inovação (MCTI), with recursos financeiros oriundos do Banco Mundial (World Bank – IBRD-IDA), além das instituições alemães KfW e GIZ.</td>
+</tr>
+<tr>
+<td align="center">Áreas de Desmatamento no Cerrado</td>
+<td align="center">Dados de desmatamentos ocorridos no Bioma Cerrado, disponibilizados anualmente, no período de 2003 a 2017, produzidos a partir de imagens MODIS (MOD13Q1), sendo utilizadas imagens LANDSAT e CBERS para validação.</td>
+<td align="center">2003 a 2017</td>
+<td align="center">1:500.000</td>
+<td align="center">Lapig/UFG</td>
+</tr>
+<tr>
+<td align="center">Perda de Cobertura Árborea</td>
+<td align="center">Sistema de alerta para desmatamentos baseado em Landsat (perda de cobertura de árvores). As imagens Landsat são avaliadas quanto à cobertura de nuvens ou à baixa qualidade dos dados e comparadas aos três anos anteriores de métricas derivadas do Landsat (incluindo classificações, médias e regressões de vermelho, infravermelho e bandas de ondas curtas, e fileiras de NDVI, NBR e NDWI). As métricas e a imagem mais recente do Landsat são executadas em sete árvores de decisão para calcular uma probabilidade mediana de distúrbio na floresta. Pixels com probabilidade&gt; 50% são relatados como alertas de perda de cobertura de árvore. Para mais informações sobre metodologia, consulte o artigo em Cartas de Pesquisa Ambiental</td>
+<td align="center">2001 a 2018</td>
+<td align="center">1:250.000</td>
+<td align="center">Hansen/UMD/Google/USGS/NASA, Global Forest Watch.</td>
+</tr>
+<tr>
+<td align="center">Alertas de Desmatamento no Cerrado</td>
+<td align="center">Área desmatada à partir de 2018. Este mapeamento utiliza imagens do satélite Landsat ou similares, para registrar e quantificar as áreas de avisos de desmatamento com solo exposto, desmatamento com vegetação e mineração.</td>
+<td align="center">2018 e 2019</td>
+<td align="center">1:250.000</td>
+<td align="center">Programa conduzido pelo Ministério de Meio Ambiente (MMA) e o Ministério da Ciência, Tecnologia e Inovação (MCTI) contando com recursos financeiros oriundos do Banco Mundial (World Bank – IBRD-IDA), além das instituições alemães KfW e GIZ.</td>
+</tr>
+<tr>
+<td align="center">Áreas de Queimadas do Cerrado</td>
+<td align="center">Dados de queimadas ocorridos no Brasil, para o período de 2002 à 2018, produzidos a partir de imagens MODIS (MCD45A1).</td>
+<td align="center">2000 a 2019</td>
+<td align="center">1:500.000</td>
+<td align="center">LAPIG / UFG.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h2 id="geofisico-edafoclimatico">Geofísico / Edafoclimático</h2>
+<table>
+<thead>
+<tr>
+<th align="center">Dado</th>
+<th align="center">Descrição</th>
+<th align="center">Data</th>
+<th align="center">Escala</th>
+<th align="center">Fonte</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Regiões Hidrográficas</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h2 id="social">Social</h2>
+<table>
+<thead>
+<tr>
+<th align="center">Dado</th>
+<th align="center">Descrição</th>
+<th align="center">Data</th>
+<th align="center">Escala</th>
+<th align="center">Fonte</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Áreas em conflitos por terra</td>
+<td align="center">Número de áreas em situações de conflitos por terra, por municípios do Cerrado, no período de 2006 á 2016, produzidos pela CPT - Comissão Pastoral da Terra -  espacializados pelo Lapig.</td>
+<td align="center">2006 á 2016</td>
+<td align="center">1:250.000</td>
+<td align="center">Comissão Pastoral da Terra</td>
+</tr>
+<tr>
+<td align="center">Conflitos por água - Ocorrências</td>
+<td align="center">Número de ocorrências de ações de resistência por municípios do Cerrado, em geral coletivas, que visam garantir o uso e a preservação das águas, no período de 2006 á 2017, produzidos pela CPT - Comissão Pastoral da Terra -  espacializados pelo Lapig.</td>
+<td align="center">2006 á 2017</td>
+<td align="center">1:250.000</td>
+<td align="center">Comissão Pastoral da Terra</td>
+</tr>
+<tr>
+<td align="center">Pessoas envolvidas em conflitos por Água</td>
+<td align="center">Número de pessoas envolvidas em conflitos por água ocorridos  por município, em ações de resistência e enfrentamento pela posse, uso e propriedade da terra e pelo acesso aos recursos naturais, na região do Matopiba,  no período de 2006 á 2016, produzidos pela CPT - Comissão Pastoral da Terra -  espacializados pelo Lapig.</td>
+<td align="center">2006 á 2016</td>
+<td align="center">1:250.000</td>
+<td align="center">Comissão Pastoral da Terra</td>
+</tr>
+<tr>
+<td align="center">Conflitos por terra - Ocorrências</td>
+<td align="center">Número de conflitos por municípios do Cerrado, em ações de resistência e enfrentamento pela posse, uso e propriedade da terra e pelo acesso aos recursos naturais, no período de 2006 á 2016, produzidos pela CPT - Comissão Pastoral da Terra -  espacializados pelo Lapig.</td>
+<td align="center">2006 á 2016</td>
+<td align="center">1:250.000</td>
+<td align="center">Comissão Pastoral da Terra</td>
+</tr>
+<tr>
+<td align="center">Pessoas envolvidas em conflitos por Terra</td>
+<td align="center">Número de pessoas envolvidas em conflitos por terra ocorridos por município, em ações de resistência e enfrentamento pela posse, uso e propriedade da terra e pelo acesso aos recursos naturais, na região do Matopiba,  no período de 2006 á 2016, produzidos pela CPT - Comissão Pastoral da Terra -  espacializados pelo Lapig.</td>
+<td align="center">2006 á 2016</td>
+<td align="center">1:250.000</td>
+<td align="center">Comissão Pastoral da Terra</td>
+</tr>
+<tr>
+<td align="center">Trabalho escravo</td>
+<td align="center">Número de pessoas envolvidas por municípios do Cerrado, em ações de trabalhos forçados, jornada exaustiva, ou por sujeitá-lo a condições degradantes de trabalho, no período de de 2008 á 2017, produzidos pela CPT - Comissão Pastoral da Terra -  espacializados pelo Lapig.</td>
+<td align="center">2008 á 2017</td>
+<td align="center">1:250.000</td>
+<td align="center">Comissão Pastoral da Terra</td>
+</tr>
+<tr>
+<td align="center">Índice de Desenvolvimento Humano</td>
+<td align="center">Índice de Desenvolvimento Humano Municipal, calculado pela média geométrica dos índices das dimensões de Renda, Educação e Longevidade. Esse cálculo foi realizado a partir das informações dos 3 últimos Censos Demográficos do IBGE – 1991, 2000 e 2010.</td>
+<td align="center">1991, 2000 e 2010</td>
+<td align="center">1:250.000</td>
+<td align="center">Programa das Nações Unidas para o Desenvolvimento</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h2 id="pontos-de-validacao-lapig">Pontos de Validação (LAPIG)</h2>
+<table>
+<thead>
+<tr>
+<th align="center">Dado</th>
+<th align="center">Descrição</th>
+<th align="center">Data</th>
+<th align="center">Escala</th>
+<th align="center">Fonte</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Pontos de Campo</td>
+<td align="center">Com o propósito de validar mapas produzidos pelo LAPIG-UFG no âmbito do MapBiomas e de subsidiar pesquisas voltadas à qualificação das pastagens brasileiras, seis atividades de campo foram realizadas durante os anos de 2017 e 2018. Um grande conjunto de pontos georreferenciados foi formado e organizado com dados de uso/cobertura do solo e indicativos de qualidade das pastagens.</td>
+<td align="center">2017</td>
+<td align="center">1:250.000</td>
+<td align="center">Laboratório de Processamento de Imagens e Geoprocessamento – Lapig (geração do dado). Projeto financiador: Spatial metrics and baselines of degradation patterns and provision of ecosystem services by pastures in Brazil.</td>
+</tr>
+<tr>
+<td align="center">Pontos de Campo</td>
+<td align="center">Com o propósito de validar mapas produzidos pelo LAPIG-UFG no âmbito do MapBiomas e de subsidiar pesquisas voltadas à qualificação das pastagens brasileiras, seis atividades de campo foram realizadas durante os anos de 2017 e 2018. Um grande conjunto de pontos georreferenciados foi formado e organizado com dados de uso/cobertura do solo e indicativos de qualidade das pastagens.</td>
+<td align="center">2017</td>
+<td align="center">1:250.000</td>
+<td align="center">Laboratório de Processamento de Imagens e Geoprocessamento – Lapig (geração do dado). Projeto Spatial metrics and baselines of degradation patterns and provision of ecosystem services by pastures in Brazil. (viabilizador).</td>
+</tr>
+<tr>
+<td align="center">Pontos Visualmente Inspecionados</td>
+<td align="center">Conjunto georreferenciado de pontos para todo o território brasileiro, sendo atribuídas classes de uso e cobertura do solo referente a cada ano no período de 1985 a 2017. Foram utilizadas imagens Landsat provenientes dos sensores TM, ETM+ e OLI. Buscou-se também abordar os critérios adotados, dificuldades e especificidades encontradas quanto a interpretação de imagens em cada um dos 6 biomas brasileiros.</td>
+<td align="center">1985 à 2017</td>
+<td align="center">não se aplica</td>
+<td align="center">Laboratório de Processamento de Imagens e Geoprocessamento – Lapig (geração do dado). Projeto financiador: Spatial metrics and baselines of degradation patterns and provision of ecosystem services by pastures in Brazil.</td>
+</tr>
+<tr>
+<td align="center">Pontos Visualmente Inspecionados</td>
+<td align="center">Conjunto georreferenciado de pontos para todo o território brasileiro, sendo atribuídas classes de uso e cobertura do solo referente a cada ano no período de 1985 a 2017. Foram utilizadas imagens Landsat provenientes dos sensores TM, ETM+ e OLI. Buscou-se também abordar os critérios adotados, dificuldades e especificidades encontradas quanto a interpretação de imagens em cada um dos 6 biomas brasileiros.</td>
+<td align="center">1985 à 2017</td>
+<td align="center">não se aplica</td>
+<td align="center">Laboratório de Processamento de Imagens e Geoprocessamento – Lapig (geração do dado). Projeto financiador: Spatial metrics and baselines of degradation patterns and provision of ecosystem services by pastures in Brazil.</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../01-guia_funcionalidades/" class="btn btn-neutral float-right" title="Funcionalidades">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href=".." class="btn btn-neutral" title="HOME"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../01-guia_funcionalidades/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
