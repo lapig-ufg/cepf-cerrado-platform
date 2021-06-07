@@ -9,7 +9,7 @@
   <meta name="author" content="Equipe Lapig CEPF">
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Deployment da arquitetura do Cerrado DPAT - Documentação - Plataforma de Conhecimento CEPF</title>
+  <title>Deployment da arquitetura do CEPF - Documentação - Plataforma de Conhecimento CEPF</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,7 +18,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Deployment da arquitetura do Cerrado DPAT";
+    var mkdocs_page_name = "Deployment da arquitetura do CEPF";
     var mkdocs_page_input_path = "02-arq_execucao_dpat.md";
     var mkdocs_page_url = null;
   </script>
@@ -71,9 +71,9 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../02-arq_servidor_de_aplicacao/">Servidor de aplicação</a>
                     </li>
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Deployment da arquitetura do Cerrado DPAT</a>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Deployment da arquitetura do CEPF</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#restaurando-e-disponibilizando-o-banco-de-dados-fip-cerrado">Restaurando e disponibilizando o banco de dados FIP-Cerrado</a>
+    <li class="toctree-l2"><a class="reference internal" href="#restaurando-e-disponibilizando-o-banco-de-dados-lapig">Restaurando e disponibilizando o banco de dados lapig</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#deployment-do-ows-server">Deployment do OWS Server</a>
     </li>
@@ -115,7 +115,7 @@
         
       
     
-    <li>Deployment da arquitetura do Cerrado DPAT</li>
+    <li>Deployment da arquitetura do CEPF</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -139,7 +139,7 @@
 <p>O <em>Application Server</em> e client (Front-end) da aplicação compilados e executando.</p>
 </li>
 </ol>
-<h2 id="restaurando-e-disponibilizando-o-banco-de-dados-fip-cerrado">Restaurando e disponibilizando o banco de dados FIP-Cerrado</h2>
+<h2 id="restaurando-e-disponibilizando-o-banco-de-dados-lapig">Restaurando e disponibilizando o banco de dados lapig</h2>
 <p>Para restaurar o banco <code>lapig</code> no PostgreSQL, é necessário ter o serviço PostgreSQL executando na máquina do usuário. Para tal, pode-se utilizar o tutorial neste <a href="https://medium.com/@thiago.reis/instalando-e-configurando-postgresql-no-ubuntu-86716cda5894">link</a> para instalar e executar o PostgreSQL e o PGAdmin3.</p>
 <p>Ao final do tutorial, deve-se verificar qual a versão do PostgreSQL instalado (ver: <a href="https://phoenixnap.com/kb/check-postgresql-version">link</a>) e também instalar a extensão do Postgis para a versão adequada de acordo com o tutorial deste <a href="https://computingforgeeks.com/how-to-install-postgis-on-ubuntu-debian/">link</a> no <strong>Step 4: Install PostGIS on Ubuntu 20.04/18.04 / Debian 10</strong>.</p>
 <p>Com o PostgreSQL e o PostGIS instalados, em seguida é necessário realizar o download do último backup disponibilizado no <a href="https://drive.google.com/file/d/19nVhry3bvHpV_oY861saBV9prXpfnFtd/view?usp=sharing">endereço</a> e extraí-lo.</p>
