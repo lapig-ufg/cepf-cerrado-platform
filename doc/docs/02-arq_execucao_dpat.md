@@ -9,7 +9,7 @@ Conforme detalhado na seção [Arquitetura de Software](/02-arq_geral), para exe
 3. O *Application Server* e client (Front-end) da aplicação compilados e executando.
 
 
-## Restaurando e disponibilizando o banco de dados FIP-Cerrado
+## Restaurando e disponibilizando o banco de dados lapig
 
 Para restaurar o banco `lapig` no PostgreSQL, é necessário ter o serviço PostgreSQL executando na máquina do usuário. Para tal, pode-se utilizar o tutorial neste [link](https://medium.com/@thiago.reis/instalando-e-configurando-postgresql-no-ubuntu-86716cda5894) para instalar e executar o PostgreSQL e o PGAdmin3.
 
