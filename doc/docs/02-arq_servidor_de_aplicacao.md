@@ -1,6 +1,6 @@
 # Servidor de Aplicação
 
-Basicamente TESTE a plataforma de conhecimento do cerrado é dividida em duas partes: o *WebMap Client* e o *Application Server*, conforme descrito anteriormente. O código-fonte para estas duas partes está hospedado no [respositório Github](https://github.com/lapig-ufg/cepf-cerrado-platform) do projeto.
+Basicamente a plataforma de conhecimento do cerrado é dividida em duas partes: o *WebMap Client* e o *Application Server*, conforme descrito anteriormente. O código-fonte para estas duas partes está hospedado no [respositório Github](https://github.com/lapig-ufg/cepf-cerrado-platform) do projeto.
 
 
 Dentro do repositório do projeto, o código-fonte do *Application Server* está em [src/server](https://github.com/lapig-ufg/cepf-cerrado-platform/tree/master/src/server). Por ser construído em NodeJS, ao clonar o projeto o usuário deverá navegar até a pasta server e instalar as dependências gerenciadas pelo [Node Package Manager (NPM)](https://www.npmjs.com/) através do comando:
