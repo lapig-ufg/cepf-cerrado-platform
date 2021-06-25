@@ -1,6 +1,6 @@
 # Banco de dados
 
-Na plataforma de conhecimento do cerrado todos os dados estão armazenados em um banco de dados PostgreSQL. O último backup deste banco pode ser encontrado no [COLOCAR LINK AQUI]() no arquivo `BKP_BANCO_DADOS_CEPF.tar.gz`. 
+Na plataforma de conhecimento do cerrado todos os dados estão armazenados em um banco de dados PostgreSQL. O último backup deste banco pode ser encontrado no [link](https://drive.google.com/file/d/1QVy34ESbydCgVWkPVD3y5FRm_8yDpza2/view?usp=sharing) no arquivo `BACKUP-LAPIG-POSTGRES.tar.gz`. 
 
 ## Processo de atualização
 

@@ -82,7 +82,7 @@ A figura abaixo apresenta o Mapfile da camada de Agricultura da Agrosatélite pr
 
 8. Define uma classificação para os dados a fim de customizar a coloração de acordo com um critério. A classificação estabelecida também irá compor a legenda.
 
-Por fim, o Mapfile utilizado para disponibilizar todas as camadas presentes na plataforma de conhecimento do cerrado está na pasta compartilhada do projeto no [COLOCAR LINK AQUI]().
+Por fim, o Mapfile utilizado para disponibilizar todas as camadas presentes na plataforma de conhecimento do cerrado está na pasta compartilhada do projeto no [link](https://drive.google.com/file/d/1lePfM3MJ5ruW9Vshgx3albaCSXUEunJf/view?usp=sharing).
 
 ## Disponibilização da camada no Application Server
 
