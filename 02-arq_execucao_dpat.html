@@ -82,8 +82,6 @@
     </li>
         </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#script-completo-com-execucao-completa-para-producao">Script completo com execução completa para Produção</a>
-    </li>
     </ul>
                     </li>
                 </ul>
@@ -241,10 +239,6 @@ OWS_DOMAINS='http://172.18.0.8:5000'
 <p><img alt="Senha do BD" src="imgs/02/ows-standalone/dpat-1.png" /></p>
 <p><img alt="Senha do BD" src="imgs/02/ows-standalone/dpat-2.png" /></p>
 <p>Basicamente o script deverá criar e ajustar automaticamente as variáveis de ambiente da Plataforma de Conhecimento do Cerrado, realizar o download e importação do <a href="https://drive.google.com/file/d/1QKiBeo9II2auQik1jJdBACnHp4qrfc0f/view?usp=sharing">contâiner docker</a> onde todas as dependências do projeto já estão devidamente ajustadas e executar os passos necessários para compilar e disponibilizar a aplicação no endereço de IP informado na execução do script na <strong>porta 3000</strong>, assim como apresentado na imagem abaixo.</p>
-<h2 id="script-completo-com-execucao-completa-para-producao">Script completo com execução completa para Produção</h2>
-<p>Por fim, também foi criado um <a href="https://drive.google.com/file/d/1V6jRqeOUpqApvpaARRRB_iiN7D3GlFAV/view?usp=sharing">script</a> que realiza todos os passos abordados nas seções <a href="/02-arq_execucao_dpat/#execucao-do-ows-server">Deployment do OWS Server</a> e <a href="/02-arq_execucao_dpat/#execucao-da-aplicacao-cerrado-dpat">Deployment da Plataforma de Conhecimento do Cerrado</a>. Para tal, basta executar em Terminal.</p>
-<pre><code class="language-sh">$ ./start-dpat+ows.sh
-</code></pre>
 <p>Após execução dos scripts o OWS Server estará executando na máquina do usuário na porta <strong>5000</strong> e a Plataforma de Conhecimento do Cerrado também na máquina do usuário na porta <strong>3000</strong>.</p>
               
             </div>
