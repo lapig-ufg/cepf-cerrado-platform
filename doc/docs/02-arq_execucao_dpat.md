@@ -47,14 +47,9 @@ Agora de fato pode-se restaurar o banco de dados baixado e extraído para a data
 $ pg_restore -U lapig -h <host_address> -v -j 24 --format=d -C -d lapig lapig.sql/
 ```
 
+## Deployment da aplicação Plataforma de Conhecimento do Cerrado
 
-## Deployment do OWS Server
-
-A fim facilitar/automatizar todo o processo de execução do OWS Server foi criado um script que executa todos os passos necessários. Este script deverá executar as seguintes tarefas:
-
-* Download do contâiner do OWS Server presente no [endereço](https://drive.google.com/file/d/11WLTneFgdKC4Cb31TludwAZ-6jd4YkrG/view?usp=sharing)
-* Cria a estrutura de pastas necessárias (ows-cache, catalog e cepf-files) para funcionamento do OWS Server.
-* Constrói a aplicação do OWS Server e a disponibiliza em um IP e porta.
+Para execução da Plataforma de Conhecimento do Cerrado é importante ressaltar que o Banco de Dados deve estar restaurado e acessível conforme abordado na [seção](/02-arq_execucao_dpat/#restaurando-e-disponibilizando-o-banco-de-dados-fip-cerrado) e também deve-se ter o [OWS Server](/02-arq_execucao_dpat/#execucao-do-ows-server) funcionando corretamente.
 
 Conforme mencionado anteriormente, a estrutura do OWS Server foi construída com o apoio do [Docker](https://www.docker.com/), portanto para instalação do mesmo, deve-se seguir os passos definidos nos tutoriais de acordo com o sistema operacional, seja ele [Debian](https://docs.docker.com/engine/install/debian/) ou [CentOS](https://docs.docker.com/engine/install/centos/). Além do Docker, o script também faz uso das seguintes dependências:
 
@@ -64,60 +59,8 @@ Conforme mencionado anteriormente, a estrutura do OWS Server foi construída com
 | wget | [https://www.cyberciti.biz/faq/how-to-install-wget-togetrid-of-error-bash-wget-command-not-found/](https://www.cyberciti.biz/faq/how-to-install-wget-togetrid-of-error-bash-wget-command-not-found/) |
 | curl | [https://www.cyberciti.biz/faq/how-to-install-curl-command-on-a-ubuntu-linux/](https://www.cyberciti.biz/faq/how-to-install-curl-command-on-a-ubuntu-linux/) |
 | Git | [https://gist.github.com/derhuerst/1b15ff4652a867391f03](https://gist.github.com/derhuerst/1b15ff4652a867391f03) |
-
-
-
-Após instalação do Docker e das dependências mínimas para o script, deve-se executar o script [`start-ows.sh`](https://drive.google.com/file/d/1dPdvaUiVkGHB_sz4dWifuj5z8bUH-PT_/view?usp=sharing) através do comando:
-
-``` sh
-$ ./start-ows.sh
-```
-
-Inicialmente o script irá pedir ao usuário que informe o local onde o OWS deverá criar a estrutura de pastas necessárias para funcionamento. Na imagem abaixo, o usuário terá informado o caminho `/mnt/hd02`. É importante ressaltar que este deverá ser um caminho válido na máquina do usuário, porém, como o OWS Server está armazenado em um contâiner Docker, o script irá mapear automaticamente este caminho para `/STORAGE` dentro da estrutura do Docker.
-
-![Estrutura de pastas](imgs/02/ows-standalone/exec-ows-1.png)
-
-Em seguida, deve-se informar o diretório onde o cache deverá ser armazenado. Na imagem abaixo, o usuário terá informado novamente o caminho `/mnt/hd02`.
-
-![Estrutura de pastas](imgs/02/ows-standalone/exec-ows-2.png)
-
-Em seguida, o script irá pedir para que o usuário informe o host (endereço) de onde está rodando o serviço do Banco de dados PostgreSQL, bem como, a porta de execução, o nome do banco de dados e a senha do banco. Estes dados são necessários para configurar o acesso do Mapserver ao banco de dados a fim de criar as camadas de dados vetoriais.
-
-![Host do BD](imgs/02/ows-standalone/exec-ows-3.png)
-
-![Porta do DB](imgs/02/ows-standalone/exec-ows-4.png)
-
-![Nome do DB](imgs/02/ows-standalone/exec-ows-5.png)
-
-![Senha do BD](imgs/02/ows-standalone/exec-ows-6.png)
-
-Após a inicialização do das variáveis necessárias para conectar o OWS Server com o banco de dados, o script irá realizar automaticamente o download do contâiner do OWS Server e importá-lo corretamente no Docker instalado na máquina do usuário.
-
-![Download OWS](imgs/02/ows-standalone/exec-ows-7.png)
-
-Após a importação correta do contâiner, o OWS Server deverá estar executando e aguardando requisições em **localhost** ou **127.0.0.1** na **porta 5000**. A imagem abaixo apresenta um exemplo de requsição feita através do *curl* no endereço `http://127.0.0.1:5000/ows`, que recebe uma pequena página HTML criada pelo MapServer.
-
-![Requisicao ao OWS](imgs/02/ows-standalone/exec-ows-8.png)
-
-Após a execução do OWS Server, também é necessário mover os arquivos Raster presentes no [link](https://drive.google.com/file/d/1L2pW2PudSsmwGQMhPGXbZd5sJvBmEcSW/view?usp=sharing) para dentro da pasta `catalog` criada no caminho informado pelo usuário no início do script.
-
-Por fim, vale ressaltar que uma vez que o contâiner do OWS Server esteja configurado e funcionando não é mais necessário executar o script `start-ows.sh`. Já existe um script na raiz do contâiner que é responsável por executar o OWS Server imediatamente após o contâiner ser inicializado. Portanto, basta executar:
-
-``` sh
-$ docker restart OWS bash
-```
-
-E caso deseja entrar no contâiner e verificar os arquivos internos, tais como **logs** de requisições, basta executar:
-
-``` sh
-$ docker exec -it OWS bash
-$ cd /APP/lapig-maps/src/ows/log
-$ tail -f ows-mapserv.log
-```
-
-## Deployment da aplicaçãa Plataforma de Conhecimento do Cerrado
-
-Para execução da Plataforma de Conhecimento do Cerrado é importante ressaltar que o Banco de Dados deve estar restaurado e acessível conforme abordado na [seção](/02-arq_execucao_dpat/#restaurando-e-disponibilizando-o-banco-de-dados-fip-cerrado) e também deve-se ter o [OWS Server](/02-arq_execucao_dpat/#execucao-do-ows-server) funcionando corretamente.
+| Docker | [https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/) |
+| Docker Compose | [https://docs.docker.com/compose/install/](https://docs.docker.com/compose/install/) |
 
 A seguir será abordado duas maneiras de executar a aplicaçãa Plataforma de Conhecimento do Cerrado em ambientes de Desenvolvimento e Produção. Para o ambiente de desenvolvimento será detalhado um passo a passo partindo do pressuposto que um programador irá dar manutenção ou continuidade na Plataforma de Conhecimento do Cerrado. Já o ambiente de produção, será disponibilizado um script que executa todos os passos para disponibilizar a Plataforma de Conhecimento do Cerrado em uma porta da máquina que está sendo executado. 
 
@@ -177,10 +120,10 @@ http://localhost:4200
 
 Em seguida, uma segunda maneira de disponibilizar a Plataforma de Conhecimento do Cerrado é em ambiente de produção. É importante ressaltar que o *OWS Server* deve estar executando para que a Plataforma de Conhecimento do Cerrado faça as requisições de imagens das diferentes camadas utilizadas pelo sistema.
 
-Para facilitar o processo de *deployment* em produção, foi criado um [script](https://drive.google.com/file/d/1JFpmJtAHU37jYrBeAJ8BEjmiEeuSn7XQ/view?usp=sharing) que realiza todos os passos necessários para execução da Plataforma de Conhecimento do Cerrado em produção. Para executar o script basta executar em um Terminal:
+Para facilitar o processo de *deployment* em produção, foi criado um [script](https://drive.google.com/file/d/1vH3BGK_KmU_n1nTDv5qCKh6rvNx4bSS7/view?usp=sharing) que realiza todos os passos necessários para execução da Plataforma de Conhecimento do Cerrado em produção. Para executar o script basta executar em um Terminal:
 
 ``` sh
-$ ./start-dpat.sh
+$ ./start-cepf+ows.sh
 ```
 
 Assim como detalhado na seção de [Deployment do OWS Server](/02-arq_execucao_dpat/#execucao-do-ows-server), este script irá pedir ao usuário que informe os parâmetros **endereço, nome, porta, usuário e senha** do Banco de Dados, de forma a alterar corretamente o arquivo de configuração do ambiente, `.env` corretamente.
