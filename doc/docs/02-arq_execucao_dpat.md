@@ -136,12 +136,4 @@ Em seguida, após pedir as informações do Banco de Dados, o script irá pedir 
 
 Basicamente o script deverá criar e ajustar automaticamente as variáveis de ambiente da Plataforma de Conhecimento do Cerrado, realizar o download e importação do [contâiner docker](https://drive.google.com/file/d/1QKiBeo9II2auQik1jJdBACnHp4qrfc0f/view?usp=sharing) onde todas as dependências do projeto já estão devidamente ajustadas e executar os passos necessários para compilar e disponibilizar a aplicação no endereço de IP informado na execução do script na **porta 3000**, assim como apresentado na imagem abaixo.
 
-## Script completo com execução completa para Produção
-
-Por fim, também foi criado um [script](https://drive.google.com/file/d/1V6jRqeOUpqApvpaARRRB_iiN7D3GlFAV/view?usp=sharing) que realiza todos os passos abordados nas seções [Deployment do OWS Server](/02-arq_execucao_dpat/#execucao-do-ows-server) e [Deployment da Plataforma de Conhecimento do Cerrado](/02-arq_execucao_dpat/#execucao-da-aplicacao-cerrado-dpat). Para tal, basta executar em Terminal.
-
-``` sh
-$ ./start-dpat+ows.sh
-```
-
 Após execução dos scripts o OWS Server estará executando na máquina do usuário na porta **5000** e a Plataforma de Conhecimento do Cerrado também na máquina do usuário na porta **3000**.
