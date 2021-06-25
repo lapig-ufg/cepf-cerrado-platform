@@ -8,13 +8,13 @@
   
   <meta name="author" content="Equipe Lapig CEPF">
   
-  <link rel="shortcut icon" href="../img/favicon.ico">
+  <link rel="shortcut icon" href="img/favicon.ico">
   <title>Deployment da arquitetura do CEPF - Documentação - Plataforma de Conhecimento CEPF</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
-  <link rel="stylesheet" href="../css/theme.css" />
-  <link rel="stylesheet" href="../css/theme_extra.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
   
   <script>
     // Current page data
@@ -23,11 +23,10 @@
     var mkdocs_page_url = null;
   </script>
   
-  <script src="../js/jquery-2.1.1.min.js" defer></script>
-  <script src="../js/modernizr-2.8.3.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="js/jquery-2.1.1.min.js" defer></script>
+  <script src="js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
-  
 </head>
 
 <body class="wy-body-for-nav" role="document">
@@ -38,46 +37,44 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-        <a href=".." class="icon icon-home"> Documentação - Plataforma de Conhecimento CEPF</a>
+        <a href="index.html" class="icon icon-home"> Documentação - Plataforma de Conhecimento CEPF</a>
         <div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="..">HOME</a>
+                    <li class="toctree-l1"><a class="reference internal" href="index.html">HOME</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Guia do usuário</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../01-guia_dados_geograficos/">Dados Geográficos</a>
+                    <li class="toctree-l1"><a class="reference internal" href="01-guia_dados_geograficos.html">Dados Geográficos</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../01-guia_funcionalidades/">Funcionalidades</a>
+                    <li class="toctree-l1"><a class="reference internal" href="01-guia_funcionalidades.html">Funcionalidades</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Dados</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../03-dad_vetoriais/">Banco de Dados</a>
+                    <li class="toctree-l1"><a class="reference internal" href="03-dad_vetoriais.html">Banco de Dados</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Arquitetura de Software</span></p>
                 <ul class="current">
-                    <li class="toctree-l1"><a class="reference internal" href="../02-arq_geral/">Visão geral</a>
+                    <li class="toctree-l1"><a class="reference internal" href="02-arq_geral.html">Visão geral</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../02-arq_servidor_de_mapas/">Servidor de mapas</a>
+                    <li class="toctree-l1"><a class="reference internal" href="02-arq_servidor_de_mapas.html">Servidor de mapas</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../02-arq_servidor_de_aplicacao/">Servidor de aplicação</a>
+                    <li class="toctree-l1"><a class="reference internal" href="02-arq_servidor_de_aplicacao.html">Servidor de aplicação</a>
                     </li>
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Deployment da arquitetura do CEPF</a>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="02-arq_execucao_dpat.html">Deployment da arquitetura do CEPF</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#restaurando-e-disponibilizando-o-banco-de-dados-lapig">Restaurando e disponibilizando o banco de dados lapig</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#deployment-do-ows-server">Deployment do OWS Server</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#deployment-da-aplicacaa-plataforma-de-conhecimento-do-cerrado">Deployment da aplicaçãa Plataforma de Conhecimento do Cerrado</a>
+    <li class="toctree-l2"><a class="reference internal" href="#deployment-da-aplicacao-plataforma-de-conhecimento-do-cerrado">Deployment da aplicação Plataforma de Conhecimento do Cerrado</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#ambiente-de-desenvolvimento">Ambiente de Desenvolvimento</a>
     </li>
@@ -99,7 +96,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="..">Documentação - Plataforma de Conhecimento CEPF</a>
+        <a href="index.html">Documentação - Plataforma de Conhecimento CEPF</a>
       </nav>
 
       
@@ -107,7 +104,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="..">Docs</a> &raquo;</li>
+    <li><a href="index.html">Docs</a> &raquo;</li>
     
       
         
@@ -123,6 +120,7 @@
   
   <hr/>
 </div>
+
           <div role="main">
             <div class="section">
               
@@ -159,13 +157,8 @@ $ psql -h &lt;host_address&gt; -U &lt;db_user&gt; -d lapig -c &quot;create exten
 <p>Agora de fato pode-se restaurar o banco de dados baixado e extraído para a database <code>lapig</code> criada, o que pode ser alcançada através do comando.</p>
 <pre><code class="language-sh">$ pg_restore -U lapig -h &lt;host_address&gt; -v -j 24 --format=d -C -d lapig lapig.sql/
 </code></pre>
-<h2 id="deployment-do-ows-server">Deployment do OWS Server</h2>
-<p>A fim facilitar/automatizar todo o processo de execução do OWS Server foi criado um script que executa todos os passos necessários. Este script deverá executar as seguintes tarefas:</p>
-<ul>
-<li>Download do contâiner do OWS Server presente no <a href="https://drive.google.com/file/d/11WLTneFgdKC4Cb31TludwAZ-6jd4YkrG/view?usp=sharing">endereço</a></li>
-<li>Cria a estrutura de pastas necessárias (ows-cache, catalog e cepf-files) para funcionamento do OWS Server.</li>
-<li>Constrói a aplicação do OWS Server e a disponibiliza em um IP e porta.</li>
-</ul>
+<h2 id="deployment-da-aplicacao-plataforma-de-conhecimento-do-cerrado">Deployment da aplicação Plataforma de Conhecimento do Cerrado</h2>
+<p>Para execução da Plataforma de Conhecimento do Cerrado é importante ressaltar que o Banco de Dados deve estar restaurado e acessível conforme abordado na <a href="/02-arq_execucao_dpat/#restaurando-e-disponibilizando-o-banco-de-dados-fip-cerrado">seção</a> e também deve-se ter o <a href="/02-arq_execucao_dpat/#execucao-do-ows-server">OWS Server</a> funcionando corretamente.</p>
 <p>Conforme mencionado anteriormente, a estrutura do OWS Server foi construída com o apoio do <a href="https://www.docker.com/">Docker</a>, portanto para instalação do mesmo, deve-se seguir os passos definidos nos tutoriais de acordo com o sistema operacional, seja ele <a href="https://docs.docker.com/engine/install/debian/">Debian</a> ou <a href="https://docs.docker.com/engine/install/centos/">CentOS</a>. Além do Docker, o script também faz uso das seguintes dependências:</p>
 <table>
 <thead>
@@ -191,35 +184,16 @@ $ psql -h &lt;host_address&gt; -U &lt;db_user&gt; -d lapig -c &quot;create exten
 <td align="center">Git</td>
 <td><a href="https://gist.github.com/derhuerst/1b15ff4652a867391f03">https://gist.github.com/derhuerst/1b15ff4652a867391f03</a></td>
 </tr>
+<tr>
+<td align="center">Docker</td>
+<td><a href="https://docs.docker.com/get-docker/">https://docs.docker.com/get-docker/</a></td>
+</tr>
+<tr>
+<td align="center">Docker Compose</td>
+<td><a href="https://docs.docker.com/compose/install/">https://docs.docker.com/compose/install/</a></td>
+</tr>
 </tbody>
 </table>
-<p>Após instalação do Docker e das dependências mínimas para o script, deve-se executar o script <a href="https://drive.google.com/file/d/1dPdvaUiVkGHB_sz4dWifuj5z8bUH-PT_/view?usp=sharing"><code>start-ows.sh</code></a> através do comando:</p>
-<pre><code class="language-sh">$ ./start-ows.sh
-</code></pre>
-<p>Inicialmente o script irá pedir ao usuário que informe o local onde o OWS deverá criar a estrutura de pastas necessárias para funcionamento. Na imagem abaixo, o usuário terá informado o caminho <code>/mnt/hd02</code>. É importante ressaltar que este deverá ser um caminho válido na máquina do usuário, porém, como o OWS Server está armazenado em um contâiner Docker, o script irá mapear automaticamente este caminho para <code>/STORAGE</code> dentro da estrutura do Docker.</p>
-<p><img alt="Estrutura de pastas" src="../imgs/02/ows-standalone/exec-ows-1.png" /></p>
-<p>Em seguida, deve-se informar o diretório onde o cache deverá ser armazenado. Na imagem abaixo, o usuário terá informado novamente o caminho <code>/mnt/hd02</code>.</p>
-<p><img alt="Estrutura de pastas" src="../imgs/02/ows-standalone/exec-ows-2.png" /></p>
-<p>Em seguida, o script irá pedir para que o usuário informe o host (endereço) de onde está rodando o serviço do Banco de dados PostgreSQL, bem como, a porta de execução, o nome do banco de dados e a senha do banco. Estes dados são necessários para configurar o acesso do Mapserver ao banco de dados a fim de criar as camadas de dados vetoriais.</p>
-<p><img alt="Host do BD" src="../imgs/02/ows-standalone/exec-ows-3.png" /></p>
-<p><img alt="Porta do DB" src="../imgs/02/ows-standalone/exec-ows-4.png" /></p>
-<p><img alt="Nome do DB" src="../imgs/02/ows-standalone/exec-ows-5.png" /></p>
-<p><img alt="Senha do BD" src="../imgs/02/ows-standalone/exec-ows-6.png" /></p>
-<p>Após a inicialização do das variáveis necessárias para conectar o OWS Server com o banco de dados, o script irá realizar automaticamente o download do contâiner do OWS Server e importá-lo corretamente no Docker instalado na máquina do usuário.</p>
-<p><img alt="Download OWS" src="../imgs/02/ows-standalone/exec-ows-7.png" /></p>
-<p>Após a importação correta do contâiner, o OWS Server deverá estar executando e aguardando requisições em <strong>localhost</strong> ou <strong>127.0.0.1</strong> na <strong>porta 5000</strong>. A imagem abaixo apresenta um exemplo de requsição feita através do <em>curl</em> no endereço <code>http://127.0.0.1:5000/ows</code>, que recebe uma pequena página HTML criada pelo MapServer.</p>
-<p><img alt="Requisicao ao OWS" src="../imgs/02/ows-standalone/exec-ows-8.png" /></p>
-<p>Após a execução do OWS Server, também é necessário mover os arquivos Raster presentes no <a href="https://drive.google.com/file/d/1L2pW2PudSsmwGQMhPGXbZd5sJvBmEcSW/view?usp=sharing">link</a> para dentro da pasta <code>catalog</code> criada no caminho informado pelo usuário no início do script.</p>
-<p>Por fim, vale ressaltar que uma vez que o contâiner do OWS Server esteja configurado e funcionando não é mais necessário executar o script <code>start-ows.sh</code>. Já existe um script na raiz do contâiner que é responsável por executar o OWS Server imediatamente após o contâiner ser inicializado. Portanto, basta executar:</p>
-<pre><code class="language-sh">$ docker restart OWS bash
-</code></pre>
-<p>E caso deseja entrar no contâiner e verificar os arquivos internos, tais como <strong>logs</strong> de requisições, basta executar:</p>
-<pre><code class="language-sh">$ docker exec -it OWS bash
-$ cd /APP/lapig-maps/src/ows/log
-$ tail -f ows-mapserv.log
-</code></pre>
-<h2 id="deployment-da-aplicacaa-plataforma-de-conhecimento-do-cerrado">Deployment da aplicaçãa Plataforma de Conhecimento do Cerrado</h2>
-<p>Para execução da Plataforma de Conhecimento do Cerrado é importante ressaltar que o Banco de Dados deve estar restaurado e acessível conforme abordado na <a href="/02-arq_execucao_dpat/#restaurando-e-disponibilizando-o-banco-de-dados-fip-cerrado">seção</a> e também deve-se ter o <a href="/02-arq_execucao_dpat/#execucao-do-ows-server">OWS Server</a> funcionando corretamente.</p>
 <p>A seguir será abordado duas maneiras de executar a aplicaçãa Plataforma de Conhecimento do Cerrado em ambientes de Desenvolvimento e Produção. Para o ambiente de desenvolvimento será detalhado um passo a passo partindo do pressuposto que um programador irá dar manutenção ou continuidade na Plataforma de Conhecimento do Cerrado. Já o ambiente de produção, será disponibilizado um script que executa todos os passos para disponibilizar a Plataforma de Conhecimento do Cerrado em uma porta da máquina que está sendo executado. </p>
 <p>Em seguida, certifique-se de criar corretamente um arquivo <code>.env</code> conforme abordado na <a href="02-arq_servidor_de_aplicacao.md/#servidor-de-aplicacao">seção</a>. Um exemplo de arquivo <code>.env</code> criado durante o processo de execução do script para o ambiente de Produção pode ser observado abaixo:</p>
 <pre><code>APP_PRODUCAO='/data/dados-lapig/dpat-files'
@@ -259,13 +233,13 @@ OWS_DOMAINS='http://172.18.0.8:5000'
 </code></pre>
 <h3 id="ambiente-de-producao">Ambiente de Produção</h3>
 <p>Em seguida, uma segunda maneira de disponibilizar a Plataforma de Conhecimento do Cerrado é em ambiente de produção. É importante ressaltar que o <em>OWS Server</em> deve estar executando para que a Plataforma de Conhecimento do Cerrado faça as requisições de imagens das diferentes camadas utilizadas pelo sistema.</p>
-<p>Para facilitar o processo de <em>deployment</em> em produção, foi criado um <a href="https://drive.google.com/file/d/1JFpmJtAHU37jYrBeAJ8BEjmiEeuSn7XQ/view?usp=sharing">script</a> que realiza todos os passos necessários para execução da Plataforma de Conhecimento do Cerrado em produção. Para executar o script basta executar em um Terminal:</p>
-<pre><code class="language-sh">$ ./start-dpat.sh
+<p>Para facilitar o processo de <em>deployment</em> em produção, foi criado um <a href="https://drive.google.com/file/d/1vH3BGK_KmU_n1nTDv5qCKh6rvNx4bSS7/view?usp=sharing">script</a> que realiza todos os passos necessários para execução da Plataforma de Conhecimento do Cerrado em produção. Para executar o script basta executar em um Terminal:</p>
+<pre><code class="language-sh">$ ./start-cepf+ows.sh
 </code></pre>
 <p>Assim como detalhado na seção de <a href="/02-arq_execucao_dpat/#execucao-do-ows-server">Deployment do OWS Server</a>, este script irá pedir ao usuário que informe os parâmetros <strong>endereço, nome, porta, usuário e senha</strong> do Banco de Dados, de forma a alterar corretamente o arquivo de configuração do ambiente, <code>.env</code> corretamente.</p>
 <p>Em seguida, após pedir as informações do Banco de Dados, o script irá pedir ao usuário que informe o local onde a estrutura de pastas da Plataforma de Conhecimento do Cerrado deverá ser criada e também qual o endereço de IP da máquina de produção onde será realizado o <em>deployment</em> assim como informado nas imagens abaixo.</p>
-<p><img alt="Senha do BD" src="../imgs/02/ows-standalone/dpat-1.png" /></p>
-<p><img alt="Senha do BD" src="../imgs/02/ows-standalone/dpat-2.png" /></p>
+<p><img alt="Senha do BD" src="imgs/02/ows-standalone/dpat-1.png" /></p>
+<p><img alt="Senha do BD" src="imgs/02/ows-standalone/dpat-2.png" /></p>
 <p>Basicamente o script deverá criar e ajustar automaticamente as variáveis de ambiente da Plataforma de Conhecimento do Cerrado, realizar o download e importação do <a href="https://drive.google.com/file/d/1QKiBeo9II2auQik1jJdBACnHp4qrfc0f/view?usp=sharing">contâiner docker</a> onde todas as dependências do projeto já estão devidamente ajustadas e executar os passos necessários para compilar e disponibilizar a aplicação no endereço de IP informado na execução do script na <strong>porta 3000</strong>, assim como apresentado na imagem abaixo.</p>
 <h2 id="script-completo-com-execucao-completa-para-producao">Script completo com execução completa para Produção</h2>
 <p>Por fim, também foi criado um <a href="https://drive.google.com/file/d/1V6jRqeOUpqApvpaARRRB_iiN7D3GlFAV/view?usp=sharing">script</a> que realiza todos os passos abordados nas seções <a href="/02-arq_execucao_dpat/#execucao-do-ows-server">Deployment do OWS Server</a> e <a href="/02-arq_execucao_dpat/#execucao-da-aplicacao-cerrado-dpat">Deployment da Plataforma de Conhecimento do Cerrado</a>. Para tal, basta executar em Terminal.</p>
@@ -280,7 +254,7 @@ OWS_DOMAINS='http://172.18.0.8:5000'
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="../02-arq_servidor_de_aplicacao/" class="btn btn-neutral" title="Servidor de aplicação"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="02-arq_servidor_de_aplicacao.html" class="btn btn-neutral" title="Servidor de aplicação"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -303,17 +277,18 @@ OWS_DOMAINS='http://172.18.0.8:5000'
   </div>
 
   <div class="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-      
-      
-        <span><a href="../02-arq_servidor_de_aplicacao/" style="color: #fcfcfc;">&laquo; Previous</a></span>
-      
-      
-    </span>
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="02-arq_servidor_de_aplicacao.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
 </div>
-    <script>var base_url = '..';</script>
-    <script src="../js/theme.js" defer></script>
-      <script src="../search/main.js" defer></script>
+    <script>var base_url = '.';</script>
+    <script src="js/theme_extra.js" defer></script>
+    <script src="js/theme.js" defer></script>
+      <script src="search/main.js" defer></script>
     <script defer>
         window.onload = function () {
             SphinxRtdTheme.Navigation.enable(true);
