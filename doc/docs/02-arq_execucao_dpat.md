@@ -130,9 +130,11 @@ Assim como detalhado na seção de [Deployment do OWS Server](/02-arq_execucao_d
 
 Em seguida, após pedir as informações do Banco de Dados, o script irá pedir ao usuário que informe o local onde a estrutura de pastas da Plataforma de Conhecimento do Cerrado deverá ser criada e também qual o endereço de IP da máquina de produção onde será realizado o *deployment* assim como informado nas imagens abaixo.
 
-![Senha do BD](imgs/02/ows-standalone/dpat-1.png)
+![Senha do BD](imgs/02/ows-standalone/CEPF01.png)
 
-![Senha do BD](imgs/02/ows-standalone/dpat-2.png)
+![Senha do BD](imgs/02/ows-standalone/CEPF02.png)
+
+![Senha do BD](imgs/02/ows-standalone/CEPF03.png)
 
 Basicamente o script deverá criar e ajustar automaticamente as variáveis de ambiente da Plataforma de Conhecimento do Cerrado, realizar o download e importação do [contâiner docker](https://drive.google.com/file/d/1QKiBeo9II2auQik1jJdBACnHp4qrfc0f/view?usp=sharing) onde todas as dependências do projeto já estão devidamente ajustadas e executar os passos necessários para compilar e disponibilizar a aplicação no endereço de IP informado na execução do script na **porta 3000**, assim como apresentado na imagem abaixo.
 
