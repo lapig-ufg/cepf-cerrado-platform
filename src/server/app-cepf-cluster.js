@@ -1,7 +1,7 @@
 var cluster = require('cluster');
 var http = require('http');
 /* var numCPUs = require('os').cpus().length; */
-var numCPUs = 16;
+var numCPUs = 48;
 
 if (cluster.isMaster) {
   if(process.env.NODE_ENV == 'dev') {
