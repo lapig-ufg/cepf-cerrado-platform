@@ -236,8 +236,9 @@ OWS_DOMAINS='http://172.18.0.8:5000'
 </code></pre>
 <p>Assim como detalhado na seção de <a href="/02-arq_execucao_dpat/#execucao-do-ows-server">Deployment do OWS Server</a>, este script irá pedir ao usuário que informe os parâmetros <strong>endereço, nome, porta, usuário e senha</strong> do Banco de Dados, de forma a alterar corretamente o arquivo de configuração do ambiente, <code>.env</code> corretamente.</p>
 <p>Em seguida, após pedir as informações do Banco de Dados, o script irá pedir ao usuário que informe o local onde a estrutura de pastas da Plataforma de Conhecimento do Cerrado deverá ser criada e também qual o endereço de IP da máquina de produção onde será realizado o <em>deployment</em> assim como informado nas imagens abaixo.</p>
-<p><img alt="Senha do BD" src="imgs/02/ows-standalone/dpat-1.png" /></p>
-<p><img alt="Senha do BD" src="imgs/02/ows-standalone/dpat-2.png" /></p>
+<p><img alt="Senha do BD" src="imgs/02/ows-standalone/CEPF01.png" /></p>
+<p><img alt="Senha do BD" src="imgs/02/ows-standalone/CEPF02.png" /></p>
+<p><img alt="Senha do BD" src="imgs/02/ows-standalone/CEPF03.png" /></p>
 <p>Basicamente o script deverá criar e ajustar automaticamente as variáveis de ambiente da Plataforma de Conhecimento do Cerrado, realizar o download e importação do <a href="https://drive.google.com/file/d/1QKiBeo9II2auQik1jJdBACnHp4qrfc0f/view?usp=sharing">contâiner docker</a> onde todas as dependências do projeto já estão devidamente ajustadas e executar os passos necessários para compilar e disponibilizar a aplicação no endereço de IP informado na execução do script na <strong>porta 3000</strong>, assim como apresentado na imagem abaixo.</p>
 <p>Após execução dos scripts o OWS Server estará executando na máquina do usuário na porta <strong>5000</strong> e a Plataforma de Conhecimento do Cerrado também na máquina do usuário na porta <strong>3000</strong>.</p>
               
