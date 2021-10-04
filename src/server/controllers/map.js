@@ -1613,32 +1613,60 @@ module.exports = function(app) {
                     "label": languageJson["title_group_label"]["geofisico"][language],
                     "group_expanded": false,
                     "layers": [{
-                        "id": "regioes_hidrograficas",
-                        "label": languageJson["title_layer_label"]["regioes_hidrograficas"][language],
-                        "visible": false,
-                        "selectedType": 'regioes_hidrograficas',
-                        "value": "regioes_hidrograficas",
-                        "opacity": 1,
-                        "regionFilter": true,
-                        "order": 2,
-                        "timeHandler": "msfilter",
-                        "metadados": {
-                            "title": languageJson["metadata"]["regioes_hidrograficas"]["title"][language],
-                            "description": languageJson["metadata"]["regioes_hidrograficas"]["description"][language],
-                            "format": languageJson["metadata"]["regioes_hidrograficas"]["format"][language],
-                            "region": languageJson["metadata"]["regioes_hidrograficas"]["region"][language],
-                            "period": languageJson["metadata"]["regioes_hidrograficas"]["period"][language],
-                            "scale": languageJson["metadata"]["regioes_hidrograficas"]["scale"][language],
-                            "system_coordinator": languageJson["metadata"]["regioes_hidrograficas"]["system_coordinator"][language],
-                            "cartographic_projection": languageJson["metadata"]["regioes_hidrograficas"]["cartographic_projection"][language],
-                            "cod_caracter": languageJson["metadata"]["regioes_hidrograficas"]["cod_caracter"][language],
-                            "fonte": languageJson["metadata"]["regioes_hidrograficas"]["fonte"][language],
-                            "contato": "lapig.cepf@gmail.com"
+                            "id": "regioes_hidrograficas",
+                            "label": languageJson["title_layer_label"]["regioes_hidrograficas"][language],
+                            "visible": false,
+                            "selectedType": 'regioes_hidrograficas',
+                            "value": "regioes_hidrograficas",
+                            "opacity": 1,
+                            "regionFilter": true,
+                            "order": 2,
+                            "timeHandler": "msfilter",
+                            "metadados": {
+                                "title": languageJson["metadata"]["regioes_hidrograficas"]["title"][language],
+                                "description": languageJson["metadata"]["regioes_hidrograficas"]["description"][language],
+                                "format": languageJson["metadata"]["regioes_hidrograficas"]["format"][language],
+                                "region": languageJson["metadata"]["regioes_hidrograficas"]["region"][language],
+                                "period": languageJson["metadata"]["regioes_hidrograficas"]["period"][language],
+                                "scale": languageJson["metadata"]["regioes_hidrograficas"]["scale"][language],
+                                "system_coordinator": languageJson["metadata"]["regioes_hidrograficas"]["system_coordinator"][language],
+                                "cartographic_projection": languageJson["metadata"]["regioes_hidrograficas"]["cartographic_projection"][language],
+                                "cod_caracter": languageJson["metadata"]["regioes_hidrograficas"]["cod_caracter"][language],
+                                "fonte": languageJson["metadata"]["regioes_hidrograficas"]["fonte"][language],
+                                "contato": "lapig.cepf@gmail.com"
+                            },
+                            "columnsCSV": "rhi_sg, rhi_cd, rhi_nm, rhi_ar_km2, rhi_ar_ha, rhi_gm_are, rhi_gm_per, rhi_ve, rhi_cheia2, rhi_seca20",
+                            "downloadSHP": true,
+                            "downloadCSV": true
                         },
-                        "columnsCSV": "rhi_sg, rhi_cd, rhi_nm, rhi_ar_km2, rhi_ar_ha, rhi_gm_are, rhi_gm_per, rhi_ve, rhi_cheia2, rhi_seca20",
-                        "downloadSHP": true,
-                        "downloadCSV": true
-                    }, ]
+                        {
+                            "id": "ottobacias_cerrado_mma_2003",
+                            "label": languageJson["title_layer_label"]["ottobacias_cerrado_mma_2003"][language],
+                            "visible": false,
+                            "selectedType": 'ottobacias_cerrado_mma_2003',
+                            "value": "ottobacias_cerrado_mma_2003",
+                            "opacity": 1,
+                            "regionFilter": true,
+                            "order": 2,
+                            "timeHandler": "msfilter",
+                            "metadados": {
+                                "title": languageJson["metadata"]["regioes_hidrograficas"]["title"][language],
+                                "description": languageJson["metadata"]["regioes_hidrograficas"]["description"][language],
+                                "format": languageJson["metadata"]["regioes_hidrograficas"]["format"][language],
+                                "region": languageJson["metadata"]["regioes_hidrograficas"]["region"][language],
+                                "period": languageJson["metadata"]["regioes_hidrograficas"]["period"][language],
+                                "scale": languageJson["metadata"]["regioes_hidrograficas"]["scale"][language],
+                                "system_coordinator": languageJson["metadata"]["regioes_hidrograficas"]["system_coordinator"][language],
+                                "cartographic_projection": languageJson["metadata"]["regioes_hidrograficas"]["cartographic_projection"][language],
+                                "cod_caracter": languageJson["metadata"]["regioes_hidrograficas"]["cod_caracter"][language],
+                                "fonte": languageJson["metadata"]["regioes_hidrograficas"]["fonte"][language],
+                                "contato": "lapig.cepf@gmail.com"
+                            },
+                            "columnsCSV": "rhi_sg, rhi_cd, rhi_nm, rhi_ar_km2, rhi_ar_ha, rhi_gm_are, rhi_gm_per, rhi_ve, rhi_cheia2, rhi_seca20",
+                            "downloadSHP": true,
+                            "downloadCSV": false
+                        },
+                    ]
                 },
                 {
                     "id": "social",
@@ -2099,39 +2127,7 @@ module.exports = function(app) {
                             ]
                         }
                     ]
-                },
-                {
-                    "id": "teste_agrotoxico",
-                    "label": "Região Teste",
-                    "group_expanded": false,
-                    "layers": [{
-                        "id": "municipios_agrotoxicos",
-                        "label": "Municipios Agrotoxicos",
-                        "visible": false,
-                        "selectedType": 'municipios_agrotoxicos',
-                        "value": "municipios_agrotoxicos",
-                        "opacity": 1,
-                        "regionFilter": true,
-                        "order": 2,
-                        "timeHandler": "msfilter",
-                        "metadados": {
-                            "title": languageJson["metadata"]["regioes_hidrograficas"]["title"][language],
-                            "description": languageJson["metadata"]["regioes_hidrograficas"]["description"][language],
-                            "format": languageJson["metadata"]["regioes_hidrograficas"]["format"][language],
-                            "region": languageJson["metadata"]["regioes_hidrograficas"]["region"][language],
-                            "period": languageJson["metadata"]["regioes_hidrograficas"]["period"][language],
-                            "scale": languageJson["metadata"]["regioes_hidrograficas"]["scale"][language],
-                            "system_coordinator": languageJson["metadata"]["regioes_hidrograficas"]["system_coordinator"][language],
-                            "cartographic_projection": languageJson["metadata"]["regioes_hidrograficas"]["cartographic_projection"][language],
-                            "cod_caracter": languageJson["metadata"]["regioes_hidrograficas"]["cod_caracter"][language],
-                            "fonte": languageJson["metadata"]["regioes_hidrograficas"]["fonte"][language],
-                            "contato": "lapig.cepf@gmail.com"
-                        },
-                        "columnsCSV": "rhi_sg, rhi_cd, rhi_nm, rhi_ar_km2, rhi_ar_ha, rhi_gm_are, rhi_gm_per, rhi_ve, rhi_cheia2, rhi_seca20",
-                        "downloadSHP": true,
-                        "downloadCSV": true
-                    }, ]
-                },
+                }
             ],
             "basemaps": [{
                 "id": "basemaps",
