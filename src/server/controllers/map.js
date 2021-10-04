@@ -285,7 +285,7 @@ module.exports = function(app) {
                             "selectedType": 'or_cerrado_solos_5000_2020_embrapa',
                             "value": "or_cerrado_solos_5000_2020_embrapa",
                             "opacity": 1,
-                            "regionFilter": true,
+                            "regionFilter": false,
                             "order": 2,
                             "timeHandler": "msfilter",
                             "downloadSHP": true,
