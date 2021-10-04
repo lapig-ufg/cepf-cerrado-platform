@@ -191,6 +191,10 @@
         "unidades_planejamento_hidrico": {
             "pt": "Unidades de Planejamento Hídrico",
             "en": "Water Planning"
+        },
+        "or_cerrado_solos_5000_2020_embrapa": {
+            "pt": "Solos Embrapa",
+            "en": "Embrapa soils"
         }
     },
     "type_layer_viewvalue": {

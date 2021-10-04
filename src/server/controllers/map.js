@@ -279,6 +279,19 @@ module.exports = function(app) {
                             "downloadCSV": true
                         },
                         {
+                            "id": "or_cerrado_solos_5000_2020_embrapa",
+                            "label": languageJson["title_layer_label"]["or_cerrado_solos_5000_2020_embrapa"][language],
+                            "visible": false,
+                            "selectedType": 'or_cerrado_solos_5000_2020_embrapa',
+                            "value": "or_cerrado_solos_5000_2020_embrapa",
+                            "opacity": 1,
+                            "regionFilter": true,
+                            "order": 2,
+                            "timeHandler": "msfilter",
+                            "downloadSHP": true,
+                            "downloadCSV": false
+                        },
+                        {
                             "id": "atrativos_turisticos",
                             "label": languageJson["title_layer_label"]["atrativos_turisticos"][language],
                             "visible": false,
