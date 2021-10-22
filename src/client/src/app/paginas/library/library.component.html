@@ -1,24 +1,37 @@
-<mat-tab-group mat-stretch-tabs dynamicHeight>
+<mat-tab-group cdkDrag cdkDragRootElement=".cdk-overlay-pane" mat-stretch-tabs dynamicHeight>
     <mat-tab [label]="'title_articles' | translate">
-        <p-scrollPanel [style]="{padding: '20px', width: '100%', height: '81vh'}">
+        <div class="content">
             <div class="pdfs p-grid">
-                <div class="p-col" *ngFor="let pdf of articles" ><iframe width="100%" height="500px" [src]="pdf.path" frameborder="0" src=""  allowfullscreen></iframe></div>
+                <div class="p-col" *ngFor="let pdf of showArticles" ><iframe width="100%" height="500px" [src]="pdf.path" frameborder="0" src=""  allowfullscreen></iframe></div>
             </div>
-        </p-scrollPanel>
+
+        </div>
+        <mat-paginator [length]="paginateArticles.length"
+                       [pageSize]="paginateArticles.pageSize"
+                       [pageSizeOptions]="paginateArticles.pageSizeOptions"
+                       (page)="getDataArticles($event)"
+        >
+        </mat-paginator>
     </mat-tab>
     <mat-tab [label]="'title_literature' | translate">
-        <p-scrollPanel [style]="{padding: '20px', width: '100%', height: '81vh'}">
+        <div class="content">
             <div class="pdfs p-grid">
-                <div class="p-col" *ngFor="let pdf of literature" ><iframe width="100%" height="500px" [src]="pdf.path" frameborder="0" src=""  allowfullscreen></iframe></div>
+                <div class="p-col" *ngFor="let pdf of showLiteratures" ><iframe width="100%" height="500px" [src]="pdf.path" frameborder="0" src=""  allowfullscreen></iframe></div>
             </div>
-        </p-scrollPanel>
+        </div>
+        <mat-paginator [length]="paginateLiteratures.length"
+                       [pageSize]="paginateLiteratures.pageSize"
+                       [pageSizeOptions]="paginateLiteratures.pageSizeOptions"
+                       (page)="getDataLiteratures($event)"
+        >
+        </mat-paginator>
     </mat-tab>
     <mat-tab [label]="'title_publications' | translate">
-        <p-scrollPanel [style]="{padding: '20px', width: '100%', height: '81vh'}">
+        <div class="content">
             <div class="pdfs p-grid">
                 <div class="p-col" *ngFor="let pdf of publications" ><iframe width="100%" height="500px" [src]="pdf.path" frameborder="0" src=""  allowfullscreen></iframe></div>
             </div>
-        </p-scrollPanel>
+        </div>
     </mat-tab>
 </mat-tab-group>
 

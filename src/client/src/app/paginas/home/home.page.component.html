@@ -65,13 +65,13 @@
                 </a>
               </li>
             </ul>
+            <div class="btn-languages">
+              <button mat-button (click)="changeLanguage('pt')" [class]="language == 'pt' ? 'color-buttons btn-lng-active' : 'color-buttons'"
+                      [ngStyle]="bntStylePOR">POR</button>
+              <button mat-button (click)="changeLanguage('en')"  [class]="language == 'en' ? 'color-buttons btn-lng-active' : 'color-buttons'"
+                      [ngStyle]="bntStyleENG">ENG</button>
+            </div>
           </div>
-        </div>
-        <div class="btn-languages">
-          <button (click)="changeLanguage('pt')" class="color-buttons" mat-raised-button
-            [ngStyle]="bntStylePOR">&nbsp;POR</button>
-          <button (click)="changeLanguage('en')" class="color-buttons" mat-raised-button
-            [ngStyle]="bntStyleENG">&nbsp;ENG</button>
         </div>
       </div>
     </div>
@@ -305,6 +305,61 @@
         <!-- Team Item Starts -->
         <div class="team-item wow fadeInRight" data-wow-delay="0.2s">
           <div class="team-img">
+            <img class="img-fluid" src="http://cepfcerrado.iieb.org.br/wp-content/uploads/2021/10/Capacita%C3%A7%C3%A3o-de-agricultores-familiares-com-responsabilidade-social-%C3%A9-a-principal-miss%C3%A3o-do-Instituto-Educacional-Tiradentes-768x576.jpg" alt="">
+          </div>
+          <div class="contetn">
+            <div class="info-text">
+              <h3><a href="http://cepfcerrado.iieb.org.br/escola-agricola-goiana-se-destaca-no-desenvolvimento-rural-sustentavel"
+                     target="_blank">{{ 'title_news5' | translate }}</a>
+              </h3>
+              <p> {{ 'source' | translate }}: CEPF Cerrado</p>
+            </div>
+            <p>{{ 'text_news5' | translate }}...</p>
+          </div>
+        </div>
+        <!-- Team Item Ends -->
+      </div>
+      <div class="col-lg-6 col-md-12 col-xs-12">
+        <!-- Team Item Starts -->
+        <div class="team-item wow fadeInRight" data-wow-delay="0.2s">
+          <div class="team-img">
+            <img class="img-fluid" src="http://cepfcerrado.iieb.org.br/wp-content/uploads/2021/10/Prancheta-1-768x768.png" alt="">
+          </div>
+          <div class="contetn">
+            <div class="info-text">
+              <h3><a href="http://cepfcerrado.iieb.org.br/rede-colaborativa-investe-na-capacitacao-de-atores-da-sociedade-civil-do-cerrado/"
+                     target="_blank">{{ 'title_news6' | translate }}</a>
+              </h3>
+              <p> {{ 'source' | translate }}: CEPF Cerrado</p>
+            </div>
+            <p>{{ 'text_news6' | translate }}...</p>
+          </div>
+        </div>
+        <!-- Team Item Ends -->
+      </div>
+      <div class="col-lg-6 col-md-12 col-xs-12">
+        <!-- Team Item Starts -->
+        <div class="team-item wow fadeInRight" data-wow-delay="0.2s">
+          <div class="team-img">
+            <img class="img-fluid" src="http://cepfcerrado.iieb.org.br/wp-content/uploads/2021/09/capa-PGTA-10-anos.jpg" alt="">
+          </div>
+          <div class="contetn">
+            <div class="info-text">
+              <h3><a href="http://cepfcerrado.iieb.org.br/10-anos-do-pgta-das-terras-indigenas-timbira/"
+                     target="_blank">{{ 'title_news7' | translate }}</a>
+              </h3>
+              <p> {{ 'source' | translate }}: CEPF Cerrado</p>
+            </div>
+            <p>{{ 'text_news7' | translate }}...</p>
+          </div>
+        </div>
+        <!-- Team Item Ends -->
+      </div>
+
+      <div class="col-lg-6 col-md-12 col-xs-12">
+        <!-- Team Item Starts -->
+        <div class="team-item wow fadeInRight" data-wow-delay="0.2s">
+          <div class="team-img">
             <img class="img-fluid" src="assets/img/plataforms/covidgoias.jpg" alt="">
           </div>
           <div class="contetn">
@@ -312,7 +367,7 @@
               <h3><a href="https://cepf.lapig.iesa.ufg.br/#/covidgoias"
                   target="_blank">{{ 'title_news1' | translate }}</a>
               </h3>
-              <p>Fonte: LAPIG - UFG</p>
+              <p>{{ 'source' | translate }}: LAPIG - UFG</p>
             </div>
             <p>{{ 'text_news1' | translate }}...</p>
           </div>
@@ -330,7 +385,7 @@
               <h3><a
                   href="http://fip.mma.gov.br/plataforma-inedita-reune-dados-sobre-o-cerrado/"
                   target="_blank">{{ 'title_news2' | translate }}</a></h3>
-                  <p>Fonte: FIP</p>
+                  <p>{{ 'source' | translate }}: FIP</p>
             </div>
             <p>{{ 'text_news2' | translate }}....</p>
           </div>
@@ -348,9 +403,9 @@
               <h3><a
                   href="https://brasil.mongabay.com/2021/02/plataforma-inedita-no-brasil-reune-dados-sobre-o-cerrado/"
                   target="_blank">{{ 'title_news3' | translate }}</a></h3>
-              <p>Fonte: Mongabay</p>
+              <p>{{ 'source' | translate }}: Mongabay</p>
             </div>
-            <p>{{ 'text_news3' | translate }}.....
+            <p>{{ 'text_news3' | translate }}...
             </p>
           </div>
         </div>
@@ -367,7 +422,7 @@
               <h3><a
                   href="http://cepfcerrado.iieb.org.br/rede-de-sementes-do-cerrado-fortalece-geracao-de-renda-para-comunidades-por-meio-da-comercializacao-de-especies-nativas-para-restauracao/"
                   target="_blank">{{ 'title_news4' | translate }}</a></h3>
-              <p>Fonte: CEPF Cerrado</p>
+              <p>{{ 'source' | translate }}: CEPF Cerrado</p>
             </div>
             <p>{{ 'text_news4' | translate }}...
             </p>

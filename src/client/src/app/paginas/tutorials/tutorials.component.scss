@@ -1,16 +1,25 @@
-.playlist-msg{
-    font-weight: normal;
-    font-size: 13px;
-    text-align: center;
-    padding: 20px;
+
+.playlist-msg {
+  font-weight: normal;
+  font-size: 13px;
+  text-align: center;
+  padding: 10px;
 }
 
-.pdfs{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+.content {
+  overflow-y: auto !important;
+  height: 45em;
+  padding: 1em;
+  margin-bottom: 2em;
+  overflow-x: hidden;
 }
 
-.pdfs iframe{
-    margin: 10px;
-    padding: 5px;
+.pdfs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.pdfs iframe {
+  margin: 10px;
+  padding: 5px;
 }

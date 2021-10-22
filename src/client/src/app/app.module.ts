@@ -57,7 +57,11 @@ import { TooltipModule } from 'primeng/tooltip';
 import { TableModule } from 'primeng/table';
 import { AccordionModule } from 'primeng/accordion';
 import { GalleriaModule } from 'primeng/galleria';
+import { FilterPipe } from './pipes/filter.pipe';
 
+import { MatPaginatorIntl, MatPaginatorModule} from '@angular/material/paginator';
+import { getPtPaginatorIntl } from './paginas/pt-paginator-intl';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 registerLocaleData(localePt);
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -76,7 +80,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ChartsComponent,
     TutorialsComponent,
     GalleryComponent,
-    LibraryComponent
+    LibraryComponent,
+    FilterPipe
   ],
   imports: [
     MatFormFieldModule,
@@ -116,6 +121,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     NgbModule,
     LightboxModule,
     GalleriaModule,
+    MatPaginatorModule,
+    DragDropModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -147,7 +154,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     {
       provide: HAMMER_GESTURE_CONFIG,
       useClass: HammerGestureConfig
-    }
+    },
+    // {
+    //   provide: MatPaginatorIntl,
+    //   useValue: getPtPaginatorIntl()
+    // }
   ],
   bootstrap: [AppComponent]
 })

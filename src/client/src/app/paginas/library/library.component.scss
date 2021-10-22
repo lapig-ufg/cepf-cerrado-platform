@@ -4,6 +4,13 @@
     text-align: center;
     padding: 20px;
 }
+.content {
+    overflow-y: auto !important;
+    height: 49em;
+    padding: 1em;
+    margin-bottom: 2em;
+    overflow-x: hidden;
+}
 
 .pdfs{
     display: grid;

@@ -105,7 +105,7 @@ export class MapComponent implements OnInit {
 	valueRegion: any;
 
 	selectRegion: any;
-	defaultRegion: any;
+		defaultRegion: any;
 	regionSource: any;
 
 	collapseLayer: boolean;
@@ -257,7 +257,6 @@ export class MapComponent implements OnInit {
 		this.selectRegion = this.defaultRegion;
 
 		this.urls = [
-			/* 'http://localhost:5501/ows' */
 			'https://o1.lapig.iesa.ufg.br/ows',
 			'https://o2.lapig.iesa.ufg.br/ows',
 			'https://o3.lapig.iesa.ufg.br/ows',

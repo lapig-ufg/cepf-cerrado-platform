@@ -1,42 +1,42 @@
-<mat-tab-group mat-stretch-tabs dynamicHeight>
+<mat-tab-group mat-stretch-tabs dynamicHeight cdkDrag cdkDragRootElement=".cdk-overlay-pane">
     <mat-tab [label]="'pdfs' | translate">
-        <p-scrollPanel [style]="{padding: '20px', width: '100%', height: '81vh'}">
+        <div class="content">
             <div class="pdfs p-grid">
                 <div class="p-col" *ngFor="let pdf of pdfs" ><iframe width="100%" height="500px" [src]="pdf.path" frameborder="0" src=""  allowfullscreen></iframe></div>
             </div>
-        </p-scrollPanel>
+        </div>
     </mat-tab>
     <mat-tab [label]="'tutorials' | translate">
         <mat-tab-group mat-stretch-tabs dynamicHeight>
             <mat-tab [label]="'gee_title' | translate">
-                <p-scrollPanel [style]="{padding: '20px', width: '100%', height: '81vh'}">
+                <div class="content">
                     <h5 class="playlist-msg" [innerHTML]="'playlist_msg' | translate"></h5>
-                    <iframe width="100%" [height]="innerHeigth" src="https://www.youtube.com/embed/videoseries?list=PLr-MHNA_zkwJEbf2cELdVmpAkg7RFS3nx" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </p-scrollPanel>
+                    <iframe width="100%" height="560" src="https://www.youtube.com/embed/videoseries?list=PLr-MHNA_zkwJEbf2cELdVmpAkg7RFS3nx" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
             </mat-tab>
             <mat-tab [label]="'aerial_images' | translate">
-                <p-scrollPanel [style]="{padding: '20px', width: '100%', height: '81vh'}">
+                <div class="content">
                     <h5 class="playlist-msg" [innerHTML]="'playlist_msg' | translate"></h5>
-                    <iframe width="100%" [height]="innerHeigth" src="https://www.youtube.com/embed/videoseries?list=PLr-MHNA_zkwIDBWfVMeFXylItUv30KjUU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </p-scrollPanel>
+                    <iframe width="100%" height="560" src="https://www.youtube.com/embed/videoseries?list=PLr-MHNA_zkwIDBWfVMeFXylItUv30KjUU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
             </mat-tab>
             <mat-tab [label]="'deflorestantion' | translate">
-                <p-scrollPanel [style]="{padding: '20px', width: '100%', height: '81vh'}">
+                <div class="content">
                     <h5 class="playlist-msg" [innerHTML]="'playlist_msg' | translate"></h5>
-                    <iframe width="100%" [height]="innerHeigth" src="https://www.youtube.com/embed/videoseries?list=PLr-MHNA_zkwI150JoPN43p3UE2jG-L5a4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </p-scrollPanel>
+                    <iframe width="100%" height="560" src="https://www.youtube.com/embed/videoseries?list=PLr-MHNA_zkwI150JoPN43p3UE2jG-L5a4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
             </mat-tab>
             <mat-tab [label]="'socioambiental' | translate">
-                <p-scrollPanel [style]="{padding: '20px', width: '100%', height: '81vh'}">
+                <div class="content">
                     <h5 class="playlist-msg" [innerHTML]="'playlist_msg' | translate"></h5>
-                    <iframe width="100%" [height]="innerHeigth" src="https://www.youtube.com/embed/videoseries?list=PLr-MHNA_zkwLHAcWekbjq8eOi5tfrroww" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </p-scrollPanel>
+                    <iframe width="100%"  height="560" src="https://www.youtube.com/embed/videoseries?list=PLr-MHNA_zkwLHAcWekbjq8eOi5tfrroww" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
             </mat-tab>
             <mat-tab [label]="'covid' | translate">
-                <p-scrollPanel [style]="{padding: '20px', width: '100%', height: '81vh'}">
+                <div class="content">
                     <h5 class="playlist-msg" [innerHTML]="'playlist_msg' | translate"></h5>
-                    <iframe width="100%" [height]="innerHeigth" src="https://www.youtube.com/embed/videoseries?list=PLr-MHNA_zkwKdOWInFBoLtms3oVkPNqOx" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </p-scrollPanel>
+                    <iframe width="100%" height="560"  src="https://www.youtube.com/embed/videoseries?list=PLr-MHNA_zkwKdOWInFBoLtms3oVkPNqOx" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
             </mat-tab>
         </mat-tab-group>
     </mat-tab>

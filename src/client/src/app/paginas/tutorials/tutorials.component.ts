@@ -33,6 +33,19 @@ export class TutorialsComponent implements OnInit {
   }
 
   async getAllFiles() {
+    this.pdfs.push({path: this.sanitizer.bypassSecurityTrustResourceUrl('../../../assets/documents/tutorials/PDF/1.pdf')});
+    this.pdfs.push({path: this.sanitizer.bypassSecurityTrustResourceUrl('../../../assets/documents/tutorials/PDF/2.pdf')});
+    this.pdfs.push({path: this.sanitizer.bypassSecurityTrustResourceUrl('../../../assets/documents/tutorials/PDF/3.pdf')});
+    this.pdfs.push({path: this.sanitizer.bypassSecurityTrustResourceUrl('../../../assets/documents/tutorials/PDF/4.pdf')});
+    this.pdfs.push({path: this.sanitizer.bypassSecurityTrustResourceUrl('../../../assets/documents/tutorials/PDF/5.pdf')});
+    this.pdfs.push({path: this.sanitizer.bypassSecurityTrustResourceUrl('../../../assets/documents/tutorials/PDF/6.pdf')});
+    this.pdfs.push({path: this.sanitizer.bypassSecurityTrustResourceUrl('../../../assets/documents/tutorials/PDF/7.pdf')});
+    this.pdfs.push({path: this.sanitizer.bypassSecurityTrustResourceUrl('../../../assets/documents/tutorials/PDF/8.pdf')});
+    this.pdfs.push({path: this.sanitizer.bypassSecurityTrustResourceUrl('../../../assets/documents/tutorials/PDF/9.pdf')});
+    this.pdfs.push({path: this.sanitizer.bypassSecurityTrustResourceUrl('../../../assets/documents/tutorials/PDF/10.pdf')});
+    this.pdfs.push({path: this.sanitizer.bypassSecurityTrustResourceUrl('../../../assets/documents/tutorials/PDF/11.pdf')});
+    this.pdfs.push({path: this.sanitizer.bypassSecurityTrustResourceUrl('../../../assets/documents/tutorials/PDF/12.pdf')});
+    this.pdfs.push({path: this.sanitizer.bypassSecurityTrustResourceUrl('../../../assets/documents/tutorials/PDF/13.pdf')});
     this.pdfs.push({path: this.sanitizer.bypassSecurityTrustResourceUrl('../../../assets/documents/tutorials/A TOOL TO ANALYZE ORTHOMOSAIC IMAGES FROM AGRICULTURAL FIELD TRIALS IN R FIELDimageR.pdf')});
     this.pdfs.push({path: this.sanitizer.bypassSecurityTrustResourceUrl('../../../assets/documents/tutorials/CONHECIMENTOS BÁSICOS.pdf')});
     this.pdfs.push({path: this.sanitizer.bypassSecurityTrustResourceUrl('../../../assets/documents/tutorials/CONVERSÃO DE ARQUIVOS NO FORMATO KML PARA SHAPEFILE QGIS 3.4.pdf')});

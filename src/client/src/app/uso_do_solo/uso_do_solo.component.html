@@ -85,8 +85,7 @@
                                                 </div>
                                                 <div class="layer-selections" style="padding-left: 8%" *ngIf="layer.types">
                                                     <mat-form-field style="margin-right: 15%; width: 100%">
-                                                        <mat-label *ngFor="let type of layer.types" [hidden]="type.value != layer.selectedType">
-                                                            {{type.typeLabel}}</mat-label>
+                                                        <mat-label *ngFor="let type of layer.types" [hidden]="type.value != layer.selectedType">{{type.typeLabel}}</mat-label>
                                                         <mat-select (selectionChange)="changeVisibility(layer)" [(value)]="layer.selectedType" [disabled]="!layer.visible">
                                                             <mat-option *ngFor="let type of layer.types" [value]="type.value">
                                                                 {{type.Viewvalue}}

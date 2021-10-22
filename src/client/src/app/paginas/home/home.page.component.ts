@@ -1,114 +1,118 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { TutorialsComponent } from '../tutorials/tutorials.component';
-import { TranslateService } from '@ngx-translate/core';
-import { GalleryComponent } from "../gallery/gallery.component";
-import { LibraryComponent } from "../library/library.component";
+import {Component, OnInit, Inject} from '@angular/core';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {TutorialsComponent} from '../tutorials/tutorials.component';
+import {TranslateService} from '@ngx-translate/core';
+import {GalleryComponent} from "../gallery/gallery.component";
+import {LibraryComponent} from "../library/library.component";
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.page.component.html',
-  styleUrls: ['./home.page.component.scss']
+    selector: 'app-home',
+    templateUrl: './home.page.component.html',
+    styleUrls: ['./home.page.component.scss']
 })
 export class HomePageComponent implements OnInit {
-  languages: any = [];
-  language: string;
-  
-  bntStylePOR: any;
-	bntStyleENG: any;
+    languages: any = [];
+    language: string;
 
-	styleSelected: any;
-	styleDefault: any;
+    bntStylePOR: any;
+    bntStyleENG: any;
 
-  constructor(
-      public dialog: MatDialog,
-      public translate: TranslateService,
-  ) {
+    styleSelected: any;
+    styleDefault: any;
 
-    translate.addLangs(['en', 'pt']);
-		translate.setDefaultLang('pt');
-		const browserLang = translate.getBrowserLang();
-		translate.use(browserLang.match(/en|pt/) ? browserLang : 'en');
+    constructor(
+        public dialog: MatDialog,
+        public translate: TranslateService,
+    ) {
 
-    this.language = browserLang;
-    
-    this.styleSelected = {
-			'background-color': '#fe8321'
-		};
+        translate.addLangs(['en', 'pt']);
+        translate.setDefaultLang('pt');
+        const browserLang = translate.getBrowserLang();
+        translate.use(browserLang.match(/en|pt/) ? browserLang : 'en');
 
-		this.styleDefault = {
-			'background-color': '#707070'
-		};
-  }
+        this.language = browserLang;
 
-  private setStylesLangButton() {
-		if (this.language == 'pt' || this.language == 'pt-br') {
-			this.bntStyleENG = this.styleDefault;
-			this.bntStylePOR = this.styleSelected;
-		}
-		else {
-			this.bntStyleENG = this.styleSelected;
-			this.bntStylePOR = this.styleDefault;
-		}
-	}
-	changeLanguage(lang) {
-		this.translate.use(lang);
-		if (this.language != (lang)) {
-			this.language = lang;
-			this.setStylesLangButton();
-		}
-	}
+        this.styleSelected = {
+            'background-color': '#fe8321'
+        };
 
-  openDialog() {
-    //const dialogRef = this.dialog.open(PaginaIndisponivelDialog);
+        this.styleDefault = {
+            'background-color': '#707070'
+        };
+    }
 
-    const dialogRef = this.dialog.open(PaginaIndisponivelDialog, {
-      width: '650px'
-		});
+    private setStylesLangButton() {
+        if (this.language == 'pt' || this.language == 'pt-br') {
+            this.bntStyleENG = this.styleDefault;
+            this.bntStylePOR = this.styleSelected;
+        } else {
+            this.bntStyleENG = this.styleSelected;
+            this.bntStylePOR = this.styleDefault;
+        }
+    }
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
-  }
+    changeLanguage(lang) {
+        this.translate.use(lang);
+        if (this.language != (lang)) {
+            this.language = lang;
+            this.setStylesLangButton();
+        }
+    }
 
-  ngOnInit() {
-    this.setStylesLangButton();
-  }
-  openTutorials() {
-    this.dialog.open(TutorialsComponent, {
-      id: 'tutorials',
-      width: 'calc(100% - 5vw)',
-      height: 'calc(100% - 10vh)',
-    });
-  }
-  openGallery() {
-    this.dialog.open(GalleryComponent, {
-      id: 'tutorials',
-      width: 'calc(100% - 5vw)',
-      height: 'calc(100% - 10vh)',
-    });
-  }
-  openLibrary() {
-    this.dialog.open(LibraryComponent, {
-      id: 'tutorials',
-      width: 'calc(100% - 5vw)',
-      height: 'calc(100% - 10vh)',
-    });
-  }
+    openDialog() {
+        //const dialogRef = this.dialog.open(PaginaIndisponivelDialog);
+
+        const dialogRef = this.dialog.open(PaginaIndisponivelDialog, {
+            width: '650px'
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            console.log(`Dialog result: ${result}`);
+        });
+    }
+
+    ngOnInit() {
+        this.setStylesLangButton();
+    }
+
+    openTutorials() {
+        this.dialog.open(TutorialsComponent, {
+            id: 'tutorials',
+            width: 'calc(100% - 20em)',
+            height: 'calc(100% - 2em)',
+        });
+    }
+
+    openGallery() {
+        this.dialog.open(GalleryComponent, {
+            id: 'tutorials',
+            width: 'calc(100% - 20em)',
+            height: 'calc(100% - 2em)',
+        });
+    }
+
+    openLibrary() {
+        this.dialog.open(LibraryComponent, {
+            id: 'tutorials',
+            width: 'calc(100% - 20em)',
+            height: 'calc(100% - 2em)',
+        });
+    }
 
 
 }
 
 @Component({
-  selector: 'pagina-indisponivel-dialog',
-  templateUrl: 'pagina-indisponivel-dialog.html',
+    selector: 'pagina-indisponivel-dialog',
+    templateUrl: 'pagina-indisponivel-dialog.html',
 })
 export class PaginaIndisponivelDialog {
-  constructor(
-    public dialogRef: MatDialogRef<PaginaIndisponivelDialog>,
-    @Inject(MAT_DIALOG_DATA) public data) {}
+    constructor(
+        public dialogRef: MatDialogRef<PaginaIndisponivelDialog>,
+        @Inject(MAT_DIALOG_DATA) public data) {
+    }
 
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
+    onNoClick(): void {
+        this.dialogRef.close();
+    }
 }

@@ -23,7 +23,7 @@ export class GalleryComponent implements OnInit {
       public translate: TranslateService,
       private sanitizer: DomSanitizer
   ) {
-    this.innerHeigth = window.innerHeight  - 240;
+    this.innerHeigth = window.innerHeight  - 280;
     this.innerWidth = window.innerWidth - 400;
   }
 
@@ -119,7 +119,7 @@ export class GalleryComponent implements OnInit {
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
-    this.innerHeigth = window.innerHeight - 200;
+    this.innerHeigth = window.innerHeight - 280;
     this.innerWidth = window.innerWidth - 400;
   }
 

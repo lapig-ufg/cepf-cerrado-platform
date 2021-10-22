@@ -1,3 +1,6 @@
 #tutorials {
   margin-top: 7%;
+  ::ng-deep .mat-dialog-container {
+    overflow: hidden !important;
+  }
 }

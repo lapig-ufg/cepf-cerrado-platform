@@ -1,99 +1,119 @@
 #detailsName {
-	background-color: #222222 !important;
+  background-color: #222222 !important;
 }
 
 #titleName {
-	color: #ffffff !important;
+  color: #ffffff !important;
 }
 
 .team-item .contetn {
-	height: 250px;
+  height: 250px;
 }
 
 .contetn p, .team-item .info-text h3 {
-	text-align: justify;
+  text-align: justify;
 }
 
 .img-fluid-plataforms {
-	max-width: 300px;
+  max-width: 300px;
 }
 
 .img-fluid-graphics {
-	max-width: 350px;
+  max-width: 350px;
 }
 
 .img-fluid {
-	padding-top: 15px;
+  padding-top: 15px;
 }
 
 .cardPlataformas {
-	height: 470px;
+  height: 470px;
 }
 
 #graphics .services-item {
-	padding: 0px;
+  padding: 0px;
 }
 
 .testimonial-item {
-	height: 550px;
+  height: 550px;
 }
 
-.navbar-brand img{
-	width: 100% !important;
+.navbar-brand img {
+  width: 100% !important;
 }
 
 .padding-logos {
-	padding: 0px !important;
-	width: 30%;
-	text-align: right
+  padding: 0px !important;
+  width: 30%;
+  text-align: right
 }
 
 .team-block {
-	text-align: center; 
-	flex: 20%; 
-	max-width: 20%;
-	padding-top: 20px;
+  text-align: center;
+  flex: 20%;
+  max-width: 20%;
+  padding-top: 20px;
 }
 
 .team-img {
-	max-width: 180px !important; 
-	border-radius: 100%
+  max-width: 180px !important;
+  border-radius: 100%
 }
 
 #team h5 {
-	padding-top: 10px;
-	font-weight: bold;
+  padding-top: 10px;
+  font-weight: bold;
 }
 
 #team a {
-	color: #585858
+  color: #585858
 }
 
 .cardAcervo {
-	height: 210px;
+  height: 210px;
 }
-.cardAcervo:hover{
-	cursor: pointer;
+
+.cardAcervo:hover {
+  cursor: pointer;
 }
 
 .btn-languages {
-	display: flex;
-	justify-content: space-evenly;
-	// margin: 15px;
+  display: flex;
+  justify-content: space-evenly;
+  margin-left: 10px;
 
-	button {
-		color: white !important;
-	}
+
+  button {
+    border: none;
+    color: black !important;
+    background: transparent !important;
+    border-radius: 5px !important;
+    font-weight: normal!important;
+    transition: all 0.5s ease !important;
+
+  &:hover{
+      color: white!important;
+      background: #F63854 !important;
+      cursor: pointer !important;
+    }
+  }
+  .btn-lng-active{
+    color: white!important;
+    background: #F63854 !important;
+    cursor: pointer !important;
+  }
 }
 
+
+
 .color-buttons {
-	background-color: #707070;
-	font-weight: 900;
-	margin: 5px;
+  background-color: #707070;
+  font-weight: 900;
+  margin: 5px;
 }
 
 .mat-raised-button {
-	min-width: 46px;
-	line-height: 28px;
-	padding: 0 8px;
+  min-width: 46px;
+  line-height: 28px;
+  padding: 0 8px;
 }
