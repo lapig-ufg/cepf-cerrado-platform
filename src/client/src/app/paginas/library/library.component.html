@@ -1,17 +1,30 @@
 <mat-tab-group cdkDrag cdkDragRootElement=".cdk-overlay-pane" mat-stretch-tabs dynamicHeight>
     <mat-tab [label]="'title_articles' | translate">
         <div class="content">
-            <div class="pdfs p-grid">
-                <div class="p-col" *ngFor="let pdf of showArticles" ><iframe width="100%" height="500px" [src]="pdf.path" frameborder="0" src=""  allowfullscreen></iframe></div>
+            <div class="pdfs p-grid" *ngIf="search !== ''">
+                <a class="p-col articles" target="_blank" [href]="pdf.path"  *ngFor="let pdf of articles | filterArray:search">
+                    <span>{{pdf.title}}</span><br>
+                    <small>{{'keywords' | translate}}: {{pdf.keys}}</small>
+                </a>
             </div>
-
+            <div class="pdfs p-grid" *ngIf="search === ''">
+                <div class="p-col" *ngFor="let pdf of showArticles | filterArray:search" ><iframe width="100%" height="500px" [src]="pdf.path" frameborder="0" src=""  allowfullscreen></iframe></div>
+            </div>
         </div>
-        <mat-paginator [length]="paginateArticles.length"
-                       [pageSize]="paginateArticles.pageSize"
-                       [pageSizeOptions]="paginateArticles.pageSizeOptions"
-                       (page)="getDataArticles($event)"
-        >
-        </mat-paginator>
+
+        <div class="pagination">
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-label>{{ 'articles_search' | translate}}</mat-label>
+                <input matInput [(ngModel)]="search">
+            </mat-form-field>
+            <mat-paginator *ngIf="search === ''" [length]="paginateArticles.length"
+                           [pageSize]="paginateArticles.pageSize"
+                           [pageSizeOptions]="paginateArticles.pageSizeOptions"
+                           (page)="getDataArticles($event)"
+            >
+            </mat-paginator>
+        </div>
+
     </mat-tab>
     <mat-tab [label]="'title_literature' | translate">
         <div class="content">

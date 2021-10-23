@@ -286,5 +286,7 @@
   "metadata_caracter": "Character encoding",
   "metadata_fonte": "Source",
   "metadata_update": "Update",
-  "metadata_contato": "Contact"
+  "metadata_contato": "Contact",
+  "articles_search": "Search Article",
+  "keywords": "Keywords"
 }

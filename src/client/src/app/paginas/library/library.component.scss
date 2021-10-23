@@ -1,23 +1,50 @@
-.playlist-msg{
-    font-weight: normal;
-    font-size: 13px;
-    text-align: center;
-    padding: 20px;
+.playlist-msg {
+  font-weight: normal;
+  font-size: 13px;
+  text-align: center;
+  padding: 20px;
 }
+
 .content {
-    overflow-y: auto !important;
-    height: 45em;
-    padding: 1em;
-    margin-bottom: 2em;
-    overflow-x: hidden;
+  overflow-y: auto !important;
+  height: 45em;
+  padding: 1em;
+  margin-bottom: 2em;
+  overflow-x: hidden;
 }
 
-.pdfs{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+.pdfs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
-.pdfs iframe{
-    margin: 10px;
-    padding: 5px;
+.pdfs iframe {
+  margin: 10px;
+  padding: 5px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.full-width {
+  width: 50%;
+}
+
+.articles {
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 5px ;
+  margin: 9px;
+  color: black;
+  transition: all 0.8s ease;
+  border: 1px solid #F63854 ;
+  &:hover{
+    background: lighten(#F63854, 0.65);
+    cursor: pointer;
+    color:white;
+  }
 }

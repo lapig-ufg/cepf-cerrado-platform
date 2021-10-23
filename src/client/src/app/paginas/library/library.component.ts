@@ -2,9 +2,9 @@ import {Component, Inject, Input, Optional, OnInit, HostListener} from '@angular
 import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {TranslateService} from '@ngx-translate/core';
 import {HttpClient} from '@angular/common/http';
-import {DomSanitizer} from '@angular/platform-browser';
-import {PageEvent} from "@angular/material/paginator";
-
+import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
+import {PageEvent} from '@angular/material/paginator';
+import { articlesJson } from './articles';
 
 @Component({
     selector: 'app-library',
@@ -12,9 +12,9 @@ import {PageEvent} from "@angular/material/paginator";
     styleUrls: ['./library.component.scss']
 })
 export class LibraryComponent implements OnInit {
-
+    search: string;
     innerHeigth: number;
-    articles: any[];
+    articles: Article[];
     literature: any[];
     publications: any[];
     showArticles: any[];
@@ -31,6 +31,7 @@ export class LibraryComponent implements OnInit {
         public translate: TranslateService,
         private sanitizer: DomSanitizer
     ) {
+        this.search = '';
         this.paginateArticles = {
             length: 385,
             pageSize: 0,
@@ -57,9 +58,10 @@ export class LibraryComponent implements OnInit {
 
     getAllArticlesFiles() {
         this.articles = [];
-        for (let i = 0; i <= 383; i++) {
-            this.articles.push({path: this.sanitizer.bypassSecurityTrustResourceUrl('../../../assets/documents/library/articles/' + i + '.pdf')});
-        }
+        articlesJson.forEach(article => {
+            article.path = this.sanitizer.bypassSecurityTrustResourceUrl('../../../assets/documents/library/articles/' + article.id + '.pdf');
+            this.articles.push(article);
+        });
         this.showArticles = this.articles.slice(0, 6);
     }
 
@@ -110,3 +112,11 @@ export interface Paginate {
     pageSize: number;
     pageSizeOptions: number[];
 }
+
+export interface Article {
+    id: string;
+    title: string;
+    keys: string;
+    path?: SafeResourceUrl;
+}
+
