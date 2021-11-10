@@ -195,6 +195,22 @@
         "or_cerrado_solos_5000_2020_embrapa": {
             "pt": "Solos Embrapa",
             "en": "Embrapa soils"
+        },
+        "soilgrids_argila": {
+            "pt": "Argila - Soilgrids",
+            "en": "Clay by Soilgrids "
+        },
+        "soilgrids_areia": {
+            "pt": "Areia - Soilgrids",
+            "en": "Sand by Soilgrids "
+        },
+        "soilgrids_ocs": {
+            "pt": "Estoque de Carbono Orgânico - Soilgrids",
+            "en": "Organic Carbon Stock by Soilgrids "
+        },
+        "soilgrids_silt": {
+            "pt": "Lama - SoilGrids",
+            "en": "Silt Map by SoilGrids "
         }
     },
     "type_layer_viewvalue": {
@@ -317,6 +333,30 @@
         "es_df_risco_perca_recarga_aquifero_2017_ni_sema": {
             "pt": "Perda de capacidade de recarga dos aquíferos",
             "en": "loss of aquifer recharge capacity"
+        },
+        "or_ce_argila_0-5cm_soilgrids": {
+            "pt": "Entre 0 - 5 cm de profundidade",
+            "en": "Between 0 - 5 cm of depth"
+        },
+        "or_ce_argila_5-15cm_soilgrids": {
+            "pt": "Entre 5 - 15 cm de profundidade",
+            "en": "Between 5 - 15 cm of depth"
+        },
+        "or_ce_argila_15-30cm_soilgrids": {
+            "pt": "Entre 15 - 30 cm de profundidade",
+            "en": "Between 15 - 30 cm of depth"
+        },
+        "or_ce_argila_30-60cm_soilgrids": {
+            "pt": "Entre 30 - 60 cm de profundidade",
+            "en": "Between 30 - 60 cm of depth"
+        },
+        "or_ce_argila_60-100cm_soilgrids": {
+            "pt": "Entre 60 - 100 cm de profundidade",
+            "en": "Between 60 - 100 cm of depth"
+        },
+        "or_ce_argila_100-200cm_soilgrids": {
+            "pt": "Entre 100 - 200 cm de profundidade",
+            "en": "Between 100 - 200 cm of depth"
         }
     },
     "metadata": {
@@ -2465,6 +2505,78 @@
                 "pt": "Secretaria de Estado do Meio Ambiente do Distrito Federal",
                 "en": "State Secretariat for the Environment of the Federal District"
             }
+        },
+        "or_ce_argila_0-5cm_soilgrids": {
+            "title": {
+                "pt": "Mapa de Argila no Solo - SoilGrids",
+                "en": "Clay Map - SoilGrids"
+            },
+            "description": {
+                "pt": "SoilGrids é um sistema de mapeamento global com escala de 250m que faz uso de 150.000 perfis de solo e Machine Learning para predizer diferentes propiedades quantitativas do solo como: argila, areia, densidade de carbono orgânico, estoque de carbono orgânico, carbono organico no solo e nitrogênio total. Com profundidades de 0, 5, 15, 30, 60, 100 e 200 centímetros. Proporção de partículas de Argila (menores que 0.002 mm) em g/kg.",
+                "en": "SoilGrids is a 250m scale global mapping system that uses 150,000 soil profiles and Machine Learning to predict different quantitative properties of the soil such as: clay, sand, organic carbon density, organic carbon stock, organic carbon in the soil and total nitrogen. With depths of 0, 5, 15, 30, 60, 100 and 200 centimeters. Proportion of clay particles (less than 0.002 mm) in g / kg."
+            },
+            "format": {
+                "pt": "Raster (*.TIF).",
+                "en": "Raster (*.TIF)."
+            },
+            "region": {
+                "pt": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+                "en": "Cerrado Biome, allowing to analyze the classes of land use by other regions of interest such as: states and municipalities."
+            },
+            "period": {
+                "pt": "2010",
+                "en": "2010"
+            },
+            "scale": {
+                "pt": "250 metros",
+                "en": "250 meters"
+            },
+            "system_coordinator": {
+                "pt": "Superfície de referência SIRGAS 2000, Sistema de Coordenada Geográfica (em graus).",
+                "en": "SIRGAS 2000 reference surface, Geographic Coordinate System (in degrees)."
+            },
+            "cartographic_projection": {
+                "pt": "Universal de Mercator.",
+                "en": "Universal Transverse Mercator (UTM)."
+            },
+            "cod_caracter": {
+                "pt": "Latin 1.",
+                "en": "Latin 1."
+            },
+            "fonte": {
+                "pt": "Soilgrids",
+                "en": "Soilgrids"
+            }
+        },
+        "or_ce_areia_0-5cm_soilgrids": {
+            "title": {
+                "pt": "Mapa de Areia no Solo - SoilGrids",
+                "en": "Sand Map - SoilGrids"
+            },
+            "description": {
+                "pt": "SoilGrids é um sistema de mapeamento global com escala de 250m que faz uso de 150.000 perfis de solo e Machine Learning para predizer diferentes propiedades quantitativas do solo como: argila, areia, densidade de carbono orgânico, estoque de carbono orgânico, carbono organico no solo e nitrogênio total. Com profundidades de 0, 5, 15, 30, 60, 100 e 200 centímetros. Proporção de partículas de Areia (maiores que 0.05 mm) em g/kg.  ",
+                "en": "SoilGrids is a 250m scale global mapping system that uses 150,000 soil profiles and Machine Learning to predict different quantitative properties of the soil such as: clay, sand, organic carbon density, organic carbon stock, organic carbon in the soil and total nitrogen. With depths of 0, 5, 15, 30, 60, 100 and 200 centimeters. Proportion of sand particles (greater than 0.05 mm) in g / kg."
+            }
+        },
+        "or_ce_silte_0-5cm_soilgrids": {
+            "title": {
+                "pt": "Mapa de Lama no Solo - SoilGrids",
+                "en": "Silt Map - SoilGrids"
+            },
+            "description": {
+                "pt": "SoilGrids é um sistema de mapeamento global com escala de 250m que faz uso de 150.000 perfis de solo e Machine Learning para predizer diferentes propiedades quantitativas do solo como: argila, areia, densidade de carbono orgânico, estoque de carbono orgânico, carbono organico no solo e nitrogênio total. Com profundidades de 0, 5, 15, 30, 60, 100 e 200 centímetros. Proporção de partículas de Silt ( 0.002 mm à 0.05mm) em g/kg.",
+                "en": "SoilGrids is a 250m scale global mapping system that uses 150,000 soil profiles and Machine Learning to predict different quantitative properties of the soil such as: clay, sand, organic carbon density, organic carbon stock, organic carbon in the soil and total nitrogen. With depths of 0, 5, 15, 30, 60, 100 and 200 centimeters. Proportion of Silt particles (0.002 mm to 0.05 mm) in g / kg."
+            }
+        },
+        "or_ce_ocs_0-30cm_soilgrids": {
+            "title": {
+                "pt": "Mapa de Estoque de Carbono Orgânico no Solo - SoilGrids",
+                "en": "Organic Carbon Stock Map - SoilGrids"
+            },
+            "description": {
+                "pt": "SoilGrids é um sistema de mapeamento global com escala de 250m que faz uso de 150.000 perfis de solo e Machine Learning para predizer diferentes propiedades quantitativas do solo como: argila, areia, densidade de carbono orgânico, estoque de carbono orgânico, carbono organico no solo e nitrogênio total. Com profundidades de 0, 5, 15, 30, 60, 100 e 200 centímetros. Estoque de carbono orgânico em t/ha. ",
+                "en": "SoilGrids is a 250m scale global mapping system that uses 150,000 soil profiles and Machine Learning to predict different quantitative properties of the soil such as: clay, sand, organic carbon density, organic carbon stock, organic carbon in the soil and total nitrogen. With depths of 0, 5, 15, 30, 60, 100 and 200 centimeters. Organic carbon stock in t / ha."
+            }
         }
     },
     "basemap": {
@@ -3039,7 +3151,8 @@
                         "pt": "Desmatamentos -  PRODES - Cerrado",
                         "en": "Deforestation - PRODES - Cerrado"
                     },
-                    "metadata": [{
+                    "metadata": [
+                        {
                             "title": {
                                 "pt": "Dado",
                                 "en": "Data"
@@ -3180,7 +3293,8 @@
                         "pt": "Avisos - DETER - Cerrado",
                         "en": "Warnings - DETER - Cerrado"
                     },
-                    "metadata": [{
+                    "metadata": [
+                        {
                             "title": {
                                 "pt": "Dado",
                                 "en": "Data"
@@ -3309,7 +3423,8 @@
                         "pt": "Antrópico - PRODES - Cerrado",
                         "en": "Anthropic - PRODES - Cerrado"
                     },
-                    "metadata": [{
+                    "metadata": [
+                        {
                             "title": {
                                 "pt": "Dado",
                                 "en": "Data"
@@ -3472,7 +3587,8 @@
                         "pt": "Susceptibilidade a Desmatamentos",
                         "en": "Susceptibility to Deforestation"
                     },
-                    "metadata": [{
+                    "metadata": [
+                        {
                             "title": {
                                 "pt": "Dado",
                                 "en": "Data"
@@ -3597,7 +3713,8 @@
                                 "pt": "Propriedades Rurais",
                                 "en": "Rural Properties"
                             },
-                            "metadata": [{
+                            "metadata": [
+                                {
                                     "title": {
                                         "pt": "Dado",
                                         "en": "Data"
@@ -3702,7 +3819,8 @@
                                 "pt": "Polígonos",
                                 "en": "Polygons"
                             },
-                            "metadata": [{
+                            "metadata": [
+                                {
                                     "title": {
                                         "pt": "Dado",
                                         "en": "Data"
@@ -3807,7 +3925,8 @@
                                 "pt": "Áreas",
                                 "en": "Areas"
                             },
-                            "metadata": [{
+                            "metadata": [
+                                {
                                     "title": {
                                         "pt": "Dado",
                                         "en": "Data"
@@ -3912,7 +4031,8 @@
                                 "pt": "Pontos",
                                 "en": "Points"
                             },
-                            "metadata": [{
+                            "metadata": [
+                                {
                                     "title": {
                                         "pt": "Dado",
                                         "en": "Data"
@@ -4025,7 +4145,8 @@
                                 "pt": "Limites",
                                 "en": "Bounderies"
                             },
-                            "metadata": [{
+                            "metadata": [
+                                {
                                     "title": {
                                         "pt": "Dado",
                                         "en": "Data"
@@ -4130,7 +4251,8 @@
                                 "pt": "Comunidades",
                                 "en": "Communities"
                             },
-                            "metadata": [{
+                            "metadata": [
+                                {
                                     "title": {
                                         "pt": "Dado",
                                         "en": "Data"
@@ -4249,7 +4371,8 @@
                                 "pt": "Uso Sustentável",
                                 "en": "Sustainable Use"
                             },
-                            "metadata": [{
+                            "metadata": [
+                                {
                                     "title": {
                                         "pt": "Dado",
                                         "en": "Data"
@@ -4346,7 +4469,8 @@
                                 "pt": "Proteção Integral",
                                 "en": "Comprehensive Protection"
                             },
-                            "metadata": [{
+                            "metadata": [
+                                {
                                     "title": {
                                         "pt": "Dado",
                                         "en": "Data"
@@ -4454,7 +4578,8 @@
                         "en": "Land Use and Land Cover"
                     },
                     "uso_solo_terraclass_fip": {
-                        "metadata": [{
+                        "metadata": [
+                            {
                                 "title": {
                                     "pt": "Dado",
                                     "en": "Data"
@@ -4551,7 +4676,8 @@
                             "pt": "Vegetação Pretérita",
                             "en": "Past vegetation"
                         },
-                        "metadata": [{
+                        "metadata": [
+                            {
                                 "title": {
                                     "pt": "Dado",
                                     "en": "Data"
@@ -4644,7 +4770,8 @@
                         ]
                     },
                     "uso_solo_probio_fip": {
-                        "metadata": [{
+                        "metadata": [
+                            {
                                 "title": {
                                     "pt": "Dado",
                                     "en": "Data"
@@ -4743,7 +4870,8 @@
                         "en": "Agriculture"
                     },
                     "agricultura_agrosatelite_fip": {
-                        "metadata": [{
+                        "metadata": [
+                            {
                                 "title": {
                                     "pt": "Dado",
                                     "en": "Data"
@@ -4841,7 +4969,8 @@
                         "pt": "Floresta Plantada",
                         "en": "Planted Forest"
                     },
-                    "metadata": [{
+                    "metadata": [
+                        {
                             "title": {
                                 "pt": "Dado",
                                 "en": "Data"
@@ -4946,7 +5075,8 @@
                         "pt": "Malha Viária (Federal/Estadual)",
                         "en": "Roads Network (Federal/State)"
                     },
-                    "metadata": [{
+                    "metadata": [
+                        {
                             "title": {
                                 "pt": "Dado",
                                 "en": "Data"
@@ -5043,7 +5173,8 @@
                         "pt": "Armazéns",
                         "en": "Warehouses"
                     },
-                    "metadata": [{
+                    "metadata": [
+                        {
                             "title": {
                                 "pt": "Dado",
                                 "en": "Data"
@@ -5140,7 +5271,8 @@
                         "pt": "Matadouros e Frigoríficos",
                         "en": "Slaughterhouses & Meatpacking Company"
                     },
-                    "metadata": [{
+                    "metadata": [
+                        {
                             "title": {
                                 "pt": "Dado",
                                 "en": "Data"
@@ -5245,7 +5377,8 @@
                         "pt": "Altitude",
                         "en": "Altitude"
                     },
-                    "metadata": [{
+                    "metadata": [
+                        {
                             "title": {
                                 "pt": "Dado",
                                 "en": "Data"
@@ -5342,7 +5475,8 @@
                         "pt": "Declividade",
                         "en": "Slope"
                     },
-                    "metadata": [{
+                    "metadata": [
+                        {
                             "title": {
                                 "pt": "Dado",
                                 "en": "Data"
@@ -5447,7 +5581,8 @@
                         "pt": "Solos (1:250.000)",
                         "en": "Soils (1:250.000)"
                     },
-                    "metadata": [{
+                    "metadata": [
+                        {
                             "title": {
                                 "pt": "Dado",
                                 "en": "Data"
@@ -5544,7 +5679,8 @@
                         "pt": "Média da Precipitação Acumulada",
                         "en": "Average Accumulated Precipitation"
                     },
-                    "metadata": [{
+                    "metadata": [
+                        {
                             "title": {
                                 "pt": "Dado",
                                 "en": "Data"
@@ -5654,7 +5790,8 @@
                         "en": "Year"
                     },
                     "landsat": {
-                        "metadata": [{
+                        "metadata": [
+                            {
                                 "title": {
                                     "pt": "Dado",
                                     "en": "Data"
@@ -5747,7 +5884,8 @@
                         ]
                     },
                     "sentinel": {
-                        "metadata": [{
+                        "metadata": [
+                            {
                                 "title": {
                                     "pt": "Dado",
                                     "en": "Data"
@@ -5871,7 +6009,8 @@
                 "limite_cerrado": {
                     "pt": "Cerrado",
                     "en": "Cerrado",
-                    "metadata": [{
+                    "metadata": [
+                        {
                             "title": {
                                 "pt": "Dado",
                                 "en": "Data"
@@ -5966,7 +6105,8 @@
                 "estados": {
                     "pt": "Estados",
                     "en": "States",
-                    "metadata": [{
+                    "metadata": [
+                        {
                             "title": {
                                 "pt": "Dado",
                                 "en": "Data"
@@ -6061,7 +6201,8 @@
                 "municipios_cerrado": {
                     "pt": "Municípios",
                     "en": "Municipality",
-                    "metadata": [{
+                    "metadata": [
+                        {
                             "title": {
                                 "pt": "Dado",
                                 "en": "Data"
@@ -6406,7 +6547,8 @@
             },
             "rl_car_metadata": {
                 "property": {
-                    "metadata": [{
+                    "metadata": [
+                        {
                             "title": {
                                 "pt": "Dado",
                                 "en": "Data"
@@ -6499,7 +6641,8 @@
                     ]
                 },
                 "legal_reserve": {
-                    "metadata": [{
+                    "metadata": [
+                        {
                             "title": {
                                 "pt": "Dado",
                                 "en": "Data"
@@ -6592,7 +6735,8 @@
                     ]
                 },
                 "permanent_preservation_area": {
-                    "metadata": [{
+                    "metadata": [
+                        {
                             "title": {
                                 "pt": "Dado",
                                 "en": "Data"
@@ -6685,7 +6829,8 @@
                     ]
                 },
                 "source": {
-                    "metadata": [{
+                    "metadata": [
+                        {
                             "title": {
                                 "pt": "Dado",
                                 "en": "Data"
@@ -6778,7 +6923,8 @@
                     ]
                 },
                 "sample_validation": {
-                    "metadata": [{
+                    "metadata": [
+                        {
                             "title": {
                                 "pt": "Dado",
                                 "en": "Data"
@@ -6871,7 +7017,8 @@
                     ]
                 },
                 "field_validation": {
-                    "metadata": [{
+                    "metadata": [
+                        {
                             "title": {
                                 "pt": "Dado",
                                 "en": "Data"
@@ -6964,7 +7111,8 @@
                     ]
                 },
                 "indigenous_lands": {
-                    "metadata": [{
+                    "metadata": [
+                        {
                             "title": {
                                 "pt": "Dado",
                                 "en": "Data"
@@ -7057,7 +7205,8 @@
                     ]
                 },
                 "cu_integral_protection": {
-                    "metadata": [{
+                    "metadata": [
+                        {
                             "title": {
                                 "pt": "Dado",
                                 "en": "Data"
@@ -7150,7 +7299,8 @@
                     ]
                 },
                 "cu_sustainable_use": {
-                    "metadata": [{
+                    "metadata": [
+                        {
                             "title": {
                                 "pt": "Dado",
                                 "en": "Data"
@@ -7243,7 +7393,8 @@
                     ]
                 },
                 "biodiversity_conservation": {
-                    "metadata": [{
+                    "metadata": [
+                        {
                             "title": {
                                 "pt": "Dado",
                                 "en": "Data"
@@ -7591,7 +7742,8 @@
             "pt": "Acessar resultados",
             "en": "See results"
         },
-        "about": [{
+        "about": [
+            {
                 "pt": "O Cerrado Deforestation Polygon Assessment Tool (Cerrado DPAT) é uma ferramenta online e gratuita criada com o propósito de caracterizar os desmatamentos detectados pelos sistemas <a href=\"http://terrabrasilis.dpi.inpe.br/app/map/deforestation?hl=pt-br\" target=\"_blank\"> PRODES-Cerrado</a> e <a style=\"font-weight: 700\" href=\"http://terrabrasilis.dpi.inpe.br/app/map/alerts?hl=pt-br\" target=\"_blank\">DETER-Cerrado</a>.",
                 "en": "The Cerrado Deforestation Polygon Assessment Tool (Cerrado DPAT) is a free online tool created with the purpose of characterizing the deforestation detected by the systems <a href=\"http://terrabrasilis.dpi.inpe.br/app/map/deforestation?hl=pt-br\" target=\"_blank\"> PRODES-Cerrado</a> and <a style=\"font-weight: 700\" href=\"http://terrabrasilis.dpi.inpe.br/app/map/alerts?hl=pt-br\" target=\"_blank\">DETER-Cerrado</a>."
             },
@@ -7608,7 +7760,8 @@
             "pt": "Sobre",
             "en": "About"
         },
-        "innovations": [{
+        "innovations": [
+            {
                 "pt": "O Cerrado DPAT inova porque, além de qualificar o desmatamento com dados geográficos de diversas fontes, também oferece a validação dos polígonos de desmatamento, contribuindo para a melhoria do processo de detecção da perda de vegetação nativa no Cerrado.",
                 "en": "The Cerrado DPAT also innovates by offering the validation data of deforestation polygons, thus contributing to the improvement of the process of detecting the loss of native vegetation and the emission of greenhouse gases in the Cerrado."
             },
@@ -7621,7 +7774,8 @@
             "pt": "Diferencial",
             "en": "Innovations"
         },
-        "how_to_use": [{
+        "how_to_use": [
+            {
                 "pt": "As informações associadas ao polígono de desmatamento são acessadas pelo usuário de forma rápida e intuitiva. Ao clicar no polígono, um relatório com as informações disponíveis para a região é gerado, permitindo que usuários experientes e eventuais possam ter acesso à informação.",
                 "en": "The dataset of each deforestation polygon is accessed quickly and intuitively. With a click on a polygon, a report is generated with the information available for the region, allowing easy access to information.\n"
             },
@@ -7634,7 +7788,8 @@
             "pt": "Como usar",
             "en": "How to use"
         },
-        "fip": [{
+        "fip": [
+            {
                 "pt": "Em 2016, o Programa de Investimento Florestal (FIP) foi implementado no Brasil no âmbito do Plano de Investimento Brasileiro, gerido pelo Banco Internacional para Reconstrução e Desenvolvimento (IBRD/Banco Mundial) e financiado pelo Fundo Estratégico do Clima, cujo objetivo é desenvolver sistemas de prevenção de incêndios florestais e monitorar a cobertura vegetal no bioma.",
                 "en": "In 2016, the Forest Investment Program (FIP) was implemented in Brazil under the Brazilian Investment Plan, managed by the International Bank for Reconstruction and Development (IBRD / World Bank) and financed by the Strategic Climate Fund, whose objective is to develop systems prevention of forest fires and monitor the vegetation cover in the biome."
             },

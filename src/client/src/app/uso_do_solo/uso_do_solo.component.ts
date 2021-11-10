@@ -42,7 +42,7 @@ import { RegionReportComponent } from './region-report/region-report.component';
 import logos from './logos';
 import * as moment from 'moment';
 import { ChartsComponent } from './charts/charts.component';
-import { MapMobileComponent }  from './mobile/uso_do_solo-mobile.component'
+import { MapMobileComponent } from './mobile/uso_do_solo-mobile.component'
 
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
@@ -105,7 +105,7 @@ export class MapComponent implements OnInit {
 	valueRegion: any;
 
 	selectRegion: any;
-		defaultRegion: any;
+	defaultRegion: any;
 	regionSource: any;
 
 	collapseLayer: boolean;
@@ -367,14 +367,17 @@ export class MapComponent implements OnInit {
 
 	openDialog(layer): void {
 
-		if (layer.types) {
-			for (let info of layer.types) {
-				if (info.value == layer.selectedType) {
-					this.metadados = info.metadados
+		if (layer.metadados) {
+			this.metadados = layer.metadados
+		}
+		else {
+			if (layer.types) {
+				for (let info of layer.types) {
+					if (info.value == layer.selectedType) {
+						this.metadados = info.metadados
+					}
 				}
 			}
-		} else {
-			this.metadados = layer.metadados
 		}
 
 
@@ -417,21 +420,21 @@ export class MapComponent implements OnInit {
 	onResize(event) {
 		this.innerHeigth = window.innerHeight;
 		if (window.innerWidth < this.breakpointMobile) {
-      this.collapseLegends = false;
-      this.collapseLayer = true;
-      this.collapseCharts = true;
-      this.currentZoom = 4;
-    } else {
-      this.collapseLayer = false;
-      this.collapseCharts = false;
-      this.currentZoom = 6;
-    }
+			this.collapseLegends = false;
+			this.collapseLayer = true;
+			this.collapseCharts = true;
+			this.currentZoom = 4;
+		} else {
+			this.collapseLayer = false;
+			this.collapseCharts = false;
+			this.currentZoom = 6;
+		}
 
 	}
 
 	handleDrawer() {
-    this.showLayers = !this.showLayers;
-  }
+		this.showLayers = !this.showLayers;
+	}
 
 	updateRegion(region) {
 		if (region == this.defaultRegion) {
@@ -1640,9 +1643,9 @@ export class MapComponent implements OnInit {
 		var layername = layer.value
 
 		// if (layer.timeSelected) {
-			if (layer.value == "uso_solo_mapbiomas") {
-				this.year = layer.timeSelected
-			}
+		if (layer.value == "uso_solo_mapbiomas") {
+			this.year = layer.timeSelected
+		}
 		// }
 
 		if (layer.timeHandler == 'layername')
@@ -1852,32 +1855,33 @@ export class MapComponent implements OnInit {
 	}
 
 	downloadSHPAuto(layer, format) {
-    this.loadingsDownload = true;
-    let parameters = {
-      "layer": layer.selectedType,
-      "selectedRegion": this.selectRegion,
-      "times": this.selectedTimeFromLayerType(layer.selectedType),
-      "typeshape": format
-    };
+		this.loadingsDownload = true;
+		let parameters = {
+			"layer": layer.selectedType,
+			"selectedRegion": this.selectRegion,
+			"times": this.selectedTimeFromLayerType(layer.selectedType),
+			"typeshape": format
+		};
 
-    let name = ""
-    if (parameters.times != undefined) {
-      name = parameters.layer + "_" + parameters.selectedRegion.value+ "_" + parameters.times.Viewvalue
-    }
-    else {
-      name = parameters.layer + "_" + parameters.selectedRegion.value
+		let name = ""
+		if (parameters.times != undefined) {
+			name = parameters.layer + "_" + parameters.selectedRegion.value + "_" + parameters.times.Viewvalue
+		}
+		else {
+			name = parameters.layer + "_" + parameters.selectedRegion.value
 		}
 
 
-    this.http.post("/service/map/downloadSHPAuto", parameters, { responseType: 'blob' })
-      .toPromise()
-      .then(blob => {
-        saveAs(blob, name + '.zip');
-        this.loadingsDownload = false;
-      }).catch(err => { 
+		this.http.post("/service/map/downloadSHPAuto", parameters, { responseType: 'blob' })
+			.toPromise()
+			.then(blob => {
+				saveAs(blob, name + '.zip');
+				this.loadingsDownload = false;
+			}).catch(err => {
 				alert('Download Indisponível!');
-			 	this.loadingsDownload = false});
-  }
+				this.loadingsDownload = false
+			});
+	}
 
 	// downloadCSV(layer) {
 
@@ -2006,13 +2010,13 @@ export class MapComponent implements OnInit {
 		this.innerHeigth = window.innerHeight;
 
 		if (window.innerWidth < 1600) {
-      this.collapseLegends = false;
-      this.collapseLayer = true;
-      this.collapseCharts = true;
-      this.currentZoom = 5.3;
-    } else {
-      this.currentZoom = 5.8;
-    }
+			this.collapseLegends = false;
+			this.collapseLayer = true;
+			this.collapseCharts = true;
+			this.currentZoom = 5.3;
+		} else {
+			this.currentZoom = 5.8;
+		}
 
 		const self = this;
 		self.route.paramMap.subscribe(function (params) {
@@ -2052,7 +2056,9 @@ export class UsoDoSoloMetadados {
 
 	constructor(
 		public dialogRef: MatDialogRef<UsoDoSoloMetadados>,
-		@Inject(MAT_DIALOG_DATA) public data) { }
+		@Inject(MAT_DIALOG_DATA) public data) {
+		console.log(data)
+	}
 
 	onNoClick(): void {
 		this.dialogRef.close();
