@@ -209,7 +209,7 @@
             "en": "Organic Carbon Stock by Soilgrids "
         },
         "soilgrids_silt": {
-            "pt": "Lama - SoilGrids",
+            "pt": "Silt - SoilGrids",
             "en": "Silt Map by SoilGrids "
         }
     },
@@ -2560,7 +2560,7 @@
         },
         "or_ce_silte_0-5cm_soilgrids": {
             "title": {
-                "pt": "Mapa de Lama no Solo - SoilGrids",
+                "pt": "Mapa de Silt no Solo - SoilGrids",
                 "en": "Silt Map - SoilGrids"
             },
             "description": {
