@@ -99,6 +99,10 @@ export class HomePageComponent implements OnInit {
         });
     }
 
+    onClickPlatform(url) {
+        window.open(url,  'blank');
+    }
+
 
 }
 

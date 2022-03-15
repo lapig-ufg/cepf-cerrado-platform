@@ -28,6 +28,10 @@
 
 .cardPlataformas {
   height: 470px;
+  border-radius: 15px;
+  &:hover{
+    cursor: pointer;
+  }
 }
 
 #graphics .services-item {
@@ -81,6 +85,10 @@
   display: flex;
   justify-content: space-evenly;
   margin-left: 10px;
+  position: fixed;
+  right: 10px;
+  flex-direction: column;
+  top: 50%;
 
 
   button {
@@ -90,6 +98,7 @@
     border-radius: 5px !important;
     font-weight: normal!important;
     transition: all 0.5s ease !important;
+    box-shadow: 0 0 4px rgba(#000308, .14), 0 4px 8px rgba(#000308, .28);
 
   &:hover{
       color: white!important;
