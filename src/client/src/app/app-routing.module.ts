@@ -9,14 +9,17 @@ import { CovidgoiasComponent } from './paginas/covidgoias/covidgoias/covidgoias.
 import { MapComponent } from './uso_do_solo/uso_do_solo.component';
 import { MapMobileComponent } from './uso_do_solo/mobile/uso_do_solo-mobile.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import {AraticumComponent} from './paginas/araticum/araticum.component';
 
 
+// tslint:disable-next-line:ban-types
 declare let gtag: Function;
 
 const routes: Routes = [
-/* ROTA RAIZ */ 
+
   { path: '', component: HomePageComponent },
 /* ROTA PARA paginas */
+  { path: 'araticum', component: AraticumComponent },
   { path: 'project', component: ProjectPageComponent },
   { path: 'cerrado', component: BiomaPageComponent},
   { path: 'ouvidoria', component: OuvidoriaPageComponent},
@@ -30,7 +33,7 @@ const routes: Routes = [
 
 const routesMobile: Routes = [
   { path: '', component: HomePageComponent },
-  //{ path: 'mobile', component: MapMobileComponent },
+  { path: 'araticum', component: AraticumComponent },
   { path: 'project', component: ProjectPageComponent },
   { path: 'cerrado', component: BiomaPageComponent},
   { path: 'ouvidoria', component: OuvidoriaPageComponent},
@@ -40,7 +43,7 @@ const routesMobile: Routes = [
   { path: 'usodosolo/:token', component: MapComponent },
   { path: 'regions/:token', component: MapComponent },
   { path: '**', redirectTo: '/'}
-]
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, { useHash: true })],

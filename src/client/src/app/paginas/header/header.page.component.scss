@@ -46,3 +46,34 @@
   line-height: 28px;
   padding: 0 8px;
 }
+.btn-languages {
+  display: flex;
+  justify-content: space-evenly;
+  margin-left: 10px;
+  position: fixed;
+  right: 10px;
+  flex-direction: column;
+  top: 50%;
+
+
+  button {
+    border: none;
+    color: black !important;
+    background: transparent !important;
+    border-radius: 5px !important;
+    font-weight: normal!important;
+    transition: all 0.5s ease !important;
+    box-shadow: 0 0 4px rgba(#000308, .14), 0 4px 8px rgba(#000308, .28);
+
+    &:hover{
+      color: white!important;
+      background: #F63854 !important;
+      cursor: pointer !important;
+    }
+  }
+  .btn-lng-active{
+    color: white!important;
+    background: #F63854 !important;
+    cursor: pointer !important;
+  }
+}

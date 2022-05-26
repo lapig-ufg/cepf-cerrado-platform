@@ -72,10 +72,10 @@
             </div>
           </div>
           <div class="btn-languages">
-            <button (click)="changeLanguage('pt')" class="color-buttons" mat-raised-button
-              [ngStyle]="bntStylePOR">&nbsp;POR</button>
-            <button (click)="changeLanguage('en')" class="color-buttons" mat-raised-button
-              [ngStyle]="bntStyleENG">&nbsp;ENG</button>
+            <button mat-button (click)="changeLanguage('pt')" [class]="language == 'pt' ? 'color-buttons btn-lng-active' : 'color-buttons'"
+                    [ngStyle]="bntStylePOR">POR</button>
+            <button mat-button (click)="changeLanguage('en')"  [class]="language == 'en' ? 'color-buttons btn-lng-active' : 'color-buttons'"
+                    [ngStyle]="bntStyleENG">ENG</button>
           </div>
         </div>
       </div>

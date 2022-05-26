@@ -38,6 +38,7 @@ import { ChartsComponent } from './uso_do_solo/charts/charts.component';
 import { TutorialsComponent} from './paginas/tutorials/tutorials.component';
 import { GalleryComponent } from './paginas/gallery/gallery.component';
 import { LibraryComponent } from './paginas/library/library.component';
+import { AraticumComponent } from './paginas/araticum/araticum.component';
 import { ChartModule } from 'primeng/chart';
 import { DatePipe } from '@angular/common';
 
@@ -81,6 +82,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     TutorialsComponent,
     GalleryComponent,
     LibraryComponent,
+    AraticumComponent,
     FilterPipe
   ],
   imports: [

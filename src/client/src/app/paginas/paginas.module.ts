@@ -18,29 +18,33 @@ export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
 @NgModule({
-  declarations: [ 
-    HomePageComponent, 
-    PaginaIndisponivelDialog,
-    HeaderPageComponent, 
-    ProjectPageComponent, 
-    BiomaPageComponent, 
-    OuvidoriaPageComponent,
-    SalvaGuardaPageComponent,
-    FooterPageComponent,
-    CovidgoiasComponent
-  ],
-  imports: [
-    CommonModule,
-    HttpClientModule,
-    MatButtonModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    })
-  ],
-  entryComponents:[PaginaIndisponivelDialog],
+    declarations: [
+        HomePageComponent,
+        PaginaIndisponivelDialog,
+        HeaderPageComponent,
+        ProjectPageComponent,
+        BiomaPageComponent,
+        OuvidoriaPageComponent,
+        SalvaGuardaPageComponent,
+        FooterPageComponent,
+        CovidgoiasComponent
+    ],
+    imports: [
+        CommonModule,
+        HttpClientModule,
+        MatButtonModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: HttpLoaderFactory,
+                deps: [HttpClient]
+            }
+        })
+    ],
+    entryComponents: [PaginaIndisponivelDialog],
+    exports: [
+        HeaderPageComponent,
+        FooterPageComponent
+    ]
 })
 export class PaginasModule { }

@@ -1,0 +1,93 @@
+<!--<header id="header-wrap">-->
+<!--    &lt;!&ndash; Navbar Start &ndash;&gt;-->
+<!--    <nav class="navbar navbar-expand-md bg-inverse fixed-top scrolling-navbar" style="background-color: white;">-->
+<!--        <div class="container">-->
+<!--            &lt;!&ndash; Brand and toggle get grouped for better mobile display &ndash;&gt;-->
+<!--            <div class="row">-->
+<!--                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-mb-10">-->
+<!--                    <a style="text-align: center" href="https://cepf.lapig.iesa.ufg.br/#/araticum" target="_blank"-->
+<!--                       class="navbar-brand"><h4 class="head-title">{{ 'araticum.title_platform' | translate }}</h4>-->
+<!--                    </a>-->
+<!--                </div>-->
+
+
+<!--                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 col-mb-2">-->
+<!--                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"-->
+<!--                            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--                        <i class="lni-menu"></i>-->
+<!--                    </button>-->
+<!--                    <div class="collapse navbar-collapse" id="navbarCollapse">-->
+<!--                        <div class="btn-languages">-->
+<!--                            <button mat-button (click)="changeLanguage('pt')"-->
+<!--                                    [class]="language == 'pt' ? 'color-buttons btn-lng-active' : 'color-buttons'"-->
+<!--                                    [ngStyle]="bntStylePOR">POR-->
+<!--                            </button>-->
+<!--                            <button mat-button (click)="changeLanguage('en')"-->
+<!--                                    [class]="language == 'en' ? 'color-buttons btn-lng-active' : 'color-buttons'"-->
+<!--                                    [ngStyle]="bntStyleENG">ENG-->
+<!--                            </button>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </nav>-->
+<!--</header>-->
+<app-header-pages></app-header-pages>
+<div class="container ">
+    <div id="banner-araticum" class="hero-area-bg">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="contents">
+                    <h4 class="head-title">{{ 'araticum.about.title' | translate }}</h4>
+                    <div class="banner">
+                        <img class="img-fluid banner-img" src="assets/img/plataforms/araticum_banner.jpg" alt="">
+                    </div>
+                    <p style="padding-bottom:5px; text-align:justify">{{ 'araticum.about.text.p1' | translate }}</p>
+                    <p style="padding-bottom:5px; text-align:justify">{{ 'araticum.about.text.p2' | translate }}</p>
+                    <p style="padding-bottom:5px; text-align:justify">{{ 'araticum.about.text.p3' | translate }}</p>
+                    <div class="row justify-content-center header-button">
+                        <a href="https://araticum.lapig.iesa.ufg.br/" class="btn btn-border"
+                           target="_blank">{{ 'text_button_access_plataform' | translate }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section id="contact" class="hero-area-bg">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="contents">
+                    <h4 class="head-title">{{ 'araticum.contact.title' | translate }}</h4>
+                    <p [innerHTML]="'araticum.contact.text.p1' | translate"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="developed-by" class="hero-area-bg mt-5">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="contents ">
+                    <h4 class="head-title">{{ 'araticum.developed_by' | translate }}</h4>
+                    <img class="img-fluid banner-img" src="assets/img/plataforms/araticum/marcas.png" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="members" class="hero-area-bg mt-8 mb-8">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="contents ">
+                    <h4 class="head-title">{{ 'araticum.members.title' | translate }}</h4>
+                    <p style="padding-bottom:5px; text-align:justify">{{ 'araticum.members.text' | translate }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<app-footer-pages></app-footer-pages>
+
+
+
+
+

@@ -1,0 +1,168 @@
+#detailsName {
+  background-color: #222222 !important;
+}
+
+#titleName {
+  color: #ffffff !important;
+}
+
+.team-item .contetn {
+  height: 250px;
+}
+
+.contetn p, .team-item .info-text h3 {
+  text-align: justify;
+}
+
+.img-fluid-plataforms {
+  max-width: 300px;
+}
+
+.img-fluid-graphics {
+  max-width: 350px;
+}
+
+.img-fluid {
+  padding-top: 15px;
+}
+
+.cardPlataformas {
+  height: 470px;
+  border-radius: 15px;
+  &:hover{
+    cursor: pointer;
+  }
+}
+
+#graphics .services-item {
+  padding: 0px;
+}
+
+.testimonial-item {
+  height: 550px;
+}
+
+.navbar-brand img {
+  width: 100% !important;
+}
+
+.padding-logos {
+  padding: 0px !important;
+  width: 30%;
+  text-align: right
+}
+
+.team-block {
+  text-align: center;
+  flex: 20%;
+  max-width: 20%;
+  padding-top: 20px;
+}
+
+.team-img {
+  max-width: 180px !important;
+  border-radius: 100%
+}
+
+#team h5 {
+  padding-top: 10px;
+  font-weight: bold;
+}
+
+#team a {
+  color: #585858
+}
+
+.cardAcervo {
+  height: 210px;
+}
+
+.cardAcervo:hover {
+  cursor: pointer;
+}
+
+.btn-languages {
+  display: flex;
+  justify-content: space-evenly;
+  margin-left: 10px;
+  position: fixed;
+  right: 10px;
+  flex-direction: column;
+  top: 50%;
+
+
+  button {
+    border: none;
+    color: black !important;
+    background: transparent !important;
+    border-radius: 5px !important;
+    font-weight: normal!important;
+    transition: all 0.5s ease !important;
+    box-shadow: 0 0 4px rgba(#000308, .14), 0 4px 8px rgba(#000308, .28);
+
+  &:hover{
+      color: white!important;
+      background: #F63854 !important;
+      cursor: pointer !important;
+    }
+  }
+  .btn-lng-active{
+    color: white!important;
+    background: #F63854 !important;
+    cursor: pointer !important;
+  }
+}
+
+
+
+.color-buttons {
+  background-color: #707070;
+  font-weight: 900;
+  margin: 5px;
+}
+
+.mat-raised-button {
+  min-width: 46px;
+  line-height: 28px;
+  padding: 0 8px;
+}
+
+.contents{
+  .banner{
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+    .banner-img{
+      margin: auto;
+      padding: 0px;
+      max-width: 80%;
+      border-radius: 15px;
+      box-shadow: 0 10px 22px 10px #f4f4f4;
+    }
+  }
+  p{
+    text-indent: 40px;
+  }
+}
+
+#developed-by{
+  .contents{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .img-fluid{
+    margin: 0 auto;
+    max-width: 50%;
+  }
+}
+
+#members{
+  padding-bottom: 5rem;
+  padding-top: 5rem;
+}
+
+.head-title{
+  font-size: 20px !important;
+}
+

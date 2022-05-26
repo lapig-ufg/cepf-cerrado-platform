@@ -15,9 +15,9 @@
   "title_desmatamento": "DESMATAMENTO",
   "title_imagens_aereas": "IMAGENS AÉREAS",
   "title_socioambiental": "SOCIOAMBIENTAL",
-  "title_araticum": "RESTAURAÇÂO FLORESTAL",
+  "title_araticum": "RESTAURAÇÂO",
   "text_desmatamento": "Uma radiografia dos desmatamentos praticados no bioma Cerrado, com dados providos pelo Instituto Nacional de Pesquisas Espaciais (INPE) e outras instituições de pesquisa, e validados pelo LAPIG, por meio da plataforma Cerrado DPAT.",
-  "text_araticum": "Informações cartográficas sobre os projetos de restauração ecológica e florestal realizados no bioma Cerrado, no âmbito da Rede Araticum",
+  "text_araticum": "Informações cartográficas sobre os projetos de restauração realizados no bioma Cerrado, no âmbito da Rede Araticum",
   "text_imagens_aereas": "Imagens aéreas captadas em vários momentos e locais do bioma Cerrado (abrangendo também outros biomas), por meio de Veículos Aéreos Não Tripulados (VANTs) ou drones. Grande parte deste acervo está relacionado às atividades de pesquisa do núcleo Pro-Vant.",
   "text_socioambiental": "Informações sobre uso do solo, biodiversidade e socioeconomia do bioma Cerrado, organizadas em temas e diferentes formatos (mapas, gráficos e relatórios), visando análises dinâmicas e integradas.",
   "text_dados_download": "Dados disponíveis para download.",
@@ -289,5 +289,27 @@
   "metadata_update": "Atualização",
   "metadata_contato": "Contato",
   "articles_search": "Procurar  Artigo",
-  "keywords": "Palavras-chave"
+  "keywords": "Palavras-chave",
+  "araticum": {
+    "title_platform": "Plataforma de Monitoramento da Restauração no Cerrado",
+    "about": {
+      "title": "SOBRE ARATICUM",
+      "text": {
+        "p1": "A necessidade de discutir e criar Soluções Baseadas na Natureza (NBS), para alcançarmos a manutenção e melhoria do bem-estar humano e ambiental, vêm sendo um dos principais temas no debate global da sustentabilidade. No Brasil, este cenário é potencializado e bem representado pelas iniciativas de restauração de vegetação nativa (habitat) estruturadas em nível nacional e regional, a fim de construir estratégias de ações para o atendimento a compromissos internacionais que o país se comprometeu, a exemplo do Acordo de Paris, com a definição da Contribuição Nacionalmente Determinada (NDC) Brasileira e os desafios para a regularização ambiental da vegetação nativa em propriedades rurais particulares, pautadas pelo código florestal.",
+        "p2": "Neste contexto, o bioma Cerrado se configura como um dos principais locais para ações de restauração, em função das pressões intensas de mudanças no uso e cobertura do solo, e devido ser um dos hotspots de biodiversidade global. Assim, visando construir uma rede de instituições multisetorial com o objetivo de criar uma agenda integrada, e que proporcione impactos em ampla escala a partir de projetos de restauração, em 2020 foi criada a Articulação pela Restauração do Cerrado (ARATICUM). Nesta, diversas instituições se propõem a alavancar e implementar políticas públicas e aumentar as iniciativas de restauração no bioma.",
+        "p3": "A Plataforma de Monitoramento da Restauração do Cerrado, propõe-se a dar transparência das instituições e arranjos promotores da restauração, monitorar, comunicar e apoiar novas oportunidades de restauração no Cerrado, bem como subsidiar o monitoramento nacional realizado pelo Observatório da Restauração e Reflorestamento (ORR)."
+      }
+    },
+    "contact": {
+      "title": "CONTATO",
+      "text": {
+        "p1": "Mais informações sobre os dados e contribuição para inclusão de novas áreas para a Plataforma, entre em contato pelo correio eletrônico: <a target='_blank' href='rede.araticum@gmail.com' alt='rede.araticum@gmail.com'> rede.araticum@gmail.com</a> "
+      }
+    },
+    "developed_by": "DESENVOLVIMENTO",
+    "members": {
+      "title": "Apoiadores/Membros",
+      "text": "Agência Reguladora de águas (ADASA), Agroicone, Associação dos Fruticultores Horticultores Apicultores e Meliponicultores de Araguacema (AFHORTAMA), Brasília Ambiental (IBRAM DF), Centro de Avaliação da Biodiversidade, Pesquisa e Conservacão do Cerrado (CBC/ICMBio), Centro de Gestão e Inovação da Agricultura Familiar da Universidade de Brasília (CEGAFI-UnB), Centro Internacional de Pesquisa Agroflorestal ICRAF, Centro Universitário de Brasília (CEUB), Conservação Internacional do Brasil (CI – Brasil), Cooperativa Agroecológica dos Produtores Familiares de Niquelândia, Daterra Coffee, Ekonus Consultoria em sustentabilidade, Empresa Brasileira de Pesquisa Agropecuária (Embrapa), Embrapa Cerrados, Empresa de Assistência Técnica e Extensão Rural de Minas Gerais (Emater MG), Empresa de Assistência Técnica e Extensão Rural do Distrito Federal (Emater – DF), Fundação de Tecnologia Florestal e Geoprocessamento, Fundo Brasileiro para a Biodiversidade (FUNBIO), Guardiães de Águas Emendadas (GAE), Grupo de Restauradores da Norte de Minas Gerais, Grupo Semente, Instituto Altair Sales e Instituto Plantadores de Água, Instituto Brasília Ambiental, Instituto Chico Mendes de Conservação da Biodiversidade (ICMBIO), Instituto Federal do Norte de Minas Gerais (IFMG), Instituto Internacional de Educação do Brasil (IEB), Instituto Internacional para Sustentabilidade (IIS), Instituto Sociedade, População e Natureza (ISPN), IPÊ - Instituto de Pesquisas Ecológicas, Jovens da Reserva da Biosfera do Pantanal, Land Innovation Fund (LIF), Núcleo Gestor da Cadeia Produtiva do Pequi e Outros Frutos do Cerrado, PEQUI Pesquisa e Conservação do Cerrado, Programa das Nações Unidas para o Meio Ambiente (PNUMA), Rede de Sementes do Cerrado (RSC), Reserva Bacupari, Secretaria de Infraestrutura e Meio Ambiente (SIMA-SP), Secretaria de Meio Ambiente do Estado da Bahia, Semeia Cerrado, Sementes do Paraíso, Suzano Papel e Celulose, The Nature Conservancy (TNC), Universidade de Brasília (UnB), Universidade de Exeter, Universidade Estadual de Campinas (UNICAMP), Universidade Estadual de Goiás (UEG), Universidade Federal de Goiás (UFG), Universidade Federal de Mato Grosso (UFMT), Universidade Federal de Minas Gerais (UFMG), Universidade Federal do Oeste da Bahia (UFOB), Universidade Federal do Rio de Janeiro (UFRJ), Viveiro Carobinha."
+    }
+  }
 }

@@ -16,8 +16,8 @@
   "title_restoration": "CERRADO RESTORATION",
   "title_imagens_aereas": "AERIAL IMAGES",
   "title_socioambiental": "SOCIO-ENVIRONMENTAL",
-  "title_araticum": "FOREST RESTORATION",
-  "text_araticum": "Cartographic information on ecological and forest restoration projects carried out in the Cerrado biome, within the scope of the Araticum network.",
+  "title_araticum": "RESTORATION",
+  "text_araticum": "Cartographic information on restoration projects carried out in the Cerrado biome, within the scope of the Araticum network.",
   "text_desmatamento": "An X-ray of the deforestation practiced in the Cerrado biome, with data provided by the National Institute for Space Research (INPE) and other research institutions, and validated by LAPIG, through the Cerrado DPAT platform.",
   "text_imagens_aereas": "Aerial images captured at various times and locations in the Cerrado biome (also covering other biomes), using Unmanned Aerial Vehicles (UAVs) or drones. Much of this collection is related to the research activities of the Pro-Vant group.",
   "text_socioambiental": "Information on land use, biodiversity and socioeconomics of the Cerrado biome, organized in themes and different formats (maps, graphs and reports), aiming at dynamic and integrated analyzes.",
@@ -291,5 +291,27 @@
   "metadata_update": "Update",
   "metadata_contato": "Contact",
   "articles_search": "Search Article",
-  "keywords": "Keywords"
+  "keywords": "Keywords",
+  "araticum": {
+    "title_platform": "Cerrado Restoration Monitoring Platform",
+    "about": {
+      "title": "ABOUT ARATICUM",
+      "text": {
+        "p1": "The need to discuss and create Nature Based Solutions (NBS) to achieve the maintenance and improvement of human and environmental well-being has been one of the main topics in the global debate on sustainability. In Brazil, this scenario is enhanced and well represented by initiatives to restore native vegetation (habitat) structured at the national and regional levels, in order to build strategies for actions to meet international commitments of the country, such as the Paris Agreement, with the definition of the Brazilian Nationally Determined Contribution (NDC), and the challenges for the environmental regularization of native vegetation on private properties, guided by the forest code.",
+        "p2": "In this context, the Cerrado biome is configured as one of the main places for restoration actions, due to the intense pressures for change in land use and coverage, and due to being one of the global biodiversity hotspots. Thus, in order to build a network of multisectoral institutions with the objective of creating an integrated agenda that provides large-scale impacts from restoration projects, the Articulation for the Restoration of the Cerrado (ARATICUM) was created in 2020. In it, several institutions propose to leverage and implement public policies and increase restoration initiatives in the biome.",
+        "p3": "The Cerrado Restoration Monitoring Platform proposes to provide transparency to institutions and arrangements that promote restoration, monitor, communicate and support new restoration opportunities in the Cerrado, as well as subsidize the national monitoring carried out by the Observatory of Restoration and Reforestation (ORR)."
+      }
+    },
+    "contact": {
+      "title": "CONTACT",
+      "text": {
+        "p1": "For further information about the data and contribution to the inclusion of new areas regarding the Platform, please contact us by email:  <a target='_blank' href='rede.araticum@gmail.com' alt='rede.araticum@gmail.com'> rede.araticum@gmail.com</a> "
+      }
+    },
+    "developed_by": "DEVELOPED BY",
+    "members": {
+      "title": "SUPPORTERS/MEMBERS",
+      "text": "Agência Reguladora de águas (ADASA), Agroicone, Associação dos Fruticultores Horticultores Apicultores e Meliponicultores de Araguacema (AFHORTAMA), Brasília Ambiental (IBRAM DF), Centro de Avaliação da Biodiversidade, Pesquisa e Conservacão do Cerrado (CBC/ICMBio), Centro de Gestão e Inovação da Agricultura Familiar da Universidade de Brasília (CEGAFI-UnB), Centro Internacional de Pesquisa Agroflorestal ICRAF, Centro Universitário de Brasília (CEUB), Conservação Internacional do Brasil (CI – Brasil), Cooperativa Agroecológica dos Produtores Familiares de Niquelândia, Daterra Coffee, Ekonus Consultoria em sustentabilidade, Empresa Brasileira de Pesquisa Agropecuária (Embrapa), Embrapa Cerrados, Empresa de Assistência Técnica e Extensão Rural de Minas Gerais (Emater MG), Empresa de Assistência Técnica e Extensão Rural do Distrito Federal (Emater – DF), Fundação de Tecnologia Florestal e Geoprocessamento, Fundo Brasileiro para a Biodiversidade (FUNBIO), Guardiães de Águas Emendadas (GAE), Grupo de Restauradores da Norte de Minas Gerais, Grupo Semente, Instituto Altair Sales e Instituto Plantadores de Água, Instituto Brasília Ambiental, Instituto Chico Mendes de Conservação da Biodiversidade (ICMBIO), Instituto Federal do Norte de Minas Gerais (IFMG), Instituto Internacional de Educação do Brasil (IEB), Instituto Internacional para Sustentabilidade (IIS), Instituto Sociedade, População e Natureza (ISPN), IPÊ - Instituto de Pesquisas Ecológicas, Jovens da Reserva da Biosfera do Pantanal, Land Innovation Fund (LIF), Núcleo Gestor da Cadeia Produtiva do Pequi e Outros Frutos do Cerrado, PEQUI Pesquisa e Conservação do Cerrado, Programa das Nações Unidas para o Meio Ambiente (PNUMA), Rede de Sementes do Cerrado (RSC), Reserva Bacupari, Secretaria de Infraestrutura e Meio Ambiente (SIMA-SP), Secretaria de Meio Ambiente do Estado da Bahia, Semeia Cerrado, Sementes do Paraíso, Suzano Papel e Celulose, The Nature Conservancy (TNC), Universidade de Brasília (UnB), Universidade de Exeter, Universidade Estadual de Campinas (UNICAMP), Universidade Estadual de Goiás (UEG), Universidade Federal de Goiás (UFG), Universidade Federal de Mato Grosso (UFMT), Universidade Federal de Minas Gerais (UFMG), Universidade Federal do Oeste da Bahia (UFOB), Universidade Federal do Rio de Janeiro (UFRJ), Viveiro Carobinha."
+    }
+  }
 }
