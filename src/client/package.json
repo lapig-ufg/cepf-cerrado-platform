@@ -44,7 +44,7 @@
     "ini": "^2.0.0",
     "jspdf": "^2.3.1",
     "jspdf-autotable": "^3.5.3",
-    "moment": "^2.26.0",
+    "moment": "^2.29.4",
     "ngx-images-gallery": "^1.0.3",
     "ngx-lightbox": "^2.1.0",
     "node-sass": "^4.14.1",
