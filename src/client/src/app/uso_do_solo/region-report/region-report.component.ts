@@ -69,6 +69,7 @@ export class RegionReportComponent implements OnInit {
       thumb: this.dados.region.terraclass.imgSmall
     };
     this.urlTerraClass.push(ob);
+    // @ts-ignore
     this.lightBox.open(this.urlTerraClass);
   }
 
@@ -80,6 +81,7 @@ export class RegionReportComponent implements OnInit {
       thumb: image.imgLarge
     };
     this.urlImagesLandSat.push(ob);
+    // @ts-ignore
     this.lightBox.open(this.urlImagesLandSat);
   }
 

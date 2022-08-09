@@ -307,9 +307,11 @@
       }
     },
     "developed_by": "DESENVOLVIMENTO",
+    "supported_by": "APOIO",
     "members": {
-      "title": "Apoiadores/Membros",
+      "title": "MEMBROS",
       "text": "Agência Reguladora de águas (ADASA), Agroicone, Associação dos Fruticultores Horticultores Apicultores e Meliponicultores de Araguacema (AFHORTAMA), Brasília Ambiental (IBRAM DF), Centro de Avaliação da Biodiversidade, Pesquisa e Conservacão do Cerrado (CBC/ICMBio), Centro de Gestão e Inovação da Agricultura Familiar da Universidade de Brasília (CEGAFI-UnB), Centro Internacional de Pesquisa Agroflorestal ICRAF, Centro Universitário de Brasília (CEUB), Conservação Internacional do Brasil (CI – Brasil), Cooperativa Agroecológica dos Produtores Familiares de Niquelândia, Daterra Coffee, Ekonus Consultoria em sustentabilidade, Empresa Brasileira de Pesquisa Agropecuária (Embrapa), Embrapa Cerrados, Empresa de Assistência Técnica e Extensão Rural de Minas Gerais (Emater MG), Empresa de Assistência Técnica e Extensão Rural do Distrito Federal (Emater – DF), Fundação de Tecnologia Florestal e Geoprocessamento, Fundo Brasileiro para a Biodiversidade (FUNBIO), Guardiães de Águas Emendadas (GAE), Grupo de Restauradores da Norte de Minas Gerais, Grupo Semente, Instituto Altair Sales e Instituto Plantadores de Água, Instituto Brasília Ambiental, Instituto Chico Mendes de Conservação da Biodiversidade (ICMBIO), Instituto Federal do Norte de Minas Gerais (IFMG), Instituto Internacional de Educação do Brasil (IEB), Instituto Internacional para Sustentabilidade (IIS), Instituto Sociedade, População e Natureza (ISPN), IPÊ - Instituto de Pesquisas Ecológicas, Jovens da Reserva da Biosfera do Pantanal, Land Innovation Fund (LIF), Núcleo Gestor da Cadeia Produtiva do Pequi e Outros Frutos do Cerrado, PEQUI Pesquisa e Conservação do Cerrado, Programa das Nações Unidas para o Meio Ambiente (PNUMA), Rede de Sementes do Cerrado (RSC), Reserva Bacupari, Secretaria de Infraestrutura e Meio Ambiente (SIMA-SP), Secretaria de Meio Ambiente do Estado da Bahia, Semeia Cerrado, Sementes do Paraíso, Suzano Papel e Celulose, The Nature Conservancy (TNC), Universidade de Brasília (UnB), Universidade de Exeter, Universidade Estadual de Campinas (UNICAMP), Universidade Estadual de Goiás (UEG), Universidade Federal de Goiás (UFG), Universidade Federal de Mato Grosso (UFMT), Universidade Federal de Minas Gerais (UFMG), Universidade Federal do Oeste da Bahia (UFOB), Universidade Federal do Rio de Janeiro (UFRJ), Viveiro Carobinha."
-    }
+    },
+    "disclaimer_message": "Esta plataforma foi produzida com o apoio financeiro da União Europeia. O seu conteúdo é da exclusiva responsabilidade da Araticum e não reflete necessariamente a visão da União Europeia."
   }
 }
