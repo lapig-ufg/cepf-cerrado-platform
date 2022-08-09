@@ -30,7 +30,7 @@
     "fs": "0.0.1-security",
     "generic-pool": "~2.0.4",
     "geojson-validation": "^1.0.2",
-    "hawk": "^7.0.10",
+    "hawk": "^9.0.1",
     "hoek": "^5.0.4",
     "ini": "^2.0.0",
     "json2csv": "^4.5.1",
