@@ -70,7 +70,7 @@ jobs:
 
       - name: Restart Application
         run: |
-          /compose/resetapp.sh --title "Plataforma Agrotóxicos" \
+          /compose/resetapp.sh --title "Plataforma Cepf" \
           --github "https://github.com/${{ github.repository }}" \
           --commit "${{ needs.build.outputs.LAST_COMMIT_HASH }}" \
           ${{ needs.build.outputs.APPLICATION_NAME }}
