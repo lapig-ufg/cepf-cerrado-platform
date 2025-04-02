@@ -7,7 +7,7 @@ var express = require('express')
 	, requestTimeout = require('express-timeout')
 	, responseTime = require('response-time')
 	, timeout = require('connect-timeout')
-	//, bodyParser = require('body-parser')
+	, bodyParser = require('body-parser')
 	, multer = require('multer')
 	, session = require('express-session')
 	, parseCookie = require('cookie-parser');
@@ -43,13 +43,9 @@ app.database.client.init(function () {
 	}));
 
 	app.use(responseTime());
-
-
-	app.use(express.json({ limit: '1gb' })); // ✅ Reemplaza bodyParser.json()
-	app.use(express.urlencoded({
-		extended: true,
-		limit: '1gb' // ✅ Añade limit aquí
-	}));
+	app.use(bodyParser.json({ limit: '1gb' }));
+	app.use(bodyParser({ limit: '1gb' }));
+	app.use(bodyParser.urlencoded({ extended: true }));
 	// app.use(multer());
 
 	app.use(function (error, request, response, next) {

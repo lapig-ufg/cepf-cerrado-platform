@@ -1,0 +1,7 @@
+.data/
+.idea/
+.env
+/docker
+/doc
+Dockerfile-Base
+compose.yml

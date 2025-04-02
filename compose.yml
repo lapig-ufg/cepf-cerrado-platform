@@ -1,0 +1,48 @@
+
+services:
+
+  appcepf:
+    hostname: app_cepf
+    container_name: app_cepf
+    build:
+      context: .
+      dockerfile: docker/prod/Dockerfile
+    restart: always
+    #command: /bin/bash
+    #entrypoint: "/APP/Monitora.sh"
+    command: bash -c "/bin/bash"
+    ports:
+      - 3012:3000
+    stdin_open: true
+    tty: true
+    volumes:
+      - '.data/plataforms_files/dpat-files:/STORAGE/plataforms_files/dpat-files'
+      - '.data/cepf-files:/STORAGE/cepf-files'
+      - '.data/download_atlas:/STORAGE/download_atlas/'
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+      - .env/:/APP/cepf-cerrado-platform/src/server/.env:ro
+    environment:
+      APP_PRODUCAO: "${APP_PRODUCAO}"
+      APP_PRODUCAO_CEPF: "${APP_PRODUCAO_CEPF}"
+      CLIENT_DIR: "${CLIENT_DIR}"
+      LANG_DIR: "${LANG_DIR}"
+      LOG_DIR: "${LOG_DIR}"
+      TMP: "${TMP}"
+      FIELD_DATA_DIR: "${FIELD_DATA_DIR}"
+      UPLOAD_DATA_DIR: "${UPLOAD_DATA_DIR}"
+      DOWNLOAD_DIR: "${DOWNLOAD_DIR}"
+      DOWNLOAD_DATA_DIR: "${DOWNLOAD_DATA_DIR}"
+      PG_USER: "${PG_USER}"
+      PG_HOST: "${PG_HOST}"
+      PG_DATABASE: "${PG_DATABASE}"
+      PG_PASSWORD: "${PG_PASSWORD}"
+      PG_PORT: "${PG_PORT}"
+      PG_DEBUG: "${PG_DEBUG}"
+      OWS_HOST: "${OWS_HOST}"
+      OWS: "${OWS}"
+      DB_PATH: "${DB_PATH}"
+
+
+
+
