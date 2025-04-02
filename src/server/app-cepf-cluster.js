@@ -1,13 +1,18 @@
 var cluster = require('cluster');
 var http = require('http');
-/* var numCPUs = require('os').cpus().length; */
-var numCPUs = 48;
+const totalNumCPUs = require('os').cpus().length ;
+const CPU_PERCENT = parseFloat(process.env.CPU_PERCENT) || 0.1;
+/*var numCPUs = 8;*/
+let numCPUs = Math.floor(totalNumCPUs * CPU_PERCENT);
 
+
+numCPUs =  Math.max(2, numCPUs % 2 === 0 ? numCPUs : numCPUs +1);
 if (cluster.isMaster) {
-  if(process.env.NODE_ENV == 'dev') {
-    var numCPUs = 2
-  }
+  if(process.env.NODE_ENV !== 'prod') {
+    numCPUs = 2
 
+  }
+  console.log(`Total de works: ${numCPUs}`);
   for (var i = 0; i < numCPUs; i++) {
     var ENV_VAR = {}
     if(i == 0) {

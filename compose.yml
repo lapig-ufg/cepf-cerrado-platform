@@ -8,9 +8,8 @@ services:
       context: .
       dockerfile: docker/prod/Dockerfile
     restart: always
-    #command: /bin/bash
     #entrypoint: "/APP/Monitora.sh"
-    command: bash -c "/bin/bash"
+
     ports:
       - 3012:3000
     stdin_open: true
