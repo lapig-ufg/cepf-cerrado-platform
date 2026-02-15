@@ -10,7 +10,7 @@ RUN apk add --no-cache tini bash && \
 WORKDIR /app/server
 
 COPY --chown=node:node ./src/server ./
-COPY --chown=node:node ./client/dist ../client
+COPY --chown=node:node ./src/client/dist ../client
 
 USER node
 
