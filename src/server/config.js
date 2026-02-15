@@ -2,10 +2,10 @@ const appRoot = require('app-root-path');
 const dotenv = require('dotenv');
 
 const result = dotenv.config();
-if (result.error) {
-	throw result.error;
+if (result.error && result.error.code !== 'ENOENT') {
+  throw result.error;
 }
-const { parsed: env } = result;
+const env = result.parsed || process.env;
 
 module.exports = function (app) {
 
