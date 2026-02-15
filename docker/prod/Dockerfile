@@ -1,12 +1,21 @@
-FROM lapig/app_cepf:base
+ARG IMAGE_NODE_ALPINE_VERSION=node:12-alpine3.15
+FROM ${IMAGE_NODE_ALPINE_VERSION}
 
+LABEL maintainer="Jairo Matos da Rocha <jairo@jairomr.com>"
 
-LABEL maintainer="Rocha Jairo <devjairomr.gmail.com.br>"
+RUN apk add --no-cache tini bash && \
+    mkdir -p /app && \
+    chown -R node:node /app
 
+WORKDIR /app/server
 
-ADD . /APP/cepf-cerrado-platform
-COPY ./version.jso* /APP/cepf-cerrado-platform/src/client/dist/lapig-cepf-cerrado/assets/
+COPY --chown=node:node ./src/server ./
+COPY --chown=node:node ./client/dist ../client
 
-CMD [ "/bin/bash", "-c", "cd /APP/cepf-cerrado-platform/src/server/;  ./prod-start.sh; tail -f /APP/cepf-cerrado-platform/src/server/app.out"]
+USER node
 
-#ENTRYPOINT [ "/APP/Monitora.sh"]
+HEALTHCHECK --interval=30s --timeout=5s --start-period=30s --retries=3 \
+  CMD node -e "require('http').get('http://localhost:3000/health',(r)=>{process.exit(r.statusCode===200?0:1)})"
+
+ENTRYPOINT ["tini", "--"]
+CMD ["node", "app.js"]

@@ -58,7 +58,7 @@ module.exports = function (app) {
 		config["downloadDir"] = env.DOWNLOAD_DIR;
 		config["downloadDataDir"] = appProducaocepf + env.DOWNLOAD_DATA_DIR;
 	}
-
+	console.log("Configurações carregadas: ", config);
 	return config;
 
 }
