@@ -1,5 +1,3 @@
-const { env } = require("node:process");
-
 module.exports = function (app) {
 
     /**
